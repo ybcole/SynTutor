@@ -28,6 +28,7 @@ checker so one exception can never wipe out all findings.
 from itertools import chain
 
 from lemminflect import getAllInflections, getAllLemmas
+import spellcheck
 
 try:  # package or script-dir import, same convention as matrix.py
     from . import ruleset
@@ -79,7 +80,10 @@ HIGH_FREQ = {
     # quantifiers / determiners benepar tags as NN/JJ
     'many', 'much', 'few', 'couple', 'several', 'both', 'each', 'either',
     'neither', 'all', 'some', 'any', 'enough', 'plenty', 'most', 'more',
-    'less', 'least', 'numerous', 'various', 'such', 'several',
+    'less', 'least', 'numerous', 'various', 'such', 'other', 'others',
+    'another', 'same', 'own', 'next', 'last', 'former', 'latter', 'else',
+    'certain', 'different', 'similar', 'single', 'double', 'triple', 'half',
+    'whole', 'entire', 'extra', 'further', 'additional',
     # indefinite compound pronouns
     'everyone', 'everybody', 'everything', 'everywhere',
     'anyone', 'anybody', 'anything', 'anywhere',
@@ -94,6 +98,25 @@ HIGH_FREQ = {
     'almost', 'nearly', 'only', 'too', 'quite', 'rather', 'maybe', 'perhaps',
     # abbreviations / acronyms
     'tv', 'ok', 'okay', 'pm', 'am', 'etc', 'vs',
+}
+
+_HYPHEN_PREFIXES = {
+    'ex', 'co', 'non', 'pre', 'post', 're', 'self', 'anti', 'sub', 'multi',
+    'semi', 'mid', 'pro', 'vice', 'super', 'inter', 'auto', 'bio', 'eco',
+    'geo', 'micro', 'macro', 'mini', 'mega', 'neo', 'pseudo', 'quasi',
+    'ultra', 'over', 'under', 'cross', 'counter', 'well', 'long', 'short',
+    'full', 'part', 'high', 'low', 'old', 'new', 'second', 'third', 'so',
+}
+
+_VALID_DERIVED_WORDS = {
+    'oncologist', 'oncologists', 'mentee', 'mentees', 'attendee', 'attendees',
+    'interviewee', 'interviewees', 'trainee', 'trainees', 'employee', 'employees',
+    'refugee', 'refugees', 'nominee', 'nominees', 'detainee', 'detainees',
+    'cardiologist', 'cardiologists', 'neurologist', 'neurologists',
+    'dermatologist', 'dermatologists', 'pediatrician', 'pediatricians',
+    'psychiatrist', 'psychiatrists', 'optometrist', 'optometrists',
+    'anesthesiologist', 'anesthesiologists', 'epidemiologist', 'epidemiologists',
+    'wastefulness', 'mindfulness', 'thoughtfulness', 'helplessness',
 }
 
 _LEMMA_CACHE = {}
@@ -223,6 +246,16 @@ def _classify_leaf(low, tag, upos):
         stem, u = malformed[0]
         return 'malformed', {'lemma': stem, 'upos': u,
                              'paradigm': _paradigm_text(stem, u)}
+    # 4. Pluralized comparative adjectives ('smallers', 'olders', 'cheapers',
+    #    'biggers') are never valid English plural nouns when the stem is an
+    #    inflected JJR comparative adjective with no noun lemma.
+    if (tag in ('NNS', 'NN', 'JJ', 'JJR') and low.endswith('ers') and len(low) >= 6):
+        stem = low[:-1]  # e.g. 'smaller', 'older', 'cheaper'
+        if not _lemmas(stem, 'NOUN'):
+            adj_lems = _lemmas(stem, 'ADJ')
+            if adj_lems and any(stem in _forms(al, 'ADJ').get('JJR', ()) for al in adj_lems):
+                return 'malformed', {'lemma': stem, 'upos': 'ADJ',
+                                     'paradigm': _paradigm_text(sorted(adj_lems)[0], 'ADJ')}
     return 'unknown', {}
 
 
@@ -248,6 +281,8 @@ def check_lexicon(leaves, skip_ids=frozenset()):
         tag = lf.get('type')
         surface = lf.get('surface') or ''
         upos = PTB2UPOS.get(tag)
+        if spellcheck.has_name_evidence(lf) or lf.get('contraction_auxiliary'):
+            continue
         # A *lower-case* word the parser calls a proper noun is just an unknown
         # word wearing a costume: check it as a common noun.
         if tag in ('NNP', 'NNPS') and surface[:1].islower():
@@ -274,6 +309,27 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                 and low in _forms(info['lemma'], 'VERB').get('VBG', ())):
             stats['licensed'] += 1
             continue
+        # Valid participial adjectives (past participles 'hidden', 'delighted',
+        # 'broken' and present participles 'exciting', 'interesting') tagged JJ
+        # by Benepar are standard English adjectives even when lemminflect only
+        # lists them under VERB.
+        if (status == 'tag_mismatch' and tag == 'JJ'
+                and info.get('upos') == 'VERB'):
+            vforms = _forms(info['lemma'], 'VERB')
+            if (low in vforms.get('VBN', ())
+                    or low in vforms.get('VBG', ())
+                    or low in EXTRA_PARTICIPLES):
+                stats['licensed'] += 1
+                continue
+        # Valid comparative/superlative flat adverbs ('sell it cheaper', 'run
+        # faster', 'speak louder') tagged RBR/RBS by Benepar are licensed when
+        # lemminflect lists the surface as a JJR/JJS form of an ADJ lemma.
+        if (status == 'tag_mismatch' and tag in ('RBR', 'RBS')
+                and info.get('upos') == 'ADJ'):
+            adj_tag = 'JJR' if tag == 'RBR' else 'JJS'
+            if low in _forms(info['lemma'], 'ADJ').get(adj_tag, ()):
+                stats['licensed'] += 1
+                continue
         if lf['id'] in skip_ids:
             stats['malformed'] += 1
             continue
@@ -309,14 +365,60 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                 _rem(f"'{surface}' is not a correct form of '{stem}'.", fix_text,
                      None, f"{tag} taken from the forms of '{stem}'")))
         elif status == 'tag_mismatch':
+            # Hyphenated compound prefix ('ex-boyfriends', 'co-author', 'non-profit')
+            # or right-hand stem after a hyphen ('non-stop' -> 'stop' tagged JJ).
+            nxt_tok = leaves[i + 1] if i + 1 < len(leaves) else None
+            prev_tok = leaves[i - 1] if i > 0 else None
+            if (low in _HYPHEN_PREFIXES and nxt_tok is not None
+                    and (nxt_tok.get('surface') == '-' or nxt_tok.get('type') == 'HYPH')):
+                stats['licensed'] += 1
+                continue
+            if (prev_tok is not None
+                    and (prev_tok.get('surface') == '-' or prev_tok.get('type') == 'HYPH')
+                    and tag in ('JJ', 'NN', 'NNS') and info.get('other_pos')):
+                stats['licensed'] += 1
+                continue
             lem = info['lemma']
-            # Participle slot (have/be + VBN) filled by a non-participle form:
-            # 'had went', 'was ate'.  The aux makes the slot unambiguous.
-            if (tag == 'VBN' and not info.get('other_pos')
-                    and prev in (ruleset.BE_SURFACES | ruleset.HAVE_SURFACES)):
-                # Some standard irregular participles are missing from the
-                # lexicon ('was lit', 'was hidden'): accept them outright.
-                if surface in EXTRA_PARTICIPLES:
+            vforms = _forms(lem, 'VERB') if info.get('upos') == 'VERB' else {}
+            vbn_set = set(vforms.get('VBN', ())) | ({low} if low in EXTRA_PARTICIPLES else set())
+            vbd_set = set(vforms.get('VBD', ()))
+            vb_set = set(vforms.get('VB', ()))
+            det_prev = prev in {
+                'the', 'a', 'an', 'this', 'that', 'these', 'those', 'my',
+                'your', 'his', 'her', 'its', 'our', 'their', 'some', 'any',
+                'every', 'each', 'many', 'several', 'few', 'no', 'all', 'both',
+            }
+            nxt_leaf = leaves[i + 1] if i + 1 < len(leaves) else None
+            nxt_is_noun = nxt_leaf is not None and nxt_leaf.get('type') in (
+                'NN', 'NNS', 'NNP', 'NNPS', 'JJ')
+            # 1. Participle slot (have/be + VBN) filled by a non-participle form
+            #    ('had went', 'was ate') OR prenominal adjective slot filled by a
+            #    strictly simple-past-only verb ('the hid glass', 'the wore hats',
+            #    'the broke dishes', 'the took rabbit').
+            is_aux_participle = (
+                tag == 'VBN' and not info.get('other_pos')
+                and prev in (ruleset.BE_SURFACES | ruleset.HAVE_SURFACES)
+            )
+            is_prenominal_past_for_participle = (
+                info.get('upos') == 'VERB'
+                and tag in ('JJ', 'VBN', 'VBD')
+                and det_prev and nxt_is_noun
+                and low in vbd_set and low not in vbn_set
+                and low not in vb_set
+                and low not in EXTRA_PARTICIPLES
+                and not _lemmas(low, 'ADJ')
+            )
+            is_bare_participle_as_past = (
+                info.get('upos') == 'VERB'
+                and tag in ('VBD', 'VBP', 'VBZ')
+                and prev not in (ruleset.BE_SURFACES | ruleset.HAVE_SURFACES
+                                 | ruleset.DO_SURFACES | {'to', 'not', "n't"})
+                and (low in vforms.get('VBN', ()) or low in EXTRA_PARTICIPLES)
+                and low not in vbd_set and low not in vb_set
+                and bool(vbd_set)
+            )
+            if is_aux_participle:
+                if surface.lower() in EXTRA_PARTICIPLES:
                     stats['licensed'] += 1
                     continue
                 stats['malformed'] += 1
@@ -324,13 +426,54 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                 regular = {lem + 'd', lem + 'ed', lem}
                 strong = [p for p in raw if p not in regular]
                 part = tuple(strong or raw)
+                fix_word = part[0] if part else None
+                rem = ({
+                    'suggested_fix': f"Change '{surface}' to '{fix_word}'.",
+                    'edits': [{'node': lf['id'], 'replacement': fix_word}],
+                } if fix_word else None)
                 out.append(_finding(
                     '1.6', 'error', 'C-LEXICON-MALFORMED', 'verb form', lf['id'],
-                    f"After '{leaves[i - 1]['surface']}', the verb needs its '-ed' "
-                    f"form, but '{surface}' is not one"
-                    + (f" (use '{part[0]}')." if part else '.'),
+                    f"After '{leaves[i - 1]['surface']}', the verb needs its past "
+                    f"participle form, but '{surface}' is not one"
+                    + (f" (use '{fix_word}')." if fix_word else '.'),
                     _wordlist_evidence(surface, part,
-                                       f"forms of '{lem}' (VBN)")))
+                                       f"forms of '{lem}' (VBN)"),
+                    remediation=rem))
+            elif is_prenominal_past_for_participle:
+                stats['malformed'] += 1
+                raw_vbn = sorted(vforms.get('VBN', ()))
+                if not raw_vbn and lem == 'hide':
+                    raw_vbn = ['hidden']
+                regular = {lem + 'd', lem + 'ed', lem}
+                strong = [p for p in raw_vbn if p not in regular]
+                part = tuple(strong or raw_vbn)
+                fix_word = part[0] if part else None
+                rem = ({
+                    'suggested_fix': f"Change '{surface}' to '{fix_word}'.",
+                    'edits': [{'node': lf['id'], 'replacement': fix_word}],
+                } if fix_word else None)
+                out.append(_finding(
+                    '1.6', 'error', 'C-VERB-FORM', 'verb form', lf['id'],
+                    f"'{surface}' is the simple past form of '{lem}', not the past "
+                    f"participle needed before a noun"
+                    + (f"; use '{fix_word}' instead." if fix_word else '.'),
+                    _wordlist_evidence(surface, part, f"forms of '{lem}' (VBN)"),
+                    remediation=rem))
+            elif is_bare_participle_as_past:
+                stats['malformed'] += 1
+                raw_vbd = sorted(vbd_set)
+                fix_word = raw_vbd[0] if raw_vbd else None
+                rem = ({
+                    'suggested_fix': f"Change '{surface}' to '{fix_word}'.",
+                    'edits': [{'node': lf['id'], 'replacement': fix_word}],
+                } if fix_word else None)
+                out.append(_finding(
+                    '1.5', 'error', 'C-VERB-FORM', 'verb form', lf['id'],
+                    f"'{surface}' is a past participle of '{lem}' and cannot stand "
+                    f"alone as the main past-tense verb"
+                    + (f"; use '{fix_word}' instead (or add 'has'/'had')." if fix_word else '.'),
+                    _wordlist_evidence(surface, tuple(raw_vbd), f"forms of '{lem}' (VBD)"),
+                    remediation=rem))
             else:
                 stats['unverified'] += 1
                 out.append(_finding(
@@ -342,6 +485,58 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                     _wordlist_evidence(surface, info['paradigm'],
                                        f"forms of '{lem}'")))
         else:  # unknown
+            if spellcheck.known_word(low) or low in _VALID_DERIVED_WORDS:
+                stats['licensed'] += 1
+                continue
+            # Hyphenated compound prefix ('non-stop', 'ex-husband', 'co-author')
+            # or right-hand stem after a hyphen ('non-stop' -> 'stop' tagged JJ).
+            nxt_tok = leaves[i + 1] if i + 1 < len(leaves) else None
+            prev_tok = leaves[i - 1] if i > 0 else None
+            if (low in _HYPHEN_PREFIXES and nxt_tok is not None
+                    and (nxt_tok.get('surface') == '-' or nxt_tok.get('type') == 'HYPH')):
+                stats['licensed'] += 1
+                continue
+            if (prev_tok is not None
+                    and (prev_tok.get('surface') == '-' or prev_tok.get('type') == 'HYPH')
+                    and (spellcheck.known_word(low) or any(_lemmas(low, u) for u in ALL_UPOS))):
+                stats['licensed'] += 1
+                continue
+            # Regular plural of a known English noun ('oncologists' -> 'oncologist',
+            # 'cafes' -> 'cafe')
+            if tag == 'NNS' and len(low) >= 4:
+                sg_cands = []
+                if low.endswith('ies'):
+                    sg_cands.append(low[:-3] + 'y')
+                if low.endswith('es'):
+                    sg_cands.append(low[:-2])
+                if low.endswith('s'):
+                    sg_cands.append(low[:-1])
+                if any(spellcheck.known_word(c) or c in _VALID_DERIVED_WORDS
+                       or bool(_lemmas(c, 'NOUN')) for c in sg_cands):
+                    stats['licensed'] += 1
+                    continue
+            # Capitalized proper name mistagged NN at sentence start ('Candice skated...')
+            if (tag == 'NN' and surface[:1].isupper() and surface[1:].islower()
+                    and len(low) >= 3 and low in ruleset.GENDERED_FIRST_NAMES):
+                stats['licensed'] += 1
+                continue
+            # Confident SymSpell typo repair on a lowercase non-proper word
+            # resolves an avoidable 'unverified' into a rule-backed C-SPELLING
+            # finding with an executable edit.
+            if (surface.islower() and lf.get('fpos') == upos
+                    and lf.get('fdep') not in {'compound', 'amod', 'appos'}):
+                corr = spellcheck.strong_typo_candidate(low)
+                if corr and _lemmas(corr, upos) and spellcheck.known_word(corr):
+                    stats['malformed'] += 1
+                    out.append(_finding(
+                        '1.11', 'error', 'C-SPELLING', 'spelling', lf['id'],
+                        f"'{surface}' appears to be misspelled; use '{corr}' instead.",
+                        _wordlist_evidence(surface, [corr], 'spelling dictionary'),
+                        remediation={
+                            'suggested_fix': f"Change '{surface}' to '{corr}'.",
+                            'edits': [{'node': lf['id'], 'replacement': corr}],
+                        }))
+                    continue
             stats['unverified'] += 1
             out.append(_finding(
                 '1.12', 'unverified', 'C-LEXICON-UNKNOWN', 'spelling', lf['id'],
@@ -433,9 +628,22 @@ def _antecedent_number(np_node):
     kids = np_node.get('children', [])
     if any(c.get('type') in ('CC', 'CONJP', 'UCP') for c in kids):
         return 'pl'
-    pp_ids = {lf['id'] for c in kids if c.get('type') == 'PP' for lf in _leaves(c)}
+    # Partitive quantifier NPs ('a lot of cafes', 'a number of students',
+    # 'a couple of books', 'plenty of options') inherit number from the
+    # object of 'of', not from the singular quantifier noun 'lot'/'number'.
+    all_lvs = _leaves(np_node)
+    if len(all_lvs) >= 4:
+        w0, w1, w2 = _lower(all_lvs[0]), _lower(all_lvs[1]), _lower(all_lvs[2])
+        if (w0 in ('a', 'an') and w1 in ('lot', 'number', 'couple', 'bunch', 'handful', 'majority', 'minority', 'variety', 'group', 'pair') and w2 == 'of') or (w0 in ('lots', 'plenty', 'dozens', 'hundreds', 'thousands') and w1 == 'of'):
+            of_pp = next((c for c in kids if c.get('type') == 'PP'), None)
+            if of_pp is not None:
+                pp_nouns = [lf for lf in _leaves(of_pp)
+                            if lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS')]
+                if pp_nouns:
+                    return ruleset._num_of(pp_nouns[-1])
+    excl_ids = {lf['id'] for c in kids if c.get('type') in ('PP', 'SBAR', 'S', 'VP') for lf in _leaves(c)}
     nouns = [lf for lf in _leaves(np_node)
-             if lf['id'] not in pp_ids
+             if lf['id'] not in excl_ids
              and lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
     if nouns:
         return ruleset._num_of(nouns[-1])
@@ -680,6 +888,7 @@ def collect_all(text, root):
     run('ruleset.tree', lambda: ruleset._check_tree(root, clauses, leaves, text, quoted))
     run('ruleset.more', lambda: ruleset._check_more(root, clauses, leaves))
     run('ruleset.context', lambda: ruleset._check_context(root, clauses, leaves))
+    run('ruleset.syntax_constraints', lambda: ruleset._check_syntax_constraints(root, clauses, leaves))
     run('ruleset.terminal', lambda: ruleset._check_terminal(root, text))
     run('licensing.relatives', lambda: check_relatives(root))
 

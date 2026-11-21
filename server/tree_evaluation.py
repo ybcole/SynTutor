@@ -41,7 +41,8 @@ def compare_target(tree, target):
     return {'status':'different_from_target','matched':False,
             'message':'This structure differs from the reviewed exercise analyses. This is not a grammaticality verdict.'}
 
-def evaluate_analysis(analysis, *, variety=None):
+def evaluate_analysis(analysis, *, variety=None, runtime_registry=None,
+                      cambridge_evaluation=None, explanation_evidence=None):
     tree = analysis.get('tree')
     structure = {'valid':False,'errors':[],'warnings':[],'status':'unresolved'}
     if analysis.get('status')=='normalized' and isinstance(tree,dict):
@@ -55,9 +56,15 @@ def evaluate_analysis(analysis, *, variety=None):
         'status': 'unresolved',
         'sentence': analysis.get('sentence') or (tree.get('sentence') if isinstance(tree, dict) else None),
     }
-    runtime = load_runtime_registry()
-    evaluation = evaluate_cambridge(safe,runtime,variety=variety)
-    evidence = explain_analysis(safe,variety=variety)
+    runtime = runtime_registry if runtime_registry is not None else load_runtime_registry()
+    if cambridge_evaluation is not None and structure['valid']:
+        evaluation = cambridge_evaluation
+    else:
+        evaluation = evaluate_cambridge(safe,runtime,variety=variety)
+    if explanation_evidence is not None and structure['valid']:
+        evidence = explanation_evidence
+    else:
+        evidence = explain_analysis(safe,runtime_registry=runtime,variety=variety)
     details = {}
     if structure['valid']:
         for ident,node in nodes_of(tree):

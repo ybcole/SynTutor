@@ -1,0 +1,35 @@
+{
+  "file": "FROZEN_INDEPENDENT_EVAL_V4.csv",
+  "sha256": "1d468942f7e9886039fa1c77df55668609e1cac1b70fcbcda0da8f2c0f0b4fe6",
+  "seed": 20261121,
+  "n_total": 360,
+  "by_dataset": {
+    "eval4_blimp": 240,
+    "eval4_jfleg": 20,
+    "eval4_cola": 100
+  },
+  "by_provenance_tier": {
+    "tier1_uncontaminated_external": 260,
+    "tier1_cola_rules_independent_hybrid_indist": 100
+  },
+  "by_gold_label": {
+    "grammatical": 180,
+    "ungrammatical": 180
+  },
+  "by_error_family": {
+    "argument_structure": 36,
+    "determiner_agreement": 28,
+    "filler_gap_dependencies": 28,
+    "island_effects": 32,
+    "npi_licensing": 28,
+    "pronoun_case_and_binding": 32,
+    "quantifiers_and_raising": 32,
+    "subject_verb_agreement": 24,
+    "l2_learner_writing": 20,
+    "cola_general_syntax": 100
+  },
+  "blimp_distinct_paradigms": 63,
+  "exact_overlap_with_all_prior_and_internal": 0,
+  "near_dup_jaccard_ge_085_by_dataset": {},
+  "blind_status": "FROZEN_BLIND_PRE_CYCLE8_CODE_CHANGES"
+}

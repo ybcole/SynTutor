@@ -1,0 +1,8048 @@
+{
+  "full": {
+    "n_total": 216,
+    "n_normalized": 200,
+    "normalization_rate": 0.9259,
+    "n_working_fallback": 16,
+    "n_unresolved": 16,
+    "n_yield_aligned": 185,
+    "gold_constituents": 1006,
+    "pred_constituents": 1617,
+    "labeled_matches": 892,
+    "unlabeled_matches": 947,
+    "labeled_precision": 0.5516,
+    "labeled_recall": 0.8867,
+    "labeled_f1": 0.6801,
+    "unlabeled_precision": 0.5857,
+    "unlabeled_recall": 0.9414,
+    "unlabeled_f1": 0.7221,
+    "exact_matches": 32,
+    "exact_rate_over_aligned": 0.173,
+    "exact_rate_over_total": 0.1481,
+    "total_label_errors": 55,
+    "total_boundary_only_pred": 615,
+    "total_boundary_only_gold": 45,
+    "total_extra_nom_or_bar": 261
+  },
+  "triangle_aware": {
+    "n_total": 216,
+    "n_normalized": 200,
+    "normalization_rate": 0.9259,
+    "n_working_fallback": 16,
+    "n_unresolved": 16,
+    "n_yield_aligned": 185,
+    "gold_constituents": 1006,
+    "pred_constituents": 1123,
+    "labeled_matches": 892,
+    "unlabeled_matches": 947,
+    "labeled_precision": 0.7943,
+    "labeled_recall": 0.8867,
+    "labeled_f1": 0.838,
+    "unlabeled_precision": 0.8433,
+    "unlabeled_recall": 0.9414,
+    "unlabeled_f1": 0.8896,
+    "exact_matches": 98,
+    "exact_rate_over_aligned": 0.5297,
+    "exact_rate_over_total": 0.4537,
+    "total_label_errors": 55,
+    "total_boundary_only_pred": 121,
+    "total_boundary_only_gold": 45,
+    "total_extra_nom_or_bar": 90
+  },
+  "errors": [],
+  "rows": [
+    {
+      "id": "ch1-25b",
+      "chapter": 1,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 4,
+      "labeled_match": 0,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 2,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "Phrase"
+        ],
+        [
+          0,
+          3,
+          "Phrase"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "NP"
+        ],
+        [
+          0,
+          3,
+          "PP"
+        ]
+      ]
+    },
+    {
+      "id": "ch1-ex3a",
+      "chapter": 1,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 5,
+      "labeled_match": 0,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 3,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "Phrase"
+        ],
+        [
+          1,
+          4,
+          "Phrase"
+        ],
+        [
+          0,
+          4,
+          "Phrase"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          1,
+          4,
+          "NOM"
+        ],
+        [
+          0,
+          4,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch1-ex3b",
+      "chapter": 1,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 7,
+      "labeled_match": 0,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 3,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          2,
+          4,
+          "Phrase"
+        ],
+        [
+          1,
+          4,
+          "Phrase"
+        ],
+        [
+          0,
+          4,
+          "Phrase"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NOM"
+        ],
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          2,
+          4,
+          "NP"
+        ],
+        [
+          1,
+          4,
+          "PP"
+        ],
+        [
+          0,
+          4,
+          "NOM"
+        ],
+        [
+          0,
+          4,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch1-ex6a",
+      "chapter": 1,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 11,
+      "labeled_match": 1,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 4,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          0,
+          2,
+          "Phrase"
+        ],
+        [
+          4,
+          6,
+          "Phrase"
+        ],
+        [
+          3,
+          6,
+          "Phrase"
+        ],
+        [
+          2,
+          6,
+          "Phrase"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "AP"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          0,
+          2,
+          "NOM"
+        ],
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          2,
+          3,
+          "VP"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch1-ex6b",
+      "chapter": 1,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 11,
+      "labeled_match": 1,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 3,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          0,
+          2,
+          "Phrase"
+        ],
+        [
+          0,
+          3,
+          "Phrase"
+        ],
+        [
+          4,
+          6,
+          "Phrase"
+        ],
+        [
+          3,
+          6,
+          "Phrase"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "AP"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          0,
+          2,
+          "NOM"
+        ],
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          2,
+          3,
+          "VP"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch1-ex6c",
+      "chapter": 1,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 11,
+      "labeled_match": 1,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 3,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          0,
+          2,
+          "Phrase"
+        ],
+        [
+          4,
+          6,
+          "Phrase"
+        ],
+        [
+          3,
+          6,
+          "Phrase"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "AP"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          0,
+          2,
+          "NOM"
+        ],
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          2,
+          3,
+          "VP"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-33",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 12,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 9,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "VP"
+        ],
+        [
+          5,
+          6,
+          "AdvP"
+        ],
+        [
+          4,
+          6,
+          "VP"
+        ],
+        [
+          6,
+          7,
+          "AdvP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-34",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 9,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ],
+        [
+          3,
+          6,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-36",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 5,
+      "labeled_match": 0,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 3,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "PHRASE-c"
+        ],
+        [
+          1,
+          4,
+          "PHRASE-b"
+        ],
+        [
+          0,
+          4,
+          "PHRASE-a"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          1,
+          4,
+          "NOM"
+        ],
+        [
+          0,
+          4,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-42",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 5,
+      "labeled_match": 0,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 2,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "PHRASE-b"
+        ],
+        [
+          0,
+          3,
+          "PHRASE-a"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "NOM"
+        ],
+        [
+          0,
+          3,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-43",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 4,
+      "labeled_match": 0,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 2,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "PHRASE-b"
+        ],
+        [
+          0,
+          3,
+          "PHRASE-a"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "NP"
+        ],
+        [
+          0,
+          3,
+          "PP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-ex5a",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 8,
+      "labeled_match": 0,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 4,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          3,
+          5,
+          "PHRASE"
+        ],
+        [
+          2,
+          5,
+          "PHRASE"
+        ],
+        [
+          1,
+          5,
+          "PHRASE"
+        ],
+        [
+          0,
+          5,
+          "PHRASE"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          5,
+          "N"
+        ],
+        [
+          3,
+          5,
+          "NOM"
+        ],
+        [
+          2,
+          5,
+          "NOM"
+        ],
+        [
+          1,
+          5,
+          "NOM"
+        ],
+        [
+          0,
+          5,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-ex5b",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 8,
+      "labeled_match": 0,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 2,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 2,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          2,
+          4,
+          "PHRASE"
+        ],
+        [
+          1,
+          4,
+          "PHRASE"
+        ],
+        [
+          1,
+          5,
+          "PHRASE"
+        ],
+        [
+          0,
+          5,
+          "PHRASE"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          5,
+          "N"
+        ],
+        [
+          3,
+          5,
+          "NOM"
+        ],
+        [
+          2,
+          5,
+          "NOM"
+        ],
+        [
+          1,
+          5,
+          "NOM"
+        ],
+        [
+          0,
+          5,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-ex5c",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 8,
+      "labeled_match": 0,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 3,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          2,
+          4,
+          "PHRASE"
+        ],
+        [
+          2,
+          5,
+          "PHRASE"
+        ],
+        [
+          1,
+          5,
+          "PHRASE"
+        ],
+        [
+          0,
+          5,
+          "PHRASE"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          5,
+          "N"
+        ],
+        [
+          3,
+          5,
+          "NOM"
+        ],
+        [
+          2,
+          5,
+          "NOM"
+        ],
+        [
+          1,
+          5,
+          "NOM"
+        ],
+        [
+          0,
+          5,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-ex3a",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 4,
+      "labeled_match": 0,
+      "unlabeled_match": 1,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 1,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "PHRASE"
+        ],
+        [
+          0,
+          3,
+          "PHRASE"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          0,
+          3,
+          "NOM"
+        ],
+        [
+          0,
+          3,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-ex3b",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 4,
+      "labeled_match": 0,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 2,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          0,
+          2,
+          "PHRASE"
+        ],
+        [
+          0,
+          3,
+          "PHRASE"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          0,
+          3,
+          "NOM"
+        ],
+        [
+          0,
+          3,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-ex4a",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 5,
+      "labeled_match": 0,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 2,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "PHRASE"
+        ],
+        [
+          0,
+          3,
+          "PHRASE"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "AP"
+        ],
+        [
+          1,
+          3,
+          "N"
+        ],
+        [
+          1,
+          3,
+          "NOM"
+        ],
+        [
+          0,
+          3,
+          "NOM"
+        ],
+        [
+          0,
+          3,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch2-ex4b",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 2,
+      "pred_count": 6,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch2-ex5-3",
+      "chapter": 2,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 8,
+      "labeled_match": 0,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 3,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "PHRASE"
+        ],
+        [
+          3,
+          5,
+          "PHRASE"
+        ],
+        [
+          1,
+          5,
+          "PHRASE"
+        ],
+        [
+          0,
+          5,
+          "PHRASE"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          5,
+          "N"
+        ],
+        [
+          3,
+          5,
+          "NOM"
+        ],
+        [
+          2,
+          5,
+          "NOM"
+        ],
+        [
+          1,
+          5,
+          "NOM"
+        ],
+        [
+          0,
+          5,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-7",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 5,
+      "labeled_match": 1,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 2,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "PHRASE-c"
+        ],
+        [
+          1,
+          4,
+          "PHRASE-b"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          1,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-14",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 1,
+      "pred_count": 1,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-18",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 1,
+      "pred_count": 1,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-19a",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 1,
+      "pred_count": 1,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-19b",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 4,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-29",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-30",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 7,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-40a",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-40b",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 3,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          1,
+          4,
+          "A"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "AP"
+        ],
+        [
+          3,
+          4,
+          "AP"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-41a",
+      "chapter": 3,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch3-41b",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 9,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-text-a",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 1,
+      "pred_count": 1,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-text-b",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 2,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          0,
+          2,
+          "AdvP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "AdvP"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-ex3a",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 4,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-ex3b",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-ex3c",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch3-ex3d",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 9,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          2,
+          3,
+          "NP"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-ex3e",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 15,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 8,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          2,
+          4,
+          "NP"
+        ],
+        [
+          9,
+          10,
+          "NP"
+        ],
+        [
+          8,
+          10,
+          "VP"
+        ],
+        [
+          7,
+          10,
+          "VP"
+        ],
+        [
+          7,
+          10,
+          "S"
+        ],
+        [
+          7,
+          10,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch3-ex4",
+      "chapter": 3,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 1,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "AP"
+        ]
+      ],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch4-21",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 7,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          2,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-22",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch4-26",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 7,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-32",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 8,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-46a",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 6,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-46b",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 6,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-51",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 9,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "AP"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-52b",
+      "chapter": 4,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch4-56",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 9,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "PartP"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NOM"
+        ],
+        [
+          3,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-ex4a",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 5,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "AdvP"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-ex4b",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 11,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-ex4c",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 17,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 14,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 6,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "VP"
+        ],
+        [
+          7,
+          8,
+          "AdvP"
+        ],
+        [
+          5,
+          8,
+          "VP"
+        ],
+        [
+          5,
+          8,
+          "S"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-ex4d",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 12,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 7,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          5,
+          "N"
+        ],
+        [
+          3,
+          5,
+          "NOM"
+        ],
+        [
+          1,
+          5,
+          "VP"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          7,
+          8,
+          "NP"
+        ],
+        [
+          6,
+          8,
+          "PP"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-ex4e",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 16,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 12,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 6,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          3,
+          4,
+          "AP"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NP"
+        ],
+        [
+          2,
+          5,
+          "PP"
+        ],
+        [
+          1,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch4-ex4f",
+      "chapter": 4,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 4,
+      "pred_count": 12,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch5-12",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 11,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-15",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 11,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-16",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 10,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-32",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 10,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          6,
+          7,
+          "DET"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NP"
+        ],
+        [
+          5,
+          8,
+          "PP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-35",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 6,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "V"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-39",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 4,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-46",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 6,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-55a",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 6,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-55b",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 6,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          0,
+          3,
+          "S"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NP"
+        ],
+        [
+          1,
+          4,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-58",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 3,
+      "pred_count": 7,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch5-d1",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 8,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-d2",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 14,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NP"
+        ],
+        [
+          8,
+          9,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-d3",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 11,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "AP"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "PP"
+        ],
+        [
+          2,
+          5,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-ex2a",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 12,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          2,
+          3,
+          "PartP"
+        ],
+        [
+          1,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          1,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-ex2b",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 15,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 9,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 4,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          6,
+          7,
+          "DET"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          9,
+          10,
+          "NOM"
+        ],
+        [
+          9,
+          10,
+          "NP"
+        ],
+        [
+          8,
+          10,
+          "PP"
+        ],
+        [
+          7,
+          10,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-ex2c",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 20,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 11,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 5,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NP"
+        ],
+        [
+          6,
+          7,
+          "AP"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NP"
+        ],
+        [
+          8,
+          9,
+          "DET"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-ex2d",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 19,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 10,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 4,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          6,
+          7,
+          "DET"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NP"
+        ],
+        [
+          9,
+          10,
+          "DET"
+        ],
+        [
+          10,
+          11,
+          "AP"
+        ],
+        [
+          11,
+          12,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-ex2e",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 13,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "AP"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-ex2f",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 7,
+      "pred_count": 10,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch5-ex6a",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 11,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-ex6b",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 10,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "VP"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch5-fex-ex",
+      "chapter": 5,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 7,
+      "pred_count": 16,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch6-52",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 7,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-53b",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 8,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-62",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 10,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-66",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 13,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          8,
+          9,
+          "NP"
+        ],
+        [
+          7,
+          9,
+          "PP"
+        ],
+        [
+          6,
+          9,
+          "NOM"
+        ],
+        [
+          5,
+          9,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-69",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 19,
+      "labeled_match": 5,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 1,
+      "boundary_only_pred": 11,
+      "boundary_only_gold": 2,
+      "extra_nom_or_bar": 5,
+      "gold_only_spans": [
+        [
+          5,
+          7,
+          "NP"
+        ],
+        [
+          2,
+          7,
+          "VP"
+        ],
+        [
+          1,
+          7,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "VP"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          3,
+          5,
+          "PP"
+        ],
+        [
+          5,
+          6,
+          "AP"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NOM"
+        ],
+        [
+          7,
+          8,
+          "AP"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-78",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 9,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-81",
+      "chapter": 6,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch6-86",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 4,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "MOD"
+        ]
+      ],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch6-88",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 4,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "TENSE"
+        ]
+      ],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch6-91",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 5,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch6-93",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 5,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch6-103",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 5,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch6-d1",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 7,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-d2",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 9,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-d3",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 11,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          6,
+          7,
+          "DET"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-d4",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 11,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "AP"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-d5",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 9,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-d6",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 6,
+      "pred_count": 6,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch6-ex1-1",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 10,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NOM"
+        ],
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-ex1-2",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 12,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 2,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          2,
+          6,
+          "VP"
+        ],
+        [
+          1,
+          6,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          7,
+          8,
+          "NP"
+        ],
+        [
+          3,
+          8,
+          "VP"
+        ],
+        [
+          2,
+          8,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-ex1-3",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 15,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 8,
+      "boundary_only_gold": 2,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          2,
+          8,
+          "VP"
+        ],
+        [
+          1,
+          8,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          6,
+          7,
+          "AP"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NP"
+        ],
+        [
+          5,
+          9,
+          "PP"
+        ],
+        [
+          2,
+          9,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-ex3a",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 17,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 10,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          3,
+          9,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NP"
+        ],
+        [
+          2,
+          3,
+          "NP"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "AdvP"
+        ],
+        [
+          6,
+          8,
+          "AP"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ],
+        [
+          6,
+          9,
+          "NOM"
+        ],
+        [
+          9,
+          10,
+          "DET"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-ex3b",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 11,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          6,
+          7,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-ex3c",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 14,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "AP"
+        ],
+        [
+          6,
+          7,
+          "AP"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NOM"
+        ],
+        [
+          5,
+          8,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-ex3d",
+      "chapter": 6,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 14,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          2,
+          3,
+          "VP"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ],
+        [
+          7,
+          8,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch6-ex3e",
+      "chapter": 6,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch7-1",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 1,
+      "pred_count": 1,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-2",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 1,
+      "pred_count": 1,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-3",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-4",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 5,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-5",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-6",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-7",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-10a",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 2,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-10b",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 2,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-12",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 5,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-14",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 7,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-18",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 4,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-19",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-20",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 3,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-25",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 4,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-26",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 5,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-32",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 6,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-36",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 7,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-39a",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 8,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-42",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 15,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 9,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 4,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NP"
+        ],
+        [
+          6,
+          7,
+          "AP"
+        ],
+        [
+          7,
+          9,
+          "N"
+        ],
+        [
+          7,
+          9,
+          "NOM"
+        ],
+        [
+          6,
+          9,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-53b",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 6,
+      "pred_count": 12,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch7-54b",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 8,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-67",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 9,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-72a",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 2,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-72b",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 5,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          2,
+          4,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-75",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 7,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          2,
+          4,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-76",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 9,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          2,
+          5,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-disc1",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 9,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-disc2",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 2,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch7-disc3",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 6,
+      "labeled_match": 4,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 1,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "PartP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          1,
+          3,
+          "AP"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-disc4",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 7,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-disc5-37",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 9,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-disc7",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 13,
+      "pred_count": 14,
+      "labeled_match": 12,
+      "unlabeled_match": 12,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          2,
+          5,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-disc8",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 9,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          2,
+          5,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-ex1-a",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 6,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-ex1-b",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 12,
+      "pred_count": 13,
+      "labeled_match": 10,
+      "unlabeled_match": 10,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 2,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          2,
+          6,
+          "NOM"
+        ],
+        [
+          2,
+          8,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          6,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-ex1-c-i",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 4,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 3,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          0,
+          1,
+          "AP"
+        ],
+        [
+          1,
+          2,
+          "AP"
+        ],
+        [
+          1,
+          3,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "AP"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-ex1-c-ii",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 4,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-ex1-d",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 11,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-ex1-e",
+      "chapter": 7,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch7-ex1-f",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 5,
+      "pred_count": 9,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch7-app-16",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 6,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-app-17",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 5,
+      "pred_count": 7,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch7-app-18",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 4,
+      "pred_count": 10,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch7-app-19b",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 6,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "AP"
+        ],
+        [
+          0,
+          1,
+          "NOM"
+        ],
+        [
+          2,
+          3,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch7-app-20b",
+      "chapter": 7,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 3,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "AP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-1b",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 11,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          2,
+          6,
+          "S-bar"
+        ],
+        [
+          2,
+          6,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-4a",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 16,
+      "labeled_match": 3,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 1,
+      "boundary_only_pred": 9,
+      "boundary_only_gold": 2,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [
+        [
+          0,
+          2,
+          "S"
+        ],
+        [
+          2,
+          4,
+          "S"
+        ],
+        [
+          4,
+          8,
+          "S"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NP"
+        ],
+        [
+          2,
+          3,
+          "NP"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          6,
+          7,
+          "DET"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NP"
+        ],
+        [
+          5,
+          8,
+          "VP"
+        ],
+        [
+          4,
+          8,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-9a",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 19,
+      "labeled_match": 1,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 1,
+      "boundary_only_pred": 17,
+      "boundary_only_gold": 3,
+      "extra_nom_or_bar": 4,
+      "gold_only_spans": [
+        [
+          0,
+          4,
+          "S"
+        ],
+        [
+          4,
+          9,
+          "S"
+        ],
+        [
+          4,
+          9,
+          "S"
+        ],
+        [
+          9,
+          12,
+          "S"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NP"
+        ],
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          2,
+          4,
+          "NP"
+        ],
+        [
+          5,
+          6,
+          "NP"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ],
+        [
+          8,
+          9,
+          "NP"
+        ],
+        [
+          7,
+          9,
+          "PP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-10a",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 7,
+      "pred_count": 22,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch8-11a",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 7,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NP"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          3,
+          5,
+          "PP"
+        ],
+        [
+          2,
+          5,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-11b",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 1,
+      "pred_count": 7,
+      "labeled_match": 1,
+      "unlabeled_match": 1,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NP"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          3,
+          5,
+          "PP"
+        ],
+        [
+          2,
+          5,
+          "VP"
+        ],
+        [
+          1,
+          5,
+          "S"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-15",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 4,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          0,
+          3,
+          "S-bar"
+        ]
+      ],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch8-23",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 15,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 10,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          8,
+          10,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          1,
+          3,
+          "NP"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          8,
+          "N"
+        ],
+        [
+          6,
+          8,
+          "NOM"
+        ],
+        [
+          5,
+          8,
+          "NP"
+        ],
+        [
+          4,
+          8,
+          "PP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-24",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 15,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 11,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NP"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ],
+        [
+          8,
+          9,
+          "DET"
+        ],
+        [
+          9,
+          11,
+          "N"
+        ],
+        [
+          9,
+          11,
+          "NOM"
+        ],
+        [
+          8,
+          11,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-36",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 12,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NP"
+        ],
+        [
+          6,
+          8,
+          "VP"
+        ],
+        [
+          5,
+          8,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-47",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 12,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          8,
+          9,
+          "VP"
+        ],
+        [
+          7,
+          9,
+          "VP"
+        ],
+        [
+          5,
+          9,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-54",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 13,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 9,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "NP"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NP"
+        ],
+        [
+          4,
+          7,
+          "VP"
+        ],
+        [
+          8,
+          9,
+          "NP"
+        ],
+        [
+          7,
+          9,
+          "PP"
+        ],
+        [
+          4,
+          9,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-61",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 9,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NP"
+        ],
+        [
+          6,
+          7,
+          "DET"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          6,
+          8,
+          "NP"
+        ],
+        [
+          4,
+          8,
+          "VP"
+        ],
+        [
+          3,
+          8,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-67c",
+      "chapter": 8,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch8-71",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 10,
+      "pred_count": 11,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          1,
+          5,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NOM"
+        ],
+        [
+          2,
+          8,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-disc1",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 11,
+      "pred_count": 16,
+      "labeled_match": 11,
+      "unlabeled_match": 11,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "DET"
+        ],
+        [
+          2,
+          4,
+          "N"
+        ],
+        [
+          2,
+          4,
+          "NOM"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-disc2",
+      "chapter": 8,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch8-disc3",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 11,
+      "pred_count": 20,
+      "labeled_match": 11,
+      "unlabeled_match": 11,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 9,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 4,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ],
+        [
+          7,
+          8,
+          "DET"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ],
+        [
+          10,
+          11,
+          "DET"
+        ],
+        [
+          11,
+          12,
+          "PartP"
+        ],
+        [
+          12,
+          13,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-disc4",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 11,
+      "pred_count": 15,
+      "labeled_match": 11,
+      "unlabeled_match": 11,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          7,
+          8,
+          "DET"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-disc5",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 13,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          5,
+          6,
+          "NP"
+        ],
+        [
+          8,
+          9,
+          "DET"
+        ],
+        [
+          9,
+          10,
+          "NOM"
+        ],
+        [
+          8,
+          10,
+          "NP"
+        ],
+        [
+          7,
+          10,
+          "VP"
+        ],
+        [
+          6,
+          10,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-disc6",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 12,
+      "pred_count": 13,
+      "labeled_match": 12,
+      "unlabeled_match": 12,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-disc7",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 10,
+      "pred_count": 16,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 4,
+      "gold_only_spans": [
+        [
+          1,
+          3,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          7,
+          8,
+          "AP"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ],
+        [
+          7,
+          9,
+          "NOM"
+        ],
+        [
+          2,
+          9,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-disc8",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 10,
+      "pred_count": 11,
+      "labeled_match": 10,
+      "unlabeled_match": 10,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "AdvP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-ex1-a",
+      "chapter": 8,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch8-ex1-b",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 4,
+      "pred_count": 14,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch8-ex1-c",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 7,
+      "pred_count": 27,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch8-ex1-d",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 7,
+      "pred_count": 24,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch8-ex2-a",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 23,
+      "labeled_match": 2,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 1,
+      "boundary_only_pred": 20,
+      "boundary_only_gold": 2,
+      "extra_nom_or_bar": 4,
+      "gold_only_spans": [
+        [
+          0,
+          1,
+          "S"
+        ],
+        [
+          1,
+          4,
+          "S"
+        ],
+        [
+          4,
+          9,
+          "S"
+        ],
+        [
+          9,
+          17,
+          "S"
+        ],
+        [
+          9,
+          17,
+          "S"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NP"
+        ],
+        [
+          3,
+          4,
+          "NP"
+        ],
+        [
+          2,
+          4,
+          "VP"
+        ],
+        [
+          0,
+          4,
+          "PP"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          8,
+          9,
+          "NP"
+        ],
+        [
+          7,
+          9,
+          "VP"
+        ],
+        [
+          5,
+          9,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-ex2-b",
+      "chapter": 8,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch8-ex2-c",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 20,
+      "labeled_match": 2,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 2,
+      "boundary_only_pred": 15,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 4,
+      "gold_only_spans": [
+        [
+          0,
+          7,
+          "S"
+        ],
+        [
+          0,
+          7,
+          "S"
+        ],
+        [
+          7,
+          9,
+          "S"
+        ],
+        [
+          9,
+          14,
+          "S"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          3,
+          5,
+          "NP"
+        ],
+        [
+          6,
+          7,
+          "VP"
+        ],
+        [
+          5,
+          7,
+          "VP"
+        ],
+        [
+          3,
+          7,
+          "S"
+        ],
+        [
+          2,
+          7,
+          "S-bar"
+        ],
+        [
+          0,
+          7,
+          "AdvP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-ex2-d",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": false,
+      "gold_count": 9,
+      "pred_count": 34,
+      "labeled_match": 0,
+      "unlabeled_match": 0,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0
+    },
+    {
+      "id": "ch8-ex2-e",
+      "chapter": 8,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 28,
+      "labeled_match": 2,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 2,
+      "boundary_only_pred": 22,
+      "boundary_only_gold": 3,
+      "extra_nom_or_bar": 6,
+      "gold_only_spans": [
+        [
+          0,
+          2,
+          "S"
+        ],
+        [
+          2,
+          7,
+          "S"
+        ],
+        [
+          7,
+          11,
+          "S"
+        ],
+        [
+          11,
+          17,
+          "S"
+        ],
+        [
+          11,
+          17,
+          "S"
+        ],
+        [
+          2,
+          17,
+          "S"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "NP"
+        ],
+        [
+          1,
+          2,
+          "VP"
+        ],
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "AP"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NOM"
+        ],
+        [
+          3,
+          6,
+          "NP"
+        ],
+        [
+          7,
+          8,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch8-ex2-f",
+      "chapter": 8,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch9-11a",
+      "chapter": 9,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch9-11b",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 9,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          3,
+          4,
+          "VP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          5,
+          6,
+          "NP"
+        ],
+        [
+          3,
+          6,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-38",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 8,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "NP"
+        ],
+        [
+          5,
+          6,
+          "VP"
+        ],
+        [
+          4,
+          6,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-39",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 9,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          1,
+          5,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          3,
+          4,
+          "NP"
+        ],
+        [
+          4,
+          5,
+          "VP"
+        ],
+        [
+          3,
+          5,
+          "S"
+        ],
+        [
+          3,
+          5,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-59",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 10,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [
+        [
+          1,
+          5,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          3,
+          5,
+          "VP"
+        ],
+        [
+          3,
+          5,
+          "S"
+        ],
+        [
+          3,
+          5,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-60",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 10,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          4,
+          5,
+          "NOM"
+        ],
+        [
+          4,
+          5,
+          "NP"
+        ],
+        [
+          3,
+          5,
+          "VP"
+        ],
+        [
+          3,
+          5,
+          "S"
+        ],
+        [
+          3,
+          5,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d1a",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 11,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          4,
+          5,
+          "VP"
+        ],
+        [
+          6,
+          7,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d1bi",
+      "chapter": 9,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch9-d1bii",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 12,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "PP"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          4,
+          7,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d1c",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 12,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d1d",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 5,
+      "pred_count": 6,
+      "labeled_match": 5,
+      "unlabeled_match": 5,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d2",
+      "chapter": 9,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch9-d3a",
+      "chapter": 9,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch9-d3b",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 7,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch9-d4-20",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 13,
+      "pred_count": 16,
+      "labeled_match": 13,
+      "unlabeled_match": 13,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          7,
+          8,
+          "DET"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ],
+        [
+          7,
+          9,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d4-22",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 10,
+      "pred_count": 15,
+      "labeled_match": 10,
+      "unlabeled_match": 10,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 5,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          6,
+          7,
+          "VP"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ],
+        [
+          8,
+          9,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d5",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 12,
+      "pred_count": 15,
+      "labeled_match": 11,
+      "unlabeled_match": 11,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          1,
+          8,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          2,
+          4,
+          "PP"
+        ],
+        [
+          6,
+          7,
+          "DET"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d6-53a",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 10,
+      "pred_count": 10,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 1,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          3,
+          6,
+          "S-bar"
+        ],
+        [
+          1,
+          6,
+          "NOM"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          2,
+          "NP"
+        ],
+        [
+          2,
+          6,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch9-d6-53b",
+      "chapter": 9,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch9-ex3a",
+      "chapter": 9,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 11,
+      "pred_count": 17,
+      "labeled_match": 11,
+      "unlabeled_match": 11,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 6,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "AP"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NOM"
+        ],
+        [
+          8,
+          9,
+          "NOM"
+        ],
+        [
+          8,
+          9,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-11",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 3,
+      "pred_count": 7,
+      "labeled_match": 3,
+      "unlabeled_match": 3,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ],
+        [
+          0,
+          4,
+          "S"
+        ],
+        [
+          0,
+          4,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-14a",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 4,
+      "pred_count": 7,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 2,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          2,
+          3,
+          "NP"
+        ],
+        [
+          0,
+          3,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-21",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 2,
+      "pred_count": 3,
+      "labeled_match": 2,
+      "unlabeled_match": 2,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "S-bar"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-22",
+      "chapter": 10,
+      "normalized": false,
+      "working_tree": true,
+      "schema_valid": null
+    },
+    {
+      "id": "ch10-37",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 7,
+      "labeled_match": 4,
+      "unlabeled_match": 4,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          3,
+          5,
+          "VP"
+        ],
+        [
+          3,
+          5,
+          "S"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          0,
+          3,
+          "NP"
+        ],
+        [
+          4,
+          5,
+          "VP"
+        ],
+        [
+          4,
+          5,
+          "S"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-d1-26",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 6,
+      "pred_count": 9,
+      "labeled_match": 6,
+      "unlabeled_match": 6,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          5,
+          6,
+          "DET"
+        ],
+        [
+          6,
+          7,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "NP"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-d2-42a",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 13,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 4,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          1,
+          2,
+          "NOM"
+        ],
+        [
+          3,
+          4,
+          "DET"
+        ],
+        [
+          4,
+          5,
+          "AP"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-d3-44a",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 9,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch10-d3-44b",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 10,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          0,
+          1,
+          "DET"
+        ],
+        [
+          1,
+          2,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-d4-50",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 13,
+      "labeled_match": 9,
+      "unlabeled_match": 9,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 3,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "NOM"
+        ],
+        [
+          5,
+          7,
+          "AP"
+        ],
+        [
+          7,
+          8,
+          "NOM"
+        ],
+        [
+          5,
+          8,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-d5-55b",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 9,
+      "pred_count": 10,
+      "labeled_match": 5,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 2,
+      "boundary_only_pred": 3,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [
+        [
+          2,
+          3,
+          "VP"
+        ],
+        [
+          2,
+          6,
+          "VP"
+        ],
+        [
+          2,
+          6,
+          "S"
+        ],
+        [
+          2,
+          6,
+          "S-bar"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "PartP"
+        ],
+        [
+          4,
+          5,
+          "DET"
+        ],
+        [
+          5,
+          6,
+          "NOM"
+        ],
+        [
+          4,
+          6,
+          "NP"
+        ],
+        [
+          2,
+          6,
+          "AP"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-d6-62",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 7,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": true,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 0,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": []
+    },
+    {
+      "id": "ch10-ex2a",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 9,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": false,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 1,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [
+        [
+          2,
+          5,
+          "AP"
+        ]
+      ],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "AP"
+        ],
+        [
+          1,
+          3,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-ex2b",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 7,
+      "pred_count": 9,
+      "labeled_match": 7,
+      "unlabeled_match": 7,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 0,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "AP"
+        ],
+        [
+          1,
+          5,
+          "VP"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-101b",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 10,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ]
+      ]
+    },
+    {
+      "id": "ch10-102b",
+      "chapter": 10,
+      "normalized": true,
+      "working_tree": false,
+      "schema_valid": true,
+      "yield_match": true,
+      "gold_count": 8,
+      "pred_count": 10,
+      "labeled_match": 8,
+      "unlabeled_match": 8,
+      "exact_match": false,
+      "has_multiword_triangle": true,
+      "label_errors": 0,
+      "boundary_only_pred": 2,
+      "boundary_only_gold": 0,
+      "extra_nom_or_bar": 1,
+      "gold_only_spans": [],
+      "pred_only_spans": [
+        [
+          2,
+          3,
+          "DET"
+        ],
+        [
+          3,
+          4,
+          "NOM"
+        ]
+      ]
+    }
+  ]
+}

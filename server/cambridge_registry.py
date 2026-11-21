@@ -5,8 +5,32 @@ from pathlib import Path
 from typing import Any
 
 
+_REGISTRY_CACHE: dict[tuple[str, tuple[tuple[str, int], ...]], dict[str, Any]] = {}
+
+
+def _registry_cache_key(root: Path) -> tuple[str, tuple[tuple[str, int], ...]]:
+    files = [
+        root / "grammar" / "runtime_registry.json",
+        root / "grammar" / "cambridge_runtime_overlay.json",
+    ]
+    rules_dir = root / "grammar" / "rules"
+    if rules_dir.is_dir():
+        files.extend(sorted(rules_dir.glob("*.json")))
+    mtimes = []
+    for p in files:
+        try:
+            mtimes.append((p.name, p.stat().st_mtime_ns))
+        except OSError:
+            mtimes.append((p.name, -1))
+    return (str(root.resolve()), tuple(mtimes))
+
+
 def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
     root = root or Path(__file__).resolve().parents[1]
+    cache_key = _registry_cache_key(root)
+    cached = _REGISTRY_CACHE.get(cache_key)
+    if cached is not None:
+        return cached
     try:
         registry = json.loads((root / "grammar" / "runtime_registry.json").read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -175,9 +199,11 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
             "crosswalk_status": entry.get("crosswalk_status"),
             "test_status": entry.get("test_status"),
         })
-    return {
+    result = {
         "registry_version": registry.get("registry_version"),
         "active_rules": active,
         "active_rule_ids": [row["rule_id"] for row in active],
         "diagnostics": diagnostics,
     }
+    _REGISTRY_CACHE[cache_key] = result
+    return result

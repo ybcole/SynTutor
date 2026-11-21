@@ -105,6 +105,8 @@ def explain():
 
 @app.route('/api/parse', methods=['POST'])
 def parse():
+    if request.content_length and request.content_length > 250_000:
+        return jsonify({'error': 'request exceeds 250000 bytes'}), 413
     raw = request.get_data()
     data = request.get_json(silent=True)
     if data is None and raw:
@@ -183,7 +185,10 @@ def words():
     data = request.get_json(silent=True)
     if data is None and request.get_data():
         return jsonify({'error': 'invalid request payload'}), 400
-    data = data or {}
+    if data is None:
+        data = {}
+    if not isinstance(data, dict):
+        return jsonify({'error': 'request payload must be a JSON object'}), 400
     raw = data.get('words')
     if isinstance(raw, str):
         raw = raw.split()

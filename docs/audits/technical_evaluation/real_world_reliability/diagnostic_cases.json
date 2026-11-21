@@ -1,0 +1,367 @@
+[
+  {
+    "text": "I am ate an apple yesterday.",
+    "category": "auxiliary",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "If you dont know.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "If you don't know.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "If you don’t know, ask Naomi.",
+    "category": "contraction",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "If you dont know, ask Naomi.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "Naomi doesnt know the answer.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "They didnt arrive.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "You do nt know.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "Didnt Naomi call?",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "I cant swim.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "A cant is a kind of slope.",
+    "category": "contraction",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "Naomi wont leave.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "Old habits wont die.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "He aint coming.",
+    "category": "contraction",
+    "gold_label": null
+  },
+  {
+    "text": "DONT TOUCH.",
+    "category": "contraction",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "Do not know.",
+    "category": "contraction",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "You do know.",
+    "category": "contraction",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "I am eating an apple.",
+    "category": "auxiliary",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "The apple was eaten yesterday.",
+    "category": "auxiliary",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "The apple was cut yesterday.",
+    "category": "auxiliary",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "The apple was ate yesterday.",
+    "category": "auxiliary",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "I was ate an apple yesterday.",
+    "category": "auxiliary",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "I am not ate an apple yesterday.",
+    "category": "auxiliary",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "Am I ate an apple yesterday?",
+    "category": "auxiliary",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "I will be ate an apple tomorrow.",
+    "category": "auxiliary",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "She has be went.",
+    "category": "auxiliary",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "The last thing I did was eat an apple.",
+    "category": "auxiliary",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "My favorite color is rose.",
+    "category": "noun_phrase",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "I drank a unicycle.",
+    "category": "noun_phrase",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "She rides a unicycle.",
+    "category": "noun_phrase",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "She rides an unicycle.",
+    "category": "noun_phrase",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "We met at noon.",
+    "category": "time_adjunct",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "We met on Monday morning.",
+    "category": "time_adjunct",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "We met on a cold morning.",
+    "category": "time_adjunct",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "The apple is gone.",
+    "category": "auxiliary",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "I am done.",
+    "category": "auxiliary",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "I am sat here.",
+    "category": "auxiliary",
+    "gold_label": null
+  },
+  {
+    "text": "The button is stuck.",
+    "category": "auxiliary",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "Naomi and José-Luis work at DLSU-D in Dasmariñas.",
+    "category": "name_and_lexicon",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "Naomi's MacBook connects to OpenAI.",
+    "category": "name_and_lexicon",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "X Æ A-12 arrived.",
+    "category": "name_and_lexicon",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "nguyễn visited yesterday.",
+    "category": "name_and_lexicon",
+    "gold_label": null
+  },
+  {
+    "text": "google released the update.",
+    "category": "name_and_lexicon",
+    "gold_label": null
+  },
+  {
+    "text": "iPhone sales increased.",
+    "category": "name_and_lexicon",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "They use epifluorescence microscopy.",
+    "category": "name_and_lexicon",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "We measured qudit coherence.",
+    "category": "name_and_lexicon",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "CRISPR-Cas9 cuts DNA.",
+    "category": "name_and_lexicon",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "They recieved it yesterday.",
+    "category": "spelling",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "Ths cat sleepps.",
+    "category": "spelling",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "She read teh book.",
+    "category": "spelling",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "That was wierd.",
+    "category": "spelling",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "I met Recieved yesterday.",
+    "category": "name_and_lexicon",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "I luv you.",
+    "category": "spelling",
+    "gold_label": null
+  },
+  {
+    "text": "Salamat po, Naomi.",
+    "category": "noisy_input",
+    "gold_label": null
+  },
+  {
+    "text": "Bonjour tout le monde.",
+    "category": "noisy_input",
+    "gold_label": null
+  },
+  {
+    "text": "🙂?!",
+    "category": "noisy_input",
+    "gold_label": null
+  },
+  {
+    "text": " !!!",
+    "category": "noisy_input",
+    "gold_label": null
+  },
+  {
+    "text": "Naomi said, “Go!”",
+    "category": "noisy_input",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "She left.",
+    "category": "noisy_input",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "The boy running fast.",
+    "category": "clause_structure",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "We demand that he know the truth.",
+    "category": "clause_structure",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "She insisted that he be present.",
+    "category": "clause_structure",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "Stop!",
+    "category": "clause_structure",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "Because I was late.",
+    "category": "clause_structure",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "“Because I was late.”",
+    "category": "clause_structure",
+    "gold_label": null
+  },
+  {
+    "text": "When you know, tell me.",
+    "category": "clause_structure",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "If you know?",
+    "category": "clause_structure",
+    "gold_label": null
+  },
+  {
+    "text": "Where did I leave it?",
+    "category": "clause_structure",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "She is taller than he is.",
+    "category": "clause_structure",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "They will become an experts.",
+    "category": "noun_phrase",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "A few ill girlfriend visited.",
+    "category": "noun_phrase",
+    "gold_label": "ungrammatical"
+  },
+  {
+    "text": "This is cheaper.",
+    "category": "noun_phrase",
+    "gold_label": "grammatical"
+  },
+  {
+    "text": "I like very much it.",
+    "category": "word_order",
+    "gold_label": "ungrammatical"
+  }
+]

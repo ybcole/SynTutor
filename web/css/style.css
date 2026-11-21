@@ -3882,18 +3882,15 @@ body.workspace-view-open .app-main { display: none; }
 .lesson-tree-wrap [data-node-id][data-xai7-issue] > text {
   text-decoration: underline wavy;
 }
-/* Candidate findings are unapproved local checks. They are visible in red,
-   but the inspector labels them "not verified errors" and production rules
-   remain fail-closed. */
-.canonical-tree-view [data-node-id][data-candidate-issue] > text {
-  fill: var(--err);
-  font-weight: 750;
-  text-decoration: underline wavy;
-  text-decoration-thickness: 1px;
+/* Candidate observations and supporting nodes use a dotted emphasis.
+   The solid error underline belongs to a supported target. */
+.canonical-tree-view [data-node-id][data-candidate-issue] > text,
+.canonical-tree-view [data-node-id][data-learner-related] > text {
+  text-decoration: underline dotted;
+  text-underline-offset: .22em;
 }
-.canonical-tree-view [data-node-id][data-candidate-issue] > polygon,
-.canonical-tree-view [data-node-id][data-candidate-issue] > rect {
-  stroke: var(--err);
+.canonical-tree-view [data-node-id][data-selected] > text {
+  font-weight: 750;
 }
 /* Legacy matrix findings are mapped from Benepar token spans to canonical
    B-R nodes. They are a legacy diagnostic, not book-verified Cambridge. */
@@ -3977,6 +3974,24 @@ body.workspace-view-open .app-main { display: none; }
 }
 [data-shared-evidence] .xai-lesson-link::after { content: '→'; }
 [data-shared-evidence] .xai-lesson-link:hover { color: var(--ink); }
+[data-shared-evidence] .xai-reset-selection-btn {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  margin-right: 12px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  font-size: .84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+[data-shared-evidence] .xai-reset-selection-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent-strong, var(--accent));
+}
 
 /* Syntax Builder: Nodes palette */
 .builder-palette {

@@ -151,10 +151,14 @@ def _word(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
             idx = node["token_span"][1] + 1
             seq = graph.get("token_index", [])
             next_word = seq[idx]["text"] if idx < len(seq) else None
-        if next_word and next_word.lower().endswith("ing"):
+        if kind == "PASS":
+            return (f"{_quote(word)} is {form} form of “be” acting as the passive "
+                    f"auxiliary in {context}.")
+        if kind == "PROG":
             return (f"{_quote(word)} is {form} form of the verb “be”. "
-                    f"Here it combines with {_quote(next_word)} to describe an activity in progress.")
-        if next_word and next_word.lower().endswith("ed") and kind in {"PASS", "AUX"}:
+                    + (f"Here it combines with {_quote(next_word)} to describe an activity in progress."
+                       if next_word else f"Here it acts as the progressive auxiliary in {context}."))
+        if next_word and next_word.lower().endswith("ed") and kind == "AUX":
             return (f"{_quote(word)} is a form of “be.” "
                     f"Here it helps form the verb expression {context}.")
         return (f"{_quote(word)} is {form} form of the verb “be”. "
@@ -162,6 +166,9 @@ def _word(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
 
     if lower in HAVE and kind in {"V", "AUX", "PERF"}:
         form = "past-tense" if lower == "had" else "present-tense"
+        if kind == "PERF":
+            return (f"{_quote(word)} is a {form} form of “have” acting as the perfect "
+                    f"auxiliary in {context}.")
         if next_word and next_word.lower() in {"eaten", "gone", "seen", "done", "taken",
                                                 "given", "known", "written", "spoken", "been",
                                                 "made", "read", "found", "thought", "left"}:
@@ -229,6 +236,12 @@ def _word(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
     if kind in {"C", "C1", "C2"}:
         if kind == "C2" and lower in {"who", "whom", "whose", "what", "which",
                                       "when", "where", "why", "how"}:
+            # Distinguish relative pronouns inside NP/NOM from fronted wh-question phrases.
+            enclosing_sdbar = _first_ancestor(node, by_id, {"S-dbar", "S''"})
+            sdbar_parent = by_id.get(enclosing_sdbar["parent_id"]) if enclosing_sdbar else None
+            if sdbar_parent and sdbar_parent.get("label") in {"NOM", "NP"}:
+                return (f"{_quote(word)} is a relative pronoun introducing the relative "
+                        f"clause {context}, linking it back to the noun it modifies.")
             return (f"{_quote(word)} is the wh-phrase at the front of the question. "
                     "It corresponds to the missing position inside the clause.")
         if lower in {"that", "whether", "if"}:
@@ -282,11 +295,35 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
         if label in {"S-bar", "S'", "S''", "S-dbar"} and parent \
                 and parent.get("label") in {"S-bar", "S'", "S''", "S-dbar"} \
                 and parent.get("surface") == node.get("surface"):
-            return f"{surface} is the inner clause layer of this subordinate clause."
+            return f"{surface} is the inner clause layer of this clause."
         if label in {"S-bar", "S'", "S''", "S-dbar"} and children:
-            lead = (_node_phrase(children[0])
-                    if str(children[0].get("surface") or "").strip()
+            lead_child = children[0]
+            lead_label = str(lead_child.get("label") or "")
+            lead = (_node_phrase(lead_child)
+                    if str(lead_child.get("surface") or "").strip()
                     else "the clause marker")
+            is_root_clause = parent is None
+            if is_root_clause:
+                if label in {"S-dbar", "S''"} or lead_label == "C2":
+                    return (f"{surface} is an independent wh-question; {lead} sits in "
+                            "the fronted question position (C2) and the following clause "
+                            "supplies the rest of the question.")
+                lead_first = _first_word(str(lead_child.get("surface") or "")).lower()
+                is_inverted_aux = lead_first in (
+                    BE | HAVE | MODALS | {"do", "does", "did", "don't", "doesn't",
+                                          "didn't", "isn't", "aren't", "wasn't",
+                                          "weren't", "haven't", "hasn't", "hadn't",
+                                          "can't", "won't", "wouldn't", "couldn't",
+                                          "shouldn't", "mustn't", "mightn't"}
+                )
+                if lead_label == "C1" and is_inverted_aux:
+                    return (f"{surface} is an independent yes/no question; the auxiliary "
+                            f"{lead} is fronted before the subject to form the question.")
+                if lead_label == "C1" and str(lead_child.get("surface") or "").strip():
+                    return (f"{surface} is a subordinate clause introduced by {lead}; "
+                            "the following clause supplies its subject and predicate.")
+                return (f"{surface} is a main clause with a fronted question or "
+                        f"clause-initial layer introduced by {lead}.")
             return (f"{surface} is a subordinate clause layer; {lead} introduces "
                     "it and the following clause supplies the rest.")
         if children:
@@ -399,13 +436,7 @@ def compose_learner_explanation(graph: dict[str, Any] | None,
     target = by_id.get(node_id) if node_id is not None else nodes[0]
     if not target:
         return result
-    if target["kind"] in {"gap", "empty", "elided_terminal"}:
-        content = ("This position represents an understood or omitted part of the sentence, "
-                   "rather than a word that is actually spoken.")
-    elif target["kind"] == "word":
-        content = _word(target, graph, by_id)
-    else:
-        content = _phrase(target, graph, by_id)
+    content = _describe_node(target, graph, by_id)
     if graph["status"] == "provisional":
         content = "In this possible reading, " + content[:1].lower() + content[1:]
     return {
@@ -413,3 +444,499 @@ def compose_learner_explanation(graph: dict[str, Any] | None,
         "status": "provisional" if graph["status"] == "provisional" else "observed",
         "text": content, "whole_sentence_certified": False,
     }
+
+
+def _describe_node(target, graph, by_id):
+    if target["kind"] in {"gap", "empty", "elided_terminal"}:
+        parent_n = by_id.get(target.get("parent_id"))
+        if target.get("label") == "E" and parent_n and parent_n.get("label") == "N":
+            content = ("This elided noun position (E) stands for an understood noun "
+                       "omitted through ellipsis and recovered from context.")
+        elif target.get("label") == "E" and parent_n and parent_n.get("label") == "VP":
+            content = ("This elided verb-phrase position (E) stands for an understood "
+                       "verb phrase omitted through ellipsis and recovered from earlier in the sentence.")
+        else:
+            content = ("This position represents an understood or omitted part of the sentence, "
+                       "rather than a word that is actually spoken.")
+    elif target["kind"] == "word":
+        content = _word(target, graph, by_id)
+    else:
+        content = _phrase(target, graph, by_id)
+    return content
+
+
+def _source_tokens_by_node(graph, analysis):
+    """Bridge parser indices to tree nodes through exact sentence-local offsets."""
+    sentences = analysis['sentences']
+    offset = sentences[analysis['sentence_index']]['start'] if sentences else 0
+    source = {(token['start'] - offset, token['end'] - offset, token['t']): token['i']
+              for token in analysis['tokens']}
+    aligned = {row['token_id']: source.get((*row['char_span'], row['text']))
+               for row in graph['token_index']}
+    return {node['node_id']: [aligned[i] for i in node['token_ids']
+                              if aligned.get(i) is not None]
+            for node in graph['nodes']}
+
+
+def _word_morphology_summary(leaf):
+    """Build concise, evidence-grounded word-level morphology from spaCy/Benepar."""
+    tag = leaf.get('type')
+    ftag = leaf.get('ftag')
+    morph = leaf.get('fmorph') or {}
+    low = leaf['surface'].lower()
+    if tag != ftag:
+        # Only report morphology corroborated by both parsers when they agree,
+        # except for clear closed-class items.
+        if low in {'not', "n't", 'n’t'} and leaf.get('fdep') == 'neg':
+            return 'a negation marker'
+        return None
+    if tag == 'NN':
+        return 'a singular common noun'
+    if tag == 'NNS':
+        return 'a plural common noun'
+    if tag == 'NNP':
+        return 'a singular proper name'
+    if tag == 'NNPS':
+        return 'a plural proper name'
+    if tag == 'VBZ':
+        return 'a finite third-person singular present-tense verb'
+    if tag == 'VBP':
+        return 'a finite present-tense verb (non-third-person singular)'
+    if tag == 'VBD':
+        return 'a finite past-tense verb'
+    if tag == 'VBG':
+        return 'a non-finite -ing participle verb form'
+    if tag == 'VBN':
+        from ruleset import PAST_ONLY
+        if low in PAST_ONLY:
+            return None
+        return 'a non-finite past-participle verb form'
+    if tag == 'VB':
+        return 'a plain (base) verb form'
+    if tag == 'MD':
+        return 'a modal auxiliary verb'
+    if tag == 'JJ':
+        return 'an adjective (plain grade)'
+    if tag == 'JJR':
+        return 'a comparative adjective'
+    if tag == 'JJS':
+        return 'a superlative adjective'
+    if tag == 'RB':
+        return 'a negation marker' if leaf.get('fdep') == 'neg' else 'an adverb'
+    if tag == 'RBR':
+        return 'a comparative adverb'
+    if tag == 'RBS':
+        return 'a superlative adverb'
+    if tag == 'IN':
+        return 'a subordinating conjunction' if leaf.get('fdep') == 'mark' else 'a preposition'
+    if tag == 'TO':
+        return 'the infinitival marker “to”' if leaf.get('fdep') == 'aux' else 'the preposition “to”'
+    if tag == 'CC':
+        return 'a coordinating conjunction'
+    if tag == 'DT':
+        if low in {'the'}:
+            return 'the definite article'
+        if low in {'a', 'an'}:
+            return 'an indefinite article'
+        if low in {'this', 'that'}:
+            return 'a singular demonstrative determiner'
+        if low in {'these', 'those'}:
+            return 'a plural demonstrative determiner'
+        return 'a determiner'
+    if tag == 'PRP$':
+        return 'a possessive determiner'
+    if tag == 'PRP':
+        case = {'Nom': 'subject-case', 'Acc': 'object-case'}.get(morph.get('Case'))
+        num = {'Sing': 'singular', 'Plur': 'plural'}.get(morph.get('Number'))
+        parts = [p for p in (num, case) if p]
+        return f'a {" ".join(parts)} personal pronoun' if parts else 'a personal pronoun'
+    if tag == 'CD':
+        return 'a numeral (quantifier)'
+    if tag == 'RP':
+        return 'a verb particle'
+    if tag in {'WP', 'WDT', 'WRB', 'WP$'}:
+        return 'a wh-word (interrogative or relative introducer)'
+    return None
+
+
+def _dep_role_phrase(leaf, leaves):
+    """Describe a word's dependency function relative to its attested governor."""
+    dep = leaf.get('fdep')
+    gov = leaves.get(leaf.get('fhead'))
+    if not gov or leaf.get('fhead') == leaf.get('span', [None])[0]:
+        if dep == 'ROOT':
+            return 'the main predicate head of the sentence'
+        return None
+    gs = _quote(gov['surface'])
+    return {
+        'nsubj': f'the subject of {gs}',
+        'nsubjpass': f'the passive subject of {gs}',
+        'dobj': f'the direct object of {gs}',
+        'iobj': f'the indirect object of {gs}',
+        'pobj': f'the complement (object) of the preposition {gs}',
+        'attr': f'the predicative complement of {gs}',
+        'acomp': f'the predicative adjective complement of {gs}',
+        'amod': f'a modifier describing {gs}',
+        'advmod': f'an adverbial modifier of {gs}',
+        'det': f'a determiner specifying {gs}',
+        'poss': f'a possessive determiner for {gs}',
+        'nummod': f'a numeral quantifying {gs}',
+        'compound': f'a noun modifier forming a compound with {gs}',
+        'prt': f'a particle combining with the verb {gs}',
+        'mark': f'a clause marker introducing the subordinate clause headed by {gs}',
+        'aux': f'an auxiliary verb supporting {gs}',
+        'auxpass': f'a passive auxiliary supporting {gs}',
+        'neg': f'a negation marker modifying {gs}',
+        'cc': f'a coordinator linking constituents around {gs}',
+        'prep': f'a preposition linking its complement to {gs}',
+    }.get(dep)
+
+
+def _runtime_description(node, graph, by_id, ids, leaves):
+    """Explain witnessed features, internal structure, and local relations on the existing graph."""
+    label = node.get('label') or _word_kind(node, by_id)
+    surface = _node_phrase(node)
+    basic = _describe_node(node, graph, by_id)
+    if graph['status'] == 'provisional':
+        # Use the selected observation. Provisional constituents never acquire
+        # a head, attachment or function solely from their display position,
+        # but single-word nodes may report independently corroborated morphology.
+        label_name = NAMES.get(label)
+        if len(ids) == 1 and ids[0] in leaves:
+            morph_desc = _word_morphology_summary(leaves[ids[0]])
+            if morph_desc:
+                return f'{surface} is {morph_desc}. Because the full syntax tree is provisional, its wider clause attachment remains uncertain.'
+        if label_name and node['surface']:
+            return f'The working tree groups {surface} as a {label_name}. Its role in the full structure remains provisional.'
+        return f'{surface} is visible in the working tree. Its structural role remains uncertain.'
+    if not ids or node['kind'] in {'gap', 'empty', 'elided_terminal', 'triangle'}:
+        return basic
+    tokens = [leaves[i] for i in ids if i in leaves]
+    if not tokens:
+        return basic
+    leaf = tokens[0]
+    parent = by_id.get(node.get('parent_id'))
+    children = [by_id[i] for i in node.get('child_ids', []) if i in by_id]
+
+    # --- 1. Clause-level explanations (S, S', S'', S-bar, S-dbar) ------------ #
+    if label == 'S':
+        child_labels = [c.get('label') for c in children]
+        overt = [c for c in children if c.get('surface')]
+        # Coordinated clauses (S -> S CC S)
+        cc_child = next((c for c in children if c.get('kind') == 'word' and c.get('surface', '').lower() in {'and', 'but', 'or', 'nor', 'so', 'yet'}), None)
+        s_kids = [c for c in children if c.get('label') in {'S', "S'", 'S-bar'}]
+        if cc_child and len(s_kids) >= 2:
+            return (f'{surface} is a coordinated clause joining {_node_phrase(s_kids[0])} and '
+                    f'{_node_phrase(s_kids[1])} with the coordinator {_node_phrase(cc_child)}.')
+        # Clause with fronted adverbial/subordinate clause (S -> AdvP/PP/S'/S-bar + S)
+        if len(children) == 2 and child_labels[0] in {'AdvP', 'PP', "S'", 'S-bar', 'S″', 'S-dbar'} and child_labels[1] == 'S':
+            return (f'{surface} places the fronted modifier {_node_phrase(children[0])} before the '
+                    f'main clause {_node_phrase(children[1])}.')
+        # Standard declarative or embedded subject + predicate clause (S -> NP VP ...)
+        if len(children) >= 2 and child_labels[0] == 'NP' and child_labels[1] == 'VP':
+            subject, predicate = children[0], children[1]
+            embedded = bool(parent and parent.get('label') in {'S-bar', "S'", 'S″', 'S-dbar', 'PP'})
+            if not subject.get('surface'):
+                subj_desc = 'an understood (unspoken) subject'
+            else:
+                subj_desc = f'the subject {_node_phrase(subject)}'
+            role = ' This clause is embedded inside a larger structure.' if embedded else ''
+            extra = f' It also includes {_node_phrase(children[2])}.' if len(children) > 2 and children[2].get('surface') else ''
+            if subject.get('surface') and predicate.get('surface'):
+                return (f'{_node_phrase(subject)} is the subject of this clause, and '
+                        f'{_node_phrase(predicate)} is its predicate.{extra}{role}')
+            if predicate.get('surface'):
+                return f'This clause pairs {subj_desc} with the predicate {_node_phrase(predicate)}.{extra}{role}'
+        # Inverted question clause (S -> AUX/MOD/PERF/PROG/PASS/TENSE + NP + VP)
+        if len(children) >= 2 and child_labels[0] in {'MOD', 'PERF', 'PROG', 'PASS', 'TENSE', 'AUX', 'V'} and child_labels[1] == 'NP':
+            rest = f' before the predicate {_node_phrase(children[2])}' if len(children) > 2 and children[2].get('surface') else ''
+            return (f'{surface} is an inverted clause with the fronted auxiliary {_node_phrase(children[0])} '
+                    f'before the subject {_node_phrase(children[1])}{rest}.')
+    if label in {"S'", 'S-bar'}:
+        c1 = next((c for c in children if c.get('label') in {'C', 'C1'}), None)
+        body = next((c for c in children if c.get('label') in {'S', "S'", 'VP'}), None)
+        if c1 and body and body.get('surface'):
+            if c1.get('surface'):
+                intro = f'introduced by the complementiser {_node_phrase(c1)}'
+            else:
+                intro = 'with an empty complementiser position'
+            p_lbl = parent.get('label') if parent else None
+            fn = ('modifying a noun' if p_lbl in {'NOM', 'NP'}
+                  else 'completing a verb or adjective' if p_lbl in {'VP', 'AP'}
+                  else 'attached as a subordinate clause' if p_lbl in {'S', 'S″', 'S-dbar'}
+                  else 'functioning as a subordinate clause')
+            return f'{surface} is a subordinate clause {intro}, containing {_node_phrase(body)} and {fn}.'
+    if label in {'S″', "S''", 'S-dbar'}:
+        c2 = next((c for c in children if c.get('label') == 'C2'), None)
+        body = next((c for c in children if c.get('label') in {"S'", 'S-bar', 'S'}), None)
+        if c2 and body and body.get('surface'):
+            p_lbl = parent.get('label') if parent else None
+            if p_lbl in {'NOM', 'NP'}:
+                if c2.get('surface'):
+                    return f'{surface} is a relative clause introduced by {_node_phrase(c2)} and describing the preceding noun.'
+                return f'{surface} is a contact relative clause (with an omitted relative pronoun) describing the preceding noun.'
+            if c2.get('surface'):
+                return f'{surface} fronts the wh-phrase {_node_phrase(c2)} before {_node_phrase(body)}.'
+
+    # --- 2. Word-level & single-token lexical-category explanations ---------- #
+    if node['kind'] == 'word' and leaf.get('fdep') == 'neg' and leaf['surface'].lower() in {'not', "n't", 'n’t'}:
+        gov = leaves.get(leaf.get('fhead'))
+        extra = f' negating {_quote(gov["surface"])}' if gov and gov['surface'] != leaf['surface'] else ''
+        return f'{surface} is a negation marker{extra} within the verb phrase.'
+    if len(ids) == 1 and label == 'N' and leaf.get('type') == leaf.get('ftag'):
+        form = {'NN': 'singular', 'NNS': 'plural'}.get(leaf['type'])
+        if form:
+            containing = _first_ancestor(node, by_id, {'NP'})
+            dep_role = _dep_role_phrase(leaf, leaves)
+            role = f' It heads {_node_phrase(containing)}' if containing and containing['surface'] != node['surface'] else ' It functions'
+            if dep_role:
+                return f'{surface} is a {form} noun.{role} and serves as {dep_role}.'
+            if containing and containing['surface'] != node['surface']:
+                return f'{surface} is a {form} noun. It is the noun in {_node_phrase(containing)}.'
+            return f'{surface} is a {form} noun.'
+    if len(ids) == 1 and label in {'name', 'NAME'}:
+        dep_role = _dep_role_phrase(leaf, leaves)
+        num = 'plural' if leaf.get('type') == 'NNPS' else 'singular'
+        role = f' It serves as {dep_role}.' if dep_role else ' It refers to a specific person, place, or entity.'
+        return f'{surface} is a {num} proper name.{role}'
+    if len(ids) == 1 and label == 'V' and leaf.get('type') == leaf.get('ftag'):
+        form = {'VBZ': 'a finite third-person singular present-tense form',
+                'VBP': 'a finite present-tense form',
+                'VBD': 'a finite past-tense form',
+                'VBG': 'a non-finite -ing participle form',
+                'VBN': 'a non-finite past-participle form',
+                'VB': 'a plain (base) verb form'}.get(leaf['type'])
+        marked = next((by_id[key] for key in [node['node_id'], *node['ancestor_ids']]
+                       if by_id[key].get('label') == 'V'), None)
+        from ruleset import PAST_ONLY
+        if leaf['type'] == 'VBN' and leaf['surface'].lower() in PAST_ONLY:
+            form = None
+        feats = set(marked.get('features', [])) if marked else set()
+        valency = (
+            'takes two objects (ditransitive)' if 'ditrans' in feats
+            else 'links the subject to a predicative complement (intensive)' if 'intens' in feats
+            else 'takes an object and a predicative complement (complex transitive)' if 'complex' in feats
+            else 'selects a prepositional complement' if 'prep' in feats
+            else 'takes a direct object (transitive)' if 'trans' in feats
+            else 'has no direct object (intransitive)' if 'intrans' in feats
+            else None
+        )
+        if form and node.get('label') != 'V':
+            return (f'{surface} is {form} of the lexical verb in this phrase'
+                    + (f', where it {valency}.' if valency else '.'))
+        if form and valency:
+            return f'{surface} heads this verb phrase and {valency} in this analysis. It is {form}.'
+        if form:
+            return f'{surface} is the lexical verb heading this verb phrase. It is {form}.'
+    if len(ids) == 1 and label in {'MOD', 'PERF', 'PROG', 'PASS', 'TENSE', 'AUX', 'TO'}:
+        aux_role = {
+            'MOD': ('a modal auxiliary', 'the plain (base) form of the following verb'),
+            'PERF': ('the perfect auxiliary', 'a past participle'),
+            'PROG': ('the progressive auxiliary', 'an -ing participle'),
+            'PASS': ('the passive auxiliary', 'a past participle'),
+            'TENSE': ('a tense-carrying auxiliary (do-support)', 'the plain (base) form of the following verb'),
+            'AUX': ('an auxiliary verb', 'the form of the following verb'),
+            'TO': ('the infinitival marker', 'a plain (base) verb phrase'),
+        }[label]
+        gov = leaves.get(leaf.get('fhead'))
+        target_v = f' supporting {_quote(gov["surface"])}' if gov and gov['surface'] != leaf['surface'] else ''
+        tense_txt = {'VBD': ' (past tense)', 'VBZ': ' (3rd-person singular present)', 'VBP': ' (present tense)'}.get(leaf.get('type'), '')
+        return f'{surface} is {aux_role[0]}{tense_txt}{target_v}; it selects {aux_role[1]}.'
+    if len(ids) == 1 and label in {'pronoun', 'PRON', 'PRO'}:
+        morph = leaf.get('fmorph') or {}
+        case = {'Nom': 'subject', 'Acc': 'object'}.get(morph.get('Case'))
+        role = {'nsubj': 'subject', 'nsubjpass': 'subject', 'dobj': 'object',
+                'iobj': 'object', 'pobj': 'object'}.get(leaf.get('fdep'))
+        dep_role = _dep_role_phrase(leaf, leaves)
+        if case and role == case and leaf.get('type') == leaf.get('ftag') == 'PRP':
+            tail = f' It serves as {dep_role}.' if dep_role else f' It serves as the {role} here.'
+            return f'{surface} is a pronoun in the {case} form.{tail}'
+        if leaf['surface'].lower().endswith(('self', 'selves')):
+            tail = f' It serves as {dep_role}.' if dep_role else ''
+            return f'{surface} is a reflexive pronoun referring back to an earlier antecedent in the clause.{tail}'
+        if leaf['surface'].lower() in {'it', 'they', 'you', 'them', 'we', 'us', 'he', 'him', 'she', 'her', 'i', 'me'}:
+            tail = f' It serves as {dep_role}.' if dep_role else ' Its referent depends on the wider context.'
+            return f'{surface} is a personal pronoun.{tail}'
+    if len(ids) == 1 and label in {'P', 'Prt', 'PART'}:
+        dep_role = _dep_role_phrase(leaf, leaves)
+        pp_anc = _first_ancestor(node, by_id, {'PP'})
+        if label == 'P' and pp_anc and pp_anc.get('surface') != node.get('surface'):
+            return f'{surface} is the preposition heading {_node_phrase(pp_anc)}' + (f', acting as {dep_role}.' if dep_role else '.')
+        if dep_role:
+            return f'{surface} is a {NAMES.get(label, "word")} serving as {dep_role}.'
+    if len(ids) == 1 and label in {'A', 'Adv', 'DEG', 'Q', 'QA', 'PRE-DET', 'POSS', 'V-part'}:
+        morph_desc = _word_morphology_summary(leaf)
+        dep_role = _dep_role_phrase(leaf, leaves)
+        if morph_desc and dep_role:
+            return f'{surface} is {morph_desc} serving as {dep_role}.'
+        if morph_desc:
+            ctx = _phrase_context(node, by_id)
+            return f'{surface} is {morph_desc}' + (f' inside {ctx}.' if ctx else '.')
+    if len(ids) == 1 and label in {'C', 'C1', 'C2', 'CC', 'CONJ'}:
+        cl_ctx = _clause_context(node, by_id)
+        if label in {'C', 'C1'}:
+            return f'{surface} is a complementiser (clause introducer) marking the subordinate clause {cl_ctx or "here"}.'
+        if label == 'C2':
+            p_anc = _first_ancestor(node, by_id, {'S″', "S''", 'S-dbar'})
+            p_par = by_id.get(p_anc.get('parent_id')) if p_anc else None
+            if p_par and p_par.get('label') in {'NOM', 'NP'}:
+                return f'{surface} is a relative pronoun introducing the relative clause {cl_ctx or "here"} and linking it to the noun.'
+            return f'{surface} is a fronted wh-word introducing {cl_ctx or "this clause"}.'
+        if leaf.get('type') == 'CC':
+            return f'{surface} is a coordinating conjunction linking parallel constituents in {cl_ctx or "this sentence"}.'
+
+    # --- 3. Phrase-level explanations (NP, NOM, VP, PP, AP, AdvP, PartP) ----- #
+    if label in {'NP', 'NOM', 'ART', 'DET', 'DEM', 'AP', 'AdvP', 'PP', 'VP', 'PartP'}:
+        matching = set(ids)
+        heads = [leaves[i] for i in ids if i in leaves and (
+            leaves[i].get('fdep') == 'ROOT' or leaves[i].get('fhead') not in matching)]
+        head = heads[0] if len(heads) == 1 else None
+        if label in {'NP', 'NOM'} and head and head.get('type') in {'NN', 'NNS', 'NNP', 'NNPS', 'PRP'}:
+            head_text = _quote(head['surface'])
+            if label == 'NOM' and node['surface'] != head['surface']:
+                mod_kids = [c for c in children if c.get('label') in {'AP', 'PP', 'S″', "S''", 'S-dbar', "S'", 'S-bar', 'PartP'} and c.get('surface')]
+                if mod_kids:
+                    return f'{surface} is the nominal headed by {head_text}, modified by {_node_phrase(mod_kids[0])}.'
+                return f'{surface} is the nominal headed by {head_text}. Its other words help narrow its reference.'
+            if label == 'NP' and parent:
+                dep = head.get('fdep')
+                ancestor_tokens = graph['source_tokens'].get(parent['node_id'], [])
+                governor = leaves.get(head.get('fhead'))
+                if governor and head['fhead'] in ancestor_tokens:
+                    role = {('S', 'nsubj'): 'subject', ('S', 'nsubjpass'): 'passive subject',
+                            ('VP', 'dobj'): 'direct object', ('VP', 'iobj'): 'indirect object',
+                            ('VP', 'attr'): 'predicative complement',
+                            ('PP', 'pobj'): 'complement'}.get((parent.get('label'), dep))
+                    if role:
+                        start = f'{surface} is a noun phrase serving as the {role} of {_quote(governor["surface"])}.'
+                        if head['surface'] != node['surface']:
+                            start += f' The noun {head_text} heads this phrase.'
+                        return start
+        if label in {'ART', 'DET', 'DEM'} and len(ids) == 1 and leaf.get('fdep') == 'det':
+            noun = leaves.get(leaf.get('fhead'))
+            phrase = _first_ancestor(node, by_id, {'NP'})
+            if (noun and phrase and leaf['fhead'] in graph['source_tokens'].get(phrase['node_id'], [])
+                    and noun.get('type') in {'NN', 'NNS', 'NNP', 'NNPS'}):
+                if node['kind'] == 'word' and label == 'ART':
+                    kind_art = 'the definite article' if leaf['surface'].lower() == 'the' else 'an indefinite article'
+                    return f'{surface} is {kind_art} that helps specify the reference of {_quote(noun["surface"])}.'
+                return f'{surface} is the {NAMES[label]} for {_quote(noun["surface"])} within {_node_phrase(phrase)}.'
+        if label == 'PP':
+            if (len(children) == 2 and [child['label'] for child in children] == ['P', 'NP']
+                    and children[0]['surface'] and children[1]['surface']):
+                p_role = ''
+                if parent and parent.get('label') in {'NOM', 'NP'}:
+                    p_role = ' It postmodifies the preceding noun.'
+                elif parent and parent.get('label') in {'VP', 'S'}:
+                    p_role = ' It functions as an adverbial or complement in the clause.'
+                return (f'{surface} is a preposition phrase headed by the preposition {_node_phrase(children[0])}. '
+                        f'The noun phrase {_node_phrase(children[1])} is its complement.{p_role}')
+        if label in {'AP', 'AdvP'} and head and head.get('type') in {'JJ', 'JJR', 'JJS', 'RB', 'RBR', 'RBS'}:
+            governor = leaves.get(head.get('fhead'))
+            if governor and parent and head['fhead'] in graph['source_tokens'].get(parent['node_id'], []):
+                if head.get('fdep') in {'amod', 'advmod'}:
+                    return f'{surface} is an {NAMES[label]} headed by {_quote(head["surface"])}, modifying {_quote(governor["surface"])}.'
+                if head.get('fdep') == 'acomp' and parent.get('label') == 'VP':
+                    return f'{surface} is an adjective phrase headed by {_quote(head["surface"])}, serving as the predicative complement of {_quote(governor["surface"])}.'
+        if label == 'VP':
+            # (a) Auxiliary + inner VP
+            auxiliary = next((c for c in children if c.get('label') in {'MOD', 'PERF', 'PROG', 'PASS', 'TENSE', 'TO'}), None)
+            complement = next((c for c in children if c.get('label') == 'VP' and c['surface']), None)
+            if auxiliary and auxiliary['surface'] and complement:
+                form = {'MOD': 'the plain form', 'PERF': 'a past participle', 'PROG': 'an -ing form',
+                        'PASS': 'a past participle', 'TENSE': 'the plain form', 'TO': 'the plain form'}.get(auxiliary['label'])
+                return (f'{surface} is a verb phrase combining {_node_phrase(auxiliary)} with '
+                        f'{_node_phrase(complement)}. In this construction, {_node_phrase(auxiliary)} selects {form}.')
+            # (b) Coordinated VP (VP -> VP CC VP)
+            vp_kids = [c for c in children if c.get('label') == 'VP' and c.get('surface')]
+            cc_kid = next((c for c in children if c.get('kind') == 'word' and c.get('surface', '').lower() in {'and', 'but', 'or'}), None)
+            if cc_kid and len(vp_kids) >= 2:
+                return f'{surface} coordinates the verb phrases {_node_phrase(vp_kids[0])} and {_node_phrase(vp_kids[1])} with {_node_phrase(cc_kid)}.'
+            # (c) Adjunct-modified VP (VP -> VP + PP/AdvP/S')
+            if len(vp_kids) == 1 and len(children) == 2:
+                adj = next((c for c in children if c is not vp_kids[0] and c.get('surface')), None)
+                if adj:
+                    return (f'{surface} expands the core verb phrase {_node_phrase(vp_kids[0])} '
+                            f'with the adverbial modifier {_node_phrase(adj)}.')
+            # (d) Lexical VP (V + complements)
+            v_kid = next((c for c in children if c.get('label') == 'V' and c.get('surface')), None)
+            if v_kid:
+                comps = [c for c in children if c is not v_kid and c.get('surface')]
+                feats = set(v_kid.get('features', []))
+                if comps:
+                    comp_list = ' and '.join(_node_phrase(c) for c in comps[:2])
+                    comp_kind = (
+                        'predicative complement' if 'intens' in feats
+                        else 'indirect and direct objects' if 'ditrans' in feats and len(comps) >= 2
+                        else 'object and predicative complement' if 'complex' in feats and len(comps) >= 2
+                        else 'prepositional complement' if 'prep' in feats
+                        else 'complement'
+                    )
+                    return f'{surface} is a verb phrase headed by {_node_phrase(v_kid)}, with {comp_list} as its {comp_kind}.'
+                return f'{surface} is an intransitive verb phrase headed by {_node_phrase(v_kid)} with no direct object.'
+        if label == 'PartP':
+            p_role = f' modifying {_node_phrase(parent)}' if parent and parent.get('surface') and parent.get('surface') != node.get('surface') else ''
+            return f'{surface} is a participial phrase{p_role}.'
+    return basic
+
+
+def build_learner_analysis(analysis, br_analysis, explanation, findings, relationships, leaves, summary):
+    """Prepare the existing learner explanations once for the browser session."""
+    resolved = br_analysis.get('status') == 'normalized' and br_analysis.get('tree')
+    graph = explanation.get('fact_graph')
+    if not graph and br_analysis.get('working_tree'):
+        from xai_facts import build_fact_graph
+        graph = build_fact_graph({'status': 'working', 'tree': br_analysis['working_tree']})
+    result = {'version': 1, 'tree_status': 'canonical' if resolved else 'unavailable',
+              'findings': findings, 'nodes': {}, 'relationships': relationships,
+              'sentence_text': (explanation.get('learner_explanation') or {}).get('text'),
+              'verdict': summary.get('verdict')}
+    correction = summary.get('correction')
+    if correction and correction.get('validated'):
+        offset = analysis['sentences'][analysis['sentence_index']]['start']
+        witnessed = {i for row in findings if row['target_token_ids'] for i in
+                     row['target_token_ids'] + row['related_token_ids']}
+        tokens = analysis['tokens']
+        if correction.get('edits') and all(any(
+                token['i'] in witnessed and token['start'] - offset <= edit['start']
+                < token['end'] - offset for token in tokens) for edit in correction['edits']):
+            result['revision'] = {'text': correction['corrected_sentence'],
+                                  'impact': correction.get('impact', {}),
+                                  'conditional_simple_past': all(
+                                      edit.get('constraint') == 'C-BE-PAST' for edit in correction['edits'])}
+    if not graph or not graph.get('nodes'):
+        return result
+    by_id = {node['node_id']: node for node in graph['nodes']}
+    source_tokens = _source_tokens_by_node(graph, analysis)
+    graph = {**graph, 'source_tokens': source_tokens}
+    result['tree_status'] = 'provisional' if graph['status'] == 'provisional' else 'canonical'
+    for node in graph['nodes']:
+        ident = node['node_id']
+        ids = source_tokens[ident]
+        covered = set(ids)
+        related = [row for row in findings if covered.intersection(
+            row['target_token_ids'] + row['related_token_ids']) or (
+                node['parent_id'] is None and not row['target_token_ids'] and not row['related_token_ids'])]
+        # A branch with an overt descendant may discuss that descendant's
+        # finding, but only an exact word (or its one-word category) is marked.
+        exact = len(ids) == 1 and len(node['token_ids']) == 1 and node['kind'] in {'word', 'branch'}
+        if exact and node['kind'] == 'branch':
+            exact = len(node['child_ids']) == 1 and by_id[node['child_ids'][0]]['kind'] == 'word'
+        observed = []
+        seen_rel = set()
+        for row in relationships:
+            if row['matches'] and covered.intersection(row['participants']):
+                if row['text'] not in seen_rel:
+                    seen_rel.add(row['text'])
+                    observed.append(row['text'])
+        result['nodes'][ident] = {
+            'text': _runtime_description(node, graph, by_id, ids, leaves),
+            'findings': [row['id'] for row in related],
+            'relationship': observed[0] if observed else None,
+            'relationships': observed[:3],
+            'error': exact and any(ids[0] in row['target_token_ids'] for row in related),
+            'related': exact and any(ids[0] in row['related_token_ids'] for row in related),
+        }
+        if node['parent_id'] is None and resolved:
+            result['sentence_text'] = result['nodes'][ident]['text']
+    return result

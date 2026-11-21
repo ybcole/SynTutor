@@ -172,6 +172,30 @@ def best_correction(word):
     return keep[0].term
 
 
+def strong_typo_candidate(word):
+    """Conservative dictionary evidence for a likely single-edit typo."""
+    if len(word) < 4 or not word.isascii() or not word.isalpha() or not word.islower():
+        return None
+    engine = _get_symspell()
+    if engine is None:
+        return None
+    from symspellpy import Verbosity
+    nearest = engine.lookup(word, Verbosity.CLOSEST, max_edit_distance=1)
+    if not nearest or nearest[0].distance != 1:
+        return None
+    best = nearest[0]
+    if best.count < _MIN_COUNT_DIST2 or (len(nearest) > 1 and best.count < 10 * nearest[1].count):
+        return None
+    return best.term
+
+
+def has_name_evidence(leaf):
+    """Protect names when token categories or entity evidence corroborate them."""
+    return (leaf.get('fpos') == 'PROPN'
+            and (leaf.get('type') in {'NNP', 'NNPS'} or leaf.get('fentity')
+                 or any(char.isupper() for char in leaf.get('surface', ''))))
+
+
 def _strip(word):
     return word.strip(_STOP_PUNCT)
 
@@ -324,3 +348,29 @@ if __name__ == '__main__':
     for line in sys.argv[1:] or ['I have tecnologies and siences .']:
         corrected, unknown = preprocess(line)
         print(f'{line!r} -> {corrected!r}  unknown={unknown}')
+
+
+def uncertain_function_words(analysis):
+    """Identify an unresolved orthographic reading in a closed grammatical slot.
+
+    A possible omitted vowel can explain the token, but the surrounding phrase
+    often permits several completions. Report the uncertainty without choosing
+    a determiner or changing the candidate text.
+    """
+    forms = {'a', 'an', 'the', 'this', 'that', 'these', 'those', 'my', 'your',
+             'his', 'her', 'its', 'our', 'their', 'whose', 'which', 'what'}
+    rows = []
+    nodes = analysis.get('nodes')
+    for node in nodes.values() if isinstance(nodes, dict) else ():
+        if node.get('type') not in {'DT', 'PRP$'} or node.get('children') or has_name_evidence(node):
+            continue
+        word = node['surface']
+        if not word.isascii() or not word.isalpha() or len(word) < 3 or word.isupper():
+            continue
+        low = word.lower()
+        if low in forms:
+            continue
+        if any(low == form[:i] + form[i + 1:] for form in forms
+               for i, char in enumerate(form) if char in 'aeiou'):
+            rows.append({'token_id': node['span'][0], 'surface': word})
+    return rows

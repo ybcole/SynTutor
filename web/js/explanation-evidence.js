@@ -417,24 +417,110 @@ export function evidenceParagraphText(evidence, options = {}) {
     : learnerFindingParagraph(evidence, options.nodeId) ?? learnerParagraph(evidence);
 }
 
+export function supportedLocalFindings(payload) {
+  return payload?.learner_analysis?.version === 1 ? payload.learner_analysis.findings : [];
+}
+
+const FINDING_LESSONS = {
+  agreement: '#lesson/cgel-ch05/number-countability',
+  determiner: '#lesson/cgel-ch05/determiner',
+  quantifier: '#lesson/cgel-ch05/quantification',
+  auxiliary: '#lesson/br-06/concepts',
+  pronoun: '#lesson/cgel-ch05/pronouns',
+  negation: '#lesson/br-06/negation',
+  clause: '#lesson/br-08/worked-example',
+  transitivity: '#lesson/br-04/concepts',
+  preposition: '#lesson/cgel-ch07/prepositions-heads',
+  modifier: '#lesson/cgel-ch06/adverbs',
+  comparative: '#lesson/cgel-ch13/comparison-preliminaries',
+  question: '#lesson/br-09/concepts',
+  island: '#lesson/br-09/concepts',
+  coordination: '#lesson/cgel-ch15/coordination-overview',
+  punctuation: '#lesson/cgel-ch20/primary-terminals',
+  morphology: '#lesson/cgel-ch03/verb-phrase',
+  spelling: '#lesson/cgel-ch05/nouns-nps',
+};
+
 export function renderEvidence(evidence, host = document.querySelector('#explainNode'), options = {}) {
   if (!host) return;
   host.querySelector('[data-shared-evidence]')?.remove();
   const panel = document.createElement('section');
   panel.dataset.sharedEvidence = '';
   panel.setAttribute('aria-live', 'polite');
-  const text = options.paragraphOverride || evidenceParagraphText(evidence, options);
+  const findings = options.findings || [];
+  const selected = options.selected;
+  const partial = options.treeUnresolved && findings.length;
+  const description = selected?.text || options.overview || evidenceParagraphText(evidence, options);
+  const text = selected ? description : partial
+    ? 'Partial grammatical analysis. The findings below are supported by available evidence.'
+    : options.treeUnresolved
+      ? 'Analysis incomplete. The syntax remains uncertain and the grammatical result is inconclusive.'
+      : options.paragraphOverride || description;
   const paragraph = document.createElement('p');
   paragraph.dataset.xaiShort = '';
   paragraph.className = 'learner-grammar-paragraph';
   paragraph.textContent = text;
   panel.append(paragraph);
+  if (!selected && options.verdict && !options.treeUnresolved) {
+    const verdict = document.createElement('div');
+    verdict.dataset.learnerVerdict = '';
+    verdict.textContent = findings.length ? 'Grammar findings'
+      : options.verdict === 'grammatical' ? 'The checks found no clear grammatical issue.'
+      : 'The grammar result remains inconclusive.';
+    panel.append(verdict);
+  }
+  const relList = Array.isArray(selected?.relationships) && selected.relationships.length
+    ? selected.relationships
+    : (selected?.relationship ? [selected.relationship] : []);
+  for (const relText of relList) {
+    const relation = document.createElement('p');
+    relation.dataset.learnerRelationship = '';
+    relation.textContent = relText;
+    panel.append(relation);
+  }
+  const seenText = new Set();
+  for (const finding of findings) {
+    if (seenText.has(finding.text)) continue;
+    seenText.add(finding.text);
+    const issue = document.createElement('p');
+    issue.dataset.learnerFinding = finding.id;
+    issue.textContent = finding.text;
+    panel.append(issue);
+  }
+  const revision = options.revision;
+  if (revision && (!selected || findings.length)) {
+    const correction = document.createElement('p');
+    const impact = revision.impact || {};
+    correction.dataset.learnerRevision = '';
+    correction.textContent = revision.conditional_simple_past
+      ? `If you intend the simple past, one possible revision is “${revision.text}”`
+      : `${impact.whole_sentence_clean ? 'Suggested revision' : 'Partial revision'} — “${revision.text}”`;
+    if (impact.unresolved_tokens?.length) {
+      correction.textContent += ' The spelling of '
+        + impact.unresolved_tokens.map(token => '“' + token.surface + '”').join(', ') + ' remains uncertain.';
+    }
+    panel.append(correction);
+  }
+  if (selected && typeof options.onClearSelection === 'function') {
+    const resetBtn = document.createElement('button');
+    resetBtn.type = 'button';
+    resetBtn.className = 'xai-reset-selection-btn';
+    resetBtn.dataset.learnerResetSelection = '';
+    resetBtn.textContent = options.sentenceFindingsCount
+      ? `Show full sentence analysis (${options.sentenceFindingsCount} finding${options.sentenceFindingsCount === 1 ? '' : 's'})`
+      : 'Show full sentence analysis';
+    resetBtn.addEventListener('click', () => options.onClearSelection());
+    panel.append(resetBtn);
+  }
   renderLegacyDiagnostic(panel, options.legacyDetail);
   const featureOrder = ['intens', 'complex', 'ditrans', 'prep', 'phrasal', 'trans', 'intrans', 'pres', 'past', '-tense'];
   const feature = options.nodeKind === 'syntax'
     ? featureOrder.find((f) => (options.nodeFeatures || []).includes(f) && nodeLesson(f, 'syntax'))
     : null;
-  const lesson = nodeLesson(feature || options.nodeType || options.legacyDetail?.type, options.nodeKind);
+  const findingLesson = findings.map(row => FINDING_LESSONS[row.lesson]).find(Boolean);
+  const lesson = findingLesson
+    ? {route: findingLesson, kind: 'finding', chapterTitle: 'Related grammar lesson', sectionTitle: 'Related grammar lesson'}
+    : nodeLesson(feature || options.nodeType || options.legacyDetail?.type, options.nodeKind);
   if (lesson) {
     const link = document.createElement('a');
     link.className = 'xai-lesson-link';

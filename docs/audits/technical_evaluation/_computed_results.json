@@ -1,0 +1,4489 @@
+{
+  "generated_at_utc": "2026-11-20T07:31:54Z",
+  "total_runtime_seconds": 89.19,
+  "evaluation_design": "Fast-track stratified external subset (n=400: 240 BLiMP + 80 JFLEG + 80 CoLA) + full internal minimal pairs (n=52) + rapid audit (n=24) + FULL census 216 Burton-Roberts textbook IMG trees + 120 full-payload XAI checks",
+  "section_511": {
+    "overall": {
+      "external_all_400": {
+        "rules_only": {
+          "strict_ungrammatical": {
+            "n_total": 400,
+            "n_gold_ungrammatical": 200,
+            "n_gold_grammatical": 200,
+            "n_evaluated": 400,
+            "n_unverified_total": 11,
+            "n_unverified_gold_ungrammatical": 6,
+            "n_unverified_gold_grammatical": 5,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 94,
+            "tn": 181,
+            "fp": 19,
+            "fn": 106,
+            "accuracy": 0.6875,
+            "precision": 0.8319,
+            "recall": 0.47,
+            "f1": 0.6006,
+            "specificity": 0.905
+          },
+          "decisive_only": {
+            "n_total": 400,
+            "n_gold_ungrammatical": 200,
+            "n_gold_grammatical": 200,
+            "n_evaluated": 389,
+            "n_unverified_total": 11,
+            "n_unverified_gold_ungrammatical": 6,
+            "n_unverified_gold_grammatical": 5,
+            "n_execution_error": 0,
+            "coverage": 0.9725,
+            "tp": 94,
+            "tn": 176,
+            "fp": 19,
+            "fn": 100,
+            "accuracy": 0.6941,
+            "precision": 0.8319,
+            "recall": 0.4845,
+            "f1": 0.6124,
+            "specificity": 0.9026
+          },
+          "non_grammatical_flagged": {
+            "n_total": 400,
+            "n_gold_ungrammatical": 200,
+            "n_gold_grammatical": 200,
+            "n_evaluated": 400,
+            "n_unverified_total": 11,
+            "n_unverified_gold_ungrammatical": 6,
+            "n_unverified_gold_grammatical": 5,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 100,
+            "tn": 176,
+            "fp": 24,
+            "fn": 100,
+            "accuracy": 0.69,
+            "precision": 0.8065,
+            "recall": 0.5,
+            "f1": 0.6173,
+            "specificity": 0.88
+          }
+        },
+        "hybrid_rules_plus_cola": {
+          "strict_ungrammatical": {
+            "n_total": 400,
+            "n_gold_ungrammatical": 200,
+            "n_gold_grammatical": 200,
+            "n_evaluated": 400,
+            "n_unverified_total": 102,
+            "n_unverified_gold_ungrammatical": 76,
+            "n_unverified_gold_grammatical": 26,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 94,
+            "tn": 181,
+            "fp": 19,
+            "fn": 106,
+            "accuracy": 0.6875,
+            "precision": 0.8319,
+            "recall": 0.47,
+            "f1": 0.6006,
+            "specificity": 0.905
+          },
+          "decisive_only": {
+            "n_total": 400,
+            "n_gold_ungrammatical": 200,
+            "n_gold_grammatical": 200,
+            "n_evaluated": 298,
+            "n_unverified_total": 102,
+            "n_unverified_gold_ungrammatical": 76,
+            "n_unverified_gold_grammatical": 26,
+            "n_execution_error": 0,
+            "coverage": 0.745,
+            "tp": 94,
+            "tn": 155,
+            "fp": 19,
+            "fn": 30,
+            "accuracy": 0.8356,
+            "precision": 0.8319,
+            "recall": 0.7581,
+            "f1": 0.7932,
+            "specificity": 0.8908
+          },
+          "non_grammatical_flagged": {
+            "n_total": 400,
+            "n_gold_ungrammatical": 200,
+            "n_gold_grammatical": 200,
+            "n_evaluated": 400,
+            "n_unverified_total": 102,
+            "n_unverified_gold_ungrammatical": 76,
+            "n_unverified_gold_grammatical": 26,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 170,
+            "tn": 155,
+            "fp": 45,
+            "fn": 30,
+            "accuracy": 0.8125,
+            "precision": 0.7907,
+            "recall": 0.85,
+            "f1": 0.8193,
+            "specificity": 0.775
+          }
+        }
+      },
+      "external_strict_uncontaminated_320": {
+        "rules_only": {
+          "strict_ungrammatical": {
+            "n_total": 320,
+            "n_gold_ungrammatical": 160,
+            "n_gold_grammatical": 160,
+            "n_evaluated": 320,
+            "n_unverified_total": 10,
+            "n_unverified_gold_ungrammatical": 6,
+            "n_unverified_gold_grammatical": 4,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 82,
+            "tn": 147,
+            "fp": 13,
+            "fn": 78,
+            "accuracy": 0.7156,
+            "precision": 0.8632,
+            "recall": 0.5125,
+            "f1": 0.6431,
+            "specificity": 0.9187
+          },
+          "decisive_only": {
+            "n_total": 320,
+            "n_gold_ungrammatical": 160,
+            "n_gold_grammatical": 160,
+            "n_evaluated": 310,
+            "n_unverified_total": 10,
+            "n_unverified_gold_ungrammatical": 6,
+            "n_unverified_gold_grammatical": 4,
+            "n_execution_error": 0,
+            "coverage": 0.9688,
+            "tp": 82,
+            "tn": 143,
+            "fp": 13,
+            "fn": 72,
+            "accuracy": 0.7258,
+            "precision": 0.8632,
+            "recall": 0.5325,
+            "f1": 0.6586,
+            "specificity": 0.9167
+          },
+          "non_grammatical_flagged": {
+            "n_total": 320,
+            "n_gold_ungrammatical": 160,
+            "n_gold_grammatical": 160,
+            "n_evaluated": 320,
+            "n_unverified_total": 10,
+            "n_unverified_gold_ungrammatical": 6,
+            "n_unverified_gold_grammatical": 4,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 88,
+            "tn": 143,
+            "fp": 17,
+            "fn": 72,
+            "accuracy": 0.7219,
+            "precision": 0.8381,
+            "recall": 0.55,
+            "f1": 0.6642,
+            "specificity": 0.8938
+          }
+        },
+        "hybrid_rules_plus_cola": {
+          "strict_ungrammatical": {
+            "n_total": 320,
+            "n_gold_ungrammatical": 160,
+            "n_gold_grammatical": 160,
+            "n_evaluated": 320,
+            "n_unverified_total": 84,
+            "n_unverified_gold_ungrammatical": 60,
+            "n_unverified_gold_grammatical": 24,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 82,
+            "tn": 147,
+            "fp": 13,
+            "fn": 78,
+            "accuracy": 0.7156,
+            "precision": 0.8632,
+            "recall": 0.5125,
+            "f1": 0.6431,
+            "specificity": 0.9187
+          },
+          "decisive_only": {
+            "n_total": 320,
+            "n_gold_ungrammatical": 160,
+            "n_gold_grammatical": 160,
+            "n_evaluated": 236,
+            "n_unverified_total": 84,
+            "n_unverified_gold_ungrammatical": 60,
+            "n_unverified_gold_grammatical": 24,
+            "n_execution_error": 0,
+            "coverage": 0.7375,
+            "tp": 82,
+            "tn": 123,
+            "fp": 13,
+            "fn": 18,
+            "accuracy": 0.8686,
+            "precision": 0.8632,
+            "recall": 0.82,
+            "f1": 0.841,
+            "specificity": 0.9044
+          },
+          "non_grammatical_flagged": {
+            "n_total": 320,
+            "n_gold_ungrammatical": 160,
+            "n_gold_grammatical": 160,
+            "n_evaluated": 320,
+            "n_unverified_total": 84,
+            "n_unverified_gold_ungrammatical": 60,
+            "n_unverified_gold_grammatical": 24,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 142,
+            "tn": 123,
+            "fp": 37,
+            "fn": 18,
+            "accuracy": 0.8281,
+            "precision": 0.7933,
+            "recall": 0.8875,
+            "f1": 0.8378,
+            "specificity": 0.7688
+          }
+        }
+      },
+      "blimp_stratified": {
+        "rules_only": {
+          "strict_ungrammatical": {
+            "n_total": 240,
+            "n_gold_ungrammatical": 120,
+            "n_gold_grammatical": 120,
+            "n_evaluated": 240,
+            "n_unverified_total": 7,
+            "n_unverified_gold_ungrammatical": 5,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 52,
+            "tn": 116,
+            "fp": 4,
+            "fn": 68,
+            "accuracy": 0.7,
+            "precision": 0.9286,
+            "recall": 0.4333,
+            "f1": 0.5909,
+            "specificity": 0.9667
+          },
+          "decisive_only": {
+            "n_total": 240,
+            "n_gold_ungrammatical": 120,
+            "n_gold_grammatical": 120,
+            "n_evaluated": 233,
+            "n_unverified_total": 7,
+            "n_unverified_gold_ungrammatical": 5,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 0.9708,
+            "tp": 52,
+            "tn": 114,
+            "fp": 4,
+            "fn": 63,
+            "accuracy": 0.7124,
+            "precision": 0.9286,
+            "recall": 0.4522,
+            "f1": 0.6082,
+            "specificity": 0.9661
+          },
+          "non_grammatical_flagged": {
+            "n_total": 240,
+            "n_gold_ungrammatical": 120,
+            "n_gold_grammatical": 120,
+            "n_evaluated": 240,
+            "n_unverified_total": 7,
+            "n_unverified_gold_ungrammatical": 5,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 57,
+            "tn": 114,
+            "fp": 6,
+            "fn": 63,
+            "accuracy": 0.7125,
+            "precision": 0.9048,
+            "recall": 0.475,
+            "f1": 0.623,
+            "specificity": 0.95
+          }
+        },
+        "hybrid_rules_plus_cola": {
+          "strict_ungrammatical": {
+            "n_total": 240,
+            "n_gold_ungrammatical": 120,
+            "n_gold_grammatical": 120,
+            "n_evaluated": 240,
+            "n_unverified_total": 78,
+            "n_unverified_gold_ungrammatical": 57,
+            "n_unverified_gold_grammatical": 21,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 52,
+            "tn": 116,
+            "fp": 4,
+            "fn": 68,
+            "accuracy": 0.7,
+            "precision": 0.9286,
+            "recall": 0.4333,
+            "f1": 0.5909,
+            "specificity": 0.9667
+          },
+          "decisive_only": {
+            "n_total": 240,
+            "n_gold_ungrammatical": 120,
+            "n_gold_grammatical": 120,
+            "n_evaluated": 162,
+            "n_unverified_total": 78,
+            "n_unverified_gold_ungrammatical": 57,
+            "n_unverified_gold_grammatical": 21,
+            "n_execution_error": 0,
+            "coverage": 0.675,
+            "tp": 52,
+            "tn": 95,
+            "fp": 4,
+            "fn": 11,
+            "accuracy": 0.9074,
+            "precision": 0.9286,
+            "recall": 0.8254,
+            "f1": 0.8739,
+            "specificity": 0.9596
+          },
+          "non_grammatical_flagged": {
+            "n_total": 240,
+            "n_gold_ungrammatical": 120,
+            "n_gold_grammatical": 120,
+            "n_evaluated": 240,
+            "n_unverified_total": 78,
+            "n_unverified_gold_ungrammatical": 57,
+            "n_unverified_gold_grammatical": 21,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 109,
+            "tn": 95,
+            "fp": 25,
+            "fn": 11,
+            "accuracy": 0.85,
+            "precision": 0.8134,
+            "recall": 0.9083,
+            "f1": 0.8583,
+            "specificity": 0.7917
+          }
+        }
+      },
+      "jfleg_stratified": {
+        "rules_only": {
+          "strict_ungrammatical": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 80,
+            "n_unverified_total": 3,
+            "n_unverified_gold_ungrammatical": 1,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 30,
+            "tn": 31,
+            "fp": 9,
+            "fn": 10,
+            "accuracy": 0.7625,
+            "precision": 0.7692,
+            "recall": 0.75,
+            "f1": 0.7595,
+            "specificity": 0.775
+          },
+          "decisive_only": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 77,
+            "n_unverified_total": 3,
+            "n_unverified_gold_ungrammatical": 1,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 0.9625,
+            "tp": 30,
+            "tn": 29,
+            "fp": 9,
+            "fn": 9,
+            "accuracy": 0.7662,
+            "precision": 0.7692,
+            "recall": 0.7692,
+            "f1": 0.7692,
+            "specificity": 0.7632
+          },
+          "non_grammatical_flagged": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 80,
+            "n_unverified_total": 3,
+            "n_unverified_gold_ungrammatical": 1,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 31,
+            "tn": 29,
+            "fp": 11,
+            "fn": 9,
+            "accuracy": 0.75,
+            "precision": 0.7381,
+            "recall": 0.775,
+            "f1": 0.7561,
+            "specificity": 0.725
+          }
+        },
+        "hybrid_rules_plus_cola": {
+          "strict_ungrammatical": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 80,
+            "n_unverified_total": 6,
+            "n_unverified_gold_ungrammatical": 3,
+            "n_unverified_gold_grammatical": 3,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 30,
+            "tn": 31,
+            "fp": 9,
+            "fn": 10,
+            "accuracy": 0.7625,
+            "precision": 0.7692,
+            "recall": 0.75,
+            "f1": 0.7595,
+            "specificity": 0.775
+          },
+          "decisive_only": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 74,
+            "n_unverified_total": 6,
+            "n_unverified_gold_ungrammatical": 3,
+            "n_unverified_gold_grammatical": 3,
+            "n_execution_error": 0,
+            "coverage": 0.925,
+            "tp": 30,
+            "tn": 28,
+            "fp": 9,
+            "fn": 7,
+            "accuracy": 0.7838,
+            "precision": 0.7692,
+            "recall": 0.8108,
+            "f1": 0.7895,
+            "specificity": 0.7568
+          },
+          "non_grammatical_flagged": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 80,
+            "n_unverified_total": 6,
+            "n_unverified_gold_ungrammatical": 3,
+            "n_unverified_gold_grammatical": 3,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 33,
+            "tn": 28,
+            "fp": 12,
+            "fn": 7,
+            "accuracy": 0.7625,
+            "precision": 0.7333,
+            "recall": 0.825,
+            "f1": 0.7765,
+            "specificity": 0.7
+          }
+        }
+      },
+      "cola_stratified": {
+        "rules_only": {
+          "strict_ungrammatical": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 80,
+            "n_unverified_total": 1,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 12,
+            "tn": 34,
+            "fp": 6,
+            "fn": 28,
+            "accuracy": 0.575,
+            "precision": 0.6667,
+            "recall": 0.3,
+            "f1": 0.4138,
+            "specificity": 0.85
+          },
+          "decisive_only": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 79,
+            "n_unverified_total": 1,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 0.9875,
+            "tp": 12,
+            "tn": 33,
+            "fp": 6,
+            "fn": 28,
+            "accuracy": 0.5696,
+            "precision": 0.6667,
+            "recall": 0.3,
+            "f1": 0.4138,
+            "specificity": 0.8462
+          },
+          "non_grammatical_flagged": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 80,
+            "n_unverified_total": 1,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 12,
+            "tn": 33,
+            "fp": 7,
+            "fn": 28,
+            "accuracy": 0.5625,
+            "precision": 0.6316,
+            "recall": 0.3,
+            "f1": 0.4068,
+            "specificity": 0.825
+          }
+        },
+        "hybrid_rules_plus_cola": {
+          "strict_ungrammatical": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 80,
+            "n_unverified_total": 18,
+            "n_unverified_gold_ungrammatical": 16,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 12,
+            "tn": 34,
+            "fp": 6,
+            "fn": 28,
+            "accuracy": 0.575,
+            "precision": 0.6667,
+            "recall": 0.3,
+            "f1": 0.4138,
+            "specificity": 0.85
+          },
+          "decisive_only": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 62,
+            "n_unverified_total": 18,
+            "n_unverified_gold_ungrammatical": 16,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 0.775,
+            "tp": 12,
+            "tn": 32,
+            "fp": 6,
+            "fn": 12,
+            "accuracy": 0.7097,
+            "precision": 0.6667,
+            "recall": 0.5,
+            "f1": 0.5714,
+            "specificity": 0.8421
+          },
+          "non_grammatical_flagged": {
+            "n_total": 80,
+            "n_gold_ungrammatical": 40,
+            "n_gold_grammatical": 40,
+            "n_evaluated": 80,
+            "n_unverified_total": 18,
+            "n_unverified_gold_ungrammatical": 16,
+            "n_unverified_gold_grammatical": 2,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 28,
+            "tn": 32,
+            "fp": 8,
+            "fn": 12,
+            "accuracy": 0.75,
+            "precision": 0.7778,
+            "recall": 0.7,
+            "f1": 0.7368,
+            "specificity": 0.8
+          }
+        }
+      },
+      "internal_minimal_pairs": {
+        "rules_only": {
+          "strict_ungrammatical": {
+            "n_total": 52,
+            "n_gold_ungrammatical": 26,
+            "n_gold_grammatical": 26,
+            "n_evaluated": 52,
+            "n_unverified_total": 4,
+            "n_unverified_gold_ungrammatical": 3,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 12,
+            "tn": 20,
+            "fp": 6,
+            "fn": 14,
+            "accuracy": 0.6154,
+            "precision": 0.6667,
+            "recall": 0.4615,
+            "f1": 0.5455,
+            "specificity": 0.7692
+          },
+          "decisive_only": {
+            "n_total": 52,
+            "n_gold_ungrammatical": 26,
+            "n_gold_grammatical": 26,
+            "n_evaluated": 48,
+            "n_unverified_total": 4,
+            "n_unverified_gold_ungrammatical": 3,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 0.9231,
+            "tp": 12,
+            "tn": 19,
+            "fp": 6,
+            "fn": 11,
+            "accuracy": 0.6458,
+            "precision": 0.6667,
+            "recall": 0.5217,
+            "f1": 0.5854,
+            "specificity": 0.76
+          },
+          "non_grammatical_flagged": {
+            "n_total": 52,
+            "n_gold_ungrammatical": 26,
+            "n_gold_grammatical": 26,
+            "n_evaluated": 52,
+            "n_unverified_total": 4,
+            "n_unverified_gold_ungrammatical": 3,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 15,
+            "tn": 19,
+            "fp": 7,
+            "fn": 11,
+            "accuracy": 0.6538,
+            "precision": 0.6818,
+            "recall": 0.5769,
+            "f1": 0.625,
+            "specificity": 0.7308
+          }
+        },
+        "hybrid_rules_plus_cola": {
+          "strict_ungrammatical": {
+            "n_total": 52,
+            "n_gold_ungrammatical": 26,
+            "n_gold_grammatical": 26,
+            "n_evaluated": 52,
+            "n_unverified_total": 8,
+            "n_unverified_gold_ungrammatical": 7,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 12,
+            "tn": 20,
+            "fp": 6,
+            "fn": 14,
+            "accuracy": 0.6154,
+            "precision": 0.6667,
+            "recall": 0.4615,
+            "f1": 0.5455,
+            "specificity": 0.7692
+          },
+          "decisive_only": {
+            "n_total": 52,
+            "n_gold_ungrammatical": 26,
+            "n_gold_grammatical": 26,
+            "n_evaluated": 44,
+            "n_unverified_total": 8,
+            "n_unverified_gold_ungrammatical": 7,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 0.8462,
+            "tp": 12,
+            "tn": 19,
+            "fp": 6,
+            "fn": 7,
+            "accuracy": 0.7045,
+            "precision": 0.6667,
+            "recall": 0.6316,
+            "f1": 0.6486,
+            "specificity": 0.76
+          },
+          "non_grammatical_flagged": {
+            "n_total": 52,
+            "n_gold_ungrammatical": 26,
+            "n_gold_grammatical": 26,
+            "n_evaluated": 52,
+            "n_unverified_total": 8,
+            "n_unverified_gold_ungrammatical": 7,
+            "n_unverified_gold_grammatical": 1,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 19,
+            "tn": 19,
+            "fp": 7,
+            "fn": 7,
+            "accuracy": 0.7308,
+            "precision": 0.7308,
+            "recall": 0.7308,
+            "f1": 0.7308,
+            "specificity": 0.7308
+          }
+        }
+      },
+      "internal_rapid_audit_24": {
+        "rules_only": {
+          "strict_ungrammatical": {
+            "n_total": 24,
+            "n_gold_ungrammatical": 3,
+            "n_gold_grammatical": 21,
+            "n_evaluated": 24,
+            "n_unverified_total": 0,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 0,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 3,
+            "tn": 21,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "specificity": 1.0
+          },
+          "decisive_only": {
+            "n_total": 24,
+            "n_gold_ungrammatical": 3,
+            "n_gold_grammatical": 21,
+            "n_evaluated": 24,
+            "n_unverified_total": 0,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 0,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 3,
+            "tn": 21,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "specificity": 1.0
+          },
+          "non_grammatical_flagged": {
+            "n_total": 24,
+            "n_gold_ungrammatical": 3,
+            "n_gold_grammatical": 21,
+            "n_evaluated": 24,
+            "n_unverified_total": 0,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 0,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 3,
+            "tn": 21,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "specificity": 1.0
+          }
+        },
+        "hybrid_rules_plus_cola": {
+          "strict_ungrammatical": {
+            "n_total": 24,
+            "n_gold_ungrammatical": 3,
+            "n_gold_grammatical": 21,
+            "n_evaluated": 24,
+            "n_unverified_total": 0,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 0,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 3,
+            "tn": 21,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "specificity": 1.0
+          },
+          "decisive_only": {
+            "n_total": 24,
+            "n_gold_ungrammatical": 3,
+            "n_gold_grammatical": 21,
+            "n_evaluated": 24,
+            "n_unverified_total": 0,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 0,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 3,
+            "tn": 21,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "specificity": 1.0
+          },
+          "non_grammatical_flagged": {
+            "n_total": 24,
+            "n_gold_ungrammatical": 3,
+            "n_gold_grammatical": 21,
+            "n_evaluated": 24,
+            "n_unverified_total": 0,
+            "n_unverified_gold_ungrammatical": 0,
+            "n_unverified_gold_grammatical": 0,
+            "n_execution_error": 0,
+            "coverage": 1.0,
+            "tp": 3,
+            "tn": 21,
+            "fp": 0,
+            "fn": 0,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "specificity": 1.0
+          }
+        }
+      }
+    },
+    "blimp_by_family": {
+      "argument_structure": {
+        "rules_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 4,
+          "n_unverified_gold_ungrammatical": 2,
+          "n_unverified_gold_grammatical": 2,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 0,
+          "tn": 14,
+          "fp": 1,
+          "fn": 15,
+          "accuracy": 0.4667,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 0.9333
+        },
+        "rules_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 26,
+          "n_unverified_total": 4,
+          "n_unverified_gold_ungrammatical": 2,
+          "n_unverified_gold_grammatical": 2,
+          "n_execution_error": 0,
+          "coverage": 0.8667,
+          "tp": 0,
+          "tn": 12,
+          "fp": 1,
+          "fn": 13,
+          "accuracy": 0.4615,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 0.9231
+        },
+        "hybrid_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 11,
+          "n_unverified_gold_ungrammatical": 9,
+          "n_unverified_gold_grammatical": 2,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 0,
+          "tn": 14,
+          "fp": 1,
+          "fn": 15,
+          "accuracy": 0.4667,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 0.9333
+        },
+        "hybrid_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 19,
+          "n_unverified_total": 11,
+          "n_unverified_gold_ungrammatical": 9,
+          "n_unverified_gold_grammatical": 2,
+          "n_execution_error": 0,
+          "coverage": 0.6333,
+          "tp": 0,
+          "tn": 12,
+          "fp": 1,
+          "fn": 6,
+          "accuracy": 0.6316,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 0.9231
+        },
+        "hybrid_flagged": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 11,
+          "n_unverified_gold_ungrammatical": 9,
+          "n_unverified_gold_grammatical": 2,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 9,
+          "tn": 12,
+          "fp": 3,
+          "fn": 6,
+          "accuracy": 0.7,
+          "precision": 0.75,
+          "recall": 0.6,
+          "f1": 0.6667,
+          "specificity": 0.8
+        }
+      },
+      "determiner_agreement": {
+        "rules_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 14,
+          "tn": 15,
+          "fp": 0,
+          "fn": 1,
+          "accuracy": 0.9667,
+          "precision": 1.0,
+          "recall": 0.9333,
+          "f1": 0.9655,
+          "specificity": 1.0
+        },
+        "rules_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 14,
+          "tn": 15,
+          "fp": 0,
+          "fn": 1,
+          "accuracy": 0.9667,
+          "precision": 1.0,
+          "recall": 0.9333,
+          "f1": 0.9655,
+          "specificity": 1.0
+        },
+        "hybrid_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 1,
+          "n_unverified_gold_ungrammatical": 1,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 14,
+          "tn": 15,
+          "fp": 0,
+          "fn": 1,
+          "accuracy": 0.9667,
+          "precision": 1.0,
+          "recall": 0.9333,
+          "f1": 0.9655,
+          "specificity": 1.0
+        },
+        "hybrid_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 29,
+          "n_unverified_total": 1,
+          "n_unverified_gold_ungrammatical": 1,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 0.9667,
+          "tp": 14,
+          "tn": 15,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "specificity": 1.0
+        },
+        "hybrid_flagged": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 1,
+          "n_unverified_gold_ungrammatical": 1,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 15,
+          "tn": 15,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "specificity": 1.0
+        }
+      },
+      "filler_gap_dependencies": {
+        "rules_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 0,
+          "tn": 15,
+          "fp": 0,
+          "fn": 15,
+          "accuracy": 0.5,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 1.0
+        },
+        "rules_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 0,
+          "tn": 15,
+          "fp": 0,
+          "fn": 15,
+          "accuracy": 0.5,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 1.0
+        },
+        "hybrid_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 17,
+          "n_unverified_gold_ungrammatical": 13,
+          "n_unverified_gold_grammatical": 4,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 0,
+          "tn": 15,
+          "fp": 0,
+          "fn": 15,
+          "accuracy": 0.5,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 1.0
+        },
+        "hybrid_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 13,
+          "n_unverified_total": 17,
+          "n_unverified_gold_ungrammatical": 13,
+          "n_unverified_gold_grammatical": 4,
+          "n_execution_error": 0,
+          "coverage": 0.4333,
+          "tp": 0,
+          "tn": 11,
+          "fp": 0,
+          "fn": 2,
+          "accuracy": 0.8462,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 1.0
+        },
+        "hybrid_flagged": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 17,
+          "n_unverified_gold_ungrammatical": 13,
+          "n_unverified_gold_grammatical": 4,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 13,
+          "tn": 11,
+          "fp": 4,
+          "fn": 2,
+          "accuracy": 0.8,
+          "precision": 0.7647,
+          "recall": 0.8667,
+          "f1": 0.8125,
+          "specificity": 0.7333
+        }
+      },
+      "island_effects": {
+        "rules_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 2,
+          "tn": 15,
+          "fp": 0,
+          "fn": 13,
+          "accuracy": 0.5667,
+          "precision": 1.0,
+          "recall": 0.1333,
+          "f1": 0.2353,
+          "specificity": 1.0
+        },
+        "rules_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 2,
+          "tn": 15,
+          "fp": 0,
+          "fn": 13,
+          "accuracy": 0.5667,
+          "precision": 1.0,
+          "recall": 0.1333,
+          "f1": 0.2353,
+          "specificity": 1.0
+        },
+        "hybrid_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 20,
+          "n_unverified_gold_ungrammatical": 13,
+          "n_unverified_gold_grammatical": 7,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 2,
+          "tn": 15,
+          "fp": 0,
+          "fn": 13,
+          "accuracy": 0.5667,
+          "precision": 1.0,
+          "recall": 0.1333,
+          "f1": 0.2353,
+          "specificity": 1.0
+        },
+        "hybrid_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 10,
+          "n_unverified_total": 20,
+          "n_unverified_gold_ungrammatical": 13,
+          "n_unverified_gold_grammatical": 7,
+          "n_execution_error": 0,
+          "coverage": 0.3333,
+          "tp": 2,
+          "tn": 8,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "specificity": 1.0
+        },
+        "hybrid_flagged": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 20,
+          "n_unverified_gold_ungrammatical": 13,
+          "n_unverified_gold_grammatical": 7,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 15,
+          "tn": 8,
+          "fp": 7,
+          "fn": 0,
+          "accuracy": 0.7667,
+          "precision": 0.6818,
+          "recall": 1.0,
+          "f1": 0.8108,
+          "specificity": 0.5333
+        }
+      },
+      "npi_licensing": {
+        "rules_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 0,
+          "tn": 15,
+          "fp": 0,
+          "fn": 15,
+          "accuracy": 0.5,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 1.0
+        },
+        "rules_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 0,
+          "tn": 15,
+          "fp": 0,
+          "fn": 15,
+          "accuracy": 0.5,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 1.0
+        },
+        "hybrid_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 16,
+          "n_unverified_gold_ungrammatical": 12,
+          "n_unverified_gold_grammatical": 4,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 0,
+          "tn": 15,
+          "fp": 0,
+          "fn": 15,
+          "accuracy": 0.5,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 1.0
+        },
+        "hybrid_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 14,
+          "n_unverified_total": 16,
+          "n_unverified_gold_ungrammatical": 12,
+          "n_unverified_gold_grammatical": 4,
+          "n_execution_error": 0,
+          "coverage": 0.4667,
+          "tp": 0,
+          "tn": 11,
+          "fp": 0,
+          "fn": 3,
+          "accuracy": 0.7857,
+          "precision": null,
+          "recall": 0.0,
+          "f1": 0.0,
+          "specificity": 1.0
+        },
+        "hybrid_flagged": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 16,
+          "n_unverified_gold_ungrammatical": 12,
+          "n_unverified_gold_grammatical": 4,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 12,
+          "tn": 11,
+          "fp": 4,
+          "fn": 3,
+          "accuracy": 0.7667,
+          "precision": 0.75,
+          "recall": 0.8,
+          "f1": 0.7742,
+          "specificity": 0.7333
+        }
+      },
+      "pronoun_case_and_binding": {
+        "rules_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 9,
+          "tn": 14,
+          "fp": 1,
+          "fn": 6,
+          "accuracy": 0.7667,
+          "precision": 0.9,
+          "recall": 0.6,
+          "f1": 0.72,
+          "specificity": 0.9333
+        },
+        "rules_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 9,
+          "tn": 14,
+          "fp": 1,
+          "fn": 6,
+          "accuracy": 0.7667,
+          "precision": 0.9,
+          "recall": 0.6,
+          "f1": 0.72,
+          "specificity": 0.9333
+        },
+        "hybrid_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 7,
+          "n_unverified_gold_ungrammatical": 6,
+          "n_unverified_gold_grammatical": 1,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 9,
+          "tn": 14,
+          "fp": 1,
+          "fn": 6,
+          "accuracy": 0.7667,
+          "precision": 0.9,
+          "recall": 0.6,
+          "f1": 0.72,
+          "specificity": 0.9333
+        },
+        "hybrid_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 23,
+          "n_unverified_total": 7,
+          "n_unverified_gold_ungrammatical": 6,
+          "n_unverified_gold_grammatical": 1,
+          "n_execution_error": 0,
+          "coverage": 0.7667,
+          "tp": 9,
+          "tn": 13,
+          "fp": 1,
+          "fn": 0,
+          "accuracy": 0.9565,
+          "precision": 0.9,
+          "recall": 1.0,
+          "f1": 0.9474,
+          "specificity": 0.9286
+        },
+        "hybrid_flagged": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 7,
+          "n_unverified_gold_ungrammatical": 6,
+          "n_unverified_gold_grammatical": 1,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 15,
+          "tn": 13,
+          "fp": 2,
+          "fn": 0,
+          "accuracy": 0.9333,
+          "precision": 0.8824,
+          "recall": 1.0,
+          "f1": 0.9375,
+          "specificity": 0.8667
+        }
+      },
+      "subject_verb_agreement": {
+        "rules_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 15,
+          "tn": 13,
+          "fp": 2,
+          "fn": 0,
+          "accuracy": 0.9333,
+          "precision": 0.8824,
+          "recall": 1.0,
+          "f1": 0.9375,
+          "specificity": 0.8667
+        },
+        "rules_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 0,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 15,
+          "tn": 13,
+          "fp": 2,
+          "fn": 0,
+          "accuracy": 0.9333,
+          "precision": 0.8824,
+          "recall": 1.0,
+          "f1": 0.9375,
+          "specificity": 0.8667
+        },
+        "hybrid_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 2,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 2,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 15,
+          "tn": 13,
+          "fp": 2,
+          "fn": 0,
+          "accuracy": 0.9333,
+          "precision": 0.8824,
+          "recall": 1.0,
+          "f1": 0.9375,
+          "specificity": 0.8667
+        },
+        "hybrid_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 28,
+          "n_unverified_total": 2,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 2,
+          "n_execution_error": 0,
+          "coverage": 0.9333,
+          "tp": 15,
+          "tn": 11,
+          "fp": 2,
+          "fn": 0,
+          "accuracy": 0.9286,
+          "precision": 0.8824,
+          "recall": 1.0,
+          "f1": 0.9375,
+          "specificity": 0.8462
+        },
+        "hybrid_flagged": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 2,
+          "n_unverified_gold_ungrammatical": 0,
+          "n_unverified_gold_grammatical": 2,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 15,
+          "tn": 11,
+          "fp": 4,
+          "fn": 0,
+          "accuracy": 0.8667,
+          "precision": 0.7895,
+          "recall": 1.0,
+          "f1": 0.8824,
+          "specificity": 0.7333
+        }
+      },
+      "verb_forms": {
+        "rules_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 3,
+          "n_unverified_gold_ungrammatical": 3,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 12,
+          "tn": 15,
+          "fp": 0,
+          "fn": 3,
+          "accuracy": 0.9,
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "specificity": 1.0
+        },
+        "rules_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 27,
+          "n_unverified_total": 3,
+          "n_unverified_gold_ungrammatical": 3,
+          "n_unverified_gold_grammatical": 0,
+          "n_execution_error": 0,
+          "coverage": 0.9,
+          "tp": 12,
+          "tn": 15,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "specificity": 1.0
+        },
+        "hybrid_strict": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 4,
+          "n_unverified_gold_ungrammatical": 3,
+          "n_unverified_gold_grammatical": 1,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 12,
+          "tn": 15,
+          "fp": 0,
+          "fn": 3,
+          "accuracy": 0.9,
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.8889,
+          "specificity": 1.0
+        },
+        "hybrid_decisive": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 26,
+          "n_unverified_total": 4,
+          "n_unverified_gold_ungrammatical": 3,
+          "n_unverified_gold_grammatical": 1,
+          "n_execution_error": 0,
+          "coverage": 0.8667,
+          "tp": 12,
+          "tn": 14,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "specificity": 1.0
+        },
+        "hybrid_flagged": {
+          "n_total": 30,
+          "n_gold_ungrammatical": 15,
+          "n_gold_grammatical": 15,
+          "n_evaluated": 30,
+          "n_unverified_total": 4,
+          "n_unverified_gold_ungrammatical": 3,
+          "n_unverified_gold_grammatical": 1,
+          "n_execution_error": 0,
+          "coverage": 1.0,
+          "tp": 15,
+          "tn": 14,
+          "fp": 1,
+          "fn": 0,
+          "accuracy": 0.9667,
+          "precision": 0.9375,
+          "recall": 1.0,
+          "f1": 0.9677,
+          "specificity": 0.9333
+        }
+      }
+    },
+    "fp_constraints_external": {
+      "C-ARTICLE": 5,
+      "C-TENSE-FINITE": 3,
+      "C-SUBJECT-AGREEMENT": 3,
+      "C-MOD-POS": 3,
+      "C-COMMA-SPLICE": 2,
+      "C-RELATIVE-AGREE": 1,
+      "C-STATIVE-PROG": 1,
+      "C-DET-STACK": 1,
+      "C-CAPITALIZATION": 1,
+      "C-SENTENCE-CAPITAL": 1,
+      "C-GERUND-INFIN": 1
+    },
+    "fn_by_family_rules_external": {
+      "cola_stratified:cola_general_acceptability": 28,
+      "blimp_stratified:argument_structure": 15,
+      "blimp_stratified:filler_gap_dependencies": 15,
+      "blimp_stratified:npi_licensing": 15,
+      "blimp_stratified:island_effects": 13,
+      "jfleg_stratified:l2_learner_writing": 10,
+      "blimp_stratified:pronoun_case_and_binding": 6,
+      "blimp_stratified:verb_forms": 3,
+      "blimp_stratified:determiner_agreement": 1
+    },
+    "unverified_by_family_hybrid_external": {
+      "cola_stratified:cola_general_acceptability": 16,
+      "blimp_stratified:filler_gap_dependencies": 13,
+      "blimp_stratified:island_effects": 13,
+      "blimp_stratified:npi_licensing": 12,
+      "blimp_stratified:argument_structure": 9,
+      "blimp_stratified:pronoun_case_and_binding": 6,
+      "blimp_stratified:verb_forms": 3,
+      "jfleg_stratified:l2_learner_writing": 3,
+      "blimp_stratified:determiner_agreement": 1
+    },
+    "fp_examples_external": [
+      {
+        "item_id": "blimp-004-g",
+        "dataset": "blimp_stratified",
+        "category": "distractor_agreement_relative_clause",
+        "sentence": "Some customers who irritates Amelia do persuade Galileo to come here.",
+        "constraints": "C-RELATIVE-AGREE",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "blimp-005-g",
+        "dataset": "blimp_stratified",
+        "category": "distractor_agreement_relative_clause",
+        "sentence": "A doctor who researched the Clintons waves.",
+        "constraints": "C-TENSE-FINITE",
+        "cola_label": "unacceptable"
+      },
+      {
+        "item_id": "blimp-053-g",
+        "dataset": "blimp_stratified",
+        "category": "principle_A_case_2",
+        "sentence": "Cheryl is forgetting about herself thinking about Beverly.",
+        "constraints": "C-STATIVE-PROG",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "blimp-075-g",
+        "dataset": "blimp_stratified",
+        "category": "transitive",
+        "sentence": "Chad's daughters embarrasses Erin's girlfriend.",
+        "constraints": "C-SUBJECT-AGREEMENT",
+        "cola_label": "unacceptable"
+      },
+      {
+        "item_id": "jfleg-002-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "They draw in the consumers , like me , to purchase a great product with amazing ingredients , but actually , they just make up these words to increase their sales .",
+        "constraints": "C-COMMA-SPLICE",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "jfleg-006-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "In the case of young people , the best way is to study as hard as possible to get better grades so in the future they will have a better chance to find a good job .",
+        "constraints": "C-DET-STACK",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "jfleg-010-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "if you want to develop a product you create a beautiful image around it if you want sell it .",
+        "constraints": "C-CAPITALIZATION;C-SENTENCE-CAPITAL",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "jfleg-016-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "Because the fashion culture has changed .",
+        "constraints": "C-TENSE-FINITE",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "jfleg-021-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "It 's normal , propose something to the client and make something different , it 's the best way and it 's legal !",
+        "constraints": "C-COMMA-SPLICE;C-MOD-POS;C-SUBJECT-AGREEMENT",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "jfleg-027-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "Video is convenient , but if teachers are concerned about students , using textbooks is a good ability for students .",
+        "constraints": "C-ARTICLE",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "jfleg-035-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "The consumers also knows how advertisements are .",
+        "constraints": "C-SUBJECT-AGREEMENT",
+        "cola_label": "unacceptable"
+      },
+      {
+        "item_id": "jfleg-038-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "Furthermore the professor denies the reading passage which states that treasure does not exist and is just fiction .",
+        "constraints": "C-ARTICLE",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "jfleg-040-g",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "sentence": "I , on the other hand , have no major responsibilities other than studying .",
+        "constraints": "C-MOD-POS",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "cola-007-g",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "sentence": "I'm sure I would like him to eat fruit more than I would cookies.",
+        "constraints": "C-ARTICLE",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "cola-010-g",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "sentence": "We donated wire for the convicts to build cages with.",
+        "constraints": "C-ARTICLE",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "cola-022-g",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "sentence": "We recommend to eat less cake and pastry.",
+        "constraints": "C-GERUND-INFIN",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "cola-028-g",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "sentence": "Mary likes to tour art galleries, but Bill hates to.",
+        "constraints": "C-TENSE-FINITE",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "cola-033-g",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "sentence": "It isn't because Sue said anything bad about me that I'm angry.",
+        "constraints": "C-MOD-POS",
+        "cola_label": "acceptable"
+      },
+      {
+        "item_id": "cola-036-g",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "sentence": "I know you eat asparagus.",
+        "constraints": "C-ARTICLE",
+        "cola_label": "acceptable"
+      }
+    ],
+    "fn_examples_external": [
+      {
+        "item_id": "blimp-063-u",
+        "dataset": "blimp_stratified",
+        "category": "animate_subject_trans",
+        "error_family": "argument_structure",
+        "sentence": "The jackets have praised Raymond.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9203
+      },
+      {
+        "item_id": "blimp-064-u",
+        "dataset": "blimp_stratified",
+        "category": "animate_subject_trans",
+        "error_family": "argument_structure",
+        "sentence": "Some newspaper article can't fix every carriage.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.8942
+      },
+      {
+        "item_id": "blimp-066-u",
+        "dataset": "blimp_stratified",
+        "category": "drop_argument",
+        "error_family": "argument_structure",
+        "sentence": "Travis is revealing.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.8193
+      },
+      {
+        "item_id": "blimp-068-u",
+        "dataset": "blimp_stratified",
+        "category": "inchoative",
+        "error_family": "argument_structure",
+        "sentence": "Many glasses aren't messing up.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.8919
+      },
+      {
+        "item_id": "blimp-070-u",
+        "dataset": "blimp_stratified",
+        "category": "intransitive",
+        "error_family": "argument_structure",
+        "sentence": "Some glaciers are scaring.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9743
+      },
+      {
+        "item_id": "blimp-072-u",
+        "dataset": "blimp_stratified",
+        "category": "passive_1",
+        "error_family": "argument_structure",
+        "sentence": "David wasn't shouted by these hospitals.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.4722
+      },
+      {
+        "item_id": "blimp-087-u",
+        "dataset": "blimp_stratified",
+        "category": "wh_vs_that_with_gap",
+        "error_family": "filler_gap_dependencies",
+        "sentence": "Dancers hadn't figured out that the actress didn't reveal.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.5682
+      },
+      {
+        "item_id": "blimp-088-u",
+        "dataset": "blimp_stratified",
+        "category": "wh_vs_that_with_gap",
+        "error_family": "filler_gap_dependencies",
+        "sentence": "Janice hasn't learned that this offspring didn't examine.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.4926
+      },
+      {
+        "item_id": "blimp-110-u",
+        "dataset": "blimp_stratified",
+        "category": "npi_present_1",
+        "error_family": "npi_licensing",
+        "sentence": "Even that shawl ever frays.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.6612
+      },
+      {
+        "item_id": "blimp-119-u",
+        "dataset": "blimp_stratified",
+        "category": "sentential_negation_npi_scope",
+        "error_family": "npi_licensing",
+        "sentence": "Every son of Jerry who has not insulted Jerry can ever die.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.8345
+      },
+      {
+        "item_id": "blimp-120-u",
+        "dataset": "blimp_stratified",
+        "category": "sentential_negation_npi_scope",
+        "error_family": "npi_licensing",
+        "sentence": "Every coat that did not scare Nina has ever wrinkled.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.5646
+      },
+      {
+        "item_id": "jfleg-002-u",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "error_family": "l2_learner_writing",
+        "sentence": "They draw the consumers , like me , to purchase this great product with all these amazing ingredients and all that but actually they just sometimes make something up just to increase their sales .",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9284
+      },
+      {
+        "item_id": "jfleg-003-u",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "error_family": "l2_learner_writing",
+        "sentence": "Also the work of the media , television , magazines , and every stuff made for publicity affects the emotions of many people around the world , encouraging them to buy and buy anything they can .",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.6081
+      },
+      {
+        "item_id": "jfleg-022-u",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "error_family": "l2_learner_writing",
+        "sentence": "Although the few lucky ones struck gold , most of the people simply vanished as they left their homes , only to be forgotten , and some of them even developed obsessions for the western mirage .",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.919
+      },
+      {
+        "item_id": "jfleg-023-u",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "error_family": "l2_learner_writing",
+        "sentence": "So the conclusion is clear .",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9656
+      },
+      {
+        "item_id": "jfleg-024-u",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "error_family": "l2_learner_writing",
+        "sentence": "However , all of them are limited .",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.8864
+      },
+      {
+        "item_id": "jfleg-026-u",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "error_family": "l2_learner_writing",
+        "sentence": "This will give rise to a holistic understanding .",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9728
+      },
+      {
+        "item_id": "jfleg-037-u",
+        "dataset": "jfleg_stratified",
+        "category": "jfleg_l2_learner",
+        "error_family": "l2_learner_writing",
+        "sentence": "The older man would prefer to enjoy all the time he has , remembering that we live only once .",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9484
+      },
+      {
+        "item_id": "cola-001-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "As you eat the most, you want the least.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.91
+      },
+      {
+        "item_id": "cola-003-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "The box contained the ball from the tree.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.5103
+      },
+      {
+        "item_id": "cola-011-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "I live at the place where Route 150 crosses the Hudson River and my dad lives at it too.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9579
+      },
+      {
+        "item_id": "cola-013-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "The younger woman might have been tall and, and the older one definitely was, blond.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.7146
+      },
+      {
+        "item_id": "cola-014-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "That the cops spoke to the janitor about it yesterday is terrible, that robbery.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.8465
+      },
+      {
+        "item_id": "cola-015-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "No writer, nor any playwright, meets in Vienna.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.8812
+      },
+      {
+        "item_id": "cola-016-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "No one can forgive that comment to you.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.5977
+      },
+      {
+        "item_id": "cola-021-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "Herman whipped the sugar and the cream.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.646
+      },
+      {
+        "item_id": "cola-022-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "I shaped a loaf.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.7223
+      },
+      {
+        "item_id": "cola-023-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "Cynthia chewed.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.5639
+      },
+      {
+        "item_id": "cola-024-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "I squeaked the door.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9376
+      },
+      {
+        "item_id": "cola-035-u",
+        "dataset": "cola_stratified",
+        "category": "cola_acceptability",
+        "error_family": "cola_general_acceptability",
+        "sentence": "Who achieved the best result was Angela.",
+        "rules_verdict": "grammatical",
+        "hybrid_verdict": "grammatical",
+        "cola_prob": 0.9721
+      }
+    ]
+  },
+  "section_512": {
+    "book_excluded_counts": {
+      "non_img_or_missing": 28,
+      "incorrect_contrast_example": 6,
+      "partial_subtree_fixture": 1,
+      "legacy_v1_sentence_label": 1
+    },
+    "book_production_lookup": {
+      "n_complete_img": 216,
+      "n_normalized": 216,
+      "reference_path_matches": 216,
+      "exact_parseval_matches": 216
+    },
+    "book_final_d1_bypass_full": {
+      "n_total": 216,
+      "n_normalized": 187,
+      "normalization_rate": 0.8657,
+      "n_working_fallback": 29,
+      "n_unresolved": 29,
+      "n_yield_aligned": 174,
+      "gold_constituents": 939,
+      "pred_constituents": 1481,
+      "labeled_matches": 843,
+      "unlabeled_matches": 892,
+      "labeled_precision": 0.5692,
+      "labeled_recall": 0.8978,
+      "labeled_f1": 0.6967,
+      "unlabeled_precision": 0.6023,
+      "unlabeled_recall": 0.9499,
+      "unlabeled_f1": 0.7372,
+      "exact_matches": 31,
+      "exact_rate_over_aligned": 0.1782,
+      "exact_rate_over_total": 0.1435,
+      "total_label_errors": 49,
+      "total_boundary_only_pred": 544,
+      "total_boundary_only_gold": 36,
+      "total_extra_nom_or_bar": 234
+    },
+    "book_final_d1_bypass_triangle_aware": {
+      "n_total": 216,
+      "n_normalized": 187,
+      "normalization_rate": 0.8657,
+      "n_working_fallback": 29,
+      "n_unresolved": 29,
+      "n_yield_aligned": 174,
+      "gold_constituents": 939,
+      "pred_constituents": 1044,
+      "labeled_matches": 843,
+      "unlabeled_matches": 892,
+      "labeled_precision": 0.8075,
+      "labeled_recall": 0.8978,
+      "labeled_f1": 0.8502,
+      "unlabeled_precision": 0.8544,
+      "unlabeled_recall": 0.9499,
+      "unlabeled_f1": 0.8996,
+      "exact_matches": 97,
+      "exact_rate_over_aligned": 0.5575,
+      "exact_rate_over_total": 0.4491,
+      "total_label_errors": 49,
+      "total_boundary_only_pred": 107,
+      "total_boundary_only_gold": 36,
+      "total_extra_nom_or_bar": 82
+    },
+    "book_final_d1_bypass_nontriangle_subset": {
+      "n_total": 106,
+      "n_normalized": 77,
+      "normalization_rate": 0.7264,
+      "n_working_fallback": 29,
+      "n_unresolved": 29,
+      "n_yield_aligned": 74,
+      "gold_constituents": 322,
+      "pred_constituents": 398,
+      "labeled_matches": 256,
+      "unlabeled_matches": 301,
+      "labeled_precision": 0.6432,
+      "labeled_recall": 0.795,
+      "labeled_f1": 0.7111,
+      "unlabeled_precision": 0.7563,
+      "unlabeled_recall": 0.9348,
+      "unlabeled_f1": 0.8361,
+      "exact_matches": 31,
+      "exact_rate_over_aligned": 0.4189,
+      "exact_rate_over_total": 0.2925,
+      "total_label_errors": 45,
+      "total_boundary_only_pred": 80,
+      "total_boundary_only_gold": 17,
+      "total_extra_nom_or_bar": 63
+    },
+    "book_ch7_to_ch10_full": {
+      "n_total": 115,
+      "n_normalized": 95,
+      "normalization_rate": 0.8261,
+      "n_working_fallback": 20,
+      "n_unresolved": 20,
+      "n_yield_aligned": 87,
+      "gold_constituents": 545,
+      "pred_constituents": 793,
+      "labeled_matches": 509,
+      "unlabeled_matches": 514,
+      "labeled_precision": 0.6419,
+      "labeled_recall": 0.9339,
+      "labeled_f1": 0.7608,
+      "unlabeled_precision": 0.6482,
+      "unlabeled_recall": 0.9431,
+      "unlabeled_f1": 0.7683,
+      "exact_matches": 18,
+      "exact_rate_over_aligned": 0.2069,
+      "exact_rate_over_total": 0.1565,
+      "total_label_errors": 5,
+      "total_boundary_only_pred": 250,
+      "total_boundary_only_gold": 20,
+      "total_extra_nom_or_bar": 96
+    },
+    "book_ch7_to_ch10_triangle_aware": {
+      "n_total": 115,
+      "n_normalized": 95,
+      "normalization_rate": 0.8261,
+      "n_working_fallback": 20,
+      "n_unresolved": 20,
+      "n_yield_aligned": 87,
+      "gold_constituents": 545,
+      "pred_constituents": 585,
+      "labeled_matches": 509,
+      "unlabeled_matches": 514,
+      "labeled_precision": 0.8701,
+      "labeled_recall": 0.9339,
+      "labeled_f1": 0.9009,
+      "unlabeled_precision": 0.8786,
+      "unlabeled_recall": 0.9431,
+      "unlabeled_f1": 0.9097,
+      "exact_matches": 42,
+      "exact_rate_over_aligned": 0.4828,
+      "exact_rate_over_total": 0.3652,
+      "total_label_errors": 5,
+      "total_boundary_only_pred": 42,
+      "total_boundary_only_gold": 20,
+      "total_extra_nom_or_bar": 38
+    },
+    "book_ch7_to_ch10_nontriangle": {
+      "n_total": 63,
+      "n_normalized": 43,
+      "normalization_rate": 0.6825,
+      "n_working_fallback": 20,
+      "n_unresolved": 20,
+      "n_yield_aligned": 41,
+      "gold_constituents": 224,
+      "pred_constituents": 241,
+      "labeled_matches": 211,
+      "unlabeled_matches": 212,
+      "labeled_precision": 0.8755,
+      "labeled_recall": 0.942,
+      "labeled_f1": 0.9075,
+      "unlabeled_precision": 0.8797,
+      "unlabeled_recall": 0.9464,
+      "unlabeled_f1": 0.9118,
+      "exact_matches": 18,
+      "exact_rate_over_aligned": 0.439,
+      "exact_rate_over_total": 0.2857,
+      "total_label_errors": 1,
+      "total_boundary_only_pred": 22,
+      "total_boundary_only_gold": 8,
+      "total_extra_nom_or_bar": 23
+    },
+    "book_ch2_v2_shell_bypass": {
+      "n_total": 13,
+      "n_normalized": 2,
+      "normalization_rate": 0.1538,
+      "n_working_fallback": 0,
+      "n_unresolved": 11,
+      "n_yield_aligned": 2,
+      "gold_constituents": 6,
+      "pred_constituents": 6,
+      "labeled_matches": 6,
+      "unlabeled_matches": 6,
+      "labeled_precision": 1.0,
+      "labeled_recall": 1.0,
+      "labeled_f1": 1.0,
+      "unlabeled_precision": 1.0,
+      "unlabeled_recall": 1.0,
+      "unlabeled_f1": 1.0,
+      "exact_matches": 2,
+      "exact_rate_over_aligned": 1.0,
+      "exact_rate_over_total": 0.1538,
+      "total_label_errors": 0,
+      "total_boundary_only_pred": 0,
+      "total_boundary_only_gold": 0,
+      "total_extra_nom_or_bar": 0
+    },
+    "by_chapter_full": {
+      "1": {
+        "n_total": 6,
+        "n_normalized": 6,
+        "normalization_rate": 1.0,
+        "n_working_fallback": 0,
+        "n_unresolved": 0,
+        "n_yield_aligned": 6,
+        "gold_constituents": 22,
+        "pred_constituents": 49,
+        "labeled_matches": 3,
+        "unlabeled_matches": 21,
+        "labeled_precision": 0.0612,
+        "labeled_recall": 0.1364,
+        "labeled_f1": 0.0845,
+        "unlabeled_precision": 0.4286,
+        "unlabeled_recall": 0.9545,
+        "unlabeled_f1": 0.5915,
+        "exact_matches": 0,
+        "exact_rate_over_aligned": 0.0,
+        "exact_rate_over_total": 0.0,
+        "total_label_errors": 18,
+        "total_boundary_only_pred": 24,
+        "total_boundary_only_gold": 1,
+        "total_extra_nom_or_bar": 15
+      },
+      "2": {
+        "n_total": 13,
+        "n_normalized": 12,
+        "normalization_rate": 0.9231,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 12,
+        "gold_constituents": 35,
+        "pred_constituents": 80,
+        "labeled_matches": 6,
+        "unlabeled_matches": 30,
+        "labeled_precision": 0.075,
+        "labeled_recall": 0.1714,
+        "labeled_f1": 0.1043,
+        "unlabeled_precision": 0.375,
+        "unlabeled_recall": 0.8571,
+        "unlabeled_f1": 0.5217,
+        "exact_matches": 0,
+        "exact_rate_over_aligned": 0.0,
+        "exact_rate_over_total": 0.0,
+        "total_label_errors": 24,
+        "total_boundary_only_pred": 44,
+        "total_boundary_only_gold": 5,
+        "total_extra_nom_or_bar": 27
+      },
+      "3": {
+        "n_total": 19,
+        "n_normalized": 18,
+        "normalization_rate": 0.9474,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 18,
+        "gold_constituents": 51,
+        "pred_constituents": 76,
+        "labeled_matches": 46,
+        "unlabeled_matches": 48,
+        "labeled_precision": 0.6053,
+        "labeled_recall": 0.902,
+        "labeled_f1": 0.7244,
+        "unlabeled_precision": 0.6316,
+        "unlabeled_recall": 0.9412,
+        "unlabeled_f1": 0.7559,
+        "exact_matches": 9,
+        "exact_rate_over_aligned": 0.5,
+        "exact_rate_over_total": 0.4737,
+        "total_label_errors": 2,
+        "total_boundary_only_pred": 28,
+        "total_boundary_only_gold": 3,
+        "total_extra_nom_or_bar": 11
+      },
+      "4": {
+        "n_total": 15,
+        "n_normalized": 14,
+        "normalization_rate": 0.9333,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 13,
+        "gold_constituents": 55,
+        "pred_constituents": 116,
+        "labeled_matches": 55,
+        "unlabeled_matches": 55,
+        "labeled_precision": 0.4741,
+        "labeled_recall": 1.0,
+        "labeled_f1": 0.6433,
+        "unlabeled_precision": 0.4741,
+        "unlabeled_recall": 1.0,
+        "unlabeled_f1": 0.6433,
+        "exact_matches": 1,
+        "exact_rate_over_aligned": 0.0769,
+        "exact_rate_over_total": 0.0667,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 60,
+        "total_boundary_only_gold": 0,
+        "total_extra_nom_or_bar": 27
+      },
+      "5": {
+        "n_total": 22,
+        "n_normalized": 21,
+        "normalization_rate": 0.9545,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 18,
+        "gold_constituents": 104,
+        "pred_constituents": 189,
+        "labeled_matches": 101,
+        "unlabeled_matches": 101,
+        "labeled_precision": 0.5344,
+        "labeled_recall": 0.9712,
+        "labeled_f1": 0.6894,
+        "unlabeled_precision": 0.5344,
+        "unlabeled_recall": 0.9712,
+        "unlabeled_f1": 0.6894,
+        "exact_matches": 0,
+        "exact_rate_over_aligned": 0.0,
+        "exact_rate_over_total": 0.0,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 86,
+        "total_boundary_only_gold": 3,
+        "total_extra_nom_or_bar": 35
+      },
+      "6": {
+        "n_total": 26,
+        "n_normalized": 21,
+        "normalization_rate": 0.8077,
+        "n_working_fallback": 5,
+        "n_unresolved": 5,
+        "n_yield_aligned": 20,
+        "gold_constituents": 127,
+        "pred_constituents": 178,
+        "labeled_matches": 123,
+        "unlabeled_matches": 123,
+        "labeled_precision": 0.691,
+        "labeled_recall": 0.9685,
+        "labeled_f1": 0.8066,
+        "unlabeled_precision": 0.691,
+        "unlabeled_recall": 0.9685,
+        "unlabeled_f1": 0.8066,
+        "exact_matches": 3,
+        "exact_rate_over_aligned": 0.15,
+        "exact_rate_over_total": 0.1154,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 52,
+        "total_boundary_only_gold": 4,
+        "total_extra_nom_or_bar": 23
+      },
+      "7": {
+        "n_total": 46,
+        "n_normalized": 45,
+        "normalization_rate": 0.9783,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 41,
+        "gold_constituents": 199,
+        "pred_constituents": 239,
+        "labeled_matches": 190,
+        "unlabeled_matches": 191,
+        "labeled_precision": 0.795,
+        "labeled_recall": 0.9548,
+        "labeled_f1": 0.8676,
+        "unlabeled_precision": 0.7992,
+        "unlabeled_recall": 0.9598,
+        "unlabeled_f1": 0.8721,
+        "exact_matches": 16,
+        "exact_rate_over_aligned": 0.3902,
+        "exact_rate_over_total": 0.3478,
+        "total_label_errors": 1,
+        "total_boundary_only_pred": 43,
+        "total_boundary_only_gold": 6,
+        "total_extra_nom_or_bar": 31
+      },
+      "8": {
+        "n_total": 33,
+        "n_normalized": 25,
+        "normalization_rate": 0.7576,
+        "n_working_fallback": 8,
+        "n_unresolved": 8,
+        "n_yield_aligned": 21,
+        "gold_constituents": 148,
+        "pred_constituents": 288,
+        "labeled_matches": 130,
+        "unlabeled_matches": 134,
+        "labeled_precision": 0.4514,
+        "labeled_recall": 0.8784,
+        "labeled_f1": 0.5963,
+        "unlabeled_precision": 0.4653,
+        "unlabeled_recall": 0.9054,
+        "unlabeled_f1": 0.6147,
+        "exact_matches": 0,
+        "exact_rate_over_aligned": 0.0,
+        "exact_rate_over_total": 0.0,
+        "total_label_errors": 4,
+        "total_boundary_only_pred": 144,
+        "total_boundary_only_gold": 9,
+        "total_extra_nom_or_bar": 40
+      },
+      "9": {
+        "n_total": 20,
+        "n_normalized": 15,
+        "normalization_rate": 0.75,
+        "n_working_fallback": 5,
+        "n_unresolved": 5,
+        "n_yield_aligned": 15,
+        "gold_constituents": 121,
+        "pred_constituents": 167,
+        "labeled_matches": 115,
+        "unlabeled_matches": 115,
+        "labeled_precision": 0.6886,
+        "labeled_recall": 0.9504,
+        "labeled_f1": 0.7986,
+        "unlabeled_precision": 0.6886,
+        "unlabeled_recall": 0.9504,
+        "unlabeled_f1": 0.7986,
+        "exact_matches": 1,
+        "exact_rate_over_aligned": 0.0667,
+        "exact_rate_over_total": 0.05,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 44,
+        "total_boundary_only_gold": 4,
+        "total_extra_nom_or_bar": 15
+      },
+      "10": {
+        "n_total": 16,
+        "n_normalized": 10,
+        "normalization_rate": 0.625,
+        "n_working_fallback": 6,
+        "n_unresolved": 6,
+        "n_yield_aligned": 10,
+        "gold_constituents": 77,
+        "pred_constituents": 99,
+        "labeled_matches": 74,
+        "unlabeled_matches": 74,
+        "labeled_precision": 0.7475,
+        "labeled_recall": 0.961,
+        "labeled_f1": 0.8409,
+        "unlabeled_precision": 0.7475,
+        "unlabeled_recall": 0.961,
+        "unlabeled_f1": 0.8409,
+        "exact_matches": 1,
+        "exact_rate_over_aligned": 0.1,
+        "exact_rate_over_total": 0.0625,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 19,
+        "total_boundary_only_gold": 1,
+        "total_extra_nom_or_bar": 10
+      }
+    },
+    "by_chapter_triangle_aware": {
+      "1": {
+        "n_total": 6,
+        "n_normalized": 6,
+        "normalization_rate": 1.0,
+        "n_working_fallback": 0,
+        "n_unresolved": 0,
+        "n_yield_aligned": 6,
+        "gold_constituents": 22,
+        "pred_constituents": 49,
+        "labeled_matches": 3,
+        "unlabeled_matches": 21,
+        "labeled_precision": 0.0612,
+        "labeled_recall": 0.1364,
+        "labeled_f1": 0.0845,
+        "unlabeled_precision": 0.4286,
+        "unlabeled_recall": 0.9545,
+        "unlabeled_f1": 0.5915,
+        "exact_matches": 0,
+        "exact_rate_over_aligned": 0.0,
+        "exact_rate_over_total": 0.0,
+        "total_label_errors": 18,
+        "total_boundary_only_pred": 24,
+        "total_boundary_only_gold": 1,
+        "total_extra_nom_or_bar": 15
+      },
+      "2": {
+        "n_total": 13,
+        "n_normalized": 12,
+        "normalization_rate": 0.9231,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 12,
+        "gold_constituents": 35,
+        "pred_constituents": 65,
+        "labeled_matches": 6,
+        "unlabeled_matches": 30,
+        "labeled_precision": 0.0923,
+        "labeled_recall": 0.1714,
+        "labeled_f1": 0.12,
+        "unlabeled_precision": 0.4615,
+        "unlabeled_recall": 0.8571,
+        "unlabeled_f1": 0.6,
+        "exact_matches": 2,
+        "exact_rate_over_aligned": 0.1667,
+        "exact_rate_over_total": 0.1538,
+        "total_label_errors": 24,
+        "total_boundary_only_pred": 29,
+        "total_boundary_only_gold": 5,
+        "total_extra_nom_or_bar": 23
+      },
+      "3": {
+        "n_total": 19,
+        "n_normalized": 18,
+        "normalization_rate": 0.9474,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 18,
+        "gold_constituents": 51,
+        "pred_constituents": 53,
+        "labeled_matches": 46,
+        "unlabeled_matches": 48,
+        "labeled_precision": 0.8679,
+        "labeled_recall": 0.902,
+        "labeled_f1": 0.8846,
+        "unlabeled_precision": 0.9057,
+        "unlabeled_recall": 0.9412,
+        "unlabeled_f1": 0.9231,
+        "exact_matches": 14,
+        "exact_rate_over_aligned": 0.7778,
+        "exact_rate_over_total": 0.7368,
+        "total_label_errors": 2,
+        "total_boundary_only_pred": 5,
+        "total_boundary_only_gold": 3,
+        "total_extra_nom_or_bar": 2
+      },
+      "4": {
+        "n_total": 15,
+        "n_normalized": 14,
+        "normalization_rate": 0.9333,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 13,
+        "gold_constituents": 55,
+        "pred_constituents": 57,
+        "labeled_matches": 55,
+        "unlabeled_matches": 55,
+        "labeled_precision": 0.9649,
+        "labeled_recall": 1.0,
+        "labeled_f1": 0.9821,
+        "unlabeled_precision": 0.9649,
+        "unlabeled_recall": 1.0,
+        "unlabeled_f1": 0.9821,
+        "exact_matches": 11,
+        "exact_rate_over_aligned": 0.8462,
+        "exact_rate_over_total": 0.7333,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 1,
+        "total_boundary_only_gold": 0,
+        "total_extra_nom_or_bar": 1
+      },
+      "5": {
+        "n_total": 22,
+        "n_normalized": 21,
+        "normalization_rate": 0.9545,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 18,
+        "gold_constituents": 104,
+        "pred_constituents": 106,
+        "labeled_matches": 101,
+        "unlabeled_matches": 101,
+        "labeled_precision": 0.9528,
+        "labeled_recall": 0.9712,
+        "labeled_f1": 0.9619,
+        "unlabeled_precision": 0.9528,
+        "unlabeled_recall": 0.9712,
+        "unlabeled_f1": 0.9619,
+        "exact_matches": 14,
+        "exact_rate_over_aligned": 0.7778,
+        "exact_rate_over_total": 0.6364,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 3,
+        "total_boundary_only_gold": 3,
+        "total_extra_nom_or_bar": 2
+      },
+      "6": {
+        "n_total": 26,
+        "n_normalized": 21,
+        "normalization_rate": 0.8077,
+        "n_working_fallback": 5,
+        "n_unresolved": 5,
+        "n_yield_aligned": 20,
+        "gold_constituents": 127,
+        "pred_constituents": 129,
+        "labeled_matches": 123,
+        "unlabeled_matches": 123,
+        "labeled_precision": 0.9535,
+        "labeled_recall": 0.9685,
+        "labeled_f1": 0.9609,
+        "unlabeled_precision": 0.9535,
+        "unlabeled_recall": 0.9685,
+        "unlabeled_f1": 0.9609,
+        "exact_matches": 14,
+        "exact_rate_over_aligned": 0.7,
+        "exact_rate_over_total": 0.5385,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 3,
+        "total_boundary_only_gold": 4,
+        "total_extra_nom_or_bar": 1
+      },
+      "7": {
+        "n_total": 46,
+        "n_normalized": 45,
+        "normalization_rate": 0.9783,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 41,
+        "gold_constituents": 199,
+        "pred_constituents": 218,
+        "labeled_matches": 190,
+        "unlabeled_matches": 191,
+        "labeled_precision": 0.8716,
+        "labeled_recall": 0.9548,
+        "labeled_f1": 0.9113,
+        "unlabeled_precision": 0.8761,
+        "unlabeled_recall": 0.9598,
+        "unlabeled_f1": 0.9161,
+        "exact_matches": 20,
+        "exact_rate_over_aligned": 0.4878,
+        "exact_rate_over_total": 0.4348,
+        "total_label_errors": 1,
+        "total_boundary_only_pred": 22,
+        "total_boundary_only_gold": 6,
+        "total_extra_nom_or_bar": 24
+      },
+      "8": {
+        "n_total": 33,
+        "n_normalized": 25,
+        "normalization_rate": 0.7576,
+        "n_working_fallback": 8,
+        "n_unresolved": 8,
+        "n_yield_aligned": 21,
+        "gold_constituents": 148,
+        "pred_constituents": 155,
+        "labeled_matches": 130,
+        "unlabeled_matches": 134,
+        "labeled_precision": 0.8387,
+        "labeled_recall": 0.8784,
+        "labeled_f1": 0.8581,
+        "unlabeled_precision": 0.8645,
+        "unlabeled_recall": 0.9054,
+        "unlabeled_f1": 0.8845,
+        "exact_matches": 12,
+        "exact_rate_over_aligned": 0.5714,
+        "exact_rate_over_total": 0.3636,
+        "total_label_errors": 4,
+        "total_boundary_only_pred": 11,
+        "total_boundary_only_gold": 9,
+        "total_extra_nom_or_bar": 10
+      },
+      "9": {
+        "n_total": 20,
+        "n_normalized": 15,
+        "normalization_rate": 0.75,
+        "n_working_fallback": 5,
+        "n_unresolved": 5,
+        "n_yield_aligned": 15,
+        "gold_constituents": 121,
+        "pred_constituents": 129,
+        "labeled_matches": 115,
+        "unlabeled_matches": 115,
+        "labeled_precision": 0.8915,
+        "labeled_recall": 0.9504,
+        "labeled_f1": 0.92,
+        "unlabeled_precision": 0.8915,
+        "unlabeled_recall": 0.9504,
+        "unlabeled_f1": 0.92,
+        "exact_matches": 5,
+        "exact_rate_over_aligned": 0.3333,
+        "exact_rate_over_total": 0.25,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 6,
+        "total_boundary_only_gold": 4,
+        "total_extra_nom_or_bar": 1
+      },
+      "10": {
+        "n_total": 16,
+        "n_normalized": 10,
+        "normalization_rate": 0.625,
+        "n_working_fallback": 6,
+        "n_unresolved": 6,
+        "n_yield_aligned": 10,
+        "gold_constituents": 77,
+        "pred_constituents": 83,
+        "labeled_matches": 74,
+        "unlabeled_matches": 74,
+        "labeled_precision": 0.8916,
+        "labeled_recall": 0.961,
+        "labeled_f1": 0.925,
+        "unlabeled_precision": 0.8916,
+        "unlabeled_recall": 0.961,
+        "unlabeled_f1": 0.925,
+        "exact_matches": 5,
+        "exact_rate_over_aligned": 0.5,
+        "exact_rate_over_total": 0.3125,
+        "total_label_errors": 0,
+        "total_boundary_only_pred": 3,
+        "total_boundary_only_gold": 1,
+        "total_extra_nom_or_bar": 3
+      }
+    },
+    "unresolved_reasons": {
+      "PROFILE_MAPPING_NOT_APPROVED": 29
+    },
+    "mismatch_examples": [
+      {
+        "record_id": "ch1-25b",
+        "chapter": 1,
+        "sentence": "beside a stream",
+        "has_multiword_triangle": false,
+        "label_errors": 2,
+        "boundary_only_pred": 2,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "Phrase"
+          ],
+          [
+            0,
+            3,
+            "Phrase"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            1,
+            2,
+            "DET"
+          ],
+          [
+            2,
+            3,
+            "NOM"
+          ],
+          [
+            1,
+            3,
+            "NP"
+          ],
+          [
+            0,
+            3,
+            "PP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch1-ex3a",
+        "chapter": 1,
+        "sentence": "their rather dubious jokes",
+        "has_multiword_triangle": false,
+        "label_errors": 3,
+        "boundary_only_pred": 2,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "Phrase"
+          ],
+          [
+            1,
+            4,
+            "Phrase"
+          ],
+          [
+            0,
+            4,
+            "Phrase"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "DET"
+          ],
+          [
+            1,
+            3,
+            "AP"
+          ],
+          [
+            3,
+            4,
+            "NOM"
+          ],
+          [
+            1,
+            4,
+            "NOM"
+          ],
+          [
+            0,
+            4,
+            "NP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch1-ex3b",
+        "chapter": 1,
+        "sentence": "men from the Ministry",
+        "has_multiword_triangle": false,
+        "label_errors": 3,
+        "boundary_only_pred": 3,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            2,
+            4,
+            "Phrase"
+          ],
+          [
+            1,
+            4,
+            "Phrase"
+          ],
+          [
+            0,
+            4,
+            "Phrase"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "NOM"
+          ],
+          [
+            2,
+            3,
+            "DET"
+          ],
+          [
+            3,
+            4,
+            "NOM"
+          ],
+          [
+            2,
+            4,
+            "NP"
+          ],
+          [
+            1,
+            4,
+            "PP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch1-ex6a",
+        "chapter": 1,
+        "sentence": "Old Sam sunbathed beside a stream",
+        "has_multiword_triangle": false,
+        "label_errors": 4,
+        "boundary_only_pred": 5,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            0,
+            2,
+            "Phrase"
+          ],
+          [
+            4,
+            6,
+            "Phrase"
+          ],
+          [
+            3,
+            6,
+            "Phrase"
+          ],
+          [
+            2,
+            6,
+            "Phrase"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "AP"
+          ],
+          [
+            1,
+            2,
+            "NOM"
+          ],
+          [
+            0,
+            2,
+            "NOM"
+          ],
+          [
+            0,
+            2,
+            "NP"
+          ],
+          [
+            2,
+            3,
+            "VP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch1-ex6b",
+        "chapter": 1,
+        "sentence": "Old Sam sunbathed beside a stream",
+        "has_multiword_triangle": false,
+        "label_errors": 3,
+        "boundary_only_pred": 6,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            0,
+            2,
+            "Phrase"
+          ],
+          [
+            0,
+            3,
+            "Phrase"
+          ],
+          [
+            4,
+            6,
+            "Phrase"
+          ],
+          [
+            3,
+            6,
+            "Phrase"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "AP"
+          ],
+          [
+            1,
+            2,
+            "NOM"
+          ],
+          [
+            0,
+            2,
+            "NOM"
+          ],
+          [
+            0,
+            2,
+            "NP"
+          ],
+          [
+            2,
+            3,
+            "VP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch1-ex6c",
+        "chapter": 1,
+        "sentence": "Old Sam sunbathed beside a stream",
+        "has_multiword_triangle": false,
+        "label_errors": 3,
+        "boundary_only_pred": 6,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            0,
+            2,
+            "Phrase"
+          ],
+          [
+            4,
+            6,
+            "Phrase"
+          ],
+          [
+            3,
+            6,
+            "Phrase"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "AP"
+          ],
+          [
+            1,
+            2,
+            "NOM"
+          ],
+          [
+            0,
+            2,
+            "NOM"
+          ],
+          [
+            0,
+            2,
+            "NP"
+          ],
+          [
+            2,
+            3,
+            "VP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-36",
+        "chapter": 2,
+        "sentence": "their rather dubious jokes",
+        "has_multiword_triangle": false,
+        "label_errors": 3,
+        "boundary_only_pred": 2,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "PHRASE-c"
+          ],
+          [
+            1,
+            4,
+            "PHRASE-b"
+          ],
+          [
+            0,
+            4,
+            "PHRASE-a"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "DET"
+          ],
+          [
+            1,
+            3,
+            "AP"
+          ],
+          [
+            3,
+            4,
+            "NOM"
+          ],
+          [
+            1,
+            4,
+            "NOM"
+          ],
+          [
+            0,
+            4,
+            "NP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-42",
+        "chapter": 2,
+        "sentence": "their dubious jokes",
+        "has_multiword_triangle": false,
+        "label_errors": 2,
+        "boundary_only_pred": 3,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "PHRASE-b"
+          ],
+          [
+            0,
+            3,
+            "PHRASE-a"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "DET"
+          ],
+          [
+            1,
+            2,
+            "AP"
+          ],
+          [
+            2,
+            3,
+            "NOM"
+          ],
+          [
+            1,
+            3,
+            "NOM"
+          ],
+          [
+            0,
+            3,
+            "NP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-43",
+        "chapter": 2,
+        "sentence": "beside a stream",
+        "has_multiword_triangle": false,
+        "label_errors": 2,
+        "boundary_only_pred": 2,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "PHRASE-b"
+          ],
+          [
+            0,
+            3,
+            "PHRASE-a"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            1,
+            2,
+            "DET"
+          ],
+          [
+            2,
+            3,
+            "NOM"
+          ],
+          [
+            1,
+            3,
+            "NP"
+          ],
+          [
+            0,
+            3,
+            "PP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-ex5a",
+        "chapter": 2,
+        "sentence": "the old Romanian history teacher",
+        "has_multiword_triangle": false,
+        "label_errors": 4,
+        "boundary_only_pred": 3,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            3,
+            5,
+            "PHRASE"
+          ],
+          [
+            2,
+            5,
+            "PHRASE"
+          ],
+          [
+            1,
+            5,
+            "PHRASE"
+          ],
+          [
+            0,
+            5,
+            "PHRASE"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "DET"
+          ],
+          [
+            1,
+            2,
+            "AP"
+          ],
+          [
+            2,
+            3,
+            "AP"
+          ],
+          [
+            3,
+            5,
+            "N"
+          ],
+          [
+            3,
+            5,
+            "NOM"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-ex5b",
+        "chapter": 2,
+        "sentence": "the old Romanian history teacher",
+        "has_multiword_triangle": false,
+        "label_errors": 2,
+        "boundary_only_pred": 6,
+        "boundary_only_gold": 2,
+        "gold_only_spans": [
+          [
+            2,
+            4,
+            "PHRASE"
+          ],
+          [
+            1,
+            4,
+            "PHRASE"
+          ],
+          [
+            1,
+            5,
+            "PHRASE"
+          ],
+          [
+            0,
+            5,
+            "PHRASE"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "DET"
+          ],
+          [
+            1,
+            2,
+            "AP"
+          ],
+          [
+            2,
+            3,
+            "AP"
+          ],
+          [
+            3,
+            5,
+            "N"
+          ],
+          [
+            3,
+            5,
+            "NOM"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-ex5c",
+        "chapter": 2,
+        "sentence": "the old Romanian history teacher",
+        "has_multiword_triangle": false,
+        "label_errors": 3,
+        "boundary_only_pred": 5,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            2,
+            4,
+            "PHRASE"
+          ],
+          [
+            2,
+            5,
+            "PHRASE"
+          ],
+          [
+            1,
+            5,
+            "PHRASE"
+          ],
+          [
+            0,
+            5,
+            "PHRASE"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "DET"
+          ],
+          [
+            1,
+            2,
+            "AP"
+          ],
+          [
+            2,
+            3,
+            "AP"
+          ],
+          [
+            3,
+            5,
+            "N"
+          ],
+          [
+            3,
+            5,
+            "NOM"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-ex3a",
+        "chapter": 2,
+        "sentence": "more exciting ideas",
+        "has_multiword_triangle": false,
+        "label_errors": 1,
+        "boundary_only_pred": 2,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "PHRASE"
+          ],
+          [
+            0,
+            3,
+            "PHRASE"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            2,
+            "AP"
+          ],
+          [
+            2,
+            3,
+            "NOM"
+          ],
+          [
+            0,
+            3,
+            "NOM"
+          ],
+          [
+            0,
+            3,
+            "NP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-ex3b",
+        "chapter": 2,
+        "sentence": "more exciting ideas",
+        "has_multiword_triangle": false,
+        "label_errors": 2,
+        "boundary_only_pred": 1,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            0,
+            2,
+            "PHRASE"
+          ],
+          [
+            0,
+            3,
+            "PHRASE"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            2,
+            "AP"
+          ],
+          [
+            2,
+            3,
+            "NOM"
+          ],
+          [
+            0,
+            3,
+            "NOM"
+          ],
+          [
+            0,
+            3,
+            "NP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-ex4a",
+        "chapter": 2,
+        "sentence": "young car salesmen",
+        "has_multiword_triangle": false,
+        "label_errors": 2,
+        "boundary_only_pred": 1,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "PHRASE"
+          ],
+          [
+            0,
+            3,
+            "PHRASE"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "AP"
+          ],
+          [
+            1,
+            3,
+            "N"
+          ],
+          [
+            1,
+            3,
+            "NOM"
+          ],
+          [
+            0,
+            3,
+            "NOM"
+          ],
+          [
+            0,
+            3,
+            "NP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch2-ex5-3",
+        "chapter": 2,
+        "sentence": "the Old Romanian history teacher",
+        "has_multiword_triangle": false,
+        "label_errors": 3,
+        "boundary_only_pred": 4,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "PHRASE"
+          ],
+          [
+            3,
+            5,
+            "PHRASE"
+          ],
+          [
+            1,
+            5,
+            "PHRASE"
+          ],
+          [
+            0,
+            5,
+            "PHRASE"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "DET"
+          ],
+          [
+            1,
+            2,
+            "AP"
+          ],
+          [
+            2,
+            3,
+            "AP"
+          ],
+          [
+            3,
+            5,
+            "N"
+          ],
+          [
+            3,
+            5,
+            "NOM"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch3-7",
+        "chapter": 3,
+        "sentence": "their extremely subtle tactics",
+        "has_multiword_triangle": false,
+        "label_errors": 2,
+        "boundary_only_pred": 2,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "PHRASE-c"
+          ],
+          [
+            1,
+            4,
+            "PHRASE-b"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            1,
+            "DET"
+          ],
+          [
+            1,
+            3,
+            "AP"
+          ],
+          [
+            3,
+            4,
+            "NOM"
+          ],
+          [
+            1,
+            4,
+            "NOM"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch3-40b",
+        "chapter": 3,
+        "sentence": "too hot and stuffy",
+        "has_multiword_triangle": false,
+        "label_errors": 0,
+        "boundary_only_pred": 2,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            1,
+            4,
+            "A"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            0,
+            2,
+            "AP"
+          ],
+          [
+            3,
+            4,
+            "AP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch3-text-b",
+        "chapter": 3,
+        "sentence": "more obviously artificial",
+        "has_multiword_triangle": false,
+        "label_errors": 0,
+        "boundary_only_pred": 1,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            0,
+            2,
+            "AdvP"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            1,
+            2,
+            "AdvP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch3-ex4",
+        "chapter": 3,
+        "sentence": "so very touchy",
+        "has_multiword_triangle": false,
+        "label_errors": 0,
+        "boundary_only_pred": 0,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "AP"
+          ]
+        ],
+        "pred_only_spans": []
+      },
+      {
+        "record_id": "ch4-21",
+        "chapter": 4,
+        "sentence": "Phil dreads affectionate cats",
+        "has_multiword_triangle": true,
+        "label_errors": 0,
+        "boundary_only_pred": 0,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [],
+        "pred_only_spans": [
+          [
+            2,
+            4,
+            "NOM"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch4-ex4d",
+        "chapter": 4,
+        "sentence": "They voted the Grand Master out of office",
+        "has_multiword_triangle": true,
+        "label_errors": 0,
+        "boundary_only_pred": 1,
+        "boundary_only_gold": 0,
+        "gold_only_spans": [],
+        "pred_only_spans": [
+          [
+            1,
+            5,
+            "VP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch5-35",
+        "chapter": 5,
+        "sentence": "he called up the boss",
+        "has_multiword_triangle": true,
+        "label_errors": 0,
+        "boundary_only_pred": 0,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "V"
+          ]
+        ],
+        "pred_only_spans": []
+      },
+      {
+        "record_id": "ch5-55b",
+        "chapter": 5,
+        "sentence": "Buster admitted everything frankly",
+        "has_multiword_triangle": true,
+        "label_errors": 0,
+        "boundary_only_pred": 1,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            0,
+            3,
+            "S"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            1,
+            4,
+            "VP"
+          ]
+        ]
+      },
+      {
+        "record_id": "ch5-d3",
+        "chapter": 5,
+        "sentence": "She hardly slept last night",
+        "has_multiword_triangle": true,
+        "label_errors": 0,
+        "boundary_only_pred": 1,
+        "boundary_only_gold": 1,
+        "gold_only_spans": [
+          [
+            1,
+            3,
+            "VP"
+          ]
+        ],
+        "pred_only_spans": [
+          [
+            3,
+            5,
+            "NOM"
+          ],
+          [
+            2,
+            5,
+            "VP"
+          ]
+        ]
+      }
+    ],
+    "course_worked_examples": {
+      "provenance": "Codex — scoped AI source review; not human instructor sign-off",
+      "n": 10,
+      "full": {
+        "n_total": 10,
+        "n_normalized": 9,
+        "normalization_rate": 0.9,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 9,
+        "gold_constituents": 32,
+        "pred_constituents": 51,
+        "labeled_matches": 30,
+        "unlabeled_matches": 32,
+        "labeled_precision": 0.5882,
+        "labeled_recall": 0.9375,
+        "labeled_f1": 0.7229,
+        "unlabeled_precision": 0.6275,
+        "unlabeled_recall": 1.0,
+        "unlabeled_f1": 0.7711,
+        "exact_matches": 3,
+        "exact_rate_over_aligned": 0.3333,
+        "exact_rate_over_total": 0.3,
+        "total_label_errors": 2,
+        "total_boundary_only_pred": 19,
+        "total_boundary_only_gold": 0,
+        "total_extra_nom_or_bar": 7
+      },
+      "triangle_aware": {
+        "n_total": 10,
+        "n_normalized": 9,
+        "normalization_rate": 0.9,
+        "n_working_fallback": 1,
+        "n_unresolved": 1,
+        "n_yield_aligned": 9,
+        "gold_constituents": 32,
+        "pred_constituents": 32,
+        "labeled_matches": 30,
+        "unlabeled_matches": 32,
+        "labeled_precision": 0.9375,
+        "labeled_recall": 0.9375,
+        "labeled_f1": 0.9375,
+        "unlabeled_precision": 1.0,
+        "unlabeled_recall": 1.0,
+        "unlabeled_f1": 1.0,
+        "exact_matches": 8,
+        "exact_rate_over_aligned": 0.8889,
+        "exact_rate_over_total": 0.8,
+        "total_label_errors": 2,
+        "total_boundary_only_pred": 0,
+        "total_boundary_only_gold": 0,
+        "total_extra_nom_or_bar": 0
+      },
+      "rows": [
+        {
+          "lesson_id": "br-01",
+          "chapter": 1,
+          "sentence": "near the quiet garden",
+          "normalized": true,
+          "exact_full": false,
+          "exact_tri": false
+        },
+        {
+          "lesson_id": "br-02",
+          "chapter": 2,
+          "sentence": "The robins sing",
+          "normalized": true,
+          "exact_full": false,
+          "exact_tri": true
+        },
+        {
+          "lesson_id": "br-03",
+          "chapter": 3,
+          "sentence": "very cheerful",
+          "normalized": true,
+          "exact_full": true,
+          "exact_tri": true
+        },
+        {
+          "lesson_id": "br-04",
+          "chapter": 4,
+          "sentence": "Nora inspected the bridge",
+          "normalized": true,
+          "exact_full": false,
+          "exact_tri": true
+        },
+        {
+          "lesson_id": "br-05",
+          "chapter": 5,
+          "sentence": "Nora inspected the bridge in June",
+          "normalized": true,
+          "exact_full": false,
+          "exact_tri": true
+        },
+        {
+          "lesson_id": "br-06",
+          "chapter": 6,
+          "sentence": "Nora is inspecting the bridge",
+          "normalized": true,
+          "exact_full": false,
+          "exact_tri": true
+        },
+        {
+          "lesson_id": "br-07",
+          "chapter": 7,
+          "sentence": "those lanterns",
+          "normalized": true,
+          "exact_full": true,
+          "exact_tri": true
+        },
+        {
+          "lesson_id": "br-08",
+          "chapter": 8,
+          "sentence": "that Nora is inspecting the bridge",
+          "normalized": true,
+          "exact_full": false,
+          "exact_tri": true
+        },
+        {
+          "lesson_id": "br-09",
+          "chapter": 9,
+          "sentence": "What is Nora inspecting",
+          "normalized": true,
+          "exact_full": true,
+          "exact_tri": true
+        },
+        {
+          "lesson_id": "br-10",
+          "chapter": 10,
+          "sentence": "to inspect the bridge",
+          "normalized": false,
+          "exact_full": false,
+          "exact_tri": false
+        }
+      ]
+    },
+    "heldout_20_coverage_only": {
+      "n": 20,
+      "normalized": 20,
+      "working_tree": 0,
+      "unresolved": 0,
+      "gold_status": "DISQUALIFIED_AS_INDEPENDENT_GOLD (AI_DRAFT_OWNER_WAIVER; adapter-derived)"
+    },
+    "external_tree_coverage": {
+      "external_all_400": {
+        "n": 400,
+        "benepar_parse_ok": 400,
+        "benepar_parse_rate": 1.0,
+        "br_normalized": 284,
+        "br_normalized_rate": 0.71,
+        "br_working_tree_fallback": 115,
+        "br_unresolved_no_tree": 1,
+        "br_schema_valid_count": 284,
+        "br_schema_valid_rate_of_normalized": 1.0
+      },
+      "blimp_stratified": {
+        "n": 240,
+        "benepar_parse_ok": 240,
+        "benepar_parse_rate": 1.0,
+        "br_normalized": 198,
+        "br_normalized_rate": 0.825,
+        "br_working_tree_fallback": 42,
+        "br_unresolved_no_tree": 0,
+        "br_schema_valid_count": 198,
+        "br_schema_valid_rate_of_normalized": 1.0
+      },
+      "jfleg_stratified": {
+        "n": 80,
+        "benepar_parse_ok": 80,
+        "benepar_parse_rate": 1.0,
+        "br_normalized": 34,
+        "br_normalized_rate": 0.425,
+        "br_working_tree_fallback": 46,
+        "br_unresolved_no_tree": 0,
+        "br_schema_valid_count": 34,
+        "br_schema_valid_rate_of_normalized": 1.0
+      },
+      "cola_stratified": {
+        "n": 80,
+        "benepar_parse_ok": 80,
+        "benepar_parse_rate": 1.0,
+        "br_normalized": 52,
+        "br_normalized_rate": 0.65,
+        "br_working_tree_fallback": 27,
+        "br_unresolved_no_tree": 1,
+        "br_schema_valid_count": 52,
+        "br_schema_valid_rate_of_normalized": 1.0
+      },
+      "internal_minimal_pairs": {
+        "n": 52,
+        "benepar_parse_ok": 52,
+        "benepar_parse_rate": 1.0,
+        "br_normalized": 42,
+        "br_normalized_rate": 0.8077,
+        "br_working_tree_fallback": 10,
+        "br_unresolved_no_tree": 0,
+        "br_schema_valid_count": 42,
+        "br_schema_valid_rate_of_normalized": 1.0
+      }
+    }
+  },
+  "section_513": {
+    "summary": {
+      "n_total": 120,
+      "n_ok": 120,
+      "n_exec_error": 0,
+      "verdict_distribution": {
+        "grammatical": 68,
+        "unverified": 18,
+        "ungrammatical": 34
+      },
+      "verdict_parity_with_511": {
+        "checked": 120,
+        "matched": 120,
+        "rate": 1.0
+      },
+      "verdict_evidence_consistent": 120,
+      "verdict_evidence_consistent_rate": 1.0,
+      "display_status_truth_gating_ok": 120,
+      "display_status_truth_gating_rate": 1.0,
+      "sentences_with_error_explanations": 34,
+      "rule_grounded_all_count": 34,
+      "rule_grounded_rate": 1.0,
+      "surface_token_grounded_count": 34,
+      "surface_token_grounded_rate": 1.0,
+      "br_normalized_count": 93,
+      "br_schema_valid_count": 93,
+      "fact_graph_tree_grounded_count": 93,
+      "fact_graph_tree_grounded_rate": 1.0,
+      "total_node_explanations_generated": 1967,
+      "total_node_explanations_nonempty": 1967,
+      "total_duplicate_prose_within_sentence": 37,
+      "root_question_count": 2,
+      "root_question_called_subordinate_count": 0,
+      "corrections_generated": 15,
+      "corrections_differ_from_input": 15,
+      "corrections_reparse_whole_clean": 15,
+      "corrections_reparse_whole_clean_rate": 1.0,
+      "corrections_reparse_resolved_gt0": 15,
+      "corrections_reparse_introduced_new_error": 0,
+      "corrections_with_reference_count": 10,
+      "corrections_exact_match_reference": 9,
+      "error_explanation_flesch_mean": 72.7,
+      "error_explanation_flesch_median": 78.8,
+      "error_explanation_words_mean": 25.8,
+      "error_hygiene_flag_counts": {
+        "too-long": 1
+      },
+      "learner_node_hygiene_flag_counts": {},
+      "human_review_status": "UNMEASURED_BLOCKED_NO_COMPLETED_HUMAN_RATINGS"
+    },
+    "rapid_audit_24_results": [
+      {
+        "item_id": "audit24-01",
+        "category": "Intransitive",
+        "sentence": "The birds sing.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-02",
+        "category": "Transitive",
+        "sentence": "Nora inspected the bridge.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-03",
+        "category": "AP/degree",
+        "sentence": "The children seemed very cheerful.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-04",
+        "category": "Adjunct",
+        "sentence": "Nora inspected the bridge yesterday.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-05",
+        "category": "Double object",
+        "sentence": "They gave me the key.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-06",
+        "category": "PP complement",
+        "sentence": "They gave the key to me.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-07",
+        "category": "Perfect/progressive",
+        "sentence": "The researchers have been examining the evidence.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-08",
+        "category": "Passive",
+        "sentence": "The letter was read by Mara.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-09",
+        "category": "Modal",
+        "sentence": "She can go.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-10",
+        "category": "Extra infinitival marker",
+        "sentence": "She can to go.",
+        "gold_label": "ungrammatical",
+        "verdict": "ungrammatical",
+        "constraints": "C-MODAL-TO",
+        "corrected_sentence": "She can go.",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-11",
+        "category": "Agreement error",
+        "sentence": "The boy go to school.",
+        "gold_label": "ungrammatical",
+        "verdict": "ungrammatical",
+        "constraints": "C-SUBJECT-AGREEMENT",
+        "corrected_sentence": "The boy goes to school.",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-12",
+        "category": "Perfect form error",
+        "sentence": "She has went home.",
+        "gold_label": "ungrammatical",
+        "verdict": "ungrammatical",
+        "constraints": "C-VERB-FORM",
+        "corrected_sentence": "She has gone home.",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-13",
+        "category": "Wh-question",
+        "sentence": "What did Jon buy?",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-14",
+        "category": "Yes/no question",
+        "sentence": "Did Jon buy the book?",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-15",
+        "category": "Relative",
+        "sentence": "The book that she wrote is popular.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-16",
+        "category": "Embedded content",
+        "sentence": "She said that Jon left.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-17",
+        "category": "Nonfinite control",
+        "sentence": "She persuaded Mara to leave.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-18",
+        "category": "VP coordination",
+        "sentence": "She sings and dances.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-19",
+        "category": "Comparative",
+        "sentence": "She is taller than he is.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-20",
+        "category": "Clausal PP complement",
+        "sentence": "I saw him before he left.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-21",
+        "category": "Informal predicative case",
+        "sentence": "It’s me.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-22",
+        "category": "Notional agreement",
+        "sentence": "Three eggs is plenty.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-23",
+        "category": "Negation",
+        "sentence": "She did not leave.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      },
+      {
+        "item_id": "audit24-24",
+        "category": "Imperative",
+        "sentence": "Close the door.",
+        "gold_label": "grammatical",
+        "verdict": "grammatical",
+        "constraints": "",
+        "corrected_sentence": "",
+        "root_q_subordinate_bug": false,
+        "verdict_consistent": true,
+        "br_status": "normalized"
+      }
+    ],
+    "correction_failures": [],
+    "worksheet_strata_counts": {
+      "TP_rules_flagged": 16,
+      "FP_rules_flagged": 6,
+      "UNVERIFIED_gold_ungram": 12,
+      "UNVERIFIED_gold_gram": 6,
+      "FN_missed_ungram": 8,
+      "TN_clean_gram": 8
+    }
+  }
+}

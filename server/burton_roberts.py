@@ -10,6 +10,7 @@ JSON fixtures into the canonical envelope without modifying those fixtures.
 """
 from __future__ import annotations
 
+import copy
 from difflib import SequenceMatcher
 import hashlib
 import json
@@ -23,11 +24,13 @@ if __package__:
     from .final_d1_projection import Projection, ProjectionUnavailable
     from .br_native_grammar import audit_br_constructions
     from .br_native_chart import generate_br_chart_candidates
+    from .ruleset import be_past_pairs
 else:
     from final_d1_labels import final_d1_display_labels
     from final_d1_projection import Projection, ProjectionUnavailable
     from br_native_grammar import audit_br_constructions
     from br_native_chart import generate_br_chart_candidates
+    from ruleset import be_past_pairs
 
 SCHEMA_VERSION = "1.1.0"
 SUPPORTED_SCHEMA_VERSIONS = {"1.0.0", SCHEMA_VERSION}
@@ -192,7 +195,8 @@ def _is_raw_leaf(node: dict[str, Any]) -> bool:
 def _final_projection(raw_root, sentence, tokens, profile, analysis):
     """Build and validate a FINAL-D1 tree for the observed candidate structure."""
     raw_tokens = {row.get("i", index): row for index, row in enumerate(analysis.get("tokens") or [])}
-    lexical = [leaf.get("surface") for leaf in _raw_leaves(raw_root)
+    leaves = _raw_leaves(raw_root)
+    lexical = [leaf.get("surface") for leaf in leaves
                if not _is_parser_punctuation(leaf)]
     if lexical != [token["text"] for token in tokens]:
         raise ProjectionUnavailable("Candidate lexical yield differs from the submitted token stream")
@@ -200,11 +204,37 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
            for token in tokens for start, end in [token["char_span"]]):
         raise ProjectionUnavailable("Candidate token offsets do not match the submitted sentence")
     uncertainty = None
+    work_root = copy.deepcopy(raw_root)
     try:
-        tree = Projection(raw_tokens).clause(raw_root)
+        if next(be_past_pairs(leaves), None) is not None:
+            raise ProjectionUnavailable('Auxiliary be and the following verb form do not support a canonical analysis')
+        if any(leaf.get('ambiguous_contraction_split') for leaf in leaves):
+            raise ProjectionUnavailable('The parser split a word without enough evidence to identify a contraction')
+        proj = Projection(raw_tokens)
+        # Unwrap transport wrapper to detect standalone textbook/learner phrases
+        # (NP, PP, ADJP, ADVP) so FINAL-D1 projects them compositionally rather
+        # than failing with 'Unsupported clause structure NP/PP/ADJP/ADVP'.
+        inner = work_root
+        while inner.get("type") in {"ROOT", "TOP"}:
+            sem = [c for c in (inner.get("children") or [])
+                   if isinstance(c, dict) and not _is_parser_punctuation(c)]
+            if len(sem) != 1:
+                break
+            inner = sem[0]
+        if inner.get("type") in {"NP", "PP", "ADJP", "ADVP"}:
+            tree = proj.phrase(inner)
+        elif inner.get("type") == "VP":
+            vp_kids = [c for c in (inner.get("children") or [])
+                       if isinstance(c, dict) and not _is_parser_punctuation(c)]
+            if vp_kids and vp_kids[0].get("type") == "TO":
+                tree = proj.vp(vp_kids, "nonfinite", None)
+            else:
+                tree = proj.vp(vp_kids, "finite", None)
+        else:
+            tree = proj.clause(work_root)
     except ProjectionUnavailable as exc:
         uncertainty = str(exc)
-        tree = Projection(raw_tokens).working_tree(raw_root)
+        tree = Projection(raw_tokens).working_tree(copy.deepcopy(raw_root))
     envelope = {
         "schema_version": SCHEMA_VERSION,
         "tree_id": _stable_id("sg", sentence + "|FINAL-D1"),

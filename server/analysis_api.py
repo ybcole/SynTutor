@@ -6,13 +6,16 @@ matrix + explainer payload. ``app.py`` (stdlib http.server) and ``webapp.py``
 (Flask) both import from this module so they cannot drift apart.
 """
 
+import unicodedata
+
 from parse_engine import ParseFailure, analyze, load_models
 from br_tree import build_correction_alignment
 from burton_roberts import build_canonical_analysis
 from cambridge_registry import load_runtime_registry
 from canonical_binding import bind_details_to_canonical
 from authority import build_authority_manifest
-from findings import build_unified_findings
+from findings import build_unified_findings, supported_findings
+from learner_explanations import build_learner_analysis
 from cambridge_evaluator import evaluate_cambridge
 from xai4_partial import evaluate_xai4
 from xai5_repair import localize_xai4
@@ -70,19 +73,12 @@ def health_payload():
 
 
 def word_info(words):
-    """Validate a list of words against SynTutor's own model.
-
-    A word is "valid" when SynTutor's lexicon (the same dictionary the spelling
-    layer uses) knows it, or -- for capitalised/non-alphabetic tokens that the
-    lexicon cannot judge -- when spaCy does not mark it out-of-vocabulary. Each
-    entry also carries the official spaCy POS tag and, for an invalid word, the
-    best spelling candidate so the builder can coach the learner.
-    """
+    """Return lexical recognition and a best-effort tag for the builder."""
     import spellcheck
 
     result = []
     for raw in words or []:
-        w = (raw or '').strip()
+        w = raw.strip() if isinstance(raw, str) else ''
         if not w:
             result.append({'word': w, 'valid': False, 'tag': None, 'suggestion': None})
             continue
@@ -92,14 +88,17 @@ def word_info(words):
         if status['ready'] and status.get('pipeline'):
             try:
                 nlp = load_models()
-                doc = nlp(w)
+                doc = nlp(w, disable=['benepar'])
                 if len(doc):
                     tag = doc[0].tag_
+                    valid = valid or any(token.pos_ == 'PROPN'
+                                         and (token.tag_ in {'NNP', 'NNPS'} or token.ent_type_)
+                                         for token in doc)
             except Exception:  # noqa: BLE001 - tagging is best-effort
                 tag = None
         suggestion = None
         if not valid:
-            suggestion = spellcheck.best_correction(w)
+            suggestion = spellcheck.strong_typo_candidate(w)
         result.append({'word': w, 'valid': bool(valid), 'tag': tag,
                        'suggestion': suggestion})
     return result
@@ -165,6 +164,13 @@ def build_payload(text, sentence_index=0, convention_version=None,
     rule-level violation or replace a matrix explanation. Chapter selection
     determines the B-R convention profile; omitted chapter selects FINAL-D1.
     """
+    if not isinstance(text, str) or len(text) > 12000:
+        raise ValueError('text must be a string of at most 12000 characters')
+    letters = [char for char in text if char.isalpha()]
+    if not letters:
+        raise ParseFailure('Provide an English sentence or phrase containing words.')
+    if not any(unicodedata.name(char, '').startswith('LATIN ') for char in letters):
+        raise ParseFailure('SynTutor analyzes English. Include English words to receive a grammatical analysis.')
     if isinstance(sentence_index, bool) or not isinstance(sentence_index, int) or sentence_index < 0:
         raise ValueError("sentence_index must be a non-negative integer")
     if variety is not None:
@@ -210,9 +216,12 @@ def build_payload(text, sentence_index=0, convention_version=None,
     result = evaluate(analysis['root'], text=analysis['sentence'])
     details = result['details']
     summary = result['summary']
-    canonical_binding = bind_details_to_canonical(br_analysis.get('tree'), details)
     root = analysis['root']
     tokens = analysis['tokens']
+    sentence_offset = (analysis['sentences'][analysis['sentence_index']]['start']
+                       if analysis['sentences'] else 0)
+    canonical_binding = bind_details_to_canonical(br_analysis.get('tree'), details,
+                                                  parser_tokens=tokens, sentence_offset=sentence_offset)
 
     det = classify(analysis['sentence'])
     perturbation = None
@@ -241,8 +250,6 @@ def build_payload(text, sentence_index=0, convention_version=None,
             or corrections.has_actionable(details)):
         # Parser tokens retain document offsets for API consumers. Structured
         # remediation edits slice the selected sentence, so use a local copy.
-        sentence_offset = (analysis['sentences'][analysis['sentence_index']]['start']
-                           if analysis['sentences'] else 0)
         correction_tokens = [
             {**token, 'start': token['start'] - sentence_offset,
              'end': token['end'] - sentence_offset}
@@ -252,8 +259,6 @@ def build_payload(text, sentence_index=0, convention_version=None,
             analysis['sentence'], details, correction_tokens,
             validate=_validate_correction)
         if correction is not None:
-            sentence_offset = (analysis['sentences'][analysis['sentence_index']]['start']
-                               if analysis['sentences'] else 0)
             correction['alignment'] = build_correction_alignment(
                 analysis['sentence'], correction['corrected_sentence'],
                 parser_tokens=tokens, original_tree=root,
@@ -272,6 +277,11 @@ def build_payload(text, sentence_index=0, convention_version=None,
                     corrected_analysis['root'], text=correction['corrected_sentence'])
                 correction['impact'] = _correction_impact(
                     details, corrected_result, correction['corrected_sentence'])
+                from spellcheck import uncertain_function_words
+                unresolved = uncertain_function_words(corrected_analysis)
+                if unresolved:
+                    correction['impact']['unresolved_tokens'] = unresolved
+                    correction['impact']['whole_sentence_clean'] = False
             except Exception as exc:  # correction annotations survive a parser fallback
                 correction['corrected_candidate_parse'] = None
                 correction['corrected_br_analysis'] = {
@@ -366,6 +376,10 @@ def build_payload(text, sentence_index=0, convention_version=None,
                 'items': [], 'blocked': [f'{type(exc).__name__}: {exc}'],
             }
 
+    supported, relationships, leaves = supported_findings(analysis, details)
+    learner_analysis = build_learner_analysis(
+        analysis, br_analysis, shared_explanation_evidence, supported, relationships, leaves, summary)
+
     return {
         'meta': {
             'deterministic': 'detector' not in summary,
@@ -411,7 +425,12 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'canonical_binding': canonical_binding,
         'unified_findings': build_unified_findings(
             details, shared_explanation_evidence.get('candidate_xai')),
-        'canonical_evaluation': evaluate_analysis(explanation_analysis, variety=variety),
+        'canonical_evaluation': evaluate_analysis(
+            explanation_analysis, variety=variety,
+            runtime_registry=cambridge_runtime,
+            cambridge_evaluation=cambridge_evaluation,
+            explanation_evidence=shared_explanation_evidence,
+        ),
         'cambridge_runtime': cambridge_runtime,
         'cambridge_evaluation': cambridge_evaluation,
         'xai4_partial_evaluation': xai4_partial_evaluation,
@@ -420,6 +439,7 @@ def build_payload(text, sentence_index=0, convention_version=None,
         'xai6_naturalization': shared_explanation_evidence.get('xai6_naturalization'),
         'xai7_unified': shared_explanation_evidence.get('xai7_unified'),
         'learner_explanation': shared_explanation_evidence.get('learner_explanation'),
+        'learner_analysis': learner_analysis,
         'nodes': analysis['nodes'],
         'node_details': details,
         'summary': summary,
@@ -514,6 +534,8 @@ def _validate_correction(candidate):
     """A correction is only exposed when the matrix and detector both accept it."""
     try:
         analysis = analyze(candidate, sentence_index=0)
+        if analysis['sentence_count'] != 1:
+            return False
         summary = evaluate(analysis['root'], text=analysis['sentence'])['summary']
         if summary.get('verdict') != 'grammatical' or summary.get('checker_errors'):
             return False

@@ -22,7 +22,7 @@ import os
 
 _MODEL_ID = os.environ.get(
     'SYNTUTOR_DETECTOR_MODEL', 'textattack/roberta-base-CoLA')
-_FLAG_TOLERANCE = float(os.environ.get('SYNTUTOR_DETECTOR_FLAG_TOL', '0.5'))
+_FLAG_TOLERANCE = float(os.environ.get('SYNTUTOR_DETECTOR_FLAG_TOL', '0.20'))
 
 _PIPELINE = None
 _LOAD_ERROR = None
@@ -127,8 +127,9 @@ def combine(summary, det):
         merged['flagged'] = True
         merged['detector_note'] = det['explanation']
         return merged
-    if not det['acceptable']:
-        # Rules clean/unverified but the model says no - rules can't explain it.
+    if not det['acceptable'] and det.get('acceptable_prob', 0.0) < _FLAG_TOLERANCE:
+        # Rules clean/unverified but the model says no with sufficient
+        # confidence - rules can't explain it.
         merged['flagged'] = True
         merged['verdict'] = 'unverified'
         merged['detector_note'] = (

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1260" viewBox="0 0 2400 1260">
+<rect width="2400" height="1260" fill="#FFFFFF"/>
+<text x="1200" y="76" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="48" font-weight="800" fill="#1B365D">Figure 1. SynTutor Grammar Error Detection Confusion Matrices</text>
+<text x="1200" y="126" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="29" fill="#475569">Uncontaminated External Stratified Benchmark (BLiMP n = 240 + JFLEG n = 80; Total n = 320, Positive Class = Ungrammatical)</text>
+<line x1="120" y1="156" x2="2280" y2="156" stroke="#CBD5E1" stroke-width="2"/>
+<text x="670" y="245" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#0F172A">A. Deterministic Rules-Only</text>
+<text x="670" y="288" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" fill="#475569">Strict rule-backed verdict (ungrammatical vs. other)</text>
+<text x="490" y="328" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0F172A">Pred: Ungrammatical (+)</text>
+<text x="850" y="328" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0F172A">Pred: Grammatical (−)</text>
+<text x="288" y="467" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0F172A">Gold:</text>
+<text x="288" y="501" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" fill="#475569">Ungram. (+)</text>
+<text x="288" y="737" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0F172A">Gold:</text>
+<text x="288" y="771" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" fill="#475569">Gram. (−)</text>
+<rect x="310" y="340" width="360" height="270" rx="10" fill="#1E4E79" stroke="#FFFFFF" stroke-width="6"/>
+<text x="490" y="418" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#FFFFFF">TP</text>
+<text x="490" y="498" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF">82</text>
+<text x="490" y="554" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#FFFFFF">(51.2% of row)</text>
+<rect x="670" y="340" width="360" height="270" rx="10" fill="#FDE8E8" stroke="#FFFFFF" stroke-width="6"/>
+<text x="850" y="418" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#7F1D1D">FN</text>
+<text x="850" y="498" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#7F1D1D">78</text>
+<text x="850" y="554" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#7F1D1D">(48.8% of row)</text>
+<rect x="310" y="610" width="360" height="270" rx="10" fill="#FEF3C7" stroke="#FFFFFF" stroke-width="6"/>
+<text x="490" y="688" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#78350F">FP</text>
+<text x="490" y="768" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#78350F">13</text>
+<text x="490" y="824" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#78350F">(8.1% of row)</text>
+<rect x="670" y="610" width="360" height="270" rx="10" fill="#D1FAE5" stroke="#FFFFFF" stroke-width="6"/>
+<text x="850" y="688" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#064E3B">TN</text>
+<text x="850" y="768" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#064E3B">147</text>
+<text x="850" y="824" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#064E3B">(91.9% of row)</text>
+<text x="670" y="940" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="27" font-weight="600" fill="#1B365D">Acc: 71.6%  |  Prec: 86.3%  |  Rec: 51.2%  |  F1: 64.3%</text>
+<text x="1820" y="245" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="38" font-weight="700" fill="#0F172A">B. Hybrid (Rules + RoBERTa-CoLA)</text>
+<text x="1820" y="288" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" fill="#475569">Non-acceptance operating point (ungrammatical or unverified)</text>
+<text x="1640" y="328" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0F172A">Pred: Ungrammatical (+)</text>
+<text x="2000" y="328" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0F172A">Pred: Grammatical (−)</text>
+<text x="1438" y="467" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0F172A">Gold:</text>
+<text x="1438" y="501" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" fill="#475569">Ungram. (+)</text>
+<text x="1438" y="737" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" font-weight="600" fill="#0F172A">Gold:</text>
+<text x="1438" y="771" text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="26" fill="#475569">Gram. (−)</text>
+<rect x="1460" y="340" width="360" height="270" rx="10" fill="#1E4E79" stroke="#FFFFFF" stroke-width="6"/>
+<text x="1640" y="418" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#FFFFFF">TP</text>
+<text x="1640" y="498" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#FFFFFF">142</text>
+<text x="1640" y="554" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#FFFFFF">(88.8% of row)</text>
+<rect x="1820" y="340" width="360" height="270" rx="10" fill="#FDE8E8" stroke="#FFFFFF" stroke-width="6"/>
+<text x="2000" y="418" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#7F1D1D">FN</text>
+<text x="2000" y="498" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#7F1D1D">18</text>
+<text x="2000" y="554" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#7F1D1D">(11.2% of row)</text>
+<rect x="1460" y="610" width="360" height="270" rx="10" fill="#FEF3C7" stroke="#FFFFFF" stroke-width="6"/>
+<text x="1640" y="688" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#78350F">FP</text>
+<text x="1640" y="768" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#78350F">37</text>
+<text x="1640" y="824" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#78350F">(23.1% of row)</text>
+<rect x="1820" y="610" width="360" height="270" rx="10" fill="#D1FAE5" stroke="#FFFFFF" stroke-width="6"/>
+<text x="2000" y="688" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#064E3B">TN</text>
+<text x="2000" y="768" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#064E3B">123</text>
+<text x="2000" y="824" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="28" fill="#064E3B">(76.9% of row)</text>
+<text x="1820" y="940" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="27" font-weight="600" fill="#1B365D">Acc: 82.8%  |  Prec: 79.3%  |  Rec: 88.8%  |  F1: 83.8%</text>
+<text x="1200" y="1214" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="24" fill="#475569">Note: CoLA validation subset (n = 80) is excluded here to prevent overlap with the RoBERTa-CoLA hybrid detector and is reported separately.</text>
+</svg>

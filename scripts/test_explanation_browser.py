@@ -55,7 +55,7 @@ try:
         page.route('**/*', route)
         page.goto(base, wait_until='domcontentloaded')
         page.evaluate("async () => { await import('/js/main.js'); }")
-        text = 'She is taller than he is.' if working_mode else 'The boy sleeps.' if final_mode else 'The birds sing.'
+        text = 'They demolished.' if working_mode else 'The boy sleeps.' if final_mode else 'The birds sing.'
         with page.expect_response(lambda response: response.url.endswith('/api/parse')) as response:
             page.locator('#inputText').evaluate("""(el, text) => {
                 el.removeAttribute('readonly');
@@ -75,11 +75,12 @@ try:
             assert not page.locator('#treeCanvas').is_visible()
             assert 'could not be analyzed confidently' in page.locator('#treeAuthorityNotice').inner_text()
             assert page.locator('#openCanonicalBuilder').count() == 0
-            button = canonical.get_by_role('button', name='Inspect Burton-Roberts AP for taller than he is', exact=True).first
+            button = canonical.get_by_role('button', name='Inspect Burton-Roberts word for demolished', exact=True).first
             button.press('Enter')
             pane = page.locator('#explainNode')
             pane.locator('[data-xai-short]').wait_for(timeout=30000)
-            assert 'couldn\'t establish a reliable syntax tree' in pane.locator('[data-xai-short]').inner_text()
+            assert 'Analysis incomplete' in pane.locator('[data-xai-short]').inner_text()
+            assert 'inconclusive' in pane.locator('[data-xai-short]').inner_text()
             assert pane.locator('[data-shared-evidence] p').count() == 1
             assert not errors, errors
             print('PASS: unresolved span remains visible in a B-R working tree with explicit uncertainty.')

@@ -12,6 +12,13 @@ const POSS = new Set(['my', 'your', 'our', 'their', 'its']);
 const lower = (s) => (s || '').toLowerCase();
 const leavesOf = (n) => (n.children && n.children.length ? n.children.flatMap(leavesOf) : [n]);
 
+// The API sends Unicode code-point offsets. Textarea and DOM ranges use UTF-16.
+export function domTextOffsets(text) {
+  const offsets = [0];
+  for (const char of text) offsets.push(offsets.at(-1) + char.length);
+  return offsets;
+}
+
 function npHead(np) {
   if (!np) return null;
   const ls = leavesOf(np).filter((l) => NOUNISH.has(l.type) && !POSS.has(lower(l.surface)));

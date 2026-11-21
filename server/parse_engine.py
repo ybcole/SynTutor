@@ -8,6 +8,11 @@ selected tree) and rebuilds it as a serializable node graph.
 import re
 import warnings
 
+if __package__:
+    from . import ruleset
+else:
+    import ruleset
+
 warnings.filterwarnings('ignore')
 
 PARSER_BUNDLE = 'en_core_web_md'
@@ -225,6 +230,50 @@ def token_metadata(nlp, doc, target, offset_starts, offset_ends):
     return out
 
 
+def _add_token_evidence(leaves, target, metadata, source):
+    """Attach local spaCy observations without changing Benepar's tags or yield."""
+    for leaf, token in zip(leaves, target):
+        leaf.update(ftag=token.tag_, fpos=token.pos_, fdep=token.dep_,
+                    fhead=token.head.i - target.start, fentity=token.ent_type_,
+                    fmorph=token.morph.to_dict())
+
+    for i, (leaf, token) in enumerate(zip(leaves, target)):
+        suffix = token.lower_.replace('’', "'")
+        if suffix not in {'nt', "n't"} or not i:
+            continue
+        stem = target[i - 1]
+        if (stem.lower_ == 'ai' and stem.dep_ == 'aux' and stem.head == token.head
+                and leaf['type'] == 'RB'):
+            leaves[i - 1]['invariant_negative_auxiliary'] = True
+        if suffix != 'nt':
+            continue
+        spelling = stem.lower_ + token.lower_
+        replacement = ruleset.CONTRACTIONS.get(spelling)
+        if not replacement or not replacement.endswith("n't"):
+            continue
+        # spaCy can split a legitimate noun (e.g. "a cant") and give the pieces
+        # auxiliary dependencies. Require independent constituent evidence too.
+        if (not target.start <= token.head.i < target.end
+                or stem.dep_ not in {'aux', 'auxpass'} or stem.head != token.head
+                or token.dep_ not in {'neg', 'advmod'} or leaf['type'] != 'RB'
+                or leaves[i - 1]['type'] not in {'MD', 'VB', 'VBD', 'VBP', 'VBZ', 'RB'}
+                or not token.head.tag_.startswith('VB')):
+            if metadata[i - 1]['end'] == metadata[i]['start']:
+                leaf['ambiguous_contraction_split'] = True
+            continue
+        observed = source[metadata[i - 1]['start']:metadata[i]['end']]
+        if observed.isupper():
+            replacement = replacement.upper()
+        elif observed[0].isupper():
+            replacement = replacement.capitalize()
+        leaf['negative_contraction'] = {
+            'observed': observed, 'replacement': replacement,
+            'auxiliary': leaves[i - 1]['id'],
+            'verb': leaves[token.head.i - target.start]['id'],
+        }
+        leaves[i - 1]['contraction_auxiliary'] = True
+
+
 def analyze(text, sentence_index=0):
     """Full deterministic parse of ``text``, targeting one sentence.
 
@@ -256,11 +305,11 @@ def analyze(text, sentence_index=0):
     # Enrich leaves with spaCy's fine-grained tag/lemma, aligned by token order,
     # so morphology-sensitive rules (e.g. 'to' + finite verb) are not limited to
     # benepar's coarse Penn tags.
-    leaves = _ordered_leaves(root)
-    for i, leaf in enumerate(leaves):
-        if i < len(meta):
-            leaf['ftag'] = meta[i]['tag']
-            leaf['fpos'] = meta[i]['pos']
+    leaves = list(_ordered_leaves(root))
+    if any(leaf['surface'] != token['t'] for leaf, token in zip(leaves, meta)
+           if any(char.isalnum() for char in token['t'])):
+        raise RuntimeError('Parser output could not be aligned with the original words.')
+    _add_token_evidence(leaves, target, meta, text)
     return {
         'sentence': text[offset_starts[target.start_char]:offset_ends[target.end_char - 1]],
         'sentence_index': idx,

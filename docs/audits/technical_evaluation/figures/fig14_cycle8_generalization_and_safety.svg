@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="560" viewBox="0 0 1520 560">
+<defs><style>
+text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+.title { font-size: 19px; font-weight: 700; fill: #0f172a; }
+.sub { font-size: 12px; fill: #475569; }
+.ptitle { font-size: 14px; font-weight: 700; fill: #1e293b; }
+.axis { font-size: 10.5px; fill: #475569; }
+.val { font-size: 10px; font-weight: 700; fill: #0f172a; }
+.lbl { font-size: 10px; font-weight: 600; fill: #1e293b; }
+.leg { font-size: 10.5px; fill: #334155; }
+</style></defs>
+<rect width="1520" height="560" fill="#ffffff"/>
+<text x="34" y="34" class="title">SynTutor Cycle 8 — Blind Generalization (Eval V4), Structural Accuracy &amp; Correction Safety</text>
+<text x="34" y="54" class="sub">Source: _cycle8_results.json | Locked Blind Eval V4 (n=360: 240 BLiMP, 20 JFLEG, 100 CoLA Rules-Only) | Lookup-Bypassed B-R Textbook Census (n=216)</text>
+<rect x="30" y="74" width="468" height="464" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="46" y="100" class="ptitle">A. Diagnostic Sets vs Locked Blind Eval V4 (Rules Strict)</text>
+<rect x="518" y="74" width="488" height="464" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="534" y="100" class="ptitle">B. Blind Eval V4 Per-Family Strict F1 &amp; Precision (%)</text>
+<rect x="1026" y="74" width="464" height="464" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+<text x="1042" y="100" class="ptitle">C. Structural PARSEVAL &amp; Correction Safety (%)</text>
+<line x1="74" y1="454.0" x2="478" y2="454.0" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="66" y="458.0" text-anchor="end" class="axis">0%</text>
+<line x1="74" y1="372.5" x2="478" y2="372.5" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="66" y="376.5" text-anchor="end" class="axis">25%</text>
+<line x1="74" y1="291.0" x2="478" y2="291.0" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="66" y="295.0" text-anchor="end" class="axis">50%</text>
+<line x1="74" y1="209.5" x2="478" y2="209.5" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="66" y="213.5" text-anchor="end" class="axis">75%</text>
+<line x1="74" y1="128.0" x2="478" y2="128.0" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="66" y="132.0" text-anchor="end" class="axis">100%</text>
+<rect x="84.0" y="141.1" width="18" height="312.9" rx="2" fill="#0ea5e9"/>
+<text x="93.0" y="137.1" text-anchor="middle" class="val">96</text>
+<rect x="105.0" y="159.7" width="18" height="294.3" rx="2" fill="#6366f1"/>
+<text x="114.0" y="155.7" text-anchor="middle" class="val">90</text>
+<rect x="126.0" y="150.7" width="18" height="303.3" rx="2" fill="#0f766e"/>
+<text x="135.0" y="146.7" text-anchor="middle" class="val">93</text>
+<text x="114.0" y="470" text-anchor="middle" class="lbl">HO-V3</text>
+<text x="114.0" y="483" text-anchor="middle" class="axis">(Diag)</text>
+<rect x="164.8" y="149.7" width="18" height="304.3" rx="2" fill="#0ea5e9"/>
+<text x="173.8" y="145.7" text-anchor="middle" class="val">93</text>
+<rect x="185.8" y="208.3" width="18" height="245.7" rx="2" fill="#6366f1"/>
+<text x="194.8" y="204.3" text-anchor="middle" class="val">75</text>
+<rect x="206.8" y="182.1" width="18" height="271.9" rx="2" fill="#0f766e"/>
+<text x="215.8" y="178.1" text-anchor="middle" class="val">83</text>
+<text x="194.8" y="470" text-anchor="middle" class="lbl">V4 Ext</text>
+<text x="194.8" y="483" text-anchor="middle" class="axis">(n=260)</text>
+<rect x="245.6" y="145.3" width="18" height="308.7" rx="2" fill="#0ea5e9"/>
+<text x="254.6" y="141.3" text-anchor="middle" class="val">95</text>
+<rect x="266.6" y="212.2" width="18" height="241.8" rx="2" fill="#6366f1"/>
+<text x="275.6" y="208.2" text-anchor="middle" class="val">74</text>
+<rect x="287.6" y="182.8" width="18" height="271.2" rx="2" fill="#0f766e"/>
+<text x="296.6" y="178.8" text-anchor="middle" class="val">83</text>
+<text x="275.6" y="470" text-anchor="middle" class="lbl">V4 BLiMP</text>
+<text x="275.6" y="483" text-anchor="middle" class="axis">(n=240)</text>
+<rect x="326.4" y="187.3" width="18" height="266.7" rx="2" fill="#0ea5e9"/>
+<text x="335.4" y="183.3" text-anchor="middle" class="val">82</text>
+<rect x="347.4" y="160.6" width="18" height="293.4" rx="2" fill="#6366f1"/>
+<text x="356.4" y="156.6" text-anchor="middle" class="val">90</text>
+<rect x="368.4" y="174.6" width="18" height="279.4" rx="2" fill="#0f766e"/>
+<text x="377.4" y="170.6" text-anchor="middle" class="val">86</text>
+<text x="356.4" y="470" text-anchor="middle" class="lbl">V4 JFLEG</text>
+<text x="356.4" y="483" text-anchor="middle" class="axis">(n=20)</text>
+<rect x="407.2" y="171.5" width="18" height="282.5" rx="2" fill="#0ea5e9"/>
+<text x="416.2" y="167.5" text-anchor="middle" class="val">87</text>
+<rect x="428.2" y="369.2" width="18" height="84.8" rx="2" fill="#6366f1"/>
+<text x="437.2" y="365.2" text-anchor="middle" class="val">26</text>
+<rect x="449.2" y="323.6" width="18" height="130.4" rx="2" fill="#0f766e"/>
+<text x="458.2" y="319.6" text-anchor="middle" class="val">40</text>
+<text x="437.2" y="470" text-anchor="middle" class="lbl">V4 CoLA*</text>
+<text x="437.2" y="483" text-anchor="middle" class="axis">(n=100)</text>
+<rect x="90" y="505" width="11" height="11" rx="2" fill="#0ea5e9"/>
+<text x="106" y="514" class="leg">Precision</text>
+<rect x="205" y="505" width="11" height="11" rx="2" fill="#6366f1"/>
+<text x="221" y="514" class="leg">Recall</text>
+<rect x="320" y="505" width="11" height="11" rx="2" fill="#0f766e"/>
+<text x="336" y="514" class="leg">Strict F1</text>
+<text x="48" y="531" class="axis">*CoLA is strictly independent for Rules-Only (in-distribution for Hybrid RoBERTa-CoLA).</text>
+<line x1="656.0" y1="114" x2="656.0" y2="484" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="656.0" y="500" text-anchor="middle" class="axis">0%</text>
+<line x1="718.0" y1="114" x2="718.0" y2="484" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="718.0" y="500" text-anchor="middle" class="axis">25%</text>
+<line x1="780.0" y1="114" x2="780.0" y2="484" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="780.0" y="500" text-anchor="middle" class="axis">50%</text>
+<line x1="842.0" y1="114" x2="842.0" y2="484" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="842.0" y="500" text-anchor="middle" class="axis">75%</text>
+<line x1="904.0" y1="114" x2="904.0" y2="484" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="904.0" y="500" text-anchor="middle" class="axis">100%</text>
+<text x="648" y="134" text-anchor="end" class="lbl">Subj-Verb Agree</text>
+<rect x="656" y="120" width="248.0" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="132" width="248.0" height="10" rx="2" fill="#0f766e"/>
+<text x="909.0" y="134" class="val">P:100 F1:100</text>
+<text x="648" y="171" text-anchor="end" class="lbl">Determiner Agree</text>
+<rect x="656" y="157" width="248.0" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="169" width="238.8" height="10" rx="2" fill="#0f766e"/>
+<text x="909.0" y="171" class="val">P:100 F1:96</text>
+<text x="648" y="208" text-anchor="end" class="lbl">NPI Licensing</text>
+<rect x="656" y="194" width="248.0" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="206" width="248.0" height="10" rx="2" fill="#0f766e"/>
+<text x="909.0" y="208" class="val">P:100 F1:100</text>
+<text x="648" y="245" text-anchor="end" class="lbl">Pronoun Binding</text>
+<rect x="656" y="231" width="227.3" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="243" width="194.9" height="10" rx="2" fill="#0f766e"/>
+<text x="888.3" y="245" class="val">P:92 F1:79</text>
+<text x="648" y="282" text-anchor="end" class="lbl">Filler-Gap</text>
+<rect x="656" y="268" width="248.0" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="280" width="180.4" height="10" rx="2" fill="#0f766e"/>
+<text x="909.0" y="282" class="val">P:100 F1:73</text>
+<text x="648" y="319" text-anchor="end" class="lbl">Island Effects</text>
+<rect x="656" y="305" width="194.9" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="317" width="181.9" height="10" rx="2" fill="#0f766e"/>
+<text x="855.9" y="319" class="val">P:79 F1:73</text>
+<text x="648" y="356" text-anchor="end" class="lbl">Quantifiers/Raising</text>
+<rect x="656" y="342" width="230.3" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="354" width="214.9" height="10" rx="2" fill="#0f766e"/>
+<text x="891.3" y="356" class="val">P:93 F1:87</text>
+<text x="648" y="393" text-anchor="end" class="lbl">Argument Struct</text>
+<rect x="656" y="379" width="248.0" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="391" width="138.9" height="10" rx="2" fill="#0f766e"/>
+<text x="909.0" y="393" class="val">P:100 F1:56</text>
+<text x="648" y="430" text-anchor="end" class="lbl">JFLEG L2 (n=20)</text>
+<rect x="656" y="416" width="202.9" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="428" width="212.6" height="10" rx="2" fill="#0f766e"/>
+<text x="873.6" y="430" class="val">P:82 F1:86</text>
+<text x="648" y="467" text-anchor="end" class="lbl">CoLA Rules (n=100)</text>
+<rect x="656" y="453" width="214.9" height="10" rx="2" fill="#0ea5e9"/>
+<rect x="656" y="465" width="99.2" height="10" rx="2" fill="#0f766e"/>
+<text x="875.9" y="467" class="val">P:87 F1:40</text>
+<rect x="656" y="510" width="11" height="11" rx="2" fill="#0ea5e9"/>
+<text x="672" y="519" class="leg">Precision (%)</text>
+<rect x="776" y="510" width="11" height="11" rx="2" fill="#0f766e"/>
+<text x="792" y="519" class="leg">Strict F1 (%)</text>
+<line x1="1070" y1="454.0" x2="1474" y2="454.0" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="1062" y="458.0" text-anchor="end" class="axis">0%</text>
+<line x1="1070" y1="372.5" x2="1474" y2="372.5" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="1062" y="376.5" text-anchor="end" class="axis">25%</text>
+<line x1="1070" y1="291.0" x2="1474" y2="291.0" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="1062" y="295.0" text-anchor="end" class="axis">50%</text>
+<line x1="1070" y1="209.5" x2="1474" y2="209.5" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="1062" y="213.5" text-anchor="end" class="axis">75%</text>
+<line x1="1070" y1="128.0" x2="1474" y2="128.0" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="1062" y="132.0" text-anchor="end" class="axis">100%</text>
+<rect x="1080.0" y="152.2" width="37.7" height="301.8" rx="3" fill="#0f766e"/>
+<text x="1098.9" y="147.2" text-anchor="middle" class="val">92.6%</text>
+<text x="1098.9" y="470" text-anchor="middle" class="lbl">Book Norm</text>
+<text x="1098.9" y="483" text-anchor="middle" class="axis">(216 IMG)</text>
+<rect x="1137.7" y="160.0" width="37.7" height="294.0" rx="3" fill="#0d9488"/>
+<text x="1156.6" y="155.0" text-anchor="middle" class="val">90.2%</text>
+<text x="1156.6" y="470" text-anchor="middle" class="lbl">Book LF1</text>
+<text x="1156.6" y="483" text-anchor="middle" class="axis">(Ch3-10)</text>
+<rect x="1195.4" y="180.8" width="37.7" height="273.2" rx="3" fill="#14b8a6"/>
+<text x="1214.3" y="175.8" text-anchor="middle" class="val">83.8%</text>
+<text x="1214.3" y="470" text-anchor="middle" class="lbl">Book LF1</text>
+<text x="1214.3" y="483" text-anchor="middle" class="axis">(All 216)</text>
+<rect x="1253.1" y="242.1" width="37.7" height="211.9" rx="3" fill="#0284c7"/>
+<text x="1272.0" y="237.1" text-anchor="middle" class="val">65.0%</text>
+<text x="1272.0" y="470" text-anchor="middle" class="lbl">JFLEG B-R</text>
+<text x="1272.0" y="483" text-anchor="middle" class="axis">(HO3 100)</text>
+<rect x="1310.9" y="258.4" width="37.7" height="195.6" rx="3" fill="#2563eb"/>
+<text x="1329.7" y="253.4" text-anchor="middle" class="val">60.0%</text>
+<text x="1329.7" y="470" text-anchor="middle" class="lbl">JFLEG B-R</text>
+<text x="1329.7" y="483" text-anchor="middle" class="axis">(V4 n=20)</text>
+<rect x="1368.6" y="128.0" width="37.7" height="326.0" rx="3" fill="#16a34a"/>
+<text x="1387.4" y="123.0" text-anchor="middle" class="val">100.0%</text>
+<text x="1387.4" y="470" text-anchor="middle" class="lbl">Corr Safe</text>
+<text x="1387.4" y="483" text-anchor="middle" class="axis">(HO3+V4)</text>
+<rect x="1426.3" y="128.0" width="37.7" height="326.0" rx="3" fill="#15803d"/>
+<text x="1445.1" y="123.0" text-anchor="middle" class="val">100.0%</text>
+<text x="1445.1" y="470" text-anchor="middle" class="lbl">Polarity OK</text>
+<text x="1445.1" y="483" text-anchor="middle" class="axis">(HO3+V4)</text>
+<text x="1044" y="518" class="axis">Note: Automated safety gates != human linguistic certification (human review pending).</text>
+</svg>

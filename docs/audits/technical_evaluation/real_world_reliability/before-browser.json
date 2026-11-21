@@ -1,0 +1,141 @@
+{
+  "health": {
+    "error": null,
+    "install_hint": null,
+    "models": {
+      "parser_model": "benepar_en3",
+      "spacy_model": "en_core_web_md"
+    },
+    "pipeline": [
+      "tok2vec",
+      "tagger",
+      "parser",
+      "attribute_ruler",
+      "lemmatizer",
+      "ner",
+      "benepar"
+    ],
+    "ready": true,
+    "spacy_version": "3.8.0",
+    "status": "ok"
+  },
+  "hashes": {
+    "index.html": "8202c90c47dd0e92ffda69bd2c16bd09d4db47bbef6ea96f78b11c6a14065ba2",
+    "js/main.js": "e6bc4cde51f4f203779edf15d9bc40186514a885e8782482e8503b292f6a3b5b",
+    "js/config.js": "2f90a7325fbebb423119cbabf3377a0954982a73ebc8d63628a250465e88b452",
+    "js/explanation-evidence.js": "eaceeb02fdd21f6f0b014965e8defd6775c1fa5ef5e1c19958db894d75ea08f5"
+  },
+  "cases": [
+    {
+      "sentence": "I am ate an apple yesterday.",
+      "initial": {
+        "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+        "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.",
+        "correction": ""
+      },
+      "inspections": [
+        {
+          "label": "Inspect Burton-Roberts S for I am ate an apple yesterday",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: Subject, predicate, noun phrases and verb phrases",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts VP for am ate an apple yesterday",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "Same explanation as the enclosing S “I am ate an apple yesterday”. Select that phrase or a word for a more specific explanation.\n\nGo to lesson: Introduction to the basic verb phrase",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts V for am",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: Lexical verbs, complements, transitive and intransitive verbs",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts word for am",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: The verb",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts VP for ate an apple yesterday",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: Introduction to the basic verb phrase",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts V for ate",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: Lexical verbs, complements, transitive and intransitive verbs",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts word for ate",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: The verb",
+          "correction": ""
+        }
+      ]
+    },
+    {
+      "sentence": "If you dont know.",
+      "initial": {
+        "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+        "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.",
+        "correction": ""
+      },
+      "inspections": [
+        {
+          "label": "Inspect Burton-Roberts S′ for If you do nt know",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: Complementiser and clause structure (C and S)",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts S for you do nt know",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "Same explanation as the enclosing S-bar “If you do nt know”. Select that phrase or a word for a more specific explanation.\n\nGo to lesson: Subject, predicate, noun phrases and verb phrases",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts VP for do nt know",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nWhat's wrong\n\nThe part 'you do nt know' has a subject but no full verb\n\n'know' cannot be the main verb on its own. Use a form like 'runs' or add a helping word like 'is running'\n\nGo to lesson: Introduction to the basic verb phrase",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts Adv for do",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: Adjectives, adverbs, APs and AdvPs",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts Adv for nt",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: Adjectives, adverbs, APs and AdvPs",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts VP for know",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "Same explanation as the enclosing VP “do nt know”. Select that phrase or a word for a more specific explanation.\n\nGo to lesson: Introduction to the basic verb phrase",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts V for know",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: Lexical verbs, complements, transitive and intransitive verbs",
+          "correction": ""
+        },
+        {
+          "label": "Inspect Burton-Roberts word for know",
+          "tree": "Provisional B-R working tree: this analysis is unresolved. Known categories are shown; the remaining grouping is provisional.",
+          "explanation": "I couldn't establish a reliable syntax tree for this sentence, so I can't explain its grammatical structure with confidence.\n\nGo to lesson: The verb",
+          "correction": ""
+        }
+      ]
+    }
+  ],
+  "pageErrors": []
+}

@@ -167,19 +167,22 @@ def _simplify_remediation(rm, fallback):
 
 
 def apply_plain_language(details, summary):
+    precise_rules = {'C-BE-PAST', 'C-CONTRACTION', 'C-FRAGMENT', 'C-FINITE-VERB'}
     first_error = None
     for detail in details.values():
         if not isinstance(detail, dict):
             continue
         if detail.get('status') != 'error':
             continue
-        detail['text'] = _plain_text(detail.get('text'))
-        detail['role'] = plain_role(detail.get('role'))
-        _simplify_remediation(detail.get('remediation'), detail['text'])
+        if detail.get('constraint') not in precise_rules:
+            detail['text'] = _plain_text(detail.get('text'))
+            detail['role'] = plain_role(detail.get('role'))
+            _simplify_remediation(detail.get('remediation'), detail['text'])
         if first_error is None:
             first_error = detail
         for finding in detail.get('findings', []) or []:
-            if not isinstance(finding, dict) or finding.get('status') != 'error':
+            if (not isinstance(finding, dict) or finding.get('status') != 'error'
+                    or finding.get('constraint') in precise_rules):
                 continue
             finding['text'] = _plain_text(finding.get('text'))
             finding['role'] = plain_role(finding.get('role'))

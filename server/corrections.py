@@ -70,24 +70,16 @@ def _match_case(original, replacement):
 
 
 def _find_span(sentence, needle, hint=None):
-    """Find ``needle`` as a whole token/phrase, preferring the flagged span.
+    """Find ``needle`` as a whole token/phrase within the flagged span.
 
     Word-boundary matching matters: deleting the article 'a' must not find the
     'a' inside 'have'.
     """
-    if not needle:
+    if not needle or hint is None:
         return None
-    pattern = re.compile(r'(?<!\w)' + re.escape(needle) + r'(?!\w)', re.I)
-    regions = []
-    if hint:
-        lo, hi = hint
-        regions.append((lo, hi))
-    regions.append((0, len(sentence)))
-    for lo, hi in regions:
-        m = pattern.search(sentence, lo, hi)
-        if m:
-            return m.start(), m.end()
-    return None
+    pattern = re.compile(r"(?<![\w'’])" + re.escape(needle) + r"(?![\w'’])", re.I)
+    match = pattern.search(sentence, hint[0])
+    return match.span() if match and match.end() <= hint[1] else None
 
 
 def _lower_tok(token):
@@ -144,16 +136,37 @@ def _from_remediation(detail, sentence, token_map, details):
                 edits.append(_edit(span, '', detail, confidence, source))
             elif raw.get('insert_before'):
                 point = (span[0], span[0])
-                edits.append(_edit(point, str(raw['insert_before']), detail,
+                ins = str(raw['insert_before'])
+                if ins and not ins.endswith(' ') and span[0] < len(sentence) and sentence[span[0]].isalnum():
+                    ins = ins + ' '
+                edits.append(_edit(point, ins, detail,
                                    confidence, source))
             elif raw.get('insert_after'):
                 point = (span[1], span[1])
-                edits.append(_edit(point, str(raw['insert_after']), detail,
+                ins = str(raw['insert_after'])
+                if ins and not ins.startswith(' ') and span[1] > 0 and sentence[span[1] - 1].isalnum():
+                    ins = ' ' + ins
+                edits.append(_edit(point, ins, detail,
                                    confidence, source))
             elif raw.get('replacement') is not None:
                 edits.append(_edit(span, str(raw['replacement']), detail,
                                    confidence, source))
     return edits
+
+
+# Structural / movement / clause-level constraints that cannot safely be
+# repaired by heuristic single-token prose scraping.  Structured edits attached
+# directly by a rule still work, but _from_text() must never guess a
+# substitution from explanatory prose for these constraints.
+_NON_LOCAL_REWRITE_CONSTRAINTS = {
+    'C-WH-ISLAND', 'C-ADJUNCT-ISLAND', 'C-COMPLEX-NP-ISLAND',
+    'C-LEFT-BRANCH-ISLAND', 'C-COORD-ISLAND', 'C-SENTENTIAL-SUBJECT',
+    'C-FILLED-GAP', 'C-MISSING-OBJECT', 'C-MISSING-SUBJECT',
+    'C-ELLIPSIS-HEAD', 'C-FRAGMENT', 'C-COMMA-SPLICE',
+    'C-TOUGH-COMPLEMENT', 'C-EXISTENTIAL-DEFINITENESS',
+    'C-SUPERLATIVE-QUANT', 'C-INTRANSITIVE-OBJECT',
+    'C-STRANDED-PREP', 'C-REFLEXIVE-ANTECEDENT',
+}
 
 
 def _from_text(detail, sentence, token_map, details):
@@ -163,8 +176,14 @@ def _from_text(detail, sentence, token_map, details):
     are used.  Anything vaguer is ignored; the candidate validator is the
     final gate.
     """
+    if detail.get('constraint') in _NON_LOCAL_REWRITE_CONSTRAINTS:
+        return []
     rem = detail.get('remediation')
     rem = rem if isinstance(rem, dict) else {}
+    # If the rule explicitly supplied an empty structured edits list (meaning
+    # "no safe single-token edit exists"), do not scrape prose behind its back.
+    if 'edits' in rem and isinstance(rem.get('edits'), list) and len(rem['edits']) == 0:
+        return []
     # Only the *suggested* fix is safe to parse: the alternative fix often
     # describes a different rewrite and mixing the two produces Frankenstein
     # sentences (e.g. dropping 'could' while also changing 'helped').
@@ -173,8 +192,13 @@ def _from_text(detail, sentence, token_map, details):
         text = str(detail.get('text') or '').strip()
     if not text:
         return []
+    # Strip illustrative examples ('for example ...', 'e.g. ...', 'such as ...')
+    # so example sentences are never scraped as literal replacements.
+    text = re.split(r'\b(?:for\s+example|e\.g\.|such\s+as)\b', text, maxsplit=1, flags=re.I)[0].strip()
+    if not text:
+        return []
     hint = None
-    span = detail.get('span') or []
+    span = detail.get('span') or (details.get(detail.get('node_id')) or {}).get('span') or []
     if len(span) == 2:
         first = token_map.get(span[0])
         last = token_map.get(span[1] - 1)
@@ -260,7 +284,8 @@ def _from_text(detail, sentence, token_map, details):
             art, before = m.group(1), m.group(2)
             before_span = _find_span(sentence, before, hint)
             if before_span is not None:
-                edits.append(_edit((before_span[0], before_span[0]), art,
+                ins = art + (' ' if before_span[0] < len(sentence) and sentence[before_span[0]].isalnum() else '')
+                edits.append(_edit((before_span[0], before_span[0]), ins,
                                    detail, 0.7, 'prose'))
     if not edits:
         m = _SAY_INSTEAD.search(text)
@@ -367,6 +392,118 @@ def has_actionable(details):
     return False
 
 
+_PROPER_NOUN_PROTECTED_CONSTRAINTS = {
+    'C-NOUN-FORM', 'C-VERB-FORM', 'C-SUBJECT-AGREEMENT',
+    'C-LEXICON-MALFORMED', 'C-SUBJ-AGREE-XP', 'C-SPELLING',
+}
+
+
+def _targets_proper_noun(edit, sentence, token_map):
+    """True when an edit would morphologically mutate a proper noun (NNP/NNPS)."""
+    if edit.get('constraint') not in _PROPER_NOUN_PROTECTED_CONSTRAINTS:
+        return False
+    orig = sentence[edit['start']:edit['end']].strip()
+    if not orig:
+        return False
+    for tok in token_map.values():
+        if tok.get('start') == edit['start'] and tok.get('end') == edit['end']:
+            if tok.get('pos') == 'PROPN' or tok.get('tag') in ('NNP', 'NNPS'):
+                return True
+            if edit['start'] > 0 and orig[:1].isupper() and orig[1:].islower():
+                return True
+    return False
+
+
+_DUPLICATE_ADJ_WORD = re.compile(r"\b([A-Za-z]+)\s+\1\b", re.I)
+_DUPLICATE_PHRASE = re.compile(r"\b([A-Za-z]+\s+[A-Za-z]+)\b(?=.*\b\1\b)", re.I)
+_BAD_COMP_ADV = re.compile(r"\b[a-z]+(?:er|est)ly\b", re.I)
+_PRENOM_INVERSION_ADVS = {
+    'so', 'too', 'as', 'how', 'quite', 'rather', 'such', 'half', 'what',
+}
+_NEGATION_RE = re.compile(
+    r"(?:(?<!\w)(?:not|never|no|none|nothing|nobody|nowhere|neither|nor|"
+    r"dont|cant|wont|doesnt|didnt|isnt|arent|wasnt|werent|hasnt|havent|"
+    r"hadnt|shouldnt|wouldnt|couldnt|mustnt|aint|nt)(?!\w)|n't(?!\w))",
+    re.I,
+)
+_NEGATION_AUTH_CONSTRAINTS = {'C-DOUBLE-NEG', 'C-NPI-LICENSING'}
+
+
+def _negation_count(text):
+    return len(_NEGATION_RE.findall(text or ''))
+
+
+def _has_corrupt_artifact(original_sentence, candidate, used_edits=None):
+    """Reject candidate repairs that introduce:
+    - accidental adjacent-word duplications ('a a', 'the the', 'is is'),
+    - accidental multi-word phrase duplications not in the original
+      ('Before noticing ... before noticing?'),
+    - embedded sentence-ending punctuation inside a prose-scraped token edit
+      ('Whose car did you see? had Irene...'),
+    - silent polarity inversion (dropping/adding negation without a
+      double-negative or NPI rule authorizing it), or
+    - morphologically invalid comparative -erly/-estly adverbs.
+    """
+    for m in _DUPLICATE_ADJ_WORD.finditer(candidate):
+        pair = m.group(0)
+        if pair.lower() not in original_sentence.lower():
+            return True
+    orig_low = original_sentence.lower()
+    # Reject newly introduced duplicate multi-word phrases (e.g., prose-scraped
+    # clause fragments pasted at the front of a sentence).
+    for m in _DUPLICATE_PHRASE.finditer(candidate):
+        ph = m.group(1).lower()
+        if len(ph.split()) >= 2 and orig_low.count(ph) < candidate.lower().count(ph):
+            # Ignore common function bigrams like 'of the', 'in the', 'to the'
+            if ph not in {'of the', 'in the', 'to the', 'on the', 'at the',
+                          'for the', 'by the', 'from the', 'with the', 'that the',
+                          'is a', 'as a', 'in a', 'to a', 'of a', 'it is', 'he is',
+                          'she is', 'they are', 'there is', 'there are', 'will be',
+                          'has been', 'have been', 'do not', 'does not', 'did not'}:
+                return True
+    # Reject embedded terminal punctuation (? / !) inside the interior of a sentence
+    # if it did not exist in the original.
+    if re.search(r'[?!]\s+[A-Za-z]', candidate) and not re.search(r'[?!]\s+[A-Za-z]', original_sentence):
+        return True
+    # Polarity-preservation gate: never silently drop negation (e.g. 'dont' -> 'do')
+    # or insert negation unless an explicit negation/NPI constraint authorized it.
+    orig_neg = _negation_count(original_sentence)
+    cand_neg = _negation_count(candidate)
+    if orig_neg != cand_neg:
+        cset = {e.get('constraint') for e in (used_edits or [])}
+        if not (cset & _NEGATION_AUTH_CONSTRAINTS):
+            return True
+    for m in _BAD_COMP_ADV.finditer(candidate):
+        w = m.group(0).lower()
+        if w not in orig_low and w not in {
+            'elderly', 'orderly', 'quarterly', 'easterly', 'westerly',
+            'northerly', 'southerly', 'motherly', 'fatherly', 'brotherly',
+            'sisterly', 'masterly', 'miserly', 'gingerly', 'bitterly',
+            'utterly', 'eagerly', 'cleverly', 'properly', 'soberly',
+            'tenderly', 'slenderly', 'formerly', 'latterly', 'mannerly',
+            'neighborly', 'neighbourly', 'scholarly', 'soldierly', 'dastardly',
+            'beastly', 'costly', 'ghastly', 'ghostly', 'honestly', 'modestly',
+            'earnestly', 'manifestly', 'priestly', 'mostly', 'justly', 'vastly',
+            'firstly', 'lastly', 'chiefly', 'briefly', 'overly', 'severely',
+            'sincerely', 'merely', 'purely', 'surely', 'rarely', 'barely',
+            'squarely', 'fairly', 'clearly', 'nearly', 'dearly', 'yearly',
+            'hourly', 'poorly', 'early',
+        }:
+            return True
+    if used_edits:
+        for e in used_edits:
+            if e.get('source') == 'prose':
+                orig_seg = original_sentence[e['start']:e['end']].strip()
+                repl_seg = (e.get('replacement') or '').strip()
+                if len(orig_seg.split()) == 1 and (len(repl_seg.split()) > 3 or any(p in repl_seg for p in '?!')):
+                    return True
+            if e.get('constraint') == 'C-ADJ-ADV':
+                repl = (e.get('replacement') or '').strip().lower()
+                if repl in {'otherly', 'cheaperly', 'fasterly', 'betterly', 'worsely', 'morely', 'lesserly'}:
+                    return True
+    return False
+
+
 def assemble(sentence, details, tokens, validate=None):
     """Build and validate one corrected sentence.
 
@@ -396,15 +533,18 @@ def assemble(sentence, details, tokens, validate=None):
             raw.extend(_from_text(finding, sentence, token_map, details))
     edits = _dedupe(raw)
     edits = [e for e in edits
-             if sentence[e['start']:e['end']] != e['replacement']]
+             if sentence[e['start']:e['end']] != e['replacement']
+             and not _targets_proper_noun(e, sentence, token_map)]
     if not edits:
         return None
 
-    for combo in _candidate_sets(edits):
+    for combo in itertools.islice(_candidate_sets(edits), 24):
         candidate, used = _apply(sentence, list(combo))
         candidate = re.sub(r'\s+', ' ', candidate).strip()
         candidate = re.sub(r'\s+([,.;:!?])', r'\1', candidate)
         if candidate == sentence.strip():
+            continue
+        if _has_corrupt_artifact(sentence, candidate, used):
             continue
         if validate is not None and not validate(candidate):
             continue
@@ -424,5 +564,5 @@ def describe(result):
     if not result:
         return None
     edits = result.get('edits') or []
-    return (f"Verified correction: {result['corrected_sentence']!r} "
+    return (f"Suggested revision: {result['corrected_sentence']!r} "
             f"({len(edits)} edit{'s' if len(edits) != 1 else ''}).")

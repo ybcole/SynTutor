@@ -1,0 +1,74 @@
+{
+  "health": {
+    "error": null,
+    "install_hint": null,
+    "models": {
+      "parser_model": "benepar_en3",
+      "spacy_model": "en_core_web_md"
+    },
+    "pipeline": [
+      "tok2vec",
+      "tagger",
+      "parser",
+      "attribute_ruler",
+      "lemmatizer",
+      "ner",
+      "benepar"
+    ],
+    "ready": true,
+    "spacy_version": "3.8.0",
+    "status": "ok"
+  },
+  "sha256": {
+    "index.html": "febccf3ae0852dbc4b7fec5cf68d8fbf04179bfae1a988fc2a310ceba25d832e",
+    "js/main.js": "03ac27d0340a775ab34eb46ce031a057ff7d2e5a1e3f80e3daaf8677457da844",
+    "js/config.js": "2f90a7325fbebb423119cbabf3377a0954982a73ebc8d63628a250465e88b452",
+    "js/explanation-evidence.js": "0cd688e90c6461e954e69476e53bc3d0aa0af8a8bbd9df1a38503f79743fef59",
+    "js/ui.js": "2f6ad724bcf10f833883688eccddaca2c804671ebd57ddbc8ca8daaedda5340b",
+    "js/correction.js": "947e4ca2baafb0894be2890cab31665d0e6ad694ebfb8880ff51394ff98b63a1"
+  },
+  "cases": [
+    {
+      "id": "auxiliary",
+      "sentence": "I am ate an apple yesterday.",
+      "tree": "Provisional B-R working tree. Some groupings could not be analyzed confidently.",
+      "explanation": "Partial grammatical analysis. The findings below are supported by available evidence.\n\n‘ate’ is a simple past form. Auxiliary ‘am’ takes an -ing form in the progressive or a past participle in the passive.\n\nIf you intend the simple past, one possible revision is “I ate an apple yesterday.”"
+    },
+    {
+      "id": "contraction",
+      "sentence": "If you dont know.",
+      "tree": "Provisional B-R working tree. Some groupings could not be analyzed confidently.",
+      "explanation": "Partial grammatical analysis. The findings below are supported by available evidence.\n\n‘If’ introduces a conditional clause. It can work as a fragment in conversation. In formal writing, it needs a main clause to make a complete sentence.\n\nWrite ‘dont’ as ‘don't’ to mark the negative contraction. ‘do’ is the auxiliary, ‘n’t’ marks negation, and ‘know’ is the lexical verb in its plain form after the auxiliary.",
+      "selectedExplanation": "Partial grammatical analysis. The findings below are supported by available evidence.\n\n‘If’ introduces a conditional clause. It can work as a fragment in conversation. In formal writing, it needs a main clause to make a complete sentence.\n\nWrite ‘dont’ as ‘don't’ to mark the negative contraction. ‘do’ is the auxiliary, ‘n’t’ marks negation, and ‘know’ is the lexical verb in its plain form after the auxiliary.\n\nGo to lesson: The verb"
+    },
+    {
+      "id": "uncertain",
+      "sentence": "They demolished.",
+      "tree": "Provisional B-R working tree. Some groupings could not be analyzed confidently.",
+      "explanation": "Analysis incomplete. The syntax remains uncertain and the grammatical result is inconclusive."
+    },
+    {
+      "id": "canonical",
+      "sentence": "The apple was eaten yesterday.",
+      "tree": "",
+      "explanation": "In “The apple was eaten yesterday”, “The apple” identifies who or what the sentence is about, and “was eaten yesterday” tells us what happens or what is being described."
+    },
+    {
+      "id": "homograph",
+      "sentence": "A cant is a kind of slope.",
+      "tree": "Provisional B-R working tree. Some groupings could not be analyzed confidently.",
+      "explanation": "Analysis incomplete. The syntax remains uncertain and the grammatical result is inconclusive."
+    },
+    {
+      "id": "unicode",
+      "sentence": "Naomi 😊 will go later.",
+      "tree": "",
+      "explanation": "In “Naomi 😊 will go later”, “Naomi” identifies who or what the sentence is about, and “will go later” tells us what happens or what is being described."
+    }
+  ],
+  "rapidSubmissions": {
+    "firstText": "The boys walks.",
+    "latestText": "The children sang.",
+    "renderedText": "The children sang."
+  }
+}

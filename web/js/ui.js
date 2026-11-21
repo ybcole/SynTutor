@@ -1,4 +1,5 @@
 import { nodeLesson } from './node-lessons.js?v=2026.11.18f';
+import { domTextOffsets } from './correction.js?v=2026.11.21';
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -310,7 +311,8 @@ export function applySentenceSelection(payload) {
   const s = sents[idx];
   if (!ta || !s || ta.readOnly !== true) return;
   const st = ta.scrollTop;
-  ta.setSelectionRange(s.start, s.end);
+  const offsets = domTextOffsets(ta.value);
+  ta.setSelectionRange(offsets[s.start], offsets[s.end]);
   ta.scrollTop = st;
 }
 

@@ -1,6 +1,6 @@
 import { accountUserId } from './session-scope.js';
 import { fromCanonicalEnvelope, fromDisplayTree } from './syntax-builder.js';
-import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText } from './explanation-evidence.js?v=2026.11.18f';
+import { requestEvidence, renderEvidence, learnerFindingParagraph, evidenceParagraphText, supportedLocalFindings } from './explanation-evidence.js?v=2026.11.21b';
 import { shouldCollapseExplanation } from './explanation-dedupe.js';
 import { findCanonicalNode, canonicalNodeFacts } from './canonical-view.js';
 import { mapLegacyDetailsToCanonical } from './legacy-node-map.js';
@@ -13,10 +13,10 @@ import {
   log,
   clearOverlay, clearDiagnostics, showCanvasMessage, renderNodeDetail,
   renderDiagnostic, renderCorrection, applySentenceSelection, plainName, renderCorrectionPanel,
-} from './ui.js?v=2026.11.18f';
+} from './ui.js?v=2026.11.21';
 import {
-  planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords, findScopeNode, findTargetError,
-} from './correction.js';
+  planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords, findScopeNode, findTargetError, domTextOffsets,
+} from './correction.js?v=2026.11.21';
 import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.18f';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js?v=2026.11.18f';
 import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint } from './syntax-builder-ui.js?v=2026.11.18f';
@@ -1830,10 +1830,13 @@ function setQuizHintText() {
 // `sentences` holds the passage's sentence boundaries and `sentence_index`
 // is the sentence currently rendered on the canvas.
 function buildSession(payload, inputText) {
+  const offsets = domTextOffsets(inputText);
   return {
     payload,
     inputText,
-    sentences: payload.parse.sentences || [],
+    sentences: (payload.parse.sentences || []).map(sentence => ({
+      ...sentence, start: offsets[sentence.start], end: offsets[sentence.end],
+    })),
     sentence_index: (payload.meta.target_sentence || 1) - 1,
   };
 }
@@ -1916,7 +1919,7 @@ function activateSentenceAtCaret() {
   if (!session || ta.readOnly !== true) return;
   if (workspaceView === 'builder' || workspaceView === 'lessons' || workspaceView === 'quizzes') return; // The current module owns its view.
   if (ta.selectionStart !== ta.selectionEnd) return;
-  const sents = session.payload.parse.sentences || [];
+  const sents = session.sentences;
   const caret = ta.selectionStart;
   const hit = sents.find((s) => caret >= s.start && caret < s.end);
   if (!hit) return;
@@ -1929,7 +1932,12 @@ function activateSentenceAtCaret() {
 }
 
 function failPipeline(title, lines) {
+  session = null;
+  historySpans = [];
+  resetFocusState();
   clearTreeAuthorityNotice();
+  renderer.clear();
+  renderInputHighlights(document.querySelector('#inputText').value);
   showCanvasMessage('error', title, lines);
   renderDiagnostic(title, lines);
   transition(STATES.VIEWING, 'request failed -> diagnostic shown');
@@ -1942,6 +1950,7 @@ async function postParse(text, index = null, variety = null) {
   if (variety) body.variety = variety;
   const res = await fetch(`${API_BASE}/api/parse`, {
     method: 'POST',
+    signal: AbortSignal.timeout(60_000),
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   });
@@ -1969,6 +1978,20 @@ async function postParse(text, index = null, variety = null) {
 // A raw parser diagnostic is NOT a Burton-Roberts tree. Keep it opt-in;
 // never silently make Penn/Benepar the primary learner-facing analysis.
 let canonicalCanvas = null;
+function localEvidenceOptions(payload, nodeId = null) {
+  const analysis = payload?.learner_analysis;
+  const selected = nodeId ? analysis?.nodes?.[nodeId] : null;
+  const findings = supportedLocalFindings(payload).filter(row => !selected || selected.findings.includes(row.id));
+  return {
+    findings,
+    selected,
+    overview: analysis?.sentence_text,
+    verdict: analysis?.verdict,
+    treeUnresolved: payload?.br_analysis?.status !== 'normalized',
+    revision: analysis?.revision,
+  };
+}
+
 function clearCanonicalTree() {
   const host = document.querySelector('#canonicalTreeView');
   if (host && !host.hidden) {
@@ -2016,6 +2039,7 @@ function showCanonicalTree(payload) {
   }
   indexParents(envelope.root);
   const legacyMap = mapLegacyDetailsToCanonical(envelope.root, payload?.node_details || {});
+  const learnerNodes = payload?.learner_analysis?.nodes;
   const explanationCache = new Map();
   const candidateIds = new Set();
   for (const item of payload?.explanation_evidence?.candidate_xai?.items || []) {
@@ -2029,26 +2053,49 @@ function showCanonicalTree(payload) {
     }
   }
   let requestVersion = 0;
+  const clearSelection = () => {
+    ++requestVersion;
+    for (const item of host.querySelectorAll('[data-selected],[data-tree-parent],[data-tree-sibling],[data-xai7-focus]')) {
+      item.removeAttribute('data-selected');
+      item.removeAttribute('data-tree-parent');
+      item.removeAttribute('data-tree-sibling');
+      item.removeAttribute('data-xai7-focus');
+      if (item.hasAttribute('aria-pressed')) item.setAttribute('aria-pressed', 'false');
+    }
+    document.querySelector('#explainNode')?.replaceChildren();
+    renderEvidence(payload.explanation_evidence, undefined, localEvidenceOptions(payload));
+  };
+  host.onkeydown = (event) => {
+    if (event.key !== 'Escape') return;
+    event.preventDefault();
+    event.stopPropagation();
+    clearSelection();
+  };
+  host.onclick = (event) => {
+    if (event.target.closest('svg') && !event.target.closest('[data-node-id]')) clearSelection();
+  };
   for (const group of host.querySelectorAll('[data-node-id]')) {
     const id = group.getAttribute('data-node-id');
     const node = findCanonicalNode(envelope.root, id);
     if (!node) continue;
-    const legacyDetail = legacyMap.byNode.get(id);
     const titles = [];
-    if (legacyDetail) {
+    const learnerNode = learnerNodes?.[id];
+    if (learnerNode?.error) {
       group.dataset.legacyIssue = 'true';
-      titles.push(`Grammar check: ${legacyDetail.constraint || 'finding'}`);
+      titles.push('Supported local finding');
+    } else if (learnerNode?.related) {
+      group.dataset.learnerRelated = 'true';
+      titles.push('Evidence for a grammar finding');
     }
     if (candidateIds.has(id)) {
       group.dataset.candidateIssue = 'true';
       titles.push('Candidate grammar check — not a verified error');
     }
-    group.dataset.explainable = legacyDetail || candidateIds.has(id) ? 'unique' : 'structural';
+    group.dataset.explainable = learnerNode?.error || candidateIds.has(id) ? 'unique' : 'structural';
     if (titles.length) group.setAttribute('title', titles.join(' · '));
     // A word remains selectable as its own node. Parent references are shown
     // as metadata only, never silently substituted for word-level evidence.
     const owner = node;
-    const annotationOwner = node.word && parents.has(id) ? parents.get(id) : node;
     const facts = canonicalNodeFacts(envelope, owner);
     facts.label = displayLabels?.[owner.id]?.[0] || facts.label;
     const interactiveSvg = group.namespaceURI === 'http://www.w3.org/2000/svg';
@@ -2058,17 +2105,17 @@ function showCanonicalTree(payload) {
     }
     const accessibleLabel = node.word ? 'word' : facts.label;
     group.setAttribute('aria-label', `Inspect Burton-Roberts ${accessibleLabel}${facts.surface ? ` for ${facts.surface}` : ''}`);
-    if (!interactiveSvg) group.setAttribute('aria-pressed', 'false');
+    group.setAttribute('aria-pressed', 'false');
     const select = async () => {
       const selectedVersion = ++requestVersion;
       for (const item of host.querySelectorAll('[data-selected]')) {
         item.removeAttribute('data-selected');
-        if (item.tagName === 'BUTTON') item.setAttribute('aria-pressed', 'false');
+        item.setAttribute('aria-pressed', 'false');
       }
       for (const item of host.querySelectorAll('[data-node-id]')) {
         if (item.getAttribute('data-node-id') !== id) continue;
         item.dataset.selected = 'true';
-        if (item.tagName === 'BUTTON') item.setAttribute('aria-pressed', 'true');
+        item.setAttribute('aria-pressed', 'true');
       }
       for (const item of host.querySelectorAll('[data-tree-parent],[data-tree-sibling]')) {
         item.removeAttribute('data-tree-parent');
@@ -2094,7 +2141,7 @@ function showCanonicalTree(payload) {
       pane.append(evidenceSlot);
       try {
         const finding = learnerFindingParagraph(payload.explanation_evidence, owner.id);
-        const evidence = working || finding
+        const evidence = working || finding || learnerNode
           ? payload.explanation_evidence
           : await requestEvidence(envelope, owner.id, {
               variety: payload.meta?.cambridge_variety,
@@ -2103,14 +2150,17 @@ function showCanonicalTree(payload) {
         if (selectedVersion !== requestVersion || host.hidden || !host.contains(group)
             || (session?.payload !== payload && activePreview()?.payload !== payload)) return;
         const options = {
-          treeRoot: group.closest('#canonicalTreeView'),
+          ...localEvidenceOptions(payload, id),
+          sentenceFindingsCount: supportedLocalFindings(payload).length,
+          onClearSelection: clearSelection,
+          treeRoot: learnerNode ? null : group.closest('#canonicalTreeView'),
           nodeId: owner.id,
           nodeType: owner.word
             ? (parents.get(owner.id)?.label || 'WORD')
             : (owner.label || 'PHRASE'),
           nodeKind: owner.word ? 'word' : 'syntax',
           nodeFeatures: owner.features || [],
-          legacyDetail: legacyMap.detailForNode(owner.id) || legacyMap.detailForNode(id),
+          legacyDetail: working || learnerNodes ? null : legacyMap.detailForNode(owner.id),
         };
         // Repeated explanations are collapsed, not hidden: a learner who
         // selects a second node sees that it shares its enclosing phrase's
@@ -2118,7 +2168,7 @@ function showCanonicalTree(payload) {
         const text = evidenceParagraphText(evidence, options);
         const parent = parents.get(owner.id);
         const parentText = parent ? explanationCache.get(parent.id)?.text : null;
-        if (shouldCollapseExplanation(owner, text, parentText)) {
+        if (!learnerNode && shouldCollapseExplanation(owner, text, parentText)) {
           const parentFacts = canonicalNodeFacts(envelope, parent);
           options.paragraphOverride = 'Same explanation as the enclosing '
             + (parentFacts.label || 'phrase')
@@ -2148,7 +2198,7 @@ function showCanonicalTree(payload) {
 }
 
 function setTreeAuthorityNotice(payload) {
-  renderEvidence(payload?.explanation_evidence);
+  renderEvidence(payload?.explanation_evidence, undefined, localEvidenceOptions(payload));
   const canonicalShown = showCanonicalTree(payload);
   const notice = document.querySelector('#treeAuthorityNotice');
   if (!notice) return;
@@ -2161,8 +2211,7 @@ function setTreeAuthorityNotice(payload) {
     || (analysis?.reasons || []).map((row) => row?.detail).find(Boolean);
   if (canonicalShown) {
     if (!analysis?.tree && analysis?.working_tree) {
-      notice.textContent = 'Provisional B-R working tree: this analysis is unresolved. '
-        + 'Known categories are shown; the remaining grouping is provisional.';
+      notice.textContent = 'Provisional B-R working tree. Some groupings could not be analyzed confidently.';
       notice.hidden = false;
     } else {
       notice.hidden = true;
@@ -2429,10 +2478,10 @@ function invalidateAnalysis(reason) {
 }
 
 async function runPipeline(opts = {}) {
-  if (state === STATES.PROCESSING) {
-    // A live re-parse that landed while the previous run was still in flight
-    // is re-queued instead of dropped, so the tree always catches up.
-    if (opts.isLive) liveReparsePending = true;
+  if (state === STATES.PROCESSING && opts.isLive) {
+    // Automatic correction updates can wait. An explicit submission takes
+    // precedence immediately, so earlier responses cannot replace it.
+    liveReparsePending = true;
     return;
   }
   // Only the Grammar Tutor runs the analysis pipeline: the Lessons module
@@ -2495,15 +2544,19 @@ async function executePipeline(opts, request) {
     if (out.error) {
       const { status, error, hint } = out.error;
       const title = status === 503
-        ? 'NLP models unavailable'
+        ? 'Technical analysis failure'
         : status === 422 ? 'Unable to produce a parse' : `Backend error (HTTP ${status})`;
       failPipeline(title, [error || 'The backend rejected the request.', hint || ''].filter(Boolean));
       return;
     }
     payload = out.payload;
     setTreeAuthorityNotice(payload);
-  } catch (_e) {
+  } catch (error) {
     if (request !== analysisRequest) return;
+    if (error.name === 'TimeoutError') {
+      failPipeline('Analysis timed out', ['The server did not finish in time. You can submit the text again.']);
+      return;
+    }
     failPipeline('Backend unreachable', [
       'The SynTutor NLP server is not responding.',
       'Start it with:  python3 server/app.py',
@@ -2558,7 +2611,7 @@ async function executePipeline(opts, request) {
   if (!quizMode) {
     // The learner sees one grammar paragraph. Correction previews remain
     // available in their separate correction panel when a finding is chosen.
-    renderEvidence(payload.explanation_evidence);
+    renderEvidence(payload.explanation_evidence, undefined, localEvidenceOptions(payload));
   }
   transition(STATES.VIEWING, 'output ready -> viewing');
   log('Stage 7: syntax tree rendered \u2014 Interaction Loop active (node details cached in session)');
@@ -2606,6 +2659,7 @@ function buildHighlightSpans(text, payload) {
   const target = payload.parse.sentences[payload.meta.target_sentence - 1];
   if (!target) return [];
   const tokens = payload.parse.tokens || [];
+  const offsets = domTextOffsets(text);
   const tokenRanges = [];
   const hasCharOffsets = tokens.length > 0 && tokens.every(
     (t) => typeof t.start === 'number' && typeof t.end === 'number' && t.end > t.start,
@@ -2616,11 +2670,11 @@ function buildHighlightSpans(text, payload) {
       tokenRanges.push({ start: token.start, end: token.end, index: token.i });
     }
   } else {
-    let cursor = target.start;
+    let cursor = offsets[target.start];
     for (const token of tokens) {
       const start = text.indexOf(token.t, cursor);
-      if (start < 0 || start >= target.end) continue;
-      tokenRanges.push({ start, end: start + token.t.length, index: token.i });
+      if (start < 0 || start >= offsets[target.end]) continue;
+      tokenRanges.push({ start: offsets.indexOf(start), end: offsets.indexOf(start + token.t.length), index: token.i });
       cursor = start + token.t.length;
     }
   }
@@ -2630,67 +2684,18 @@ function buildHighlightSpans(text, payload) {
     if (!Number.isInteger(start) || !Number.isInteger(end) || end <= start) return;
     errorTokenSpans.push([start, end]);
   };
-  const tokenForChar = (start, end) => {
-    if (start === end) {
-      return tokenRanges.find((token) => token.start <= start && start <= token.end)?.index;
-    }
-    return tokenRanges.find((token) => token.start < end && token.end > start)?.index;
-  };
-  const initialTokenIndex = tokenRanges[0]?.index;
-  for (const detail of Object.values(payload.node_details || {})) {
-    if (detail.status !== 'error') continue;
-    if (detail.constraint === 'C-CAPITALIZATION'
-        && !(Array.isArray(detail.span) && detail.span[0] <= initialTokenIndex
-             && initialTokenIndex < detail.span[1])) continue;
-    const remediation = detail.remediation || {};
-    const edits = [];
-    if (remediation.edit) edits.push(remediation);
-    for (const row of remediation.edits || []) edits.push(row);
-    let matched = false;
-    for (const row of edits) {
-      const edit = row?.edit || row;
-      if (Number.isInteger(edit?.start) && Number.isInteger(edit?.end)) {
-        addTokenSpan(edit.start, edit.end);
-        matched = true;
-      }
-    }
-    // Bound canonical words include the flagged word and any word named by
-    // its repair, so both sides of a multi-word error stay highlighted.
-    for (const span of detail.canonical_binding?.token_spans || []) {
-      if (Array.isArray(span) && span.length === 2) {
-        addTokenSpan(span[0], span[1]);
-        matched = true;
-      }
-    }
-    if (!matched && Array.isArray(detail.canonical_binding?.token_span)) {
-      addTokenSpan(detail.canonical_binding.token_span[0], detail.canonical_binding.token_span[1]);
-      matched = true;
-    }
-    if (!matched && Array.isArray(detail.span)) {
-      addTokenSpan(detail.span[0], detail.span[1]);
-    }
-  }
-  for (const item of payload.explanation_evidence?.candidate_xai?.items || []) {
-    for (const row of item.tree_binding?.mapped || []) {
-      if (Array.isArray(row.token_ids) && row.token_ids.length) {
-        addTokenSpan(Math.min(...row.token_ids), Math.max(...row.token_ids) + 1);
-      } else if (Array.isArray(row.span) && row.span.length === 2) {
-        const index = tokenForChar(row.span[0], row.span[1]);
-        if (Number.isInteger(index)) addTokenSpan(index, index + 1);
-      }
-    }
+  for (const finding of supportedLocalFindings(payload)) {
+    for (const index of finding.target_token_ids) addTokenSpan(index, index + 1);
   }
   return tokenRanges.map((token) => {
     let status = sentenceClean ? 'valid' : 'neutral';
-    const isSentenceInitialToken = token.index === tokenRanges[0]?.index;
     for (const [start, end] of errorTokenSpans) {
       if (start <= token.index && token.index < end) {
-        if (payload.node_details?.[token.index]?.constraint === 'C-CAPITALIZATION') continue;
         status = 'error';
         break;
       }
     }
-    return { start: token.start, end: token.end, status };
+    return { start: offsets[token.start], end: offsets[token.end], status };
   });
 }
 
@@ -2708,8 +2713,9 @@ function renderInputHighlights(text, payload = null) {
   if (!text) return;
   const spans = payload ? mergeHighlightSpans(historySpans, buildHighlightSpans(text, payload)) : historySpans;
   const target = payload?.parse?.sentences?.[(payload.meta.target_sentence || 1) - 1];
-  let sentenceStart = target?.start ?? -1;
-  let sentenceEnd = target?.end ?? -1;
+  const offsets = domTextOffsets(text);
+  let sentenceStart = offsets[target?.start] ?? -1;
+  let sentenceEnd = offsets[target?.end] ?? -1;
   const off = (n) => Math.max(0, Math.min(n, text.length));
   const boundaries = new Set([0, text.length]);
   spans.forEach((span) => {

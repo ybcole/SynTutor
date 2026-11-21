@@ -1,0 +1,32 @@
+case_id,source_text,tree_status,working_tree,candidate_parse,diagnostic_text,proposed_revision,browser_explanation_if_captured,reviewer_1_rule_applicability,reviewer_1_linguistic_accuracy,reviewer_1_tree_accuracy,reviewer_1_correction_validity,reviewer_1_meaning_preservation,reviewer_1_edit_minimality,reviewer_1_explanation_clarity,reviewer_1_educational_usefulness,reviewer_1_notes,reviewer_2_rule_applicability,reviewer_2_linguistic_accuracy,reviewer_2_tree_accuracy,reviewer_2_correction_validity,reviewer_2_meaning_preservation,reviewer_2_edit_minimality,reviewer_2_explanation_clarity,reviewer_2_educational_usefulness,reviewer_2_notes
+RW-001,I am ate an apple yesterday.,unresolved,True,(S (NP (PRP I)) (VP (VBP am) (VP (VBN ate) (NP (DT an) (NN apple)) (NP (NN yesterday)))) (. .)),‘ate’ is a simple past form. Auxiliary ‘am’ takes an -ing form in the progressive or a past participle in the passive.,I ate an apple yesterday.,"Partial grammatical analysis. The findings below are supported by available evidence.
+
+‘ate’ is a simple past form. Auxiliary ‘am’ takes an -ing form in the progressive or a past participle in the passive.
+
+If you intend the simple past, one possible revision is “I ate an apple yesterday.”",,,,,,,,,,,,,,,,,,
+RW-002,If you dont know.,unresolved,True,(SBAR (IN If) (S (NP (PRP you)) (VP (RB do) (RB nt) (VP (VB know)))) (. .)),"Write ‘dont’ as ‘don't’ to mark the negative contraction. ‘do’ is the auxiliary, ‘n’t’ marks negation, and ‘know’ is the lexical verb in its plain form after the auxiliary.
+‘If’ introduces a conditional clause. It can work as a fragment in conversation. In formal writing, it needs a main clause to make a complete sentence.",,"Partial grammatical analysis. The findings below are supported by available evidence.
+
+‘If’ introduces a conditional clause. It can work as a fragment in conversation. In formal writing, it needs a main clause to make a complete sentence.
+
+Write ‘dont’ as ‘don't’ to mark the negative contraction. ‘do’ is the auxiliary, ‘n’t’ marks negation, and ‘know’ is the lexical verb in its plain form after the auxiliary.",,,,,,,,,,,,,,,,,,
+RW-004,"If you don’t know, ask Naomi.",unresolved,True,"(S (SBAR (IN If) (S (NP (PRP you)) (VP (VBP do) (RB n’t) (VP (VB know))))) (, ,) (VP (VB ask) (NP (NNP Naomi))) (. .))",,,,,,,,,,,,,,,,,,,,,
+RW-005,"If you dont know, ask Naomi.",unresolved,True,"(S (SBAR (IN If) (S (NP (PRP you)) (VP (RB do) (RB nt) (VP (VB know))))) (, ,) (VP (VB ask) (NP (NNP Naomi))) (. .))","Write ‘dont’ as ‘don't’ to mark the negative contraction. ‘do’ is the auxiliary, ‘n’t’ marks negation, and ‘know’ is the lexical verb in its plain form after the auxiliary.","If you don't know, ask Naomi.",,,,,,,,,,,,,,,,,,,
+RW-011,A cant is a kind of slope.,normalized,False,(S (NP (DT A) (NN ca) (NN nt)) (VP (VBZ is) (NP (NP (DT a) (NN kind)) (PP (IN of) (NP (NN slope))))) (. .)),,,,,,,,,,,,,,,,,,,,,
+RW-019,The apple was eaten yesterday.,normalized,False,(S (NP (DT The) (NN apple)) (VP (VBD was) (VP (VBN eaten) (NP (NN yesterday)))) (. .)),,,"In “The apple was eaten yesterday”, “The apple” identifies who or what the sentence is about, and “was eaten yesterday” tells us what happens or what is being described.",,,,,,,,,,,,,,,,,,
+RW-021,The apple was ate yesterday.,unresolved,True,(S (NP (DT The) (NN apple)) (VP (VBD was) (VP (VBN ate) (NP (NN yesterday)))) (. .)),‘ate’ is a simple past form. Auxiliary ‘was’ takes an -ing form in the progressive or a past participle in the passive.,,,,,,,,,,,,,,,,,,,,
+RW-023,I am not ate an apple yesterday.,unresolved,True,(S (NP (PRP I)) (VP (VBP am) (RB not) (VP (VBN ate) (NP (DT an) (NN apple)) (NP (NN yesterday)))) (. .)),‘ate’ is a simple past form. Auxiliary ‘am’ takes an -ing form in the progressive or a past participle in the passive.,,,,,,,,,,,,,,,,,,,,
+RW-028,My favorite color is rose.,normalized,False,(S (NP (PRP$ My) (JJ favorite) (NN color)) (VP (VBZ is) (NP (NN rose))) (. .)),,,,,,,,,,,,,,,,,,,,,
+RW-039,Naomi and José-Luis work at DLSU-D in Dasmariñas.,unresolved,True,(S (NP (NNP Naomi) (CC and) (NNP José) (HYPH -) (NNP Luis)) (VP (VBP work) (PP (IN at) (NP (NP (NNP DLSU) (HYPH -) (NNP D)) (PP (IN in) (NP (NNP Dasmariñas)))))) (. .)),,,,,,,,,,,,,,,,,,,,,
+RW-046,We measured qudit coherence.,normalized,False,(S (NP (PRP We)) (VP (VBD measured) (NP (JJ qudit) (NN coherence))) (. .)),,,,,,,,,,,,,,,,,,,,,
+RW-048,They recieved it yesterday.,normalized,False,(S (NP (PRP They)) (VP (VBD recieved) (NP (PRP it)) (NP (NN yesterday))) (. .)),'recieved' appears to be misspelled; use 'received' instead.,They received it yesterday.,,,,,,,,,,,,,,,,,,,
+RW-050,She read teh book.,unresolved,True,(S (NP (PRP She)) (VP (VBD read) (NP (FW teh) (NN book))) (. .)),"'teh' is misspelled.
+'book' is a singular noun that names one countable thing, but it is used without a little word like 'a' or 'the' before it.",She read the book.,,,,,,,,,,,,,,,,,,,
+RW-054,"Salamat po, Naomi.",unresolved,True,"(NP (NP (NNP Salamat) (FW po)) (, ,) (NP (NNP Naomi)) (. .))",The parser did not find a complete independent part of the sentence here.,,,,,,,,,,,,,,,,,,,,
+RW-055,Bonjour tout le monde.,unresolved,True,(NP (UH Bonjour) (RB tout) (DT le) (FW monde) (. .)),"'le' is used without a noun, but 'Bonjour tout le monde .' has no noun for it.
+The parser did not find a complete independent part of the sentence here.",,,,,,,,,,,,,,,,,,,,
+RW-060,The boy running fast.,unresolved,True,(S (NP (DT The) (NN boy)) (VP (VBG running) (ADVP (RB fast))) (. .)),‘running’ is a non-finite verb form here. A full declarative clause needs a verb that carries tense.,,,,,,,,,,,,,,,,,,,,
+RW-069,She is taller than he is.,normalized,False,(S (NP (PRP She)) (VP (VBZ is) (ADJP (ADJP (JJR taller)) (SBAR (IN than) (S (NP (PRP he)) (VP (VBZ is)))))) (. .)),,,,,,,,,,,,,,,,,,,,,
+RW-070,They will become an experts.,normalized,False,(S (NP (PRP They)) (VP (MD will) (VP (VB become) (NP (DT an) (NNS experts)))) (. .)),"'an' goes with one thing, but the noun 'experts' is plural.",They will become experts.,,,,,,,,,,,,,,,,,,,
+RW-071,A few ill girlfriend visited.,normalized,False,(S (NP (DT A) (JJ few) (JJ ill) (NN girlfriend)) (VP (VBD visited)) (. .)),"'few' goes with plural countable nouns, but 'girlfriend' is singular.",A few ill girlfriends visited.,,,,,,,,,,,,,,,,,,,
+RW-073,I like very much it.,normalized,False,(S (NP (PRP I)) (VP (VBP like) (ADVP (RB very) (RB much)) (NP (PRP it))) (. .)),The adverbial 'very much' sits between the verb and its pronoun object 'it',,,,,,,,,,,,,,,,,,,,

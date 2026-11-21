@@ -44,7 +44,8 @@ def _node_label(node: dict[str, Any], parents: dict[str, dict[str, Any]]) -> str
 
 
 def bind_details_to_canonical(tree: dict[str, Any] | None,
-                              details: dict[str, Any] | None) -> dict[str, Any]:
+                              details: dict[str, Any] | None, *,
+                              parser_tokens=None, sentence_offset=0) -> dict[str, Any]:
     root = (tree or {}).get("root") if isinstance(tree, dict) else None
     if not isinstance(root, dict) or not isinstance(details, dict):
         return {"status": "unavailable", "mapped": 0, "unmapped": 0}
@@ -76,17 +77,18 @@ def bind_details_to_canonical(tree: dict[str, Any] | None,
             _span_length(node),
         ))
 
-    def token_for_word(word: str):
-        """Resolve a quoted word in prose to the canonical token that carries it."""
-        target = word.strip().lower()
-        if not target:
-            return None
-        for token in tokens:
-            if str(token.get("text", "")).lower() == target:
-                return smallest_token(int(token.get("index", 0)))
-        return None
-
     tokens = tree.get("tokens") if isinstance(tree.get("tokens"), list) else []
+    source_spans = {(tuple(token['char_span']), token['text']): token['index']
+                    for token in tokens if token.get('char_span')}
+    index_map = {token['i']: source_spans.get((
+        (token['start'] - sentence_offset, token['end'] - sentence_offset), token['t']))
+                 for token in parser_tokens or []}
+
+    def source_span(start, end):
+        if parser_tokens is None:
+            return (start, end)
+        matched = [index_map[i] for i in range(start, end) if index_map.get(i) is not None]
+        return (min(matched), max(matched) + 1) if matched else None
 
     mapped = 0
     unmapped = 0
@@ -106,8 +108,11 @@ def bind_details_to_canonical(tree: dict[str, Any] | None,
             end = edit.get("end")
             if not isinstance(start, int):
                 continue
-            node = (smallest_span(start, end) if isinstance(end, int) and end > start + 1
-                    else smallest_token(start))
+            mapped_edit = source_span(start, end if isinstance(end, int) and end > start else start + 1)
+            if not mapped_edit:
+                continue
+            first, last = mapped_edit
+            node = smallest_span(first, last) if last > first + 1 else smallest_token(first)
             if node is not None:
                 targets.append(node)
         # A finding can name one word while its repair edits a different word
@@ -117,11 +122,13 @@ def bind_details_to_canonical(tree: dict[str, Any] | None,
         if len(span) == 2 and all(isinstance(value, int) for value in span):
             start, end = span
             if str(detail.get("type") or "").upper() in _LEAF_TAGS or end - start <= 1:
-                for index in range(start, min(end, start + 1)):
-                    node = smallest_token(index)
+                extent = source_span(start, min(end, start + 1))
+                if extent:
+                    node = smallest_token(extent[0])
                     if node is not None:
                         targets.append(node)
-        if not rows:
+        scoped = source_span(*span) if len(span) == 2 and all(isinstance(v, int) for v in span) else None
+        if not rows and scoped:
             prose = " ".join(str(remediation.get(key) or "") for key in
                              ("violation", "suggested_fix", "alternative_fix"))
             prose += " " + str(detail.get("text") or "")
@@ -133,15 +140,15 @@ def bind_details_to_canonical(tree: dict[str, Any] | None,
                 # 'and'" would mark an unrelated conjunction.
                 if " " in word.strip() or word.strip().lower() not in surface_words:
                     continue
-                node = token_for_word(word)
+                matches = [i for i in range(*scoped) if i < len(tokens)
+                           and tokens[i]['text'].lower() == word.strip().lower()]
+                node = smallest_token(matches[0]) if len(matches) == 1 else None
                 if node is not None:
                     targets.append(node)
-        if not targets and isinstance(detail.get("span"), list) and len(detail["span"]) == 2:
-            start, end = detail["span"]
-            if isinstance(start, int) and isinstance(end, int):
-                node = smallest_span(start, end)
-                if node is not None:
-                    targets.append(node)
+        if not targets and scoped:
+            node = smallest_span(*scoped)
+            if node is not None:
+                targets.append(node)
         unique = []
         for node in targets:
             if node["id"] not in {item["id"] for item in unique}:

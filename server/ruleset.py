@@ -19,6 +19,11 @@ Nothing here imports ``server.matrix`` (the dependency runs the other way), so
 the checks can be unit-tested and audited in isolation.
 """
 
+if __package__:
+    from .spellcheck import has_name_evidence
+else:
+    from spellcheck import has_name_evidence
+
 METHOD_T = 'T'
 METHOD_L = 'L'
 METHOD_C = 'C'
@@ -171,7 +176,8 @@ CONTRACTIONS = {
     'arent': "aren't", 'wasnt': "wasn't", 'werent': "weren't",
     'doesnt': "doesn't", 'didnt': "didn't", 'couldnt': "couldn't",
     'shouldnt': "shouldn't", 'wouldnt': "wouldn't", 'hasnt': "hasn't",
-    'havent': "haven't", 'hadnt': "hadn't", 'im': "I'm", 'ive': "I've",
+    'havent': "haven't", 'hadnt': "hadn't", 'mustnt': "mustn't", 'aint': "ain't",
+    'im': "I'm", 'ive': "I've",
     'youre': "you're", 'youve': "you've", 'youll': "you'll",
     'theyre': "they're", 'theyve': "they've", 'thats': "that's",
     'whats': "what's", 'wheres': "where's", 'heres': "here's",
@@ -227,17 +233,31 @@ IRREGULAR_COMPARATIVE = {
 ORAL_PAST_REGULARIZED = {
     'goed': 'went', 'eated': 'ate', 'drinked': 'drank', 'runned': 'ran',
     'seed': 'saw', 'taked': 'took', 'buyed': 'bought', 'bringed': 'brought',
+    'brang': 'brought', 'brung': 'brought',
     'teached': 'taught', 'thinked': 'thought', 'writed': 'wrote',
     'knowed': 'knew', 'catched': 'caught', 'choosed': 'chose',
     'speaked': 'spoke', 'gived': 'gave', 'maked': 'made', 'finded': 'found',
+    'drawed': 'drew', 'growed': 'grew', 'throwed': 'threw', 'falled': 'fell',
+    'breaked': 'broke', 'drived': 'drove', 'rided': 'rode', 'sleeped': 'slept',
+    'keeped': 'kept', 'feeled': 'felt', 'meeted': 'met', 'sitted': 'sat',
+    'standed': 'stood', 'hided': 'hid', 'bited': 'bit', 'shaked': 'shook',
+    'stealed': 'stole', 'weared': 'wore', 'teared': 'tore', 'swimmed': 'swam',
+    'blowed': 'blew',
 }
 
 IRREGULAR_PART_REGULARIZED = {
     'goed': 'gone', 'eated': 'eaten', 'drinked': 'drunk', 'runned': 'run',
     'taked': 'taken', 'buyed': 'bought', 'bringed': 'brought',
+    'brang': 'brought', 'brung': 'brought',
     'teached': 'taught', 'thinked': 'thought', 'writed': 'written',
     'knowed': 'known', 'catched': 'caught', 'choosed': 'chosen',
     'speaked': 'spoken', 'gived': 'given', 'maked': 'made', 'finded': 'found',
+    'drawed': 'drawn', 'growed': 'grown', 'throwed': 'thrown', 'falled': 'fallen',
+    'breaked': 'broken', 'drived': 'driven', 'rided': 'ridden', 'sleeped': 'slept',
+    'keeped': 'kept', 'feeled': 'felt', 'meeted': 'met', 'sitted': 'sat',
+    'standed': 'stood', 'hided': 'hidden', 'bited': 'bitten', 'shaked': 'shaken',
+    'stealed': 'stolen', 'weared': 'worn', 'teared': 'torn', 'swimmed': 'swum',
+    'blowed': 'blown',
 }
 
 PAST_AS_PARTICIPLE = {
@@ -296,7 +316,131 @@ STATIVE_PROGRESSIVE = {
 INTRANSITIVE_VBN = {
     'happened', 'occurred', 'arisen', 'arrived', 'appeared', 'disappeared',
     'vanished', 'existed', 'belonged', 'consisted', 'resulted', 'elapsed',
-    'slept', 'worked', 'rained', 'snowed', 'sneezed', 'coughed', 'died',
+    'slept', 'rained', 'snowed', 'sneezed', 'coughed', 'died',
+    'struggled', 'fallen', 'smiled', 'laughed', 'cried', 'wept', 'fainted',
+    'blushed', 'trembled', 'shivered', 'collapsed', 'emerged', 'persisted',
+    'perished', 'prevailed', 'rebelled', 'stumbled', 'staggered', 'lurked',
+    'dwelled', 'dwelt', 'resided', 'differed', 'depended', 'relied',
+    'hesitated', 'cooperated', 'competed', 'collided', 'intervened',
+    'reacted', 'responded', 'glanced', 'glared', 'stared', 'gazed', 'peered',
+    'waited', 'frowned', 'grinned', 'chuckled', 'giggled', 'sighed', 'groaned',
+    'moaned', 'barked', 'roared', 'howled', 'ached', 'glowed', 'gleamed',
+    'bloomed', 'withered', 'decayed', 'rotted', 'rusted', 'evaporated',
+    'erupted', 'subsided', 'dwindled', 'flourished', 'thrived', 'prospered',
+    'deteriorated', 'fluctuated', 'receded', 'soared', 'plummeted', 'crawled',
+    'crept', 'tiptoed', 'strode', 'strolled', 'wandered', 'lingered',
+    'loitered', 'hurried', 'scurried', 'sprinted', 'jogged', 'limped',
+    'hobbled', 'leapt', 'plunged', 'glided', 'drifted', 'hovered', 'knelt',
+    'crouched', 'squatted', 'reclined', 'dozed', 'slumbered', 'napped',
+    'snored', 'yawned', 'listened', 'clashed', 'chatted', 'gossiped', 'joked',
+    'apologized', 'complained', 'disagreed', 'departed', 'remained', 'stayed',
+    'seemed', 'mattered', 'risen',
+    'concurred', 'abstained', 'acquiesced', 'bickered', 'coexisted',
+    'complied', 'conformed', 'consented', 'conspired', 'converged',
+    'conversed', 'coped', 'corresponded', 'cowered', 'dawdled', 'defected',
+    'degenerated', 'despaired', 'deviated', 'digressed', 'disembarked',
+    'diverged', 'emigrated', 'emanated', 'fidgeted', 'flinched', 'flirted',
+    'frolicked', 'gaped', 'gloated', 'grimaced', 'groveled', 'grumbled',
+    'hibernated', 'immigrated', 'interacted', 'interfered', 'languished',
+    'lapsed', 'loomed', 'lounged', 'lunged', 'lurched', 'meddled',
+    'meditated', 'meandered', 'migrated', 'mingled', 'moped', 'oscillated',
+    'participated', 'persevered', 'perspired', 'pouted', 'pranced',
+    'proceeded', 'proliferated', 'protruded', 'quaked', 'quarreled',
+    'quavered', 'recoiled', 'recurred', 'reigned', 'rejoiced', 'relapsed',
+    'reminisced', 'repented', 'replied', 'resorted', 'retaliated', 'retreated',
+    'reverted', 'revolved', 'sauntered', 'scampered', 'scoffed', 'scowled',
+    'seethed', 'shrieked', 'skulked', 'slouched', 'slumped', 'smirked',
+    'sneered', 'snickered', 'sniffled', 'sniggered', 'snorted', 'sobbed',
+    'socialized', 'sprawled', 'squabbled', 'squinted', 'squirmed',
+    'stagnated', 'sulked', 'swaggered', 'swerved', 'swooned', 'swooped',
+    'sympathized', 'tarried', 'teetered', 'throbbed', 'tingled', 'tittered',
+    'toiled', 'tottered', 'trespassed', 'triumphed', 'trudged', 'vacillated',
+    'veered', 'vied', 'waddled', 'wallowed', 'waned', 'wavered', 'wheezed',
+    'wilted', 'winced', 'wobbled', 'wrangled', 'wriggled', 'writhed',
+    'yearned', 'yelped',
+}
+
+# Curated unambiguous gendered English first names (unisex names intentionally
+# excluded to prevent false-positive binding errors).
+GENDERED_FIRST_NAMES = {
+    # Male names
+    **dict.fromkeys((
+        'john', 'james', 'robert', 'michael', 'william', 'david', 'richard',
+        'joseph', 'thomas', 'charles', 'christopher', 'daniel', 'matthew',
+        'anthony', 'mark', 'donald', 'steven', 'paul', 'andrew', 'joshua',
+        'kenneth', 'kevin', 'brian', 'george', 'edward', 'ronald', 'timothy',
+        'jason', 'jeffrey', 'ryan', 'jacob', 'gary', 'nicholas', 'eric',
+        'jonathan', 'stephen', 'larry', 'justin', 'scott', 'brandon',
+        'benjamin', 'samuel', 'gregory', 'frank', 'alexander', 'raymond',
+        'patrick', 'jack', 'dennis', 'jerry', 'tyler', 'aaron', 'jose',
+        'adam', 'henry', 'nathan', 'douglas', 'zachary', 'peter', 'kyle',
+        'walter', 'ethan', 'jeremy', 'harold', 'keith', 'christian', 'roger',
+        'noah', 'gerald', 'carl', 'sean', 'austin', 'arthur', 'lawrence',
+        'jesse', 'dylan', 'bryan', 'joe', 'albert', 'willie', 'gabriel',
+        'alan', 'juan', 'wayne', 'roy', 'ralph', 'randy', 'eugene', 'vincent',
+        'russell', 'elijah', 'louis', 'bobby', 'philip', 'phillip', 'johnny',
+        'bradley', 'martin', 'craig', 'derek', 'joel', 'chad', 'randolf',
+        'omar', 'max', 'bill', 'adrian', 'winston', 'galileo', 'marco',
+        'bruce', 'carl', 'barry', 'todd', 'steve', 'dan', 'dave', 'tom',
+        'jim', 'bob', 'mike', 'rick', 'greg', 'matt', 'ben', 'nick', 'luke',
+        'liam', 'oliver', 'lucas', 'mason', 'caleb', 'isaac', 'owen', 'ian',
+        'victor', 'felix', 'oscar', 'leo', 'simon', 'colin', 'gavin', 'seth',
+        'grant', 'marcus',
+    ), 'm'),
+    # Female names
+    **dict.fromkeys((
+        'mary', 'patricia', 'jennifer', 'linda', 'elizabeth', 'barbara',
+        'susan', 'jessica', 'sarah', 'karen', 'nancy', 'lisa', 'betty',
+        'margaret', 'sandra', 'ashley', 'kimberly', 'emily', 'donna',
+        'michelle', 'dorothy', 'carol', 'amanda', 'melissa', 'deborah',
+        'stephanie', 'rebecca', 'sharon', 'laura', 'cynthia', 'kathleen',
+        'amy', 'shirley', 'angela', 'helen', 'anna', 'brenda', 'pamela',
+        'nicole', 'emma', 'samantha', 'katherine', 'christine', 'debra',
+        'rachel', 'catherine', 'carolyn', 'janet', 'ruth', 'maria', 'heather',
+        'diane', 'virginia', 'julie', 'joyce', 'victoria', 'olivia',
+        'christina', 'lauren', 'joan', 'evelyn', 'judith', 'megan', 'cheryl',
+        'andrea', 'hannah', 'martha', 'jacqueline', 'frances', 'gloria',
+        'ann', 'teresa', 'kathryn', 'sara', 'janice', 'jean', 'alice',
+        'madison', 'doris', 'abigail', 'julia', 'judy', 'grace', 'denise',
+        'amber', 'marilyn', 'beverly', 'danielle', 'theresa', 'sophia',
+        'marie', 'diana', 'brittany', 'natalie', 'isabella', 'charlotte',
+        'rose', 'kayla', 'lori', 'tiffany', 'wendy', 'erin', 'tamara',
+        'kristin', 'holly', 'naomi', 'sally', 'amelia', 'sue', 'elaine',
+        'paula', 'tina', 'monica', 'valerie', 'sheila', 'vanessa', 'gina',
+        'clara', 'nora', 'beth', 'anne', 'claire', 'lucy', 'kate', 'katie',
+        'ellen', 'sylvia', 'irene', 'esther', 'chloe', 'zoe', 'lily', 'mia',
+        'ella', 'scarlett', 'audrey', 'maya', 'elena', 'leah', 'nina',
+        'caroline', 'eva', 'heidi', 'tonya', 'candice', 'colleen', 'cindy',
+        'renee', 'becca', 'carrie', 'carmen', 'carla', 'melanie', 'veronica',
+        'miriam', 'sonia', 'lydia', 'nadia', 'fiona', 'wendy', 'gail',
+        'kristen', 'kirsten', 'kristine', 'kristina', 'karla', 'jodi',
+        'kimberley', 'tanya', 'sonya', 'gwendolyn', 'rosemary', 'marjorie',
+        'loretta', 'lucille', 'yvonne', 'annette', 'jeanette', 'jeannette',
+        'bernadette', 'paulette', 'colette', 'suzanne', 'joanne', 'roxanne',
+        'bethany', 'jill', 'gillian', 'allison', 'alison', 'madeline',
+        'madeleine', 'genevieve', 'josephine', 'pauline', 'justine', 'maxine',
+        'nadine', 'sabine', 'corinne', 'katharine', 'katheryn', 'elise',
+        'elisa', 'alicia', 'felicia', 'leticia', 'marcia', 'lucia', 'cecilia',
+        'claudia', 'valeria', 'dahlia', 'ophelia', 'cordelia', 'cornelia',
+        'priscilla', 'camilla', 'stella', 'bella', 'gabriella', 'rachelle',
+        'rochelle', 'giselle', 'estelle', 'camille', 'chantelle', 'clarissa',
+        'marissa', 'alyssa', 'carissa', 'marla', 'darla', 'maura', 'tara',
+        'kara', 'lara', 'mara', 'cora', 'dora', 'flora', 'erica', 'francesca',
+        'bianca', 'marta', 'bertha', 'agatha', 'tabitha', 'miranda', 'glenda',
+        'rhonda', 'wanda', 'cassandra', 'alexandra', 'kendra', 'deirdre',
+        'hailey', 'kaylee', 'phoebe', 'daphne', 'penelope', 'eileen',
+        'maureen', 'doreen', 'noreen', 'darlene', 'marlene', 'charlene',
+        'arlene', 'jolene', 'selene', 'helene', 'celine', 'serena', 'selena',
+        'helena', 'athena', 'sabrina', 'katrina', 'marina', 'karina', 'carina',
+        'regina', 'mina', 'dina', 'lina', 'martina', 'valentina', 'angelina',
+        'catalina', 'paulina', 'peggy', 'maggie', 'molly', 'polly', 'dolly',
+        'shelly', 'shelley', 'jenny', 'penny', 'mindy', 'mandy', 'brandy',
+        'candy', 'tammy', 'pam', 'lisa', 'mona', 'rita', 'anita', 'juanita',
+        'rosa', 'elena', 'vera', 'alma', 'irma', 'norma', 'thelma', 'velma',
+        'wilma', 'wanda', 'lois', 'eunice', 'gladys', 'phyllis', 'myrtle',
+        'mabel', 'hazel', 'pearl', 'ruby', 'opal', 'ivy', 'iris', 'violet',
+        'daisy', 'poppy', 'holly', 'june', 'april', 'may', 'florence',
+    ), 'f'),
 }
 
 GERUND_VERBS = {
@@ -626,7 +770,7 @@ def _predicate_verb(vp):
 def _verb_key(leaf):
     t = leaf.get('type')
     s = _lower(leaf)
-    if t == 'MD' or s in MODAL_SURFACES:
+    if t == 'MD' or s in MODAL_SURFACES or leaf.get('invariant_negative_auxiliary'):
         return None
     if t == 'VBD':
         return None
@@ -724,22 +868,38 @@ def _check_wordlists(leaves):
         prev = leaves[i - 1] if i else None
         nxt = leaves[i + 1] if i + 1 < len(leaves) else None
 
-        if low == 'nt' or (low in CONTRACTIONS):
-            if low == 'nt' and prev is not None:
-                fix = _lower(prev) + "'t"
-                observed = _lower(prev) + 'nt'
-            else:
-                fix = CONTRACTIONS.get(low, low)
-                observed = lf['surface']
+        recovered = lf.get('negative_contraction')
+        contraction = CONTRACTIONS.get(low)
+        # Whole-token spellings need a verbal slot for negative contractions.
+        # Some of these forms are also words or names (cant, wont, Im).
+        whole = (contraction and not lf.get('fentity')
+                 and (not contraction.endswith("n't")
+                      or (lf.get('type') in FINITE_TYPES | {'VB'} and nxt
+                          and nxt.get('type') in FINITE_TYPES | {'VB', 'VBG', 'VBN'})))
+        if recovered or whole:
+            observed = recovered['observed'] if recovered else lf['surface']
+            fix = recovered['replacement'] if recovered else contraction
+            if observed.isupper():
+                fix = fix.upper()
+            elif observed[0].isupper():
+                fix = fix.capitalize()
+            edit = {'nodes': [recovered['auxiliary'], lf['id']]} if recovered else {'node': lf['id']}
+            edit['replacement'] = fix
+            issue = f"Write ‘{observed}’ as ‘{fix}’ to mark the negative contraction." if recovered or fix.lower().endswith("n't") else f"Write ‘{observed}’ as ‘{fix}’ with an apostrophe."
+            if recovered and prev and _lower(prev) in DO_SURFACES:
+                verb = next((v for v in leaves if v['id'] == recovered['verb']), None)
+                if verb and verb.get('type') == 'VB':
+                    issue += (f" ‘{prev['surface']}’ is the auxiliary, ‘n’t’ marks negation, "
+                              f"and ‘{verb['surface']}’ is the lexical verb in its plain form after the auxiliary.")
+                else:
+                    issue += f" ‘{prev['surface']}’ is the auxiliary and ‘n’t’ marks negation."
+            evidence = _wordlist_evidence(observed, [fix], 'contraction table')
+            if recovered:
+                evidence['token_span'] = [prev['span'][0], lf['span'][1]]
             out.append(_finding('1.11', 'error', 'C-CONTRACTION', 'contraction',
-                                lf['id'],
-                                f"The word '{observed}' is a contraction but is "
-                                f"missing its apostrophe; write it as '{fix}'.",
-                                _wordlist_evidence(observed, [fix],
-                                                   'contraction table'),
-                                _rem(f"'{observed}' is a contraction missing its apostrophe.",
-                                     f"Add the apostrophe: '{observed}' \u2192 '{fix}'.",
-                                     None, "The word is written as '{fix}'")))
+                                lf['id'], issue, evidence,
+                                {'violation': issue, 'suggested_fix': f"Use ‘{fix}’.",
+                                 'edits': [edit]}))
 
         if low in REFLEXIVE_FIX:
             fix = REFLEXIVE_FIX[low]
@@ -764,15 +924,16 @@ def _check_wordlists(leaves):
                                 _rem(f"'{lf['surface']}' is not a correct adverb form.",
                                      f"Write '{fix}' instead of '{lf['surface']}'.")))
 
-        if low in SPELLING_FIX:
+        if low in SPELLING_FIX and not has_name_evidence(lf):
             fix = SPELLING_FIX[low]
             out.append(_finding('1.12', 'error', 'C-SPELLING', 'spelling',
                                 lf['id'],
                                 f"'{lf['surface']}' is misspelled; write it as '{fix}'.",
                                 _wordlist_evidence(lf['surface'], [fix],
                                                    'spelling table'),
-                                _rem(f"'{lf['surface']}' is misspelled.",
-                                     f"Correct the spelling to '{fix}'.")))
+                                {'violation': f"'{lf['surface']}' is misspelled.",
+                                 'suggested_fix': f"Correct the spelling to '{fix}'.",
+                                 'edits': [{'node': lf['id'], 'replacement': fix}]}))
 
         if low in VERB_ENDING_FIX:
             fix = VERB_ENDING_FIX[low]
@@ -986,17 +1147,26 @@ def _check_wordlists(leaves):
                                                    [f"{prev['surface']} than"],
                                                    'homophone table')))
 
-        # some in a negative clause (3.7)
+        # some in a negative clause (3.7): wide-scope / subject 'some' before
+        # negation ('Some analyses weren't...') and specific indefinites under
+        # negation are grammatical in standard English (CGEL Ch. 9). Only emit
+        # a non-blocking style suggestion when a preceding negation appears in
+        # the same simple clause directly before 'some'.
         if low == 'some' and nxt is not None and nxt.get('type') in (
                 'NN', 'NNS', 'JJ'):
-            if any(_lower(x) in NEGATIONS for x in leaves):
-                out.append(_finding('3.7', 'error', 'C-SOME-ANY', 'determiner',
-                                    lf['id'],
-f"This sentence is negative, so use 'any' instead of "
-                                f"'{lf['surface']}'.",
-                                    _tree_evidence(lf['id'], 'negative + some'),
-                                    _rem(f"'{lf['surface']}' is used in a negative sentence.",
-                                         f"Change '{lf['surface']}' to 'any'.")))
+            preceding = leaves[:i]
+            neg_idx = next((k for k in range(len(preceding) - 1, -1, -1)
+                            if _lower(preceding[k]) in NEGATIONS), None)
+            if neg_idx is not None:
+                between = preceding[neg_idx + 1:]
+                if not any(b.get('type') == ',' or _lower(b) in SUBORDINATORS
+                           or _lower(b) in {'that', 'who', 'which', 'what', 'when', 'where', 'if', 'whether'}
+                           for b in between):
+                    out.append(_finding('3.7', 'suggestion', 'C-SOME-ANY', 'determiner',
+                                        lf['id'],
+                                        f"In a negative clause, 'any' is often preferred over "
+                                        f"'{lf['surface']}' unless a specific subset is meant.",
+                                        _tree_evidence(lf['id'], 'negative + some')))
     return out
 
 
@@ -1035,18 +1205,33 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
         return [lf for lf in _clause_lvs[cid] if _leaf_owner.get(lf['id']) == cid]
 
     # 2.4 Existential there
+    _EXISTENTIAL_TEMPORAL_ADVS = {
+        'today', 'tomorrow', 'yesterday', 'tonight', 'now', 'here', 'there',
+        'currently', 'presently', 'nowadays',
+    }
+    _EXISTENTIAL_IRREG_PLURALS = {
+        'children', 'people', 'men', 'women', 'mice', 'geese', 'teeth', 'feet',
+        'oxen', 'cattle', 'police', 'alumni', 'analyses', 'criteria',
+        'phenomena', 'bacteria', 'data', 'media',
+    }
     for clause in clauses:
         cl = _leaves(clause)
         for i, lf in enumerate(cl):
             if _lower(lf) == 'there' and lf.get('type') in ('EX', 'PRP', 'RB'):
                 nxt = cl[i + 1] if i + 1 < len(cl) else None
                 if nxt is not None and _lower(nxt) in ('is', 'was', 'are', 'were'):
-                    after = [x for x in cl[i + 2:] if x.get('type') in
-                             {'NN', 'NNS', 'NNP', 'NNPS'}]
+                    # Exclude temporal/deictic adverbial nouns ('today', 'now')
+                    # from the existential pivot list so comparative ellipsis
+                    # ('fewer cars in use than there are today') never misreads
+                    # 'today' as a singular existential pivot.
+                    after = [x for x in cl[i + 2:]
+                             if x.get('type') in {'NN', 'NNS', 'NNP', 'NNPS'}
+                             and _lower(x) not in _EXISTENTIAL_TEMPORAL_ADVS]
                     head = after[0] if after else None
                     if head is not None:
                         be_sg = _lower(nxt) in ('is', 'was')
-                        noun_pl = head.get('type') in ('NNS', 'NNPS')
+                        noun_pl = (head.get('type') in ('NNS', 'NNPS')
+                                   or _lower(head) in _EXISTENTIAL_IRREG_PLURALS)
                         if be_sg and noun_pl:
                             fix = 'were' if _lower(nxt) == 'was' else 'are'
                             out.append(_finding('2.4', 'error', 'C-EXISTENTIAL',
@@ -1108,10 +1293,19 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
         # The antecedent is the clause's own subject, not merely the first noun
         # leaf (which may sit inside a fronted adverbial PP, e.g. "In the quiet
         # hours before dawn, she prepared herself ..." -> subject is 'she').
+        # Use the subject NP's own head (excluding nested relative clauses/PPs,
+        # so 'Many skirts that stun some waitress are boring themselves' picks
+        # 'skirts', not 'waitress').
         subj = None
         for cand in clause.get('children', []):
             if cand.get('type') == 'NP':
-                subj = _np_head_leaf(cand)
+                # Prefer direct pre-SBAR/pre-PP nominal head inside subject NP
+                np_core = [ch for ch in cand.get('children', [])
+                           if ch.get('type') not in {'SBAR', 'PP', 'VP', 'S'}]
+                if np_core:
+                    subj = _np_head_leaf({'type': 'NP', 'children': np_core})
+                if subj is None:
+                    subj = _np_head_leaf(cand)
                 if subj is not None:
                     break
         if subj is None:
@@ -1119,47 +1313,186 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                 if cand.get('type') == 'PRP':
                     subj = cand
                     break
+        _GENDERED_NOUNS = {
+            **GENDERED_FIRST_NAMES,
+            'he': 'm', 'she': 'f', 'it': 'n',
+            'man': 'm', 'boy': 'm', 'father': 'm', 'dad': 'm', 'brother': 'm',
+            'son': 'm', 'uncle': 'm', 'king': 'm', 'prince': 'm', 'waiter': 'm',
+            'actor': 'm', 'gentleman': 'm', 'husband': 'm', 'boyfriend': 'm',
+            'grandfather': 'm', 'grandson': 'm', 'nephew': 'm', 'groom': 'm',
+            'emperor': 'm', 'widower': 'm', 'monk': 'm', 'priest': 'm',
+            'bachelor': 'm', 'chairman': 'm', 'policeman': 'm', 'businessman': 'm',
+            'spokesman': 'm', 'congressman': 'm', 'fireman': 'm', 'salesman': 'm',
+            'woman': 'f', 'girl': 'f', 'mother': 'f', 'mom': 'f', 'sister': 'f',
+            'daughter': 'f', 'aunt': 'f', 'queen': 'f', 'princess': 'f',
+            'waitress': 'f', 'actress': 'f', 'lady': 'f', 'wife': 'f',
+            'girlfriend': 'f', 'grandmother': 'f', 'granddaughter': 'f',
+            'niece': 'f', 'bride': 'f', 'empress': 'f', 'widow': 'f', 'nun': 'f',
+            'duchess': 'f', 'baroness': 'f', 'countess': 'f', 'heiress': 'f',
+            'heroine': 'f', 'hostess': 'f', 'stewardess': 'f', 'goddess': 'f',
+            'chairwoman': 'f', 'policewoman': 'f', 'businesswoman': 'f',
+            'spokeswoman': 'f', 'congresswoman': 'f', 'saleswoman': 'f',
+        }
         for i, lf in enumerate(cl):
             if _lower(lf) in REFLEXIVE_KEY:
                 if subj is None:
                     continue
+                # It-cleft ('It is/'s/was himself who Robert discusses' vs
+                # 'It's herself who wasn't firing Judy'):
+                # Under Principle A reconstruction, a clefted reflexive is
+                # licensed ONLY when the cleft relative clause has an overt
+                # c-commanding subject matching the reflexive (object gap), NOT
+                # a subject gap ('who wasn't firing Judy').
+                if _lower(subj) in ('it', "it's") and any(
+                        _lower(x) in ('who', 'whom', 'that', 'which') for x in leaves):
+                    rel_idx = next((idx for idx, x in enumerate(leaves)
+                                    if x['span'][0] > lf['span'][0]
+                                    and _lower(x) in ('who', 'whom', 'that', 'which')), None)
+                    if rel_idx is not None and rel_idx + 1 < len(leaves):
+                        after_rel = leaves[rel_idx + 1]
+                        if (after_rel.get('type') in FINITE_TYPES
+                                or _lower(after_rel) in (BE_SURFACES | HAVE_SURFACES | MODAL_SURFACES)):
+                            # Subject gap in cleft relative clause -> reflexive
+                            # reconstructs into subject position with no binder.
+                            out.append(_finding(
+                                '2.14', 'error', 'C-REFLEXIVE-ANTECEDENT',
+                                'reflexive agreement', lf['id'],
+                                f"In this it-cleft, '{lf['surface']}' fills the subject "
+                                f"position of the relative clause and has no preceding "
+                                f"antecedent that can bind it.",
+                                _tree_evidence(clause['id'], 'it-cleft reflexive subject gap',
+                                               [{'node': lf['id']}, {'node': after_rel['id']}])))
+                        else:
+                            # Overt subject inside cleft relative clause -> check agreement
+                            cleft_sbar = next((nd for nd in _iter_nodes(root)
+                                               if nd.get('type') == 'SBAR'
+                                               and nd.get('span', [0])[0] >= leaves[rel_idx]['span'][0]), None)
+                            if cleft_sbar is not None:
+                                inner_s = next((c for c in cleft_sbar.get('children', []) if c.get('type') == 'S'), None)
+                                inner_np = next((c for c in (inner_s.get('children', []) if inner_s else []) if c.get('type') == 'NP'), None)
+                                inner_subj = _np_head_leaf(inner_np) if inner_np is not None else None
+                                if inner_subj is not None:
+                                    rp, rn, rg = REFLEXIVE_KEY[_lower(lf)]
+                                    sp, sn = _person_of(inner_subj), _num_of(inner_subj)
+                                    ig = _GENDERED_NOUNS.get(_lower(inner_subj))
+                                    if ((sn and rn and sn != rn) or (sp and rp and sp != rp)
+                                            or (sp == '3' and sn == 'sg' and rg and ig and ig != rg)):
+                                        out.append(_finding(
+                                            '2.14', 'error', 'C-REFLEXIVE-ANTECEDENT',
+                                            'reflexive agreement', lf['id'],
+                                            f"The reflexive '{lf['surface']}' does not match its "
+                                            f"antecedent '{inner_subj['surface']}' in this cleft.",
+                                            _tree_evidence(clause['id'], 'it-cleft reflexive mismatch',
+                                                           [{'node': inner_subj['id']}, {'node': lf['id']}])))
+                    continue
                 rp, rn, rg = REFLEXIVE_KEY[_lower(lf)]
-                sp, sn = _person_of(subj), _num_of(subj)
+                # Resolve partitive quantifier subjects ('A lot of girls',
+                # 'A number of students', 'Plenty of boys') to their plural
+                # PP head rather than singular 'lot'/'number'.
+                eff_subj = subj
+                subj_np_node = next((c for c in clause.get('children', []) if c.get('type') == 'NP'), None)
+                if subj_np_node is not None:
+                    s_lvs = _leaves(subj_np_node)
+                    if len(s_lvs) >= 4:
+                        w0, w1, w2 = _lower(s_lvs[0]), _lower(s_lvs[1]), _lower(s_lvs[2])
+                        if ((w0 in ('a', 'an') and w1 in ('lot', 'number', 'couple', 'bunch', 'handful', 'majority', 'minority', 'variety', 'group', 'pair') and w2 == 'of')
+                                or (w0 in ('lots', 'plenty', 'dozens', 'hundreds', 'thousands') and w1 == 'of')):
+                            of_pp = next((c for c in subj_np_node.get('children', []) if c.get('type') == 'PP'), None)
+                            if of_pp is not None:
+                                pp_nouns = [x for x in _leaves(of_pp) if x.get('type') in ('NN', 'NNS', 'NNP', 'NNPS')]
+                                if pp_nouns:
+                                    eff_subj = pp_nouns[-1]
+                sp, sn = _person_of(eff_subj), _num_of(eff_subj)
                 bad = False
                 if sn and rn and sn != rn:
                     bad = True
                 elif sp and rp and sp != rp:
                     bad = True
                 elif sp == '3' and sn == 'sg' and rg:
-                    gender = {'he': 'm', 'she': 'f', 'it': 'n'}.get(_lower(subj))
+                    gender = _GENDERED_NOUNS.get(_lower(eff_subj))
                     if gender and gender != rg:
+                        bad = True
+                    # Human common nouns cannot bind neuter 'itself'
+                    elif rg == 'n' and _lower(eff_subj) in {
+                        'person', 'student', 'teacher', 'doctor', 'lawyer',
+                        'nurse', 'friend', 'neighbor', 'neighbour', 'guest',
+                        'customer', 'client', 'patient', 'driver', 'singer',
+                        'dancer', 'writer', 'author', 'artist', 'scientist',
+                        'professor', 'senator', 'mayor', 'president', 'child',
+                        'teenager', 'adult', 'baby', 'worker', 'employee',
+                        'boss', 'colleague', 'partner', 'cousin', 'relative',
+                        'plumber', 'dentist', 'chef', 'baker', 'pilot',
+                    }:
                         bad = True
                 if bad:
                     out.append(_finding('2.14', 'error', 'C-REFLEXIVE-ANTECEDENT',
                                         'reflexive agreement', lf['id'],
                                         f"The reflexive '{lf['surface']}' does not match the "
-                                        f"subject '{subj['surface']}' in this sentence.",
+                                        f"subject '{eff_subj['surface']}' in this sentence.",
                                         _tree_evidence(clause['id'], 'subject ... reflexive',
-                                                       [{'node': subj['id']},
+                                                       [{'node': eff_subj['id']},
                                                         {'node': lf['id']}])))
 
     # 5.7 Reflexive as subject (Myself am happy)
+    # Only flag finite clauses: gerund-participial clauses after prepositions
+    # ('forgetting about herself thinking about Beverly') legitimately host a
+    # reflexive object/subject bound by the matrix subject.
     for clause in clauses:
         subj = None
+        vp_node = None
         for c in clause.get('children', []):
-            if c.get('type') == 'NP':
+            if c.get('type') == 'NP' and subj is None:
                 subj = c
-                break
-        if subj is None:
+            elif c.get('type') == 'VP' and vp_node is None:
+                vp_node = c
+        if subj is None or vp_node is None:
+            continue
+        vp_lvs = _leaves(vp_node)
+        has_finite_vp = any(
+            v.get('type') in FINITE_TYPES or _lower(v) in (BE_SURFACES | HAVE_SURFACES | MODAL_SURFACES)
+            for v in vp_lvs[:2]
+        )
+        if not has_finite_vp:
             continue
         head = _np_head_leaf(subj)
         if head is not None and _lower(head) in REFLEXIVE_KEY:
+            # Emphatic appositive reflexives ('I myself like...', 'She herself
+            # decided...', 'The director himself signed...') have a preceding
+            # personal pronoun or noun inside the same subject NP and are valid.
+            subj_lvs = _leaves(subj)
+            has_antecedent_in_subj = any(
+                x['id'] != head['id']
+                and x.get('type') in ('PRP', 'NN', 'NNS', 'NNP', 'NNPS')
+                and _lower(x) not in REFLEXIVE_KEY
+                for x in subj_lvs
+            )
+            if has_antecedent_in_subj:
+                continue
             out.append(_finding('5.7', 'error', 'C-REFLEXIVE-SUBJECT', 'subject',
                                 head['id'],
                                 f"'{head['surface']}' is a reflexive pronoun and cannot "
                                 f"be the subject here; use a personal "
                                 f"pronoun such as 'I' or 'he' instead.",
                                 _tree_evidence(clause['id'], 'reflexive subject')))
+
+    # 5.7b Reflexive after preposition functioning as finite clause subject
+    # ('Steven doesn't think about himself listened to Theresa' — contrast
+    # grammatical gerund 'forgetting about herself thinking about Beverly' and
+    # emphatic appositive 'he himself listened').
+    for i, lf in enumerate(leaves):
+        if _lower(lf) in REFLEXIVE_KEY and i > 0 and i + 1 < len(leaves):
+            prev_l = leaves[i - 1]
+            nxt_l = leaves[i + 1]
+            if (prev_l.get('type') in ('IN', 'TO')
+                    and (nxt_l.get('type') in ('VBD', 'VBZ', 'VBP', 'MD')
+                         or _lower(nxt_l) in (BE_SURFACES | HAVE_SURFACES | MODAL_SURFACES))
+                    and not any(f['node_id'] == lf['id'] and f['constraint'] == 'C-REFLEXIVE-SUBJECT' for f in out)):
+                out.append(_finding(
+                    '5.7', 'error', 'C-REFLEXIVE-SUBJECT', 'subject', lf['id'],
+                    f"'{lf['surface']}' is a reflexive pronoun and cannot act as the "
+                    f"subject of the finite verb '{nxt_l['surface']}'.",
+                    _tree_evidence(lf['id'], 'prep + reflexive + finite verb',
+                                   [{'node': lf['id']}, {'node': nxt_l['id']}])))
 
     # 6.3 Missing copula (She very happy)
     for clause in clauses:
@@ -1247,20 +1580,37 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                             remediation=rem))
 
     # 6.2 Finite main verb (The boy running fast)
+    pmap_cl = _build_parent_map(root)
     for clause in clauses:
         if clause['id'] not in top_ids or clause.get('type') != 'S':
             continue
         kids = clause.get('children', [])
         types = [c.get('type') for c in kids]
-        if 'VP' not in types or ('NP' not in types and 'SBAR' not in types):
+        if 'VP' not in types or not any(
+                c.get('type') == 'NP' or (c.get('type') == 'SBAR'
+                and c.get('span', [0, 0])[1] == kids[types.index('VP')]['span'][0])
+                for c in kids):
             continue
+        # Across-the-board shared-auxiliary coordination inside an inverted
+        # question ('What mountains is Aaron lifting and that woman insulting?'):
+        # the fronted auxiliary in the first conjunct scopes over the second S.
+        par_cl = pmap_cl.get(clause['id'])
+        if par_cl is not None and par_cl.get('type') in ('SBARQ', 'SQ'):
+            par_kids = par_cl.get('children', [])
+            if any(c.get('type') == 'CC' for c in par_kids):
+                prev_sibs = [c for c in par_kids if c is not clause and c.get('span', [0])[1] <= clause.get('span', [0])[0]]
+                if any(
+                    lf.get('type') in FINITE_TYPES or _lower(lf) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                    for sib in prev_sibs for lf in _leaves(sib)
+                ):
+                    continue
         vp = next(c for c in kids if c.get('type') == 'VP')
 
         def _has_finite(node):
             for child in node.get('children', []):
                 if child.get('type') in ('S', 'SBAR', 'SQ', 'SINV'):
                     continue
-                if child.get('type') in FINITE_TYPES:
+                if child.get('type') in FINITE_TYPES or child.get('contraction_auxiliary'):
                     return True
                 if child.get('type') in ('VP', 'ADJP', 'ADVP', 'PP', 'UCP'):
                     if _has_finite(child):
@@ -1271,15 +1621,24 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
             continue
         main = next((lf for lf in _leaves(vp)
                      if lf.get('type') in ('VB', 'VBG', 'VBN')), None)
-        surface = main['surface'] if main is not None else vp.get('surface', '')
+        # Regular -ed verbs and syncretic irregulars (VBD == VBN, e.g.
+        # 'disturbed', 'made', 'found') are morphologically valid finite simple
+        # past verbs even when Benepar mistags them VBN after a long subject.
+        if main is not None and main.get('type') == 'VBN':
+            mlow = _lower(main)
+            if mlow not in _VBN_ONLY_PARTICIPLES:
+                continue
+        if main is None or main.get('type') == 'VB':
+            # A plain form can also realize present tense. Agreement and
+            # complement rules handle cases that require a different form.
+            continue
+        issue = (f"‘{main['surface']}’ is a non-finite verb form here. A full "
+                 "declarative clause needs a verb that carries tense.")
         out.append(_finding('6.2', 'error', 'C-FINITE-VERB', 'clause finiteness',
-                            vp['id'],
-                            f"The part '{clause['surface']}' has a subject but "
-                            f"no full verb; '{surface}' cannot be the main verb "
-                            f"on its own. Use a form like 'runs' or add a "
-                            f"helping word like 'is running'.",
+                            vp['id'], issue,
                             _tree_evidence(clause['id'], 'S -> NP + non-finite VP',
-                                           [{'node': vp['id']}])))
+                                           [{'node': main['id']}]),
+                            _rem(issue, 'If you intend a full sentence, choose a finite verb form that expresses the time you mean.')))
 
     # 2.6 / 6.13 Question structure and subject-verb agreement
     for clause in clauses:
@@ -1290,6 +1649,21 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
         kids = clause.get('children', [])
         types = [c.get('type') for c in kids]
         if clause.get('type') == 'SBARQ' and 'S' in types and 'SQ' not in types:
+            # Benepar sometimes parses ATB coordinated wh-questions as
+            # (SBARQ (SBAR (WHNP ...) (S (VP (VBZ is) (NP Aaron) (VP lifting)))) (CC and) (S ...)).
+            # When an inverted auxiliary already precedes the subject inside the
+            # first conjunct, question inversion IS satisfied.
+            first_sbar = next((c for c in kids if c.get('type') == 'SBAR'), None)
+            if first_sbar is not None and any(c.get('type') == 'CC' for c in kids):
+                sb_s = next((c for c in first_sbar.get('children', []) if c.get('type') == 'S'), None)
+                sb_vp = next((c for c in (sb_s.get('children', []) if sb_s else []) if c.get('type') == 'VP'), None)
+                if sb_vp is not None:
+                    sb_vk = sb_vp.get('children', [])
+                    if (len(sb_vk) >= 2 and not sb_vk[0].get('children')
+                            and (_lower(sb_vk[0]) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                                 or sb_vk[0].get('type') == 'MD')
+                            and sb_vk[1].get('type') == 'NP'):
+                        continue
             cl0 = _leaves(clause)
             rem = None
             subj_i = next((k for k, x in enumerate(cl0)
@@ -1337,12 +1711,80 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                      ('VBD', 'VBP', 'VBZ', 'MD') or _lower(lf) in BE_SURFACES), None)
         if verb is None:
             continue
-        after = [lf for lf in cl if lf['span'][0] > verb['span'][0]
-                 and lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
-        if after:
-            head = after[0]
-            skey = (('3', 'pl') if head.get('type') in ('NNS', 'NNPS')
-                    else (_person_of(head), _num_of(head)))
+        # Locate the actual subject NP inside the SQ clause right after the
+        # inverted auxiliary verb (rather than naively grabbing the first noun
+        # leaf, which breaks on possessives like "Edward's plumbers" and
+        # coordinated subjects like "Rose and a picture").
+        sq_node = next((c for c in kids if c.get('type') == 'SQ'), clause)
+        sq_kids = sq_node.get('children', [])
+        subj_np = None
+        for sk_child in sq_kids:
+            if sk_child.get('span', [0])[0] > verb['span'][0] and sk_child.get('type') == 'NP':
+                subj_np = sk_child
+                break
+        head = None
+        skey = None
+        if subj_np is not None:
+            # Exclude trailing VP/SBAR/PP attached inside the NP by Benepar
+            # (e.g. "(NP (NP Rose and a picture) (VP scaring))").
+            own_children = [c for c in subj_np.get('children', [])
+                            if c.get('type') not in ('VP', 'SBAR', 'PP', 'S', 'SQ')]
+            # Detect subject coordination ('Rose and a picture', 'Brian and Galileo')
+            def _np_is_coord(node):
+                ch = node.get('children', [])
+                if any(c.get('type') == 'CC' and _lower(c) == 'and' for c in ch):
+                    return True
+                non_mod = [c for c in ch if c.get('type') not in ('VP', 'SBAR', 'PP', 'ADJP')]
+                if len(non_mod) == 1 and non_mod[0].get('type') == 'NP':
+                    return _np_is_coord(non_mod[0])
+                return False
+
+            if _np_is_coord(subj_np):
+                skey = ('3', 'pl')
+                head = _np_head_leaf(subj_np) or _leaves(subj_np)[0]
+            else:
+                # Extract head noun excluding possessive modifier NP ('Edward's plumbers' -> 'plumbers')
+                # and excluding post-modifying PP/SBAR/VP.
+                def _own_head_leaves(node):
+                    res = []
+                    for c in node.get('children', []):
+                        ct = c.get('type')
+                        if ct in ('PP', 'SBAR', 'VP', 'S', 'SQ', 'ADJP'):
+                            continue
+                        if ct in ('NP', 'NML', 'NX') and any(
+                                lf.get('type') == 'POS' for lf in _leaves(c)):
+                            continue
+                        if not c.get('children'):
+                            res.append(c)
+                        else:
+                            res.extend(_own_head_leaves(c))
+                    return res
+
+                own_lfs = _own_head_leaves(subj_np)
+                nom_lfs = [lf for lf in own_lfs
+                           if lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
+                if nom_lfs:
+                    head = nom_lfs[-1]
+                    hlow = _lower(head)
+                    if hlow in _ZERO_PLURAL_NOUNS:
+                        skey = None
+                    elif head.get('type') in ('NNS', 'NNPS') or hlow in _IRREG_PLURAL_NOUNS:
+                        skey = ('3', 'pl')
+                    else:
+                        skey = (_person_of(head), _num_of(head))
+        else:
+            after = [lf for lf in cl if lf['span'][0] > verb['span'][0]
+                     and lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
+            if after:
+                head = after[0]
+                hlow = _lower(head)
+                if hlow in _ZERO_PLURAL_NOUNS:
+                    skey = None
+                elif head.get('type') in ('NNS', 'NNPS') or hlow in _IRREG_PLURAL_NOUNS:
+                    skey = ('3', 'pl')
+                else:
+                    skey = (_person_of(head), _num_of(head))
+        if head is not None and skey is not None:
             if not _agree(skey, _verb_key(verb)):
                 low_v = _lower(verb)
                 fix = None
@@ -1371,35 +1813,51 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                     remediation=rem))
 
     # 9.13 Indirect question word order (I wonder where is he)
+    _iq_pmap = _build_parent_map(root)
     for clause in _iter_nodes(root):
         if clause.get('type') != 'SBAR':
             continue
-        for child in clause.get('children', []):
+        # Relative clauses ('disease, which means they will be safe') are never
+        # inverted indirect questions.
+        if _iq_pmap.get(clause['id'], {}).get('type') == 'NP':
+            continue
+        skids = clause.get('children', [])
+        if not skids or not skids[0].get('type', '').startswith('WH'):
+            continue
+        wh_lvs = _leaves(skids[0])
+        if not wh_lvs or _lower(wh_lvs[0]) in {'that', 'which'}:
+            continue
+        for child in skids[1:]:
             if child.get('type') not in ('S', 'SQ'):
                 continue
             cl = _leaves(child)
-            if not cl:
+            if len(cl) < 2:
                 continue
-            if cl[0].get('type') in FINITE_TYPES or _lower(cl[0]) in BE_SURFACES:
-                if any(_lower(x) in PRON_SUBJ for x in cl[1:]):
-                    subject = next((x for x in cl[1:]
-                                    if _lower(x) in PRON_SUBJ), None)
-                    rem = None
-                    if subject is not None:
-                        rem = {
-                            'suggested_fix': (f"write '{subject['surface']} "
-                                              f"{cl[0]['surface']}'"),
-                            'edits': [{'nodes': [cl[0]['id'], subject['id']],
-                                       'replacement': (subject['surface'] + ' ' +
-                                                       cl[0]['surface'])}],
-                        }
-                    out.append(_finding('9.13', 'error', 'C-INDIRECT-Q-ORDER',
-                                        'word order', cl[0]['id'],
-                                        "An embedded question like this one keeps normal "
-                                        "statement order, with the subject before the "
-                                        "verb; it should not be inverted.",
-                                        _tree_evidence(child['id'], 'SBAR -> S starting with verb'),
-                                        remediation=rem))
+            # Only true inverted auxiliaries/copulas directly followed by a
+            # subject pronoun (NOT a lexical verb like 'means' followed by an
+            # embedded clause 'they will be safe').
+            v0_low = _lower(cl[0])
+            if not (v0_low in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                    or cl[0].get('type') == 'MD'):
+                continue
+            # Check direct immediate follower (skipping optional n't/not)
+            subj_idx = 2 if (len(cl) > 2 and _lower(cl[1]) in {'not', "n't"}) else 1
+            if subj_idx < len(cl) and _lower(cl[subj_idx]) in PRON_SUBJ:
+                subject = cl[subj_idx]
+                rem = {
+                    'suggested_fix': (f"write '{subject['surface']} "
+                                      f"{cl[0]['surface']}'"),
+                    'edits': [{'nodes': [cl[0]['id'], subject['id']],
+                               'replacement': (subject['surface'] + ' ' +
+                                               cl[0]['surface'])}],
+                }
+                out.append(_finding('9.13', 'error', 'C-INDIRECT-Q-ORDER',
+                                    'word order', cl[0]['id'],
+                                    "An embedded question like this one keeps normal "
+                                    "statement order, with the subject before the "
+                                    "verb; it should not be inverted.",
+                                    _tree_evidence(child['id'], 'SBAR -> S starting with verb'),
+                                    remediation=rem))
 
     # 9.4 Comma splice / fused sentence
     tops = _leaves(root)
@@ -1461,10 +1919,51 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                            ('just', 'even', 'especially',
                                             'particularly', 'only')):
                 continue
-        if any(_lower(x) in ('which', 'who', 'whom', 'whose', 'that')
+        if any(_lower(x) in ('which', 'who', 'whom', 'whose', 'that', 'what')
                for x in before):
             continue
+        # Correlative 'Not only ..., but ...' opening before the main clause
+        if len(before) >= 2 and _lower(before[0]) == 'not' and _lower(before[1]) == 'only':
+            continue
+        # Require at least one finite verb in 'before' that is NOT trapped inside
+        # a PP or embedded SBAR (e.g., 'Without a clear understanding of what is
+        # being taught, the student ...' has no matrix clause before the comma).
+        def _in_embedded_sbar_or_pp(leaf_node):
+            cur = pmap_cl.get(leaf_node['id'])
+            while cur is not None and cur is not root:
+                if cur.get('type') in ('SBAR', 'PP'):
+                    return True
+                cur = pmap_cl.get(cur['id'])
+            return False
+        if not any(not _in_embedded_sbar_or_pp(v) for v in before_verbs):
+            continue
         if before[0].get('type') in ('IN', 'TO', 'PP') or _lower(before[0]) in SUBORDINATORS:
+            continue
+        # Participial opener ('Searching the internet, ...', 'Just searching ...')
+        # has no finite verb in 'before' and is not an independent clause.
+        if not any(x.get('type') in FINITE_TYPES
+                   or _lower(x) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                   for x in before):
+            continue
+        # Subordinator right before comma ('... because , ...') is punctuation
+        # noise, not a comma splice between two independent clauses.
+        if before and _lower(before[-1]) in SUBORDINATORS:
+            continue
+        # Fronted free-relative / wh-clause ('What we do now, we can do later.')
+        if _lower(before[0]) in {'what', 'whatever', 'who', 'whoever', 'where',
+                                 'wherever', 'when', 'whenever', 'whichever', 'how', 'however'}:
+            continue
+        # Short parenthetical / appositive bounded by a matching closing comma
+        # ('..., like me, to purchase...', '..., television, magazines...')
+        if later_comma is not None:
+            seg = tops[i + 1:later_comma]
+            seg_has_finite = any(x.get('type') in FINITE_TYPES for x in seg)
+            if not seg_has_finite:
+                continue
+        # Non-finite participial / infinitival / prepositional adjunct after the
+        # comma ('..., encouraging them to buy...', '..., remembering that...',
+        # '..., like me, ...') is NOT an independent finite clause.
+        if after and after[0].get('type') in ('VBG', 'VBN', 'TO', 'IN'):
             continue
         if before and _lower(before[-1]) in {'and', 'but', 'or', 'nor', 'so',
                                              'yet', 'for'}:
@@ -1565,7 +2064,10 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
         def nounish(t): return t.startswith('nn')
         def verbish(t): return t.startswith('vb')
         hit = False
-        if nounish(at) and nounish(bt) and ct=='and' and nounish(dt):
+        # Avoid flagging noun-noun compounds ('automobile society and nature',
+        # 'high school and college'): require plural-noun or verb series, or
+        # a singular series where 'a' is not a pre-modifying noun adjunct.
+        if at == 'nns' and bt == 'nns' and ct == 'and' and dt == 'nns':
             hit = True
         if (verbish(at) or verbish(bt)) and verbish(at) and verbish(bt) and ct=='and' and verbish(dt):
             hit = True
@@ -1680,14 +2182,29 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                                    'verb + clause patterns')))
 
     # 6.5 Intransitive passive / 6.6 stative progressive
+    _PREP_PASSIVE_MARKERS = {
+        'at', 'to', 'on', 'upon', 'for', 'in', 'into', 'with', 'about',
+        'of', 'over', 'after', 'through', 'from', 'off', 'out', 'up', 'down',
+    }
     for i, lf in enumerate(leaves):
         if _lower(lf) in BE_SURFACES and i + 1 < len(leaves):
-            nxt = leaves[i + 1]
+            j = i + 1
+            while j < len(leaves) and (
+                    _lower(leaves[j]) in ('not', "n't") or leaves[j].get('type') == 'RB'):
+                j += 1
+            if j >= len(leaves):
+                continue
+            nxt = leaves[j]
             if nxt.get('type') == 'VBN' and _lower(nxt) in INTRANSITIVE_VBN:
+                # Guard against grammatical prepositional passives ('was laughed
+                # at', 'was relied on', 'was listened to', 'was stared at').
+                after_vbn = leaves[j + 1] if j + 1 < len(leaves) else None
+                if after_vbn is not None and _lower(after_vbn) in _PREP_PASSIVE_MARKERS:
+                    continue
                 out.append(_finding('6.5', 'error', 'C-INTRANSITIVE-PASSIVE',
                                     'voice', nxt['id'],
-                                    f"'{nxt['surface']}' cannot be used this way; this "
-                                    f"verb has no passive form. Say it in the active voice.",
+                                    f"'{nxt['surface']}' cannot be used in the passive voice; "
+                                    f"this verb is intransitive and takes no direct object.",
                                     _wordlist_evidence(nxt['surface'],
                                                        [f"active: '{nxt['surface']}'"],
                                                        'intransitive-verb list'),
@@ -1696,7 +2213,7 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                         'edits': [{'node': lf['id'],
                                                    'delete': True}],
                                     }))
-            if nxt.get('type') == 'VBG' and _lower(nxt)[:-3] in STATIVE_PROGRESSIVE:
+            if j == i + 1 and nxt.get('type') == 'VBG' and _lower(nxt)[:-3] in STATIVE_PROGRESSIVE:
                 base = _lower(nxt)[:-3]
                 third = (base + 'es' if base.endswith(('s', 'x', 'z', 'ch',
                                                        'sh', 'o'))
@@ -1896,10 +2413,19 @@ def _check_more(root, clauses, leaves):
             elif plow == 'a' and i > 1 and _lower(leaves[i - 2]) == 'few':
                 need_plural = True  # 'a few'
             if need_plural:
+                # Skip noun-noun compound modifiers ('three college campuses',
+                # 'five apple trees'): only the head noun takes plural number.
+                nxt_after = leaves[i + 1] if i + 1 < len(leaves) else None
+                if (nxt_after is not None
+                        and nxt_after.get('type') in ('NN', 'NNS', 'NNP', 'NNPS')
+                        and _lower(nxt_after) not in {'today', 'yesterday', 'tomorrow', 'tonight', 'now', 'later', 'then', 'soon', 'already', 'again'}):
+                    continue
                 # avoid scale words already handled
                 if low in ('hundred', 'thousand', 'million', 'billion'):
                     pass
                 elif low in UNCOUNTABLE_SINGULAR:
+                    pass
+                elif is_ellipsis_stranded_adj(lf):
                     pass
                 else:
                     out.append(_finding('1.1', 'error', 'C-PLURAL-FORM',
@@ -2040,18 +2566,28 @@ def _check_more(root, clauses, leaves):
                                     _wordlist_evidence(lf['surface'], [],
                                                        'verb transitivity list')))
 
-    # 6.14 double negation
+    # 6.14 double negation — evaluate strictly within each clause's OWN leaves
+    # (excluding nested S/SBAR/SQ/SINV clauses) so two negations in separate
+    # clauses ('we would not be alive if our ancestors did not develop...')
+    # are never misreported as a single-clause double negative.
+    _more_lvs = {c['id']: _leaves(c) for c in clauses}
+    _more_owner = {}
+    for _c in clauses:
+        _cid = _c['id']
+        _sz = len(_more_lvs[_cid])
+        for _lf in _more_lvs[_cid]:
+            _cur = _more_owner.get(_lf['id'])
+            if _cur is None or _sz < len(_more_lvs[_cur]):
+                _more_owner[_lf['id']] = _cid
     for clause in clauses:
-        cl = _leaves(clause)
+        cid = clause['id']
+        cl = [lf for lf in _more_lvs[cid] if _more_owner.get(lf['id']) == cid]
         negs = [x for i, x in enumerate(cl) if _lower(x) in {'not', 'no', 'nothing', 'nobody',
                                                              'none', 'never', 'nowhere',
                                                              "n't", 'nt'}
                 and not (_lower(x) == 'not' and i + 1 < len(cl)
                          and _lower(cl[i + 1]) == 'only')]
         if len(negs) >= 2:
-            # A negation in a subordinate clause and another in the main clause
-            # ('Though nobody expected it, ... was not ready.') is a separate
-            # clause, not a double negative in the same clause.
             if any(x.get('type') == ',' for x in cl
                    [next((k for k, y in enumerate(cl) if y['id'] == negs[0]['id']), 0):
                     next((k for k, y in enumerate(cl) if y['id'] == negs[1]['id']), 0)]):
@@ -2134,17 +2670,29 @@ def _check_more(root, clauses, leaves):
                     'imagine', 'agree', 'doubt', 'deny', 'admit', 'promise',
                     'claim', 'state', 'reply', 'answer', 'understand',
                     'realize', 'tell', 'told', 'wonder', 'ask', 'explain',
-                    'mention'}
+                    'mention', 'assume', 'fear', 'suspect', 'suggest', 'prove',
+                    'show', 'argue', 'insist', 'maintain', 'confirm', 'report',
+                    'prefer', 'mean', 'figure', 'learn', 'discover', 'sense',
+                    'recognize', 'accept', 'conclude', 'predict', 'warn'}
     WH_WORDS = {'who', 'whom', 'whose', 'which', 'that', 'where', 'when',
                 'why', 'how', 'whether', 'if', 'what'}
+    # Collect leaf IDs that already sit inside an SBAR subordinate complement
+    # so zero-'that' complement clauses ('An alumnus doubts [SBAR every sweater
+    # flattens]') and zero-relative clauses ('all the time [SBAR he has]') are
+    # never flagged as fused run-on sentences.
+    sbar_leaf_ids = set()
+    for _n in _iter_nodes(root):
+        if _n.get('type') == 'SBAR':
+            for _slf in _leaves(_n):
+                sbar_leaf_ids.add(_slf['id'])
     seen_marker = False
     for i, lf in enumerate(leaves):
         if _lower(lf) in WH_WORDS or _lower(lf) in SUBORDINATORS:
             seen_marker = True
             continue
-        if lf.get('type') not in FINITE_TYPES:
+        if lf.get('type') not in FINITE_TYPES and _base_of(_lower(lf)) not in BRIDGE_VERBS:
             continue
-        if _lower(lf) in BRIDGE_VERBS:
+        if _lower(lf) in BRIDGE_VERBS or _base_of(_lower(lf)) in BRIDGE_VERBS:
             seen_marker = True
             continue
         if seen_marker:
@@ -2156,13 +2704,14 @@ def _check_more(root, clauses, leaves):
                     or x.get('type') in ('CC', ',', ';', ':', '.'):
                 break
             if x.get('type') in FINITE_TYPES:
+                if lf.get('fdep') in {'aux', 'auxpass'} and lf.get('fhead') == j:
+                    break  # One predicate, including subject–auxiliary inversion.
+                if x['id'] in sbar_leaf_ids:
+                    break
                 between = leaves[i + 1:j]
                 if any(b.get('type') in ('PRP', 'NN', 'NNS', 'NNP') for b in between):
-                    # Subordinator material between the two verbs ('in case X',
-                    # 'once X', 'because X') means the second clause is licensed,
-                    # not a run-on.
                     bw = [_lower(b) for b in between]
-                    if any(w in SUBORDINATORS for w in bw) \
+                    if any(w in SUBORDINATORS or _base_of(w) in BRIDGE_VERBS for w in bw) \
                             or 'in' in bw and bw.index('in') + 1 < len(bw) \
                             and bw[bw.index('in') + 1] == 'case' \
                             or 'as' in bw and bw.index('as') + 2 < len(bw) \
@@ -2445,14 +2994,14 @@ f"The possessive '{lf['surface']}' in this sentence "
         cleaves = _leaves(clause)
         if len(cleaves) >= 2 and _lower(cleaves[0]) in CONNECTORS \
                 and cleaves[1].get('type') in ('PRP', 'DT', 'NNP', 'NNPS', 'NNS'):
-            out.append(_finding('10.4', 'error', 'C-INTRO-COMMA', 'punctuation',
+            out.append(_finding('10.4', 'suggestion', 'C-INTRO-COMMA', 'punctuation',
                                 cleaves[0]['id'],
-                                f"At the start of this sentence, the connector "
-                                f"'{cleaves[0]['surface']}' needs a comma after it: "
+                                f"At the start of this sentence, a comma is often placed "
+                                f"after '{cleaves[0]['surface']}': "
                                 f"write '{cleaves[0]['surface']}, ...'.",
                                 _wordlist_evidence(cleaves[0]['surface'],
                                                    [f"{cleaves[0]['surface']},"],
-                                                   'punctuation rule')))
+                                                   'punctuation style')))
 
     # 10.8 semicolon misused to join list items inside an NP
     for node in _iter_nodes(root):
@@ -2717,9 +3266,11 @@ f"The possessive '{lf['surface']}' in this sentence "
         w = _lower(nxt)
         after = [_lower(x) for x in leaves[i + 1:i + 4]]
         cd_surface = nxt.get('surface', '') or ''
-        is_clock = (nxt.get('type') == 'CD'
-                    and (':' in cd_surface
-                         or (cd_surface.isdigit() and len(cd_surface) <= 2))) \
+        # Only treat a number after 'in'/'on' as a clock time when it contains
+        # a colon ('3:30') or is accompanied by an explicit clock marker
+        # ('o'clock', 'am', 'pm', 'a.m.', 'p.m.').  Never flag durations,
+        # counts, or distances like 'in 400 meters', 'in 5 minutes', 'in 10 days'.
+        is_clock = (nxt.get('type') == 'CD' and ':' in cd_surface) \
             or any(a in CLOCK for a in after)
         tgt = None
         if low == 'at' and w in DAY_WORDS:
@@ -2767,15 +3318,20 @@ f"The possessive '{lf['surface']}' in this sentence "
                                                        [f"{w} {w2}"],
                                                        'in/on/at time table')))
 
-    # 9.1 fragment: a subordinate clause standing alone (Because I was late.)
+    # 9.1 An overt adjunct subordinator plus its clause can stand alone in
+    # discourse, but in formal prose it needs a matrix clause of its own.
     if root.get('type') == 'SBAR':
-        out.append(_finding('9.1', 'error', 'C-FRAGMENT', 'sentence structure',
-                            root['id'],
-                            "This sentence starts with a subordinate clause and has "
-                            "no main clause, so it is only a fragment; add a main "
-                            "clause to complete the sentence.",
-                            _tree_evidence(root['id'],
-                                           'SBAR without a matrix S')))
+        parts = root.get('children', [])
+        marker = _lower(leaves[0]) if leaves else ''
+        if marker in {'if', 'unless', 'because', 'although', 'though', 'when', 'while', 'since', 'before', 'after'} and any(
+                child.get('type') == 'S' for child in parts[1:]):
+            kind = 'a conditional clause' if marker in {'if', 'unless'} else 'a subordinate clause'
+            issue = (f"‘{leaves[0]['surface']}’ introduces {kind}. It can work as a fragment in "
+                     "conversation. In formal writing, it needs a main clause to make a complete sentence.")
+            out.append(_finding('9.1', 'error', 'C-FRAGMENT', 'sentence structure',
+                                root['id'], issue,
+                                _tree_evidence(root['id'], 'subordinator plus S without a matrix clause'),
+                                _rem(issue, 'If you intend a full sentence, supply the main clause you mean.')))
 
     # 9.10 relative clause with a resumptive object pronoun (the man who I saw him)
     RELP = {'who', 'whom', 'which', 'that'}
@@ -2905,7 +3461,7 @@ f"The possessive '{lf['surface']}' in this sentence "
         break
     if first is not None:
         surf = first.get('surface') or ''
-        if surf[:1].isalpha() and surf[:1].islower():
+        if surf[:1].isalpha() and surf[:1].islower() and not has_name_evidence(first):
             low = surf.lower()
             if low not in ('i',) and low not in DAYS and low not in MONTH_WORDS:
                 out.append(_finding('10.1', 'error', 'C-SENTENCE-CAPITAL',
@@ -2960,12 +3516,36 @@ STATIVE_BASE = {
     'agreeing': 'agree', 'deserving': 'deserve', 'resembling': 'resemble',
 }
 
-STATIVE_ING = {'liking', 'knowing', 'wanting', 'needing', 'meaning',
-               'believing', 'understanding', 'remembering', 'forgetting',
-               'realizing', 'recognizing', 'preferring', 'hating', 'belonging',
-               'owning', 'seeming', 'existing', 'mattering', 'consisting',
-               'containing', 'depending', 'doubting', 'agreeing', 'deserving',
-               'resembling'}
+STATIVE_ING = {'knowing', 'meaning', 'believing', 'understanding',
+               'recognizing', 'preferring', 'belonging', 'owning',
+               'consisting', 'containing', 'deserving', 'resembling'}
+
+_VBN_ONLY_PARTICIPLES = {
+    'eaten', 'written', 'broken', 'driven', 'spoken', 'stolen', 'taken',
+    'given', 'seen', 'been', 'done', 'gone', 'known', 'shown', 'grown',
+    'thrown', 'drawn', 'blown', 'flown', 'worn', 'torn', 'sworn', 'chosen',
+    'frozen', 'hidden', 'bitten', 'forgotten', 'gotten', 'ridden', 'risen',
+    'shaken', 'woken', 'awoken', 'beaten', 'fallen', 'sung', 'rung', 'drunk',
+    'swum', 'begun', 'shrunk', 'sunk', 'stunk', 'sprung',
+}
+
+_ZERO_PLURAL_NOUNS = {
+    'sheep', 'fish', 'deer', 'series', 'species', 'offspring', 'aircraft',
+    'spacecraft', 'hovercraft', 'moose', 'bison', 'salmon', 'trout', 'swine',
+    'buffalo', 'means', 'headquarters', 'crossroads', 'corps',
+}
+
+_IRREG_PLURAL_NOUNS = {
+    'children', 'men', 'women', 'feet', 'teeth', 'mice', 'people', 'geese',
+    'oxen', 'leaves', 'lives', 'wives', 'knives', 'shelves', 'wolves',
+    'halves', 'calves', 'loaves', 'thieves', 'oases', 'crises', 'analyses',
+    'theses', 'hypotheses', 'diagnoses', 'bases', 'axes', 'emphases',
+    'parentheses', 'synopses', 'syntheses', 'ellipses', 'phenomena',
+    'criteria', 'cacti', 'fungi', 'nuclei', 'stimuli', 'syllabi', 'radii',
+    'alumni', 'data', 'media', 'bacteria', 'curricula', 'memoranda', 'strata',
+    'millennia', 'indices', 'appendices', 'matrices', 'vertices', 'vortices',
+    'vertebrae', 'antennae', 'larvae', 'algae', 'nebulae', 'dice', 'lice',
+}
 BE_SURFACES_LEAF = {'am', 'is', 'are', 'was', 'were', 'be', 'been', 'being'}
 WH_WORDS = {'where', 'when', 'how', 'why', 'what', 'which', 'who', 'whom'}
 WH_AUX = {'is', 'are', 'was', 'were', 'do', 'does', 'did', 'have', 'has', 'had'}
@@ -3062,6 +3642,19 @@ def _is_3sg_marked(nlow):
         return True
 
 
+def be_past_pairs(leaves):
+    """Dependency-linked be and an overt, morphologically past-only verb."""
+    for i, aux in enumerate(leaves):
+        if _lower(aux) not in BE_SURFACES_LEAF or aux.get('fdep') not in {'aux', 'auxpass'}:
+            continue
+        head_index = aux.get('fhead')
+        if not isinstance(head_index, int) or not 0 <= head_index < len(leaves):
+            continue
+        verb = leaves[head_index]
+        if _lower(verb) in PAST_ONLY and verb.get('type') in FINITE_TYPES | {'VBN'}:
+            yield i, head_index
+
+
 def _check_basic(root, clauses, leaves):
     out = []
     lows = [_lower(x) for x in leaves]
@@ -3108,6 +3701,13 @@ def _check_basic(root, clauses, leaves):
                 }))
         elif nt in ('VBZ', 'VBP') or (nt in ('VB', 'NN', 'NNS')
                                        and _is_3sg_marked(nlow)):
+            # Do not fire when a parser mistags a determiner typo as MD inside
+            # an NP before a plural noun ('in may parts of India' -> NP(MD, NNS)).
+            if nt == 'NNS':
+                pmap_mod = _build_parent_map(root)
+                par_mod = pmap_mod.get(lf['id'])
+                if par_mod is not None and par_mod.get('type') == 'NP':
+                    continue
             lemma = _base_of(nlow) if _is_3sg_marked(nlow) else nlow
             out.append(_finding(
                 '6.1', 'error', 'C-MODAL-VERB-FORM', 'verb form', nxt['id'],
@@ -3169,19 +3769,38 @@ def _check_basic(root, clauses, leaves):
                     'edits': [{'node': lf['id'], 'replacement': target}],
                 }))
         elif core in SUBJECT_TO_OBJECT and prev_core in PREPOSITIONS:
-            target = SUBJECT_TO_OBJECT[core] + tail
-            out.append(_finding(
-                '5.1', 'error', 'C-PREP-PRON-CASE', 'pronoun case', lf['id'],
-                f"After the preposition '{prev_core}', the pronoun must be "
-                f"'{SUBJECT_TO_OBJECT[core]}', not '{raw}'.",
-                _wordlist_evidence(f"{prev_core} {raw}",
-                                   [f"{prev_core} {SUBJECT_TO_OBJECT[core]}"],
-                                   'object pronoun after preposition'),
-                remediation={
-                    'suggested_fix': (f"Change '{raw}' to "
-                                      f"'{SUBJECT_TO_OBJECT[core]}'"),
-                    'edits': [{'node': lf['id'], 'replacement': target}],
-                }))
+            # Prepositions that take clausal complements ('before he left',
+            # 'after she arrived', 'for he knew', 'since we came') license a
+            # nominative clausal subject when followed by a finite verb/aux
+            # (or adverb + finite verb). Do not flag across a clause boundary.
+            clausal_prep = prev_core in {'before', 'after', 'until', 'since', 'for', 'as', 'than', 'like'}
+            after_pron = leaves[i + 1] if i + 1 < len(leaves) else None
+            after2 = leaves[i + 2] if i + 2 < len(leaves) else None
+            starts_clause = clausal_prep and (
+                (after_pron is not None and (
+                    after_pron.get('type') in FINITE_TYPES
+                    or _lower(after_pron) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                ))
+                or (after_pron is not None and after_pron.get('type') == 'RB'
+                    and after2 is not None and (
+                        after2.get('type') in FINITE_TYPES
+                        or _lower(after2) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                    ))
+            )
+            if not starts_clause:
+                target = SUBJECT_TO_OBJECT[core] + tail
+                out.append(_finding(
+                    '5.1', 'error', 'C-PREP-PRON-CASE', 'pronoun case', lf['id'],
+                    f"After the preposition '{prev_core}', the pronoun must be "
+                    f"'{SUBJECT_TO_OBJECT[core]}', not '{raw}'.",
+                    _wordlist_evidence(f"{prev_core} {raw}",
+                                       [f"{prev_core} {SUBJECT_TO_OBJECT[core]}"],
+                                       'object pronoun after preposition'),
+                    remediation={
+                        'suggested_fix': (f"Change '{raw}' to "
+                                          f"'{SUBJECT_TO_OBJECT[core]}'"),
+                        'edits': [{'node': lf['id'], 'replacement': target}],
+                    }))
         elif (core in POSSESSIVE and nxt is not None
               and nxt.get('type') in ('NN', 'NNS')
               and (prev_core in BE_SURFACES or prev_core in (
@@ -3233,24 +3852,31 @@ def _check_basic(root, clauses, leaves):
                     'edits': [{'node': lf['id'], 'replacement': fix}],
                 }))
 
-    # --- be + simple past (I am went) ------------------------------------------ #
-    for i, lf in enumerate(leaves[:-1]):
-        nxt_tag = leaves[i + 1].get('type')
-        nxt_low = _lower(leaves[i + 1])
-        if lows[i] in BE_SURFACES_LEAF - {'was', 'were'} \
-                and (nxt_tag == 'VBD' or nxt_low in PAST_ONLY) \
-                and nxt_low not in BE_SURFACES_LEAF:
-            out.append(_finding(
-                '6.2', 'error', 'C-BE-PAST', 'verb form', lf['id'],
-                f"Do not use '{lf['surface']}' before the past verb "
-                f"'{leaves[i + 1]['surface']}'. Use the past verb by itself.",
-                _wordlist_evidence(
-                    f"{lows[i]} {_lower(leaves[i + 1])}",
-                    [_lower(leaves[i + 1])], 'be + simple past'),
-                remediation={
-                    'suggested_fix': f"remove '{lf['surface']}'",
-                    'edits': [{'node': lf['id'], 'delete': True}],
-                }))
+    # A past-only irregular form cannot fill either the progressive or the
+    # passive slot after auxiliary be. Token dependencies also cover intervening
+    # modifiers and inversion. Syncretic past/participle forms remain eligible.
+    for i, head_index in be_past_pairs(leaves):
+        aux, verb = leaves[i], leaves[head_index]
+        issue = (f"‘{verb['surface']}’ is a simple past form. Auxiliary ‘{aux['surface']}’ "
+                 "takes an -ing form in the progressive or a past participle in the passive.")
+        remediation = _rem(issue, 'Choose the verb form that expresses the tense and voice you intend.')
+        # Only propose deletion for affirmative present be immediately before
+        # the verb, with evidence of a simple past active reading. A retained
+        # object, inversion, negation or another auxiliary can change the repair.
+        if (lows[i] in {'am', 'is', 'are'} and head_index == i + 1
+                and any(lf.get('fdep') == 'dobj' and lf.get('fhead') == head_index
+                        for lf in leaves)
+                and any(_lower(lf) in {'yesterday', 'ago'} and lf.get('fhead') == head_index
+                        for lf in leaves)
+                and not any(lf is not aux and lf.get('fhead') == head_index
+                            and lf.get('fdep') in {'aux', 'auxpass', 'neg'} for lf in leaves)):
+            remediation['suggested_fix'] = (f"If you mean a simple past action, use ‘{verb['surface']}’ "
+                                            f"without ‘{aux['surface']}’.")
+            remediation['edits'] = [{'node': aux['id'], 'delete': True}]
+        out.append(_finding('6.2', 'error', 'C-BE-PAST', 'verb form', aux['id'], issue,
+                            _tree_evidence(aux['id'], 'auxiliary be with a past-only form',
+                                           [{'node': aux['id']}, {'node': verb['id']}]),
+                            remediation))
 
     # --- be + uninflected action verb (parser may tag it as a noun) ---------- #
     for i, lf in enumerate(leaves[:-1]):
@@ -3351,7 +3977,17 @@ def _check_basic(root, clauses, leaves):
                 'NN', 'NNS', 'NNP', 'NNPS', 'CD'):
             continue  # 'page five' / identifier reading
         j = i + 1
-        while j < len(leaves) and leaves[j].get('type') in ('JJ', 'JJR', 'JJS'):
+        while j < len(leaves) and leaves[j].get('type') in ('JJ', 'JJR', 'JJS', 'RB'):
+            j += 1
+        # Advance across noun-noun compound modifiers ('five messy college campuses'
+        # -> head is 'campuses', not noun adjunct 'college'), stopping before
+        # trailing temporal adverbs like 'yesterday' or 'today'.
+        _TIME_ADVS = {'today', 'yesterday', 'tomorrow', 'tonight', 'now',
+                      'later', 'then', 'soon', 'already', 'again'}
+        while (j + 1 < len(leaves)
+               and leaves[j].get('type') in ('NN', 'NNP')
+               and leaves[j + 1].get('type') in ('NN', 'NNS', 'NNP', 'NNPS')
+               and _lower(leaves[j + 1]) not in _TIME_ADVS):
             j += 1
         if j >= len(leaves):
             continue
@@ -3363,10 +3999,16 @@ def _check_basic(root, clauses, leaves):
             continue  # 'ten o'clock' is a clock phrase, not a counted noun
         if nxt.get('type') == 'IN':
             continue  # 'many of the ...'
-        if nxt.get('type') == 'NNS':
+        if nxt.get('type') in ('NNS', 'NNPS'):
+            continue
+        if _lower(nxt) in _ZERO_PLURAL_NOUNS or _lower(nxt) in _IRREG_PLURAL_NOUNS:
             continue
         if nxt.get('type') == 'NN':
             if _lower(nxt) in UNCOUNTABLE_SINGULAR:
+                continue
+            # Do not misidentify a parser-mistagged adjective in N'-ellipsis
+            # ('cleaning many gray.') as a singular noun head needing '-s'.
+            if is_ellipsis_stranded_adj(nxt):
                 continue
             rule = '2.10' if lf.get('type') == 'CD' else '2.11'
             if _lower(nxt) == 'bread':
@@ -3403,6 +4045,8 @@ def _check_basic(root, clauses, leaves):
                 _wordlist_evidence(f"much {nlow}", [f"many {nlow}"],
                                    'much (mass) vs many (count)')))
         elif low == 'many' and nt == 'NN':
+            if is_ellipsis_stranded_adj(nxt):
+                continue
             out.append(_finding(
                 '2.11', 'error', 'C-QUANTIFIER-CLASS', 'quantifier', nxt['id'],
                 f"'many' is used with plural count nouns, but here "
@@ -3423,6 +4067,23 @@ def _check_basic(root, clauses, leaves):
         if lows[i] in TRUE_PREPS and i + 1 < len(leaves):
             nxt = _lower(leaves[i + 1]).rstrip('.,;:!?')
             if nxt in SUBJECT_PRON:
+                # Skip clausal subjects after prepositions that take finite
+                # clauses ('I saw him before he left', 'after she arrived').
+                after_p = leaves[i + 2] if i + 2 < len(leaves) else None
+                after_p2 = leaves[i + 3] if i + 3 < len(leaves) else None
+                clausal_subj = lows[i] in {'before', 'after', 'until', 'since', 'for', 'as', 'than', 'like'} and (
+                    (after_p is not None and (
+                        after_p.get('type') in FINITE_TYPES
+                        or _lower(after_p) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                    ))
+                    or (after_p is not None and after_p.get('type') == 'RB'
+                        and after_p2 is not None and (
+                            after_p2.get('type') in FINITE_TYPES
+                            or _lower(after_p2) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
+                        ))
+                )
+                if clausal_subj:
+                    continue
                 obj = {'i': 'me', 'we': 'us', 'he': 'him', 'she': 'her',
                        'they': 'them'}[nxt]
                 out.append(_finding(
@@ -3746,6 +4407,8 @@ def _check_basic(root, clauses, leaves):
             'show', 'showed', 'shows', 'mention', 'mentioned', 'discover',
             'discovered', 'determine', 'determined', 'find', 'found',
         }
+        if i > 0 and leaves[i - 1].get('type') == ',':
+            continue  # non-restrictive relative clause (', which is ...'), not an indirect question
         if not any(_lower(leaves[k]) in embedding
                    for k in range(max(0, i - 4), i)):
             continue
@@ -3758,11 +4421,11 @@ def _check_basic(root, clauses, leaves):
         if leaves[i + 2].get('type') in ('RB', 'RBR', 'RBS'):
             continue  # relative clause: '... which had just arrived' (valid)
         # A wh-word that is the subject of a BE clause with a predicate
-        # complement keeps that order: 'I know who was right'.  Inverting would
-        # put the BE form before its predicate ('who right was'), not before a
-        # pronoun subject, so there is nothing here to fix.
+        # complement keeps that order: 'I know who was right', ', which is the
+        # most important point'.
         if _lower(leaves[i + 1]) in BE_SURFACES_LEAF \
-                and leaves[i + 2].get('type') in ('JJ', 'JJR', 'JJS', 'RB', 'NN', 'NNS'):
+                and (leaves[i + 2].get('type') in ('JJ', 'JJR', 'JJS', 'RB', 'NN', 'NNS')
+                     or (lows[i] in ('which', 'who') and leaves[i + 2].get('type') == 'DT')):
             continue
         tail = leaves[i + 2:]
         while tail and tail[-1].get('type') in ('PUNCT', '.', '?', '!'):
@@ -4240,12 +4903,47 @@ def _check_context(root, clauses, leaves):
                   'give','gives','giving','gave','come','comes','coming','came',
                   'leave','leaves','leaving','left','try','tries','trying','tried',
                   'buy','sell','eat','drink','walk','talk'}
+    _PREP_TO_HOSTS = {
+        'go', 'goes', 'going', 'went', 'gone', 'come', 'comes', 'coming', 'came',
+        'return', 'returns', 'returning', 'returned', 'move', 'moves', 'moving', 'moved',
+        'travel', 'travels', 'traveling', 'travelling', 'traveled', 'travelled',
+        'walk', 'walks', 'walking', 'walked', 'drive', 'drives', 'driving', 'drove', 'driven',
+        'run', 'runs', 'running', 'ran', 'fly', 'flies', 'flying', 'flew', 'flown',
+        'head', 'heads', 'heading', 'headed', 'lead', 'leads', 'leading', 'led',
+        'point', 'points', 'pointing', 'pointed', 'talk', 'talks', 'talking', 'talked',
+        'speak', 'speaks', 'speaking', 'spoke', 'spoken', 'listen', 'listens', 'listening', 'listened',
+        'belong', 'belongs', 'belonging', 'belonged', 'refer', 'refers', 'referring', 'referred',
+        'reply', 'replies', 'replying', 'replied', 'respond', 'responds', 'responding', 'responded',
+        'react', 'reacts', 'reacting', 'reacted', 'relate', 'relates', 'relating', 'related',
+        'apply', 'applies', 'applying', 'applied', 'appeal', 'appeals', 'appealing', 'appealed',
+        'add', 'adds', 'adding', 'added', 'give', 'gives', 'giving', 'gave', 'given',
+        'send', 'sends', 'sending', 'sent', 'show', 'shows', 'showing', 'showed', 'shown',
+        'offer', 'offers', 'offering', 'offered', 'bring', 'brings', 'bringing', 'brought',
+        'write', 'writes', 'writing', 'wrote', 'written', 'explain', 'explains', 'explained',
+        'compare', 'compares', 'compared', 'adapt', 'adapts', 'adapted', 'adjust', 'adjusted',
+        'agree', 'agreed', 'commit', 'committed', 'contribute', 'contributed', 'object', 'objected',
+        'limit', 'limited', 'restrict', 'restricted', 'expose', 'exposed', 'link', 'linked',
+        'connect', 'connected', 'attach', 'attached', 'stick', 'stuck', 'yield', 'yielded',
+        'close', 'closer', 'closest', 'similar', 'next', 'due', 'according', 'used', 'up', 'down',
+    }
     for i, lf in enumerate(leaves):
         low = _lower(lf)
         if low == 'to' and i + 1 < len(leaves):
             nlow = _lower(leaves[i+1])
             if nlow in ('many','much','few','little','crowded','tight','high','low','big','small',
                         'late','early','hard','easy','quick','slow','close','far','old','young','hot','cold'):
+                # Skip genuine preposition 'to' governing an elided-head or
+                # nominal quantifier ('going to many', 'talked to few',
+                # 'To many people, ...', 'up to many', 'close to many').
+                if nlow in ('many', 'much', 'few', 'little'):
+                    prev_low = _lower(leaves[i - 1]) if i > 0 else ''
+                    after_q = leaves[i + 2] if i + 2 < len(leaves) else None
+                    after_q_is_boundary = (
+                        after_q is None
+                        or after_q.get('type') in {'.', ',', ';', ':', '!', '?', 'CC', 'IN', 'RB'}
+                    )
+                    if i == 0 or prev_low in _PREP_TO_HOSTS or after_q_is_boundary:
+                        continue
                 out.append(_finding('11.2','error','C-TO_TOO','word choice', lf['id'],
                                          "'to' is used here instead of 'too' (meaning 'excessively').",
                                          _tree_evidence(lf['id'],'to/too')))
@@ -4462,7 +5160,7 @@ def _check_terminal(root, text):
     if not isinstance(raw, str):
         return []
     r = raw.rstrip()
-    while r and r[-1] in '"\'")]}':
+    while r and r[-1] in '"\'”’)]}':
         r = r[:-1].rstrip()
     if r and r[-1] not in '.?!':
         return [_finding('10.3', 'error', 'C-TERMINAL-PUNCT', 'punctuation',
@@ -4471,6 +5169,1626 @@ def _check_terminal(root, text):
                          _tree_evidence(root.get('id') if isinstance(root, dict)
                                         else 'root', 'sentence boundary'))]
     return []
+
+
+_STRICTLY_INTRANSITIVE_VERBS = {
+    'exist', 'exists', 'existed', 'existing',
+    'arrive', 'arrives', 'arrived', 'arriving',
+    'appear', 'appears', 'appeared', 'appearing',
+    'disappear', 'disappears', 'disappeared', 'disappearing',
+    'vanish', 'vanishes', 'vanished', 'vanishing',
+    'happen', 'happens', 'happened', 'happening',
+    'occur', 'occurs', 'occurred', 'occurring',
+    'emerge', 'emerges', 'emerged', 'emerging',
+    'persist', 'persists', 'persisted', 'persisting',
+    'perish', 'perishes', 'perished', 'perishing',
+    'belong', 'belongs', 'belonged', 'belonging',
+    'consist', 'consists', 'consisted', 'consisting',
+    'depend', 'depends', 'depended', 'depending',
+    'rely', 'relies', 'relied', 'relying',
+    'listen', 'listens', 'listened', 'listening',
+    'glance', 'glances', 'glanced', 'glancing',
+    'glare', 'glares', 'glared', 'glaring',
+    'stare', 'stares', 'stared', 'staring',
+    'gaze', 'gazes', 'gazed', 'gazing',
+    'peer', 'peers', 'peered', 'peering',
+    'cooperate', 'cooperates', 'cooperated', 'cooperating',
+    'collide', 'collides', 'collided', 'colliding',
+    'intervene', 'intervenes', 'intervened', 'intervening',
+    'hesitate', 'hesitates', 'hesitated', 'hesitating',
+    'faint', 'faints', 'fainted', 'fainting',
+    'sneeze', 'sneezes', 'sneezed', 'sneezing',
+    'cough', 'coughs', 'coughed', 'coughing',
+    'blush', 'blushes', 'blushed', 'blushing',
+    'shiver', 'shivers', 'shivered', 'shivering',
+    'tremble', 'trembles', 'trembled', 'trembling',
+    'snore', 'snores', 'snored', 'snoring',
+    'yawn', 'yawns', 'yawned', 'yawning',
+    'dwell', 'dwells', 'dwelled', 'dwelt', 'dwelling',
+    'reside', 'resides', 'resided', 'residing',
+    'lurk', 'lurks', 'lurked', 'lurking',
+    'come', 'comes', 'came', 'coming',
+    'stumble', 'stumbles', 'stumbled', 'stumbling',
+    'stagger', 'staggers', 'staggered', 'staggering',
+    'stray', 'strays', 'strayed', 'straying',
+    'rebel', 'rebels', 'rebelled', 'rebelling',
+    'struggle', 'struggles', 'struggled', 'struggling',
+    'bloom', 'blooms', 'bloomed', 'blooming',
+    'wither', 'withers', 'withered', 'withering',
+    'erupt', 'erupts', 'erupted', 'erupting',
+    'subside', 'subsides', 'subsided', 'subsiding',
+    'dwindle', 'dwindles', 'dwindled', 'dwindling',
+    'flourish', 'flourishes', 'flourished', 'flourishing',
+    'thrive', 'thrives', 'thrived', 'thriving',
+    'prosper', 'prospers', 'prospered', 'prospering',
+    'fluctuate', 'fluctuates', 'fluctuated', 'fluctuating',
+    'recede', 'recedes', 'receded', 'receding',
+    'plummet', 'plummets', 'plummeted', 'plummeting',
+    'linger', 'lingers', 'lingered', 'lingering',
+    'loiter', 'loiters', 'loitered', 'loitering',
+    'tiptoe', 'tiptoes', 'tiptoed', 'tiptoeing',
+    'saunter', 'saunters', 'sauntered', 'sauntering',
+    'slouch', 'slouches', 'slouched', 'slouching',
+    'recline', 'reclines', 'reclined', 'reclining',
+    'sprawl', 'sprawls', 'sprawled', 'sprawling',
+    'doze', 'dozes', 'dozed', 'dozing',
+    'slumber', 'slumbers', 'slumbered', 'slumbering',
+    'nap', 'naps', 'napped', 'napping',
+    'giggle', 'giggles', 'giggled', 'giggling',
+    'chuckle', 'chuckles', 'chuckled', 'chuckling',
+    'frown', 'frowns', 'frowned', 'frowning',
+    'grin', 'grins', 'grinned', 'grinning',
+    'scowl', 'scowls', 'scowled', 'scowling',
+    'flinch', 'flinches', 'flinched', 'flinching',
+    'wince', 'winces', 'winced', 'wincing',
+    'cringe', 'cringes', 'cringed', 'cringing',
+    'shudder', 'shudders', 'shuddered', 'shuddering',
+    'quiver', 'quivers', 'quivered', 'quivering',
+    'deteriorate', 'deteriorates', 'deteriorated', 'deteriorating',
+    'disagree', 'disagrees', 'disagreed', 'disagreeing',
+    'apologize', 'apologizes', 'apologized', 'apologizing',
+    'complain', 'complains', 'complained', 'complaining',
+    'comply', 'complies', 'complied', 'complying',
+    'conform', 'conforms', 'conformed', 'conforming',
+    'prevail', 'prevails', 'prevailed', 'prevailing',
+    'arise', 'arises', 'arose', 'arisen', 'arising',
+    'die', 'dies', 'died', 'dying',
+    'sleep', 'sleeps', 'slept', 'sleeping',
+    'laugh', 'laughs', 'laughed', 'laughing',
+    'smile', 'smiles', 'smiled', 'smiling',
+    'weep', 'weeps', 'wept', 'weeping',
+    'fall', 'falls', 'fell', 'fallen', 'falling',
+    'wait', 'waits', 'waited', 'waiting',
+}
+
+_TIME_MEASURE_NP_HEADS = {
+    'second', 'seconds', 'minute', 'minutes', 'hour', 'hours', 'day', 'days',
+    'week', 'weeks', 'month', 'months', 'year', 'years', 'time', 'times',
+    'moment', 'moments', 'while', 'night', 'nights', 'morning', 'mornings',
+    'afternoon', 'afternoons', 'evening', 'evenings', 'today', 'yesterday',
+    'tomorrow', 'tonight', 'mile', 'miles', 'foot', 'feet', 'inch', 'inches',
+    'meter', 'meters', 'metre', 'metres', 'yard', 'yards', 'step', 'steps',
+    'way', 'lot', 'bit', 'little', 'percent', 'degree', 'degrees',
+}
+
+_STRICTLY_TRANSITIVE_PREPS = {
+    'to', 'for', 'of', 'from', 'with', 'at', 'into', 'onto', 'upon',
+    'about', 'against', 'among', 'beside', 'during', 'toward', 'towards',
+    'without', 'despite', 'except',
+}
+
+_ANIMATE_CONTROL_ADJS = {
+    'willing', 'unwilling', 'eager', 'anxious', 'reluctant', 'hesitant',
+    'keen', 'ready', 'happy', 'glad', 'proud', 'afraid', 'sorry',
+    'determined', 'prepared', 'careful', 'ashamed', 'able', 'unable',
+    'free', 'pleased', 'delighted',
+}
+
+_ANIMATE_OBJ_CONTROL_VERBS = {
+    'oblige', 'obliges', 'obliged', 'obliging',
+    'entice', 'entices', 'enticed', 'enticing',
+    'persuade', 'persuades', 'persuaded', 'persuading',
+    'convince', 'convinces', 'convinced', 'convincing',
+    'force', 'forces', 'forced', 'forcing',
+    'compel', 'compels', 'compelled', 'compelling',
+    'urge', 'urges', 'urged', 'urging',
+    'invite', 'invites', 'invited', 'inviting',
+    'encourage', 'encourages', 'encouraged', 'encouraging',
+    'warn', 'warns', 'warned', 'warning',
+    'remind', 'reminds', 'reminded', 'reminding',
+    'advise', 'advises', 'advised', 'advising',
+    'tempt', 'tempts', 'tempted', 'tempting',
+    'bribe', 'bribes', 'bribed', 'bribing',
+    'beg', 'begs', 'begged', 'begging',
+    'implore', 'implores', 'implored', 'imploring',
+    'command', 'commands', 'commanded', 'commanding',
+    'instruct', 'instructs', 'instructed', 'instructing',
+    'push', 'pushes', 'pushed', 'pushing',
+    'sway', 'sways', 'swayed', 'swaying',
+    'ask', 'asks', 'asked', 'asking',
+    'tell', 'tells', 'told', 'telling',
+    'order', 'orders', 'ordered', 'ordering',
+    'press', 'presses', 'pressed', 'pressing',
+    'pressure', 'pressures', 'pressured', 'pressuring',
+    'dare', 'dares', 'dared', 'daring',
+    'challenge', 'challenges', 'challenged', 'challenging',
+    'pay', 'pays', 'paid', 'paying',
+    'hire', 'hires', 'hired', 'hiring',
+    'train', 'trains', 'trained', 'training',
+    'teach', 'teaches', 'taught', 'teaching',
+    'coax', 'coaxes', 'coaxed', 'coaxing',
+    'prod', 'prods', 'prodded', 'prodding',
+    'motivate', 'motivates', 'motivated', 'motivating',
+    'inspire', 'inspires', 'inspired', 'inspiring',
+    'direct', 'directs', 'directed', 'directing',
+    'authorize', 'authorizes', 'authorized', 'authorizing',
+    'delegate', 'delegates', 'delegated', 'delegating',
+    'entreat', 'entreats', 'entreated', 'entreating',
+    'beseech', 'beseeches', 'besought', 'beseeching',
+}
+
+_ANIMATE_SUBJ_CONTROL_VERBS = {
+    'bother', 'bothers', 'bothered', 'bothering',
+    'try', 'tries', 'tried', 'trying',
+    'refuse', 'refuses', 'refused', 'refusing',
+    'decide', 'decides', 'decided', 'deciding',
+    'hope', 'hopes', 'hoped', 'hoping',
+    'agree', 'agrees', 'agreed', 'agreeing',
+    'plan', 'plans', 'planned', 'planning',
+    'promise', 'promises', 'promised', 'promising',
+    'manage', 'manages', 'managed', 'managing',
+    'choose', 'chooses', 'chose', 'chosen', 'choosing',
+    'attempt', 'attempts', 'attempted', 'attempting',
+    'intend', 'intends', 'intended', 'intending',
+    'pretend', 'pretends', 'pretended', 'pretending',
+    'hesitate', 'hesitates', 'hesitated', 'hesitating',
+    'volunteer', 'volunteers', 'volunteered', 'volunteering',
+    'offer', 'offers', 'offered', 'offering',
+    'forget', 'forgets', 'forgot', 'forgotten', 'forgetting',
+    'remember', 'remembers', 'remembered', 'remembering',
+    'learn', 'learns', 'learned', 'learnt', 'learning',
+    'struggle', 'struggles', 'struggled', 'struggling',
+    'strive', 'strives', 'strove', 'striven', 'striving',
+    'care', 'cares', 'cared', 'caring',
+    'want', 'wants', 'wanted', 'wanting',
+    'wish', 'wishes', 'wished', 'wishing',
+}
+
+# Strictly obligatorily transitive verbs (never grammatical with zero
+# complement in active declarative clauses without a wh/relative/tough gap).
+_OBLIGATORILY_TRANSITIVE_VERBS = {
+    'dislike', 'dislikes', 'disliked', 'disliking',
+    'resemble', 'resembles', 'resembled', 'resembling',
+    'reveal', 'reveals', 'revealed', 'revealing',
+    'conceal', 'conceals', 'concealed', 'concealing',
+    'scare', 'scares', 'scared', 'scaring',
+    'frighten', 'frightens', 'frightened', 'frightening',
+    'terrify', 'terrifies', 'terrified', 'terrifying',
+    'disturb', 'disturbs', 'disturbed', 'disturbing',
+    'alarm', 'alarms', 'alarmed', 'alarming',
+    'irritate', 'irritates', 'irritated', 'irritating',
+    'annoy', 'annoys', 'annoyed', 'annoying',
+    'aggravate', 'aggravates', 'aggravated', 'aggravating',
+    'embarrass', 'embarrasses', 'embarrassed', 'embarrassing',
+    'admire', 'admires', 'admired', 'admiring',
+    'astound', 'astounds', 'astounded', 'astounding',
+    'stun', 'stuns', 'stunned', 'stunning',
+    'devour', 'devours', 'devoured', 'devouring',
+    'demolish', 'demolishes', 'demolished', 'demolishing',
+    'inspect', 'inspects', 'inspected', 'inspecting',
+    'discuss', 'discusses', 'discussed', 'discussing',
+    'mention', 'mentions', 'mentioned', 'mentioning',
+    'describe', 'describes', 'described', 'describing',
+    'discover', 'discovers', 'discovered', 'discovering',
+    'recognize', 'recognizes', 'recognized', 'recognizing',
+    'recognise', 'recognises', 'recognised', 'recognising',
+    'avoid', 'avoids', 'avoided', 'avoiding',
+    'prevent', 'prevents', 'prevented', 'preventing',
+    'contain', 'contains', 'contained', 'containing',
+    'involve', 'involves', 'involved', 'involving',
+    'require', 'requires', 'required', 'requiring',
+    'obtain', 'obtains', 'obtained', 'obtaining',
+    'acquire', 'acquires', 'acquired', 'acquiring',
+    'possess', 'possesses', 'possessed', 'possessing',
+    'lack', 'lacks', 'lacked', 'lacking',
+    'afford', 'affords', 'afforded', 'affording',
+    'enjoy', 'enjoys', 'enjoyed', 'enjoying',
+    'despise', 'despises', 'despised', 'despising',
+    'detest', 'detests', 'detested', 'detesting',
+    'loathe', 'loathes', 'loathed', 'loathing',
+    'resent', 'resents', 'resented', 'resenting',
+    'envy', 'envies', 'envied', 'envying',
+    'adore', 'adores', 'adored', 'adoring',
+    'cherish', 'cherishes', 'cherished', 'cherishing',
+    'betray', 'betrays', 'betrayed', 'betraying',
+    'abandon', 'abandons', 'abandoned', 'abandoning',
+    'ignore', 'ignores', 'ignored', 'ignoring',
+    'neglect', 'neglects', 'neglected', 'neglecting',
+    'greet', 'greets', 'greeted', 'greeting',
+    'accuse', 'accuses', 'accused', 'accusing',
+    'arrest', 'arrests', 'arrested', 'arresting',
+    'punish', 'punishes', 'punished', 'punishing',
+    'praise', 'praises', 'praised', 'praising',
+    'blame', 'blames', 'blamed', 'blaming',
+    'insult', 'insults', 'insulted', 'insulting',
+    'offend', 'offends', 'offended', 'offending',
+    'persuade', 'persuades', 'persuaded', 'persuading',
+    'convince', 'convinces', 'convinced', 'convincing',
+    'remind', 'reminds', 'reminded', 'reminding',
+    'inform', 'informs', 'informed', 'informing',
+    'notify', 'notifies', 'notified', 'notifying',
+    'encourage', 'encourages', 'encouraged', 'encouraging',
+    'discourage', 'discourages', 'discouraged', 'discouraging',
+    'disappoint', 'disappoints', 'disappointed', 'disappointing',
+    'amuse', 'amuses', 'amused', 'amusing',
+    'confuse', 'confuses', 'confused', 'confusing',
+    'puzzle', 'puzzles', 'puzzled', 'puzzling',
+    'baffle', 'baffles', 'baffled', 'baffling',
+    'perplex', 'perplexes', 'perplexed', 'perplexing',
+    'fascinate', 'fascinates', 'fascinated', 'fascinating',
+    'repel', 'repels', 'repelled', 'repelling',
+    'provoke', 'provokes', 'provoked', 'provoking',
+    'hire', 'hires', 'hired', 'hiring',
+    'employ', 'employs', 'employed', 'employing',
+    'dismiss', 'dismisses', 'dismissed', 'dismissing',
+    'appoint', 'appoints', 'appointed', 'appointing',
+    'reject', 'rejects', 'rejected', 'rejecting',
+    'deceive', 'deceives', 'deceived', 'deceiving',
+    'bury', 'buries', 'buried', 'burying',
+    'destroy', 'destroys', 'destroyed', 'destroying',
+    'repair', 'repairs', 'repaired', 'repairing',
+    'construct', 'constructs', 'constructed', 'constructing',
+    'invent', 'invents', 'invented', 'inventing',
+    'postpone', 'postpones', 'postponed', 'postponing',
+    'ruin', 'ruins', 'ruined', 'ruining',
+    'wreck', 'wrecks', 'wrecked', 'wrecking',
+    'damage', 'damages', 'damaged', 'damaging',
+    'injure', 'injures', 'injured', 'injuring',
+    'harm', 'harms', 'harmed', 'harming',
+    'murder', 'murders', 'murdered', 'murdering',
+    'slay', 'slays', 'slew', 'slain', 'slaying',
+    'seize', 'seizes', 'seized', 'seizing',
+    'snatch', 'snatches', 'snatched', 'snatching',
+    'clutch', 'clutches', 'clutched', 'clutching',
+    'fetch', 'fetches', 'fetched', 'fetching',
+    'notice', 'notices', 'noticed', 'noticing',
+    'examine', 'examines', 'examined', 'examining',
+    'question', 'questions', 'questioned', 'questioning',
+    'interrogate', 'interrogates', 'interrogated', 'interrogating',
+    'investigate', 'investigates', 'investigated', 'investigating',
+    'witness', 'witnesses', 'witnessed', 'witnessing',
+    'detect', 'detects', 'detected', 'detecting',
+    'verify', 'verifies', 'verified', 'verifying',
+    'confirm', 'confirms', 'confirmed', 'confirming',
+    'expose', 'exposes', 'exposed', 'exposing',
+    'accompany', 'accompanies', 'accompanied', 'accompanying',
+    'respect', 'respects', 'respected', 'respecting',
+    'appreciate', 'appreciates', 'appreciated', 'appreciating',
+    'trust', 'trusts', 'trusted', 'trusting',
+    'own', 'owns', 'owned', 'owning',
+    'owe', 'owes', 'owed', 'owing',
+    'grab', 'grabs', 'grabbed', 'grabbing',
+    'hug', 'hugs', 'hugged', 'hugging',
+    'slap', 'slaps', 'slapped', 'slapping',
+    'punch', 'punches', 'punched', 'punching',
+    'stab', 'stabs', 'stabbed', 'stabbing',
+    'impress', 'impresses', 'impressed', 'impressing',
+}
+
+# Participial '-ing' forms that function as lexicalized predicate adjectives
+# after 'be' ('The movie was alarming.', 'The news is disturbing.').
+_PARTICIPIAL_ADJ_ING = {
+    'alarming', 'amazing', 'amusing', 'annoying', 'appealing', 'astounding',
+    'baffling', 'boring', 'charming', 'compelling', 'confusing', 'convincing',
+    'demanding', 'depressing', 'disappointing', 'discouraging', 'disgusting',
+    'distressing', 'disturbing', 'embarrassing', 'encouraging', 'entertaining',
+    'exciting', 'exhausting', 'fascinating', 'frightening', 'frustrating',
+    'humbling', 'inspiring', 'interesting', 'intriguing', 'irritating',
+    'moving', 'overwhelming', 'perplexing', 'pleasing', 'puzzling',
+    'refreshing', 'relaxing', 'rewarding', 'satisfying', 'shocking',
+    'soothing', 'startling', 'stimulating', 'stunning', 'surprising',
+    'tempting', 'terrifying', 'thrilling', 'tiring', 'touching', 'troubling',
+    'unsettling', 'upsetting', 'welcoming', 'worrying',
+}
+
+_GRADABLE_COUNT_NOUNS = {
+    'light', 'sweet', 'round', 'square', 'firm', 'plain', 'flat', 'short',
+    'brief', 'blank', 'mean', 'right', 'kind', 'fine', 'fair', 'safe',
+    'sound', 'fit', 'grave', 'spare', 'tender', 'solid', 'still', 'fast',
+    'high', 'low', 'odd', 'wild', 'orange', 'novel', 'patient', 'resident',
+    'relative', 'native', 'official', 'criminal', 'individual', 'minor',
+    'major', 'general', 'private', 'principal', 'capital', 'material',
+    'chemical', 'mineral', 'metal', 'liquid', 'diamond', 'minute', 'second',
+    'quarter', 'half', 'dozen', 'pair', 'couple', 'set', 'lot', 'number',
+    'sort', 'type', 'part', 'piece', 'bit', 'item', 'thing', 'person',
+    'human', 'adult', 'child', 'infant', 'juvenile', 'senior', 'junior',
+    'elder', 'youth', 'male', 'female', 'giant', 'dwarf', 'classic', 'comic',
+    'commercial', 'editorial', 'essential', 'extra', 'favorite', 'favourite',
+    'final', 'fundamental', 'good', 'initial', 'local', 'national',
+    'original', 'particular', 'potential', 'regular', 'remote', 'secret',
+    'special', 'standard', 'subject', 'suspect', 'total', 'uniform',
+    'variable', 'visual', 'vital', 'green', 'blue', 'red', 'white', 'black',
+}
+
+
+def is_ellipsis_stranded_adj(leaf_or_word):
+    """True when a token tagged NN after a quantifier/numeral (e.g. 'cleaning
+    many gray.') is actually a stranded content adjective in N'-ellipsis rather
+    than a singular count noun that should be pluralized to '*grays'."""
+    low = _lower(leaf_or_word) if isinstance(leaf_or_word, dict) else str(leaf_or_word or '').lower()
+    if not low or not low.isalpha() or len(low) < 3:
+        return False
+    if low in _GRADABLE_COUNT_NOUNS:
+        return False
+    if low in {'gray', 'grey', 'yellow', 'brown', 'purple', 'pink', 'beige',
+               'maroon', 'crimson', 'scarlet', 'turquoise', 'violet', 'indigo',
+               'tall', 'old', 'young', 'happy', 'sad', 'angry', 'rough', 'hard',
+               'soft', 'clean', 'dirty', 'messy', 'tidy', 'neat', 'noisy',
+               'quiet', 'loud', 'bright', 'dark', 'heavy', 'empty', 'full',
+               'ugly', 'pretty', 'cute', 'smart', 'clever', 'wise', 'cruel',
+               'brave', 'weak', 'strong', 'sick', 'ill', 'dead', 'alive',
+               'busy', 'ready', 'able', 'sure', 'afraid', 'glad', 'mad', 'shy',
+               'bold', 'proud', 'humble', 'lazy', 'eager', 'keen', 'calm',
+               'nervous', 'anxious', 'curious', 'serious', 'funny', 'silly',
+               'crazy', 'guilty', 'innocent', 'strange', 'weird', 'nice',
+               'lovely', 'awful', 'horrible', 'terrible', 'wonderful',
+               'excellent', 'perfect', 'cheap', 'expensive', 'famous',
+               'popular', 'rare', 'tame', 'fancy', 'blurry', 'fuzzy', 'glossy',
+               'shiny', 'rusty', 'dusty', 'muddy', 'icy', 'snowy', 'rainy',
+               'windy', 'sunny', 'cloudy', 'foggy', 'stormy', 'sharp', 'dull',
+               'loose', 'tight', 'stiff', 'smooth', 'sour', 'bitter', 'salty',
+               'spicy', 'bald', 'faint', 'pale', 'vivid', 'vast', 'huge',
+               'tiny', 'thick', 'thin', 'wide', 'narrow', 'deep', 'shallow',
+               'steep', 'hot', 'cold', 'warm', 'cool', 'wet', 'dry', 'fresh',
+               'raw', 'ripe', 'stale', 'big', 'small', 'large', 'little',
+               'new', 'bad', 'poor', 'rich', 'public', 'broken', 'hidden',
+               'concealed', 'displeased', 'unpopular', 'unsure', 'wooden'}:
+        return True
+    try:
+        from lemminflect import getAllInflections, getAllLemmas
+        adj_lems = getAllLemmas(low, 'ADJ')
+        if not adj_lems:
+            return False
+        noun_lems = getAllLemmas(low, 'NOUN')
+        if not noun_lems:
+            return True
+        adj_infs = getAllInflections(low, 'ADJ')
+        if 'JJR' in adj_infs and 'JJS' in adj_infs:
+            return True
+    except Exception:
+        pass
+    return False
+
+_DITRANSITIVE_OR_COMPLEX_VERBS = {
+    'give', 'gives', 'gave', 'given', 'giving',
+    'tell', 'tells', 'told', 'telling',
+    'show', 'shows', 'showed', 'shown', 'showing',
+    'send', 'sends', 'sent', 'sending',
+    'offer', 'offers', 'offered', 'offering',
+    'lend', 'lends', 'lent', 'lending',
+    'pay', 'pays', 'paid', 'paying',
+    'buy', 'buys', 'bought', 'buying',
+    'hand', 'hands', 'handed', 'handing',
+    'teach', 'teaches', 'taught', 'teaching',
+    'ask', 'asks', 'asked', 'asking',
+    'promise', 'promises', 'promised', 'promising',
+    'write', 'writes', 'wrote', 'written', 'writing',
+    'pass', 'passes', 'passed', 'passing',
+    'sell', 'sells', 'sold', 'selling',
+    'owe', 'owes', 'owed', 'owing',
+    'leave', 'leaves', 'left', 'leaving',
+    'call', 'calls', 'called', 'calling',
+    'consider', 'considers', 'considered', 'considering',
+    'find', 'finds', 'found', 'finding',
+    'keep', 'keeps', 'kept', 'keeping',
+    'make', 'makes', 'made', 'making',
+    'paint', 'paints', 'painted', 'painting',
+    'put', 'puts', 'putting',
+    'place', 'places', 'placed', 'placing',
+    'name', 'names', 'named', 'naming',
+    'elect', 'elects', 'elected', 'electing',
+    'render', 'renders', 'rendered', 'rendering',
+    'declare', 'declares', 'declared', 'declaring',
+    'deem', 'deems', 'deemed', 'deeming',
+    'prove', 'proves', 'proved', 'proven', 'proving',
+    'cost', 'costs', 'costing',
+    'charge', 'charges', 'charged', 'charging',
+    'save', 'saves', 'saved', 'saving',
+    'spare', 'spares', 'spared', 'sparing',
+    'wish', 'wishes', 'wished', ' wishing',
+    'envy', 'envies', 'envied', 'envying',
+    'forgive', 'forgives', 'forgave', 'forgiven', 'forgiving',
+    'grant', 'grants', 'granted', 'granting',
+    'award', 'awards', 'awarded', 'awarding',
+    'assign', 'assigns', 'assigned', 'assigning',
+    'get', 'gets', 'got', 'gotten', 'getting',
+    'do', 'does', 'did', 'done', 'doing',
+    'mean', 'means', 'meant', 'meaning',
+    'be', 'am', 'is', 'are', 'was', 'were', 'been', 'being',
+    'become', 'becomes', 'became', 'becoming',
+    'seem', 'seems', 'seemed', 'seeming',
+    'appear', 'appears', 'appeared', 'appearing',
+    'remain', 'remains', 'remained', 'remaining',
+    'turn', 'turns', 'turned', 'turning',
+}
+
+_NPI_DIRECT_LICENSORS = {
+    'not', "n't", 'never', 'no', 'nobody', 'nothing', 'none', 'neither',
+    'nor', 'nowhere', 'hardly', 'scarcely', 'barely', 'rarely', 'seldom',
+    'few', 'little', 'without', 'only', 'if', 'unless', 'whether', 'before',
+    'until', 'whenever', 'wherever', 'whatever', 'whoever', 'however',
+    'doubt', 'doubts', 'doubted', 'deny', 'denies', 'denied', 'refuse',
+    'refuses', 'refused', 'forbid', 'forbids', 'forbade', 'prevent',
+    'prevents', 'prevented', 'avoid', 'avoids', 'avoided', 'unlikely',
+    'impossible', 'hard', 'difficult', 'surprised', 'amazed', 'sorry',
+    'regret', 'regrets', 'regretted', 'forget', 'forgets', 'forgot',
+    'fail', 'fails', 'failed', 'hesitate', 'hesitates', 'hesitated',
+    'reluctant', 'afraid', 'fear', 'fears', 'feared', 'skeptical',
+    'sceptical', 'wonder', 'wonders', 'wondered', 'unaware', 'unable',
+    'less', 'fewer', 'too', 'least', 'most', 'best', 'worst', 'first',
+    'last', 'greatest', 'largest', 'smallest', 'longest', 'highest',
+    'lowest', 'oldest', 'youngest', 'biggest', 'fastest', 'hardest',
+    'easiest', 'strongest', 'weakest', 'richest', 'poorest', 'closest',
+    'nearest', 'deepest', 'brightest', 'darkest', 'finest', 'truest',
+}
+
+_ELLIPSIS_NOMINAL_ADJ_EXEMPT = {
+    'rich', 'poor', 'elderly', 'young', 'old', 'dead', 'living', 'injured',
+    'unemployed', 'homeless', 'disabled', 'blind', 'deaf', 'sick', 'wealthy',
+    'famous', 'unknown', 'best', 'worst', 'same', 'other', 'others', 'former',
+    'latter', 'rest', 'better', 'worse', 'more', 'most', 'less', 'least',
+    'many', 'much', 'few', 'fewer', 'little', 'several', 'enough', 'other',
+    'else', 'new', 'different', 'similar', 'certain', 'following', 'above',
+    'below', 'next', 'last', 'first', 'second', 'third', 'true', 'false',
+    'possible', 'available', 'necessary', 'important', 'useful', 'helpful',
+    'likely', 'unlikely', 'sure', 'certain', 'clear', 'obvious', 'true',
+}
+
+
+def _build_parent_map(root):
+    pmap = {}
+    stack = [root]
+    while stack:
+        nd = stack.pop()
+        for c in nd.get('children', []):
+            pmap[c['id']] = nd
+            stack.append(c)
+    return pmap
+
+
+def _ancestors(node, pmap):
+    out = []
+    cur = pmap.get(node['id'])
+    while cur is not None:
+        out.append(cur)
+        cur = pmap.get(cur['id'])
+    return out
+
+
+def _check_syntax_constraints(root, clauses, leaves):
+    """Tree-driven syntactic constraints (Cycle 5):
+      - 9.15 C-NPI-LICENSING: c-commanding downward-entailing licensor for 'ever'
+      - 6.21 C-INTRANSITIVE-OBJECT: strictly intransitive verb with direct NP object
+      - 8.8  C-STRANDED-PREP: bare strictly-transitive preposition without gap licensor
+      - 4.9  C-EXISTENTIAL-DEFINITENESS: existential 'there' + strong universal quantifier
+      - 6.22 C-RAISING-CONTROL: expletive 'there'/'it' with animate control predicate
+      - 7.9  C-ELLIPSIS-HEAD: N'-ellipsis stranded content adjective without noun head
+      - 9.16 C-FILLED-GAP: argument wh-clause whose monotransitive verb has an overt object
+    """
+    out = []
+    pmap = _build_parent_map(root)
+    lows = [_lower(lf) for lf in leaves]
+    all_nodes = list(_iter_nodes(root))
+
+    # --- 9.15 NPI licensing for 'ever' (c-command aware) --------------------- #
+    is_matrix_question = (
+        any(nd.get('type') in ('SBARQ', 'SQ') for nd in all_nodes[:6])
+        or (leaves and leaves[-1].get('surface') == '?')
+    )
+    for i, lf in enumerate(leaves):
+        if lows[i] != 'ever':
+            continue
+        # Fixed idioms: 'ever since', 'for ever', 'as ever', 'than ever',
+        # 'ever so', 'ever after', 'hardly ever', 'if ever'.
+        prev_w = lows[i - 1] if i > 0 else ''
+        next_w = lows[i + 1] if i + 1 < len(leaves) else ''
+        if prev_w in {'for', 'as', 'than', 'if', 'hardly', 'scarcely', 'rarely', 'seldom', 'not', "n't", 'never'}:
+            continue
+        if next_w in {'since', 'so', 'after'}:
+            continue
+        if is_matrix_question:
+            continue
+        ever_anc_ids = {a['id'] for a in _ancestors(lf, pmap)}
+        # Check whether any c-commanding licensor precedes 'ever':
+        # A candidate token L c-commands 'ever' iff every relative-clause SBAR
+        # (an SBAR whose parent is NP) that dominates L ALSO dominates 'ever'.
+        licensed = False
+        # Also check if 'ever' sits inside an interrogative/conditional/comparative SBAR
+        for anc in _ancestors(lf, pmap):
+            if anc.get('type') in ('SBARQ', 'SQ'):
+                licensed = True
+                break
+            if anc.get('type') == 'SBAR':
+                s_lvs = _leaves(anc)
+                if s_lvs and _lower(s_lvs[0]) in {'if', 'unless', 'whether', 'before', 'until', 'than', 'as', 'who', 'whom', 'what', 'which', 'when', 'where', 'why', 'how', 'whenever', 'wherever', 'whatever', 'whoever'}:
+                    licensed = True
+                    break
+        if not licensed:
+            for k in range(i):
+                cand = leaves[k]
+                clow = lows[k]
+                is_lic = (
+                    clow in _NPI_DIRECT_LICENSORS
+                    or cand.get('type') in ('JJS', 'RBS')
+                    or (clow == 'than' and k < i)
+                )
+                if not is_lic:
+                    continue
+                # Check c-command: L must not be trapped inside a relative-clause
+                # SBAR (SBAR under NP) or an unrelated subordinate SBAR/S that
+                # does not dominate 'ever'.
+                trapped = False
+                for lanc in _ancestors(cand, pmap):
+                    if lanc.get('type') == 'SBAR' and lanc['id'] not in ever_anc_ids:
+                        trapped = True
+                        break
+                    # Also trapped inside a sibling coordinated clause S
+                    if (lanc.get('type') == 'S' and lanc['id'] not in ever_anc_ids
+                            and pmap.get(lanc['id'], {}).get('type') == 'S'):
+                        trapped = True
+                        break
+                if not trapped:
+                    licensed = True
+                    break
+        if not licensed:
+            out.append(_finding(
+                '9.15', 'error', 'C-NPI-LICENSING', 'negative polarity', lf['id'],
+                f"The negative polarity word '{lf['surface']}' needs a licensing "
+                f"negative word (such as 'not', 'never', or 'only') or a question "
+                f"that scopes over this clause.",
+                _tree_evidence(lf['id'], 'unlicensed NPI ever', [{'node': lf['id']}]),
+                remediation={
+                    'suggested_fix': "remove 'ever' or add negation",
+                    'edits': [{'node': lf['id'], 'delete': True}],
+                }))
+
+    # --- 6.21 Strictly intransitive verb with direct NP object --------------- #
+    for nd in all_nodes:
+        if nd.get('type') != 'VP':
+            continue
+        ch = nd.get('children', [])
+        if len(ch) < 2:
+            continue
+        v_leaf = ch[0] if not ch[0].get('children') else None
+        if v_leaf is None or _lower(v_leaf) not in _STRICTLY_INTRANSITIVE_VERBS:
+            continue
+        if v_leaf.get('type') not in ('VB', 'VBD', 'VBP', 'VBZ', 'VBG', 'VBN'):
+            continue
+        # Look for an immediate non-temporal NP direct object sibling
+        obj_np = next((c for c in ch[1:] if c.get('type') == 'NP'), None)
+        if obj_np is None:
+            continue
+        # Must immediately follow V (skipping only RB/ADVP)
+        v_idx = 0
+        obj_idx = ch.index(obj_np)
+        if any(c.get('type') not in ('RB', 'ADVP') for c in ch[1:obj_idx]):
+            continue
+        obj_head = _np_head_leaf(obj_np)
+        if obj_head is None:
+            continue
+        # Exclude time/measure/distance adjunct NPs ('sleep three hours', 'wait a minute')
+        if _lower(obj_head) in _TIME_MEASURE_NP_HEADS:
+            continue
+        # Exclude cognate objects ('smile a smile', 'die a death', 'laugh a laugh')
+        if _lower(obj_head)[:4] == _lower(v_leaf)[:4]:
+            continue
+        # Exclude predicative idioms ('appear a fool', 'fall victim') while
+        # still catching non-predicative direct objects ('appeared Tonya's brothers').
+        if _lower(v_leaf) in {'fall', 'falls', 'fell', 'fallen', 'falling'}:
+            continue
+        if _lower(v_leaf) in {'appear', 'appears', 'appeared', 'appearing'}:
+            obj_lvs = _leaves(obj_np)
+            if obj_lvs and _lower(obj_lvs[0]) in {'a', 'an'}:
+                continue
+        if _lower(v_leaf) in {'come', 'comes', 'came', 'coming'}:
+            if _lower(obj_head) in {'home', 'way', 'ways', 'place', 'end', 'age',
+                                    'distance', 'mile', 'miles', 'step', 'steps',
+                                    'inch', 'inches', 'foot', 'feet', 'yard', 'yards',
+                                    'meter', 'meters', 'metre', 'metres', 'kilometer',
+                                    'kilometers', 'kilometre', 'kilometres', 'block', 'blocks'}:
+                continue
+        out.append(_finding(
+            '6.21', 'error', 'C-INTRANSITIVE-OBJECT', 'verb transitivity', v_leaf['id'],
+            f"The verb '{v_leaf['surface']}' is intransitive and cannot take the "
+            f"direct object '{obj_np.get('surface', obj_head['surface'])}' without "
+            f"a preposition.",
+            _tree_evidence(nd['id'], 'intransitive V + direct NP',
+                           [{'node': v_leaf['id']}, {'node': obj_np['id']}])))
+
+    # --- 8.8 Bare stranded strictly-transitive preposition ------------------- #
+    _TOUGH_ADJP_HEADS = {
+        'pleasant', 'unpleasant', 'easy', 'hard', 'difficult', 'tough',
+        'impossible', 'enjoyable', 'tiresome', 'boring', 'delicious',
+        'disgusting', 'interesting', 'fun', 'nice', 'good', 'bad', 'great',
+        'wonderful', 'terrible', 'awful', 'safe', 'dangerous', 'useful',
+        'helpful', 'simple', 'awkward', 'painful', 'expensive', 'cheap',
+        'worth', 'fine', 'harder', 'easier', 'tougher', 'simpler', 'nicer',
+        'better', 'worse', 'best', 'worst', 'hardest', 'easiest', 'toughest',
+    }
+    for nd in all_nodes:
+        if nd.get('type') != 'PP':
+            continue
+        ch = [c for c in nd.get('children', []) if c.get('type') not in (',', '.', '!', '?', ':', ';')]
+        if len(ch) != 1 or ch[0].get('children'):
+            continue
+        p_leaf = ch[0]
+        if p_leaf.get('type') not in ('IN', 'TO'):
+            continue
+        p_low = _lower(p_leaf)
+        is_like_prep = False
+        if p_low == 'like':
+            prev_before_p = next((x for x in reversed(leaves) if x['span'][1] <= p_leaf['span'][0]), None)
+            if prev_before_p is not None and _lower(prev_before_p) in {
+                'look', 'looks', 'looked', 'looking',
+                'seem', 'seems', 'seemed', 'seeming',
+                'sound', 'sounds', 'sounded', 'sounding',
+                'taste', 'tastes', 'tasted', 'tasting',
+                'smell', 'smells', 'smelled', 'smelling',
+                'feel', 'feels', 'felt', 'feeling',
+                'act', 'acts', 'acted', 'acting',
+            }:
+                is_like_prep = True
+        if p_low not in _STRICTLY_TRANSITIVE_PREPS and not is_like_prep:
+            continue
+        # Right-Node Raising ('Think about and create a fire escape plan',
+        # 'listen to and learn from others'): a preposition immediately followed
+        # by a coordinating conjunction shares the object of the coordinated head.
+        nxt_after_p = next((x for x in leaves if x['span'][0] >= p_leaf['span'][1]), None)
+        if nxt_after_p is not None and nxt_after_p.get('type') == 'CC':
+            continue
+        # Skip infinitival VP-ellipsis ('hates to.', 'wants to.', 'used to.')
+        parent_nd = pmap.get(nd['id'])
+        if p_low == 'to' and parent_nd is not None:
+            p_lvs = _leaves(parent_nd)
+            prev_v = next((x for x in reversed(p_lvs) if x['span'][0] < p_leaf['span'][0] and x.get('type', '').startswith('VB')), None)
+            if prev_v is not None and _lower(prev_v) in {
+                'want', 'wants', 'wanted', 'hate', 'hates', 'hated', 'like', 'likes', 'liked',
+                'love', 'loves', 'loved', 'try', 'tries', 'tried', 'need', 'needs', 'needed',
+                'have', 'has', 'had', 'used', 'ought', 'hope', 'hopes', 'hoped', 'plan', 'plans',
+                'planned', 'decide', 'decided', 'refuse', 'refused', 'agree', 'agreed', 'expect',
+                'expected', 'prefer', 'preferred', 'intend', 'intended', 'mean', 'meant',
+                'seem', 'seemed', 'appear', 'appeared', 'tend', 'tended', 'manage', 'managed',
+                'fail', 'failed', 'forget', 'forgot', 'remember', 'remembered', 'choose', 'chose',
+                'ask', 'asked', 'tell', 'told', 'allow', 'allowed', 'force', 'forced', 'help', 'helped',
+            }:
+                continue
+        # Check whether any ancestor licenses a preposition gap:
+        # 1) WH-question / WH-SBAR, 2) Relative clause (SBAR under NP),
+        # 3) Passive VP (be + VBN), 4) Tough adjective / too+enough ADJP,
+        # 5) Purpose infinitive under NP.
+        # Note: Raising/control adjectives ('apt', 'likely', 'eager', 'willing')
+        # do NOT license an object/preposition gap ('*drivers are apt to listen to.').
+        licensed_gap = False
+        for anc in _ancestors(nd, pmap):
+            at = anc.get('type')
+            if at in ('SBARQ', 'SQ'):
+                licensed_gap = True
+                break
+            if at == 'SBAR':
+                s_kids = anc.get('children', [])
+                if s_kids and s_kids[0].get('type', '').startswith('WH'):
+                    wh_lvs = _leaves(s_kids[0])
+                    if wh_lvs and _lower(wh_lvs[0]) == 'that' and pmap.get(anc['id'], {}).get('type') != 'NP':
+                        pass
+                    else:
+                        licensed_gap = True
+                        break
+                if pmap.get(anc['id'], {}).get('type') == 'NP':
+                    licensed_gap = True
+                    break
+            if at == 'ADJP':
+                adj_lvs = _leaves(anc)
+                if any(_lower(x) in _TOUGH_ADJP_HEADS or _lower(x) in {'too', 'enough'} for x in adj_lvs[:4]):
+                    licensed_gap = True
+                    break
+            if at == 'NP':
+                if any(a.get('type') == 'S' for a in _ancestors(nd, pmap)):
+                    licensed_gap = True
+                    break
+            if at == 'VP':
+                vp_lvs = _leaves(anc)
+                if (len(vp_lvs) >= 2 and _lower(vp_lvs[0]) in BE_SURFACES
+                        and any(x.get('type') == 'VBN' for x in vp_lvs[1:4])):
+                    licensed_gap = True
+                    break
+        if not licensed_gap:
+            out.append(_finding(
+                '8.8', 'error', 'C-STRANDED-PREP', 'preposition complement', p_leaf['id'],
+                f"The preposition '{p_leaf['surface']}' needs an object noun phrase "
+                f"after it, because nothing earlier in the sentence supplies its "
+                f"missing object.",
+                _tree_evidence(nd['id'], 'unlicensed stranded PP', [{'node': p_leaf['id']}])))
+
+    # --- 4.9 Existential 'there' definiteness effect ------------------------- #
+    _EXIST_DEF_IDIOM_NOUNS = {
+        'kind', 'kinds', 'sort', 'sorts', 'type', 'types', 'manner',
+        'reason', 'reasons', 'chance', 'chances', 'possibility', 'indication',
+        'sign', 'hope', 'likelihood', 'opportunity', 'intention', 'effort',
+        'need', 'right', 'way', 'excuse',
+    }
+    for i, lf in enumerate(leaves):
+        if lows[i] != 'there' or lf.get('type') not in ('EX', 'RB'):
+            continue
+        # Advance across modals/auxiliaries/negation to 'be'
+        j = i + 1
+        found_be = False
+        while j < min(len(leaves), i + 6):
+            lw = lows[j]
+            if lw in BE_SURFACES:
+                found_be = True
+                j += 1
+                break
+            if lw in (MODAL_SURFACES | HAVE_SURFACES | {'not', "n't", 'to'}):
+                j += 1
+                continue
+            break
+        if not found_be:
+            continue
+        while j < len(leaves) and (lows[j] in {'not', "n't"} or leaves[j].get('type') == 'RB'):
+            j += 1
+        if j >= len(leaves):
+            continue
+        q_leaf = leaves[j]
+        qlow = lows[j]
+        if qlow in {'every', 'each', 'all', 'both', 'most'}:
+            nxt_l = leaves[j + 1] if j + 1 < len(leaves) else None
+            if nxt_l is None:
+                continue
+            # 'most' is only a strong proportional quantifier when directly
+            # preceding a plural noun/modifier (not superlative 'most of ...' or 'the most').
+            if qlow == 'most' and nxt_l.get('type') not in ('NNS', 'JJ', 'JJR', 'JJS'):
+                continue
+            # Skip adverbial 'all around/over/here' or 'all of' idioms or 'every reason'
+            if _lower(nxt_l) in _EXIST_DEF_IDIOM_NOUNS | {'around', 'over', 'about', 'along', 'through', 'here', 'there', 'day', 'night', 'time'}:
+                continue
+            if nxt_l.get('type') in ('NN', 'NNS', 'JJ', 'JJR', 'JJS', 'DT', 'PRP$'):
+                out.append(_finding(
+                    '4.9', 'error', 'C-EXISTENTIAL-DEFINITENESS', 'existential there',
+                    q_leaf['id'],
+                    f"Existential 'there' introduces an indefinite noun phrase and "
+                    f"does not normally take the strong quantifier '{q_leaf['surface']}' "
+                    f"here; use an indefinite determiner such as 'a', 'some', or 'no'.",
+                    _tree_evidence(q_leaf['id'], 'there + be + strong quantifier',
+                                   [{'node': lf['id']}, {'node': q_leaf['id']}])))
+
+    # --- 6.22 Expletive 'there'/'it' with animate control predicates --------- #
+    # (a) 'There is willing/eager/anxious/reluctant to be ...'
+    #     OR 'There didn't bother / tried / refused to be ...'
+    for i, lf in enumerate(leaves):
+        if lows[i] == 'there' and i + 3 < len(leaves):
+            j = i + 1
+            while j < min(len(leaves), i + 6) and lows[j] in (BE_SURFACES | MODAL_SURFACES | HAVE_SURFACES | DO_SURFACES | {'not', "n't", 'very', 'so', 'too', 'really', 'never'}):
+                j += 1
+            if (j + 2 < len(leaves) and lows[j] in _ANIMATE_CONTROL_ADJS
+                    and lows[j + 1] == 'to' and lows[j + 2] == 'be'):
+                out.append(_finding(
+                    '6.22', 'error', 'C-RAISING-CONTROL', 'raising vs control',
+                    leaves[j]['id'],
+                    f"The adjective '{leaves[j]['surface']}' requires a sentient subject "
+                    f"and cannot take dummy 'there' as its subject (unlike raising "
+                    f"adjectives such as 'likely' or 'sure').",
+                    _tree_evidence(leaves[j]['id'], 'there + control adj + to be',
+                                   [{'node': lf['id']}, {'node': leaves[j]['id']}])))
+            elif (j + 2 < len(leaves) and lows[j] in _ANIMATE_SUBJ_CONTROL_VERBS
+                    and lows[j + 1] == 'to' and lows[j + 2] == 'be'):
+                out.append(_finding(
+                    '6.22', 'error', 'C-RAISING-CONTROL', 'raising vs control',
+                    leaves[j]['id'],
+                    f"The verb '{leaves[j]['surface']}' requires an agentive subject "
+                    f"and cannot take dummy 'there' in 'there ... {leaves[j]['surface']} "
+                    f"to be' (unlike raising verbs such as 'seem' or 'happen').",
+                    _tree_evidence(leaves[j]['id'], 'there + control V + to be',
+                                   [{'node': lf['id']}, {'node': leaves[j]['id']}])))
+    # (b) 'obliged/enticed/forced/persuaded/pushed/swayed there to be ...'
+    #     or 'asked/forced ... it to be <ADJ/VBN> that ...'
+    for i, lf in enumerate(leaves):
+        if lows[i] in _ANIMATE_OBJ_CONTROL_VERBS and i + 3 < len(leaves):
+            if lows[i + 1] == 'there' and lows[i + 2] == 'to' and lows[i + 3] == 'be':
+                out.append(_finding(
+                    '6.22', 'error', 'C-RAISING-CONTROL', 'raising vs control',
+                    lf['id'],
+                    f"The verb '{lf['surface']}' requires an animate object that can be "
+                    f"acted upon, so it cannot take dummy 'there' in 'there to be'.",
+                    _tree_evidence(lf['id'], 'object-control V + there to be',
+                                   [{'node': lf['id']}, {'node': leaves[i + 1]['id']}])))
+            elif (lows[i + 1] == 'it' and lows[i + 2] == 'to' and lows[i + 3] == 'be'
+                  and any(lows[k] == 'that' for k in range(i + 4, min(len(leaves), i + 12)))):
+                out.append(_finding(
+                    '6.22', 'error', 'C-RAISING-CONTROL', 'raising vs control',
+                    lf['id'],
+                    f"The verb '{lf['surface']}' requires a real object argument and "
+                    f"cannot take expletive 'it' in an extraposed 'it to be ... that' clause.",
+                    _tree_evidence(lf['id'], 'object-control V + expletive it to be ... that',
+                                   [{'node': lf['id']}, {'node': leaves[i + 1]['id']}])))
+
+    # --- 7.9 N'-ellipsis stranded content adjective without head noun -------- #
+    _QUANT_LEAD = {
+        'many', 'few', 'fewer', 'several', 'more', 'most', 'two', 'three',
+        'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'some', 'any',
+    }
+    _GENERIC_THE_ONLY_ADJS = {
+        'rich', 'poor', 'elderly', 'young', 'old', 'dead', 'living', 'injured',
+        'unemployed', 'homeless', 'disabled', 'blind', 'deaf', 'sick', 'wealthy',
+        'famous', 'unknown',
+    }
+    for nd in all_nodes:
+        if nd.get('type') != 'NP':
+            continue
+        parent_nd = pmap.get(nd['id'])
+        # Only argument/PP-object NPs (not predicative complements of linking verbs)
+        if parent_nd is None or parent_nd.get('type') not in ('VP', 'PP'):
+            continue
+        if parent_nd.get('type') == 'VP':
+            vp_lvs = _leaves(parent_nd)
+            if vp_lvs and _lower(vp_lvs[0]) in (BE_SURFACES | {'become', 'became', 'seem', 'seemed', 'feel', 'felt', 'look', 'looked', 'sound', 'sounded', 'taste', 'tasted', 'smell', 'smelled', 'remain', 'remained', 'stay', 'stayed', 'grow', 'grew', 'get', 'got', 'appear', 'appeared', 'turn', 'turned'}):
+                continue
+        np_lvs = _leaves(nd)
+        if len(np_lvs) < 2:
+            continue
+        last_lf = np_lvs[-1]
+        last_low = _lower(last_lf)
+        # Allow either JJ/VBN OR parser-mistagged NN when it is a stranded
+        # content adjective ('cleaning many gray.').
+        is_mistagged_adj = (
+            last_lf.get('type') == 'NN'
+            and is_ellipsis_stranded_adj(last_lf)
+            and not any(x.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP') for x in np_lvs[:-1])
+        )
+        if not is_mistagged_adj:
+            if any(x.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP') for x in np_lvs):
+                continue
+            if last_lf.get('type') not in ('JJ', 'VBN'):
+                continue
+        # Generic nominalized adjectives ('the old', 'the poor') are ONLY valid
+        # with definite 'the', NOT after indefinite quantifiers ('a few old', 'many poor').
+        starts_with_the = _lower(np_lvs[0]) == 'the'
+        if last_low in _GENERIC_THE_ONLY_ADJS:
+            if starts_with_the:
+                continue
+        elif last_low in _ELLIPSIS_NOMINAL_ADJ_EXEMPT:
+            continue
+        # Check for a preceding quantifier or numeral inside this NP
+        has_quant = any(
+            x.get('type') == 'CD' or _lower(x) in _QUANT_LEAD
+            for x in np_lvs[:-1]
+        )
+        if not has_quant:
+            continue
+        # Skip comparative 'more/less + ADJ + than/as'
+        nxt_after_np = next((x for x in leaves if x['span'][0] >= last_lf['span'][1]), None)
+        if nxt_after_np is not None and _lower(nxt_after_np) in ('than', 'as'):
+            continue
+        out.append(_finding(
+            '7.9', 'error', 'C-ELLIPSIS-HEAD', 'noun ellipsis', last_lf['id'],
+            f"The adjective '{last_lf['surface']}' cannot end the noun phrase "
+            f"'{nd.get('surface', '')}' without a head noun after it; either "
+            f"add the noun or omit '{last_lf['surface']}'.",
+            _tree_evidence(nd['id'], 'quantifier + stranded JJ without N',
+                           [{'node': nd['id']}, {'node': last_lf['id']}])))
+
+    # 7.9b Comparative + stranded content adjective parsed by Benepar as a bare
+    # ADJP complement of a strictly transitive non-copular verb
+    # ('Ann hasn't attacked more unsure.', 'universities helped more displeased.').
+    _ADJP_COMPAT_VERBS = {
+        'be', 'am', 'is', 'are', 'was', 'were', 'been', 'being',
+        'become', 'becomes', 'became', 'becoming',
+        'seem', 'seems', 'seemed', 'seeming',
+        'appear', 'appears', 'appeared', 'appearing',
+        'look', 'looks', 'looked', 'looking',
+        'feel', 'feels', 'felt', 'feeling',
+        'grow', 'grows', 'grew', 'grown', 'growing',
+        'remain', 'remains', 'remained', 'remaining',
+        'stay', 'stays', 'stayed', 'staying',
+        'turn', 'turns', 'turned', 'turning',
+        'sound', 'sounds', 'sounded', 'sounding',
+        'taste', 'tastes', 'tasted', 'tasting',
+        'smell', 'smells', 'smelled', 'smelt', 'smelling',
+        'get', 'gets', 'got', 'gotten', 'getting',
+        'prove', 'proves', 'proved', 'proven', 'proving',
+        'make', 'makes', 'made', 'making',
+        'keep', 'keeps', 'kept', 'keeping',
+        'find', 'finds', 'found', 'finding',
+        'consider', 'considers', 'considered', 'considering',
+        'call', 'calls', 'called', 'calling',
+        'leave', 'leaves', 'left', 'leaving',
+        'hold', 'holds', 'held', 'holding',
+        'deem', 'deems', 'deemed', 'deeming',
+        'render', 'renders', 'rendered', 'rendering',
+        'act', 'acts', 'acted', 'acting',
+        'come', 'comes', 'came', 'coming',
+        'go', 'goes', 'went', 'gone', 'going',
+        'fall', 'falls', 'fell', 'fallen', 'falling',
+        'stand', 'stands', 'stood', 'standing',
+        'lie', 'lies', 'lay', 'lain', 'lying',
+        'sit', 'sits', 'sat', 'sitting',
+        'die', 'dies', 'died', 'dying',
+        'live', 'lives', 'lived', 'living',
+        'born', 'marry', 'married',
+        # Unaccusative / motion / depictive-compatible verbs ('returned more confident',
+        # 'arrived more tired', 'woke more alert', 'spoke more calm')
+        'arrive', 'arrives', 'arrived', 'arriving',
+        'return', 'returns', 'returned', 'returning',
+        'emerge', 'emerges', 'emerged', 'emerging',
+        'enter', 'enters', 'entered', 'entering',
+        'depart', 'departs', 'departed', 'departing',
+        'wake', 'wakes', 'woke', 'woken', 'waking',
+        'sleep', 'sleeps', 'slept', 'sleeping',
+        'walk', 'walks', 'walked', 'walking',
+        'run', 'runs', 'ran', 'running',
+        'speak', 'speaks', 'spoke', 'spoken', 'speaking',
+        'talk', 'talks', 'talked', 'talking',
+        'work', 'works', 'worked', 'working',
+        'play', 'plays', 'played', 'playing',
+        'wait', 'waits', 'waited', 'waiting',
+    }
+    _ADJP_ELLIPSIS_SKIP_WORDS = {
+        'much', 'many', 'little', 'few', 'often', 'likely', 'unlikely',
+        'soon', 'late', 'early', 'far', 'close', 'near', 'long', 'short',
+        'hard', 'fast', 'slow', 'high', 'low', 'well', 'bad', 'good',
+        'better', 'worse', 'free', 'open', 'wide', 'deep', 'tight', 'clear',
+        'direct', 'straight', 'loud', 'quiet', 'easy', 'quick', 'strong',
+        'heavy', 'light', 'firm', 'safe', 'sure', 'certain', 'ready',
+        'able', 'willing', 'eager', 'happy', 'glad', 'sorry', 'afraid',
+        'aware', 'full', 'empty', 'alone', 'alive', 'awake', 'asleep',
+        'dead', 'tired', 'hungry', 'thirsty', 'sick', 'ill', 'busy',
+        'free', 'available', 'possible', 'important', 'necessary',
+    }
+    for nd in all_nodes:
+        if nd.get('type') != 'VP':
+            continue
+        vk = [c for c in nd.get('children', []) if c.get('type') not in (',', '.', '!', '?', ':', ';')]
+        if len(vk) < 2 or vk[0].get('children') or vk[1].get('type') != 'ADJP':
+            continue
+        v_lf = vk[0]
+        if v_lf.get('type') not in ('VB', 'VBD', 'VBP', 'VBZ', 'VBG', 'VBN'):
+            continue
+        if _lower(v_lf) in _ADJP_COMPAT_VERBS or _lower(v_lf) in _STRICTLY_INTRANSITIVE_VERBS:
+            continue
+        # Exclude passive VP ('was attacked more fiercely' / 'was considered more unsure')
+        par_vp = pmap.get(nd['id'])
+        if v_lf.get('type') == 'VBN' and par_vp is not None and par_vp.get('type') == 'VP':
+            p_lvs = [_lower(x) for x in par_vp.get('children', []) if not x.get('children')]
+            if any(w in BE_SURFACES or w in {'get', 'gets', 'got', 'gotten', 'getting'} for w in p_lvs):
+                continue
+        adjp_lvs = _leaves(vk[1])
+        if len(adjp_lvs) < 2 or _lower(adjp_lvs[0]) not in {'more', 'less'}:
+            continue
+        last_a = adjp_lvs[-1]
+        if last_a.get('type') not in ('JJ', 'VBN', 'VBG'):
+            continue
+        if _lower(last_a) in _ADJP_ELLIPSIS_SKIP_WORDS or _lower(last_a).endswith('ly'):
+            continue
+        # Require that the ADJP is clause-final or immediately followed by punctuation/CC
+        nxt_after = next((x for x in leaves if x['span'][0] >= last_a['span'][1]), None)
+        if nxt_after is not None and nxt_after.get('type') not in ('.', '!', '?', ',', ';', ':', 'CC'):
+            continue
+        out.append(_finding(
+            '7.9', 'error', 'C-ELLIPSIS-HEAD', 'noun ellipsis', last_a['id'],
+            f"The comparative adjective phrase '{vk[1].get('surface', '')}' cannot "
+            f"serve as the object of '{v_lf['surface']}' without a noun after "
+            f"'{last_a['surface']}'; either add a noun or omit '{last_a['surface']}'.",
+            _tree_evidence(nd['id'], 'transitive V + stranded comparative ADJP without N',
+                           [{'node': v_lf['id']}, {'node': last_a['id']}])))
+
+    # --- 4.10 Superlative modified numerals ('at least N', 'at most N') under - #
+    #          negative quantifier subjects ('No man has revealed at least five  #
+    #          forks.', 'No actor has revealed at most four shawls.')            #
+    _NEG_QUANT_SUBJ_LEADS = {'no', 'nobody', 'nothing', 'neither', 'none'}
+    for cl in clauses:
+        if cl.get('type') != 'S':
+            continue
+        ck = cl.get('children', [])
+        subj_np = next((c for c in ck if c.get('type') == 'NP'), None)
+        cl_vp = next((c for c in ck if c.get('type') == 'VP'), None)
+        if subj_np is None or cl_vp is None:
+            continue
+        s_lvs = _leaves(subj_np)
+        if not s_lvs:
+            continue
+        s0 = _lower(s_lvs[0])
+        is_neg_subj = (
+            s0 in _NEG_QUANT_SUBJ_LEADS
+            or (len(s_lvs) >= 2 and s0 == 'no' and _lower(s_lvs[1]) == 'one')
+        )
+        if not is_neg_subj:
+            continue
+        # Search only inside this clause's VP (do not cross into nested SBARs)
+        stack = [cl_vp]
+        while stack:
+            cur = stack.pop()
+            if cur.get('type') == 'SBAR':
+                continue
+            if cur.get('type') in ('QP', 'NP'):
+                qlvs = _leaves(cur)
+                qlows = [_lower(x) for x in qlvs]
+                for qi in range(len(qlows) - 2):
+                    if qlows[qi] == 'at' and qlows[qi + 1] in {'least', 'most'}:
+                        if qlvs[qi + 2].get('type') == 'CD' or qlows[qi + 2] in {
+                            'one', 'two', 'three', 'four', 'five', 'six',
+                            'seven', 'eight', 'nine', 'ten', 'twenty', 'thirty',
+                            'fifty', 'hundred', 'thousand', 'half', 'a', 'an',
+                        }:
+                            phrase_txt = f"at {qlows[qi + 1]} {qlvs[qi + 2]['surface']}"
+                            out.append(_finding(
+                                '4.10', 'error', 'C-SUPERLATIVE-QUANT',
+                                'superlative quantifier polarity', qlvs[qi]['id'],
+                                f"The superlative quantifier '{phrase_txt}' is incompatible "
+                                f"with the negative subject '{subj_np.get('surface', '')}'; "
+                                f"use a comparative quantifier such as 'more than' or 'fewer than', "
+                                f"or use a positive subject.",
+                                _tree_evidence(cl['id'], 'negative quantifier subject + at least/most numeral',
+                                               [{'node': subj_np['id']}, {'node': qlvs[qi]['id']}])))
+                            stack.clear()
+                            break
+                if not stack:
+                    break
+            for ch_n in cur.get('children', []):
+                if ch_n.get('children'):
+                    stack.append(ch_n)
+
+    # --- 9.16 Filled-gap violation in bare argument wh-clauses --------------- #
+    def _unwrap_vp(vp_root):
+        cur = vp_root
+        while True:
+            vk = cur.get('children', [])
+            nested_vp = next((c for c in vk if c.get('type') == 'VP'), None)
+            if nested_vp is not None and any(c.get('type') in ('MD', 'VB', 'VBD', 'VBP', 'VBZ', 'VBG', 'VBN') for c in vk):
+                cur = nested_vp
+            else:
+                break
+        return cur
+
+    def _has_stranded_pp(subtree):
+        return any(
+            x.get('type') == 'PP'
+            and len([k for k in x.get('children', []) if k.get('type') not in (',', '.', '?', '!')]) == 1
+            for x in _iter_nodes(subtree)
+        )
+
+    _WHAT_INCOMPAT_DETS = {
+        'some', 'this', 'that', 'these', 'those', 'the', 'every', 'each',
+        'all', 'both', 'many', 'few', 'most', 'several', 'no', 'my', 'his',
+        'her', 'their', 'our', 'your',
+    }
+    for nd in all_nodes:
+        if nd.get('type') != 'SBAR':
+            continue
+        # Skip relative clauses modifying a noun ('the book that/which...')
+        if pmap.get(nd['id'], {}).get('type') == 'NP':
+            continue
+        ch = nd.get('children', [])
+        if len(ch) != 2 or ch[0].get('type') != 'WHNP' or ch[1].get('type') != 'S':
+            continue
+        wh_lvs = _leaves(ch[0])
+        s_node = ch[1]
+        # (a) Benepar misparse of 'wh_vs_that_no_gap':
+        #     (SBAR (WHNP (WP what) (DT some) (NNS fungi)) (S (VP ...)))
+        #     or (SBAR (WHNP (WHNP (WP what) (DT a) (NN lot)) (PP of ...)) (S ... (VP ...)))
+        #     where 'what' precedes an incompatible determiner/quantifier (or 'a lot of')
+        #     and the VP has no gap (saturated non-copular object or saturated PP).
+        is_what_incompat = (
+            len(wh_lvs) >= 3 and _lower(wh_lvs[0]) == 'what'
+            and (
+                _lower(wh_lvs[1]) in _WHAT_INCOMPAT_DETS
+                or (_lower(wh_lvs[1]) == 'a' and _lower(wh_lvs[2]) in {'lot', 'bunch', 'couple', 'number', 'few', 'group'})
+            )
+        )
+        if is_what_incompat:
+            s_kids = s_node.get('children', [])
+            vp_node = next((c for c in s_kids if c.get('type') == 'VP'), None)
+            if vp_node is not None and not _has_stranded_pp(vp_node):
+                cur_vp = _unwrap_vp(vp_node)
+                if not any(x.get('type') in ('SBAR', 'S') for x in _iter_nodes(cur_vp) if x is not cur_vp):
+                    vk = cur_vp.get('children', [])
+                    vh_incompat = next((c for c in vk if not c.get('children') and c.get('type', '').startswith('VB')), None)
+                    # Do not fire on genuine exclamatives with copula 'be' ('I know what a lot of work it is')
+                    if vh_incompat is not None and _lower(vh_incompat) in BE_SURFACES and _lower(wh_lvs[1]) == 'a':
+                        continue
+                    has_sat_comp = (
+                        any(c.get('type') == 'NP' for c in vk)
+                        or any(c.get('type') == 'ADJP' and any(k.get('type') == 'NP' for k in c.get('children', [])) for c in vk)
+                        or any(c.get('type') == 'PP' and len([k for k in c.get('children', []) if k.get('type') not in (',', '.', '?', '!')]) >= 2 for c in vk)
+                    )
+                    if has_sat_comp:
+                        out.append(_finding(
+                            '9.16', 'error', 'C-FILLED-GAP', 'filler-gap dependency', wh_lvs[0]['id'],
+                            f"The clause after '{wh_lvs[0]['surface']}' already has both a "
+                            f"subject and a complete predicate with no missing gap; use "
+                            f"'that' instead of '{wh_lvs[0]['surface']}' here.",
+                            _tree_evidence(nd['id'], 'what + incompatible det with saturated clause',
+                                           [{'node': wh_lvs[0]['id']}, {'node': vp_node['id']}])))
+                        continue
+        if len(wh_lvs) != 1 or _lower(wh_lvs[0]) not in {'what', 'who', 'whom'}:
+            continue
+        s_kids = s_node.get('children', [])
+        subj_np = next((c for c in s_kids if c.get('type') == 'NP'), None)
+        vp_node = next((c for c in s_kids if c.get('type') == 'VP'), None)
+        # Unwrap extra (S (VP ...)) layer Benepar sometimes emits
+        if vp_node is None:
+            inner_s = next((c for c in s_kids if c.get('type') == 'S'), None)
+            if inner_s is not None:
+                vp_node = next((c for c in inner_s.get('children', []) if c.get('type') == 'VP'), None)
+        if subj_np is None or vp_node is None:
+            continue
+        cur_vp = _unwrap_vp(vp_node)
+        if any(x.get('type') in ('SBAR', 'S') for x in _iter_nodes(cur_vp) if x is not cur_vp):
+            continue
+        if _has_stranded_pp(cur_vp):
+            continue
+        vk = cur_vp.get('children', [])
+        v_head = next((c for c in vk if not c.get('children') and c.get('type', '').startswith('VB')), None)
+        obj_np = next((c for c in vk if c.get('type') == 'NP'), None)
+        if v_head is None:
+            continue
+        if obj_np is not None:
+            if _lower(v_head) in _DITRANSITIVE_OR_COMPLEX_VERBS:
+                continue
+            obj_head = _np_head_leaf(obj_np)
+            if obj_head is None or _lower(obj_head) in _TIME_MEASURE_NP_HEADS:
+                continue
+            out.append(_finding(
+                '9.16', 'error', 'C-FILLED-GAP', 'filler-gap dependency', wh_lvs[0]['id'],
+                f"The question word '{wh_lvs[0]['surface']}' expects a missing object or "
+                f"subject gap in '{s_node.get('surface', '')}', but the verb "
+                f"'{v_head['surface']}' already has both a subject and an object "
+                f"('{obj_np.get('surface', '')}').",
+                _tree_evidence(nd['id'], 'argument WHNP with filled subject and object',
+                               [{'node': wh_lvs[0]['id']}, {'node': obj_np['id']}])))
+        else:
+            # Intransitive verb + saturated PP ('walk through a closet') also
+            # leaves no argument gap for bare 'what'/'who'/'whom'.
+            sat_pp = next((c for c in vk if c.get('type') == 'PP'
+                           and len([k for k in c.get('children', []) if k.get('type') not in (',', '.', '?', '!')]) >= 2), None)
+            if sat_pp is not None and _lower(v_head) in (
+                _STRICTLY_INTRANSITIVE_VERBS | {
+                    'walk', 'walks', 'walked', 'walking',
+                    'run', 'runs', 'ran', 'running',
+                    'go', 'goes', 'went', 'gone', 'going',
+                    'come', 'comes', 'came', 'coming',
+                    'sit', 'sits', 'sat', 'sitting',
+                    'stand', 'stands', 'stood', 'standing',
+                    'live', 'lives', 'lived', 'living',
+                    'stay', 'stays', 'stayed', 'staying',
+                    'travel', 'travels', 'traveled', 'travelled', 'traveling',
+                    'skate', 'skates', 'skated', 'skating',
+                    'flee', 'flees', 'fled', 'fleeing',
+                    'look', 'looks', 'looked', 'looking',
+                }
+            ):
+                out.append(_finding(
+                    '9.16', 'error', 'C-FILLED-GAP', 'filler-gap dependency', wh_lvs[0]['id'],
+                    f"The question word '{wh_lvs[0]['surface']}' expects a missing "
+                    f"argument gap, but '{s_node.get('surface', '')}' already has a "
+                    f"complete subject and prepositional phrase ('{sat_pp.get('surface', '')}').",
+                    _tree_evidence(nd['id'], 'argument WHNP with saturated intransitive+PP clause',
+                                   [{'node': wh_lvs[0]['id']}, {'node': sat_pp['id']}])))
+
+    # --- 9.17 Coordinate Structure Constraint (asymmetric extraction) -------- #
+    # (a) 'What is Rose scaring and a picture?' / 'What could that legislature
+    #     bother and Janice?'
+    if is_matrix_question and leaves and _lower(leaves[0]) in {'what', 'who', 'whom', 'which'}:
+        csc_fired = False
+        for i, lf in enumerate(leaves):
+            if lf.get('type') != 'CC' or lows[i] not in {'and', 'or'} or i == 0 or i + 1 >= len(leaves):
+                continue
+            prev_l = leaves[i - 1]
+            nxt_l = leaves[i + 1]
+            rest_after_cc = leaves[i + 1:]
+            # Note: Benepar occasionally mistags a sentence-final proper name
+            # after 'and' as VB ('bother and Janice?'). Treat capitalized
+            # single-word final token as a proper noun, not a verb.
+            def _is_real_verb(tok):
+                if tok.get('type') == 'MD':
+                    return True
+                if not tok.get('type', '').startswith('VB'):
+                    return False
+                surf = tok.get('surface') or ''
+                if surf[:1].isupper() and surf[1:].islower() and _lower(tok) in GENDERED_FIRST_NAMES:
+                    return False
+                return True
+            has_verb_after = any(_is_real_verb(x) for x in rest_after_cc)
+            nxt_is_np_start = (
+                nxt_l.get('type') in ('DT', 'NNP', 'NNPS', 'PRP', 'PRP$', 'NN', 'NNS')
+                or ((nxt_l.get('surface') or '')[:1].isupper() and _lower(nxt_l) in GENDERED_FIRST_NAMES)
+            )
+            if (not has_verb_after
+                    and nxt_is_np_start
+                    and ((prev_l.get('type') in ('IN', 'TO') and _lower(prev_l) in _STRICTLY_TRANSITIVE_PREPS)
+                         or (prev_l.get('type') in ('VBG', 'VBN', 'VB') and _lower(prev_l) not in _STRICTLY_INTRANSITIVE_VERBS))):
+                out.append(_finding(
+                    '9.17', 'error', 'C-COORD-ISLAND', 'coordinate structure constraint',
+                    lf['id'],
+                    f"You cannot move only one half of a coordinated phrase out to "
+                    f"the front of a question ('{prev_l['surface']} {lf['surface']} "
+                    f"{nxt_l['surface']}...'); keep both joined items together.",
+                    _tree_evidence(lf['id'], 'asymmetric extraction out of coordination',
+                                   [{'node': prev_l['id']}, {'node': lf['id']}])))
+                csc_fired = True
+                break
+        # (b) Asymmetric extraction across coordinated clauses:
+        #     'What is Aaron lifting mountains and that woman insulting?'
+        #     'Which is the dress irritating girls and the Lutherans revealing?'
+        if not csc_fired:
+            sbarq = next((n for n in all_nodes[:4] if n.get('type') == 'SBARQ'), None)
+            if sbarq is not None:
+                sk = sbarq.get('children', [])
+                if len(sk) >= 2 and sk[0].get('type') == 'WHNP' and len(_leaves(sk[0])) == 1 and sk[1].get('type') == 'SQ':
+                    sq_kids = sk[1].get('children', [])
+                    # Pattern 1: SQ -> (SQ/S ...) (CC and) (S NP VP(VBG/VB/VBN with no object))
+                    cc_idx = next((idx for idx, c in enumerate(sq_kids) if c.get('type') == 'CC' and _lower(c) in {'and', 'or'}), None)
+                    if cc_idx is not None and cc_idx > 0 and cc_idx + 1 < len(sq_kids):
+                        left_c, right_c = sq_kids[cc_idx - 1], sq_kids[cc_idx + 1]
+                        left_vps = [n for n in _iter_nodes(left_c) if n.get('type') == 'VP']
+                        right_vps = [n for n in _iter_nodes(right_c) if n.get('type') == 'VP']
+                        if left_vps and right_vps:
+                            l_vp, r_vp = left_vps[-1], right_vps[-1]
+                            l_has_obj = any(c.get('type') == 'NP' for c in l_vp.get('children', []))
+                            r_has_obj = any(c.get('type') == 'NP' for c in r_vp.get('children', []))
+                            if l_has_obj != r_has_obj:
+                                out.append(_finding(
+                                    '9.17', 'error', 'C-COORD-ISLAND', 'coordinate structure constraint',
+                                    sq_kids[cc_idx]['id'],
+                                    f"In a coordinated question, a fronted wh-word must "
+                                    f"correspond to a matching gap in both joined clauses, "
+                                    f"not only one of them.",
+                                    _tree_evidence(sbarq['id'], 'asymmetric extraction across coordinated clauses',
+                                                   [{'node': sk[0]['id']}, {'node': sq_kids[cc_idx]['id']}])))
+
+    # --- 9.18 Left-Branch Island ('Whose did you see car?' / 'Which has Thomas disliked waiters?') --- #
+    if leaves and lows[0] == 'whose' and len(leaves) >= 3:
+        nxt1 = leaves[1]
+        if (nxt1.get('type') == 'MD' or lows[1] in (DO_SURFACES | HAVE_SURFACES)
+                or (lows[1] in BE_SURFACES
+                    and any(x.get('type') in ('VBG', 'VBN') for x in leaves[2:]))):
+            out.append(_finding(
+                '9.18', 'error', 'C-LEFT-BRANCH-ISLAND', 'left-branch constraint',
+                leaves[0]['id'],
+                "The possessive question word 'whose' must stay together with the "
+                "noun it modifies at the front of the question (for example, "
+                "'Whose car did you see?').",
+                _tree_evidence(leaves[0]['id'], 'stranded possessive whose before auxiliary',
+                               [{'node': leaves[0]['id']}, {'node': nxt1['id']}])))
+    elif leaves and lows[0] in {'which', 'what'} and len(leaves) >= 4:
+        # Matrix SBARQ with bare single-word WHNP('Which'/'What') where the main
+        # verb ALREADY has an overt subject NP AND an overt direct object NP
+        # (and no ditransitive/complex verb, no stranded prep, no nested SBAR).
+        sbarq = next((n for n in all_nodes[:4] if n.get('type') == 'SBARQ'), None)
+        if sbarq is not None:
+            sk = sbarq.get('children', [])
+            if (len(sk) >= 2 and sk[0].get('type') == 'WHNP' and len(_leaves(sk[0])) == 1
+                    and sk[1].get('type') == 'SQ'):
+                sq = sk[1]
+                sq_kids = sq.get('children', [])
+                sq_subj = next((c for c in sq_kids if c.get('type') == 'NP'), None)
+                sq_vp = next((c for c in sq_kids if c.get('type') == 'VP'), None)
+                if sq_subj is not None and sq_vp is not None and not _has_stranded_pp(sq_vp):
+                    # Case 1: simple saturated monotransitive VP ('Which has Thomas disliked waiters?')
+                    cur_vp = _unwrap_vp(sq_vp)
+                    if not any(x.get('type') in ('SBAR', 'S', 'CC') for x in _iter_nodes(cur_vp) if x is not cur_vp):
+                        vk = cur_vp.get('children', [])
+                        vh = next((c for c in vk if not c.get('children') and c.get('type', '').startswith('VB')), None)
+                        onp = next((c for c in vk if c.get('type') == 'NP'), None)
+                        if (vh is not None and onp is not None
+                                and _lower(vh) not in _DITRANSITIVE_OR_COMPLEX_VERBS
+                                and (_np_head_leaf(onp) is not None and _lower(_np_head_leaf(onp)) not in _TIME_MEASURE_NP_HEADS)):
+                            rule_c = 'C-LEFT-BRANCH-ISLAND' if lows[0] == 'which' else 'C-FILLED-GAP'
+                            rule_n = '9.18' if lows[0] == 'which' else '9.16'
+                            out.append(_finding(
+                                rule_n, 'error', rule_c, 'left-branch constraint',
+                                leaves[0]['id'],
+                                f"The question word '{leaves[0]['surface']}' must stay together "
+                                f"with the noun it modifies (or have a missing object gap), "
+                                f"because '{vh['surface']}' already has the object '{onp.get('surface', '')}'.",
+                                _tree_evidence(sbarq['id'], 'bare which/what with saturated matrix VP',
+                                               [{'node': leaves[0]['id']}, {'node': onp['id']}])))
+                    # Case 2: stranded 'Which' + saturated first VP + trailing participial S
+                    # ('Which is the dress irritating girls and the Lutherans revealing?')
+                    elif lows[0] == 'which':
+                        inner_vps = [c for c in sq_vp.get('children', []) if c.get('type') == 'VP']
+                        inner_ss = [c for c in sq_vp.get('children', []) if c.get('type') == 'S']
+                        if inner_vps and inner_ss and any(c.get('type') == 'NP' for c in inner_vps[0].get('children', [])):
+                            out.append(_finding(
+                                '9.18', 'error', 'C-LEFT-BRANCH-ISLAND', 'left-branch constraint',
+                                leaves[0]['id'],
+                                "The question determiner 'Which' cannot be separated from the "
+                                "noun it modifies across a coordinated clause.",
+                                _tree_evidence(sbarq['id'], 'stranded which before auxiliary + coordinated VP',
+                                               [{'node': leaves[0]['id']}, {'node': sq_vp['id']}])))
+
+    # --- 9.19 Wh-Island / 9.20 Adjunct Island / 9.21 Complex NP Island ------- #
+    # All three share the same matrix precondition: a matrix argument wh-question
+    # (SBARQ with WHNP 'who'/'whom'/'what'/'which', NOT adjunct when/where/why/how)
+    # with an overt matrix subject NP inside SQ.
+    sbarq_root = next((n for n in all_nodes[:4] if n.get('type') == 'SBARQ'), None)
+    if sbarq_root is not None:
+        sk = sbarq_root.get('children', [])
+        if (len(sk) >= 2 and sk[0].get('type') == 'WHNP'
+                and sk[1].get('type') == 'SQ'):
+            wh_head = _leaves(sk[0])
+            sq_node = sk[1]
+            sq_kids = sq_node.get('children', [])
+            sq_subj = next((c for c in sq_kids if c.get('type') == 'NP'), None)
+            sq_vp = next((c for c in sq_kids if c.get('type') == 'VP'), None)
+            if (wh_head and _lower(wh_head[0]) in {'who', 'whom', 'what', 'which'}
+                    and sq_subj is not None and sq_vp is not None):
+                mat_vp = _unwrap_vp(sq_vp)
+                mvk = mat_vp.get('children', [])
+                mat_v = next((c for c in mvk if not c.get('children') and c.get('type', '').startswith('VB')), None)
+                mat_obj_np = next((c for c in mvk if c.get('type') == 'NP'), None)
+                mat_sbar = next((c for c in mvk if c.get('type') == 'SBAR'), None)
+                mat_pps = [c for c in mvk if c.get('type') == 'PP']
+
+                # 9.19 Wh-Island: matrix V takes an embedded wh-SBAR (WHNP/WHADVP)
+                # whose inner clause has a missing object/prep gap, and matrix VP
+                # has no gap of its own.
+                if (mat_v is not None and mat_sbar is not None and mat_obj_np is None):
+                    sb_kids = mat_sbar.get('children', [])
+                    if (len(sb_kids) >= 2 and sb_kids[0].get('type', '').startswith('WH')
+                            and _lower(_leaves(sb_kids[0])[0]) in {'who', 'whom', 'what', 'which', 'whether', 'if', 'where', 'when', 'why', 'how'}):
+                        emb_s = sb_kids[1]
+                        emb_vps = [n for n in _iter_nodes(emb_s) if n.get('type') == 'VP']
+                        emb_has_gap = _has_stranded_pp(emb_s)
+                        if not emb_has_gap and emb_vps:
+                            leaf_vp = emb_vps[-1]
+                            lvk = leaf_vp.get('children', [])
+                            ev = next((c for c in lvk if not c.get('children') and c.get('type', '').startswith('VB')), None)
+                            if (ev is not None and _lower(ev) in _OBLIGATORILY_TRANSITIVE_VERBS
+                                    and not any(c.get('type') in ('NP', 'SBAR', 'S', 'PP') for c in lvk)):
+                                emb_has_gap = True
+                        if emb_has_gap:
+                            out.append(_finding(
+                                '9.19', 'error', 'C-WH-ISLAND', 'wh-island constraint',
+                                wh_head[0]['id'],
+                                f"You cannot extract '{wh_head[0]['surface']}' out of an "
+                                f"embedded question ('{mat_sbar.get('surface', '')}'); an "
+                                f"embedded wh-clause blocks moving another question phrase out of it.",
+                                _tree_evidence(sbarq_root['id'], 'wh-extraction out of embedded wh-SBAR',
+                                               [{'node': wh_head[0]['id']}, {'node': mat_sbar['id']}])))
+
+                # 9.20 Adjunct Island: matrix VP is already saturated (overt object
+                # NP OR overt non-adjunct PP complement) AND contains an adverbial
+                # adjunct PP/SBAR ('before', 'after', 'while', 'when', 'because',
+                # 'if', 'although', 'without', 'unless') whose inner clause has a
+                # stranded preposition or obligatorily transitive verb with no object.
+                _ADJUNCT_HEADS = {'before', 'after', 'while', 'when', 'because',
+                                  'if', 'although', 'though', 'without', 'unless', 'since'}
+                adjunct_nodes = []
+                for c in mvk:
+                    if c.get('type') in ('PP', 'SBAR'):
+                        clvs = _leaves(c)
+                        if clvs and _lower(clvs[0]) in _ADJUNCT_HEADS and any(n.get('type') in ('S', 'VP') for n in _iter_nodes(c)):
+                            adjunct_nodes.append(c)
+                other_sat_pps = [p for p in mat_pps if p not in adjunct_nodes and len(_leaves(p)) >= 2]
+                matrix_is_saturated = (mat_obj_np is not None) or (len(other_sat_pps) >= 1)
+                if matrix_is_saturated and adjunct_nodes:
+                    for adj_nd in adjunct_nodes:
+                        adj_has_gap = _has_stranded_pp(adj_nd)
+                        if not adj_has_gap:
+                            adj_vps = [n for n in _iter_nodes(adj_nd) if n.get('type') == 'VP']
+                            if adj_vps:
+                                avp = adj_vps[-1]
+                                avk = avp.get('children', [])
+                                av = next((c for c in avk if not c.get('children') and c.get('type', '').startswith('VB')), None)
+                                if (av is not None and _lower(av) in _OBLIGATORILY_TRANSITIVE_VERBS
+                                        and not any(c.get('type') in ('NP', 'SBAR', 'S', 'PP') for c in avk)):
+                                    adj_has_gap = True
+                        if adj_has_gap:
+                            out.append(_finding(
+                                '9.20', 'error', 'C-ADJUNCT-ISLAND', 'adjunct island constraint',
+                                wh_head[0]['id'],
+                                f"You cannot extract '{wh_head[0]['surface']}' out of the "
+                                f"adverbial phrase '{adj_nd.get('surface', '')}' when the main "
+                                f"verb already has its own complement.",
+                                _tree_evidence(sbarq_root['id'], 'wh-extraction out of adverbial adjunct',
+                                               [{'node': wh_head[0]['id']}, {'node': adj_nd['id']}])))
+                            break
+
+                # 9.21 Complex NP Island: matrix verb has an overt object NP that
+                # contains a relative clause SBAR with a subject gap AND an
+                # obligatorily transitive verb with no object (or stranded prep).
+                if mat_obj_np is not None:
+                    rel_sbars = [n for n in _iter_nodes(mat_obj_np) if n.get('type') == 'SBAR']
+                    for rs in rel_sbars:
+                        rk = rs.get('children', [])
+                        if len(rk) >= 2 and rk[0].get('type') == 'WHNP' and rk[1].get('type') == 'S':
+                            rs_kids = rk[1].get('children', [])
+                            # Subject-gap relative clause has VP directly under S (no subject NP)
+                            has_subj_gap = not any(c.get('type') == 'NP' for c in rs_kids)
+                            if not has_subj_gap:
+                                continue
+                            rel_has_obj_gap = _has_stranded_pp(rk[1])
+                            if not rel_has_obj_gap:
+                                rvps = [n for n in _iter_nodes(rk[1]) if n.get('type') == 'VP']
+                                if rvps:
+                                    rvp = rvps[-1]
+                                    rvk = rvp.get('children', [])
+                                    rv = next((c for c in rvk if not c.get('children') and c.get('type', '').startswith('VB')), None)
+                                    if (rv is not None and _lower(rv) in _OBLIGATORILY_TRANSITIVE_VERBS
+                                            and not any(c.get('type') in ('NP', 'SBAR', 'S', 'PP') for c in rvk)):
+                                        rel_has_obj_gap = True
+                            if rel_has_obj_gap:
+                                out.append(_finding(
+                                    '9.21', 'error', 'C-COMPLEX-NP-ISLAND', 'complex NP island constraint',
+                                    wh_head[0]['id'],
+                                    f"You cannot extract '{wh_head[0]['surface']}' out of the "
+                                    f"relative clause '{rs.get('surface', '')}' inside a noun phrase.",
+                                    _tree_evidence(sbarq_root['id'], 'wh-extraction out of relative clause in object NP',
+                                                   [{'node': wh_head[0]['id']}, {'node': rs['id']}])))
+                                break
+
+    # --- 6.24 Obligatorily transitive verb missing direct object ------------- #
+    # Catches active declarative clauses where a strictly transitive verb has
+    # zero complement ('That shawl reveals.', 'The spotlights scared.',
+    # 'Sarah should forget that some waiter dislikes.') while strictly exempting
+    # passives, lexicalized '-ing' participial adjectives, gap environments,
+    # Right-Node Raising, and middle-voice manner adverbs ('scares easily').
+    for nd in all_nodes:
+        if nd.get('type') != 'VP':
+            continue
+        vk = [c for c in nd.get('children', []) if c.get('type') not in (',', '.', '!', '?', ':', ';')]
+        if not vk or vk[0].get('children'):
+            continue
+        v_lf = vk[0]
+        v_tag = v_lf.get('type')
+        v_low = _lower(v_lf)
+        if v_tag not in ('VB', 'VBD', 'VBP', 'VBZ', 'VBG', 'VBN'):
+            continue
+        if v_low not in _OBLIGATORILY_TRANSITIVE_VERBS:
+            continue
+        # Must have NO complement/adjunct children other than optional negation/RB
+        if any(c.get('type') in ('NP', 'PP', 'SBAR', 'S', 'VP', 'ADJP', 'PRT', 'SQ', 'SBARQ', 'WHNP', 'WHPP', 'WHADVP') for c in vk[1:]):
+            continue
+        # Exclude questions (including echo questions and punctuation-less wh-questions)
+        if is_matrix_question or (leaves and lows[0] in {'who', 'whom', 'what', 'which', 'whose'}):
+            continue
+        # Exclude middle-voice manner adverbs ('scares easily', 'damages quickly')
+        if any(c.get('type') in ('ADVP', 'RB', 'RBR', 'RBS') for c in vk[1:]):
+            continue
+        # Exclude Right-Node Raising ('build and maintain bridges')
+        nxt_after_v = next((x for x in leaves if x['span'][0] >= v_lf['span'][1]), None)
+        if nxt_after_v is not None and nxt_after_v.get('type') == 'CC':
+            continue
+        # Exclude passive voice ('was scared', 'is revealed', 'get injured')
+        # and lexicalized participial '-ing' adjectives ('was alarming', 'is disturbing')
+        prev_before_v = next((x for x in reversed(leaves) if x['span'][1] <= v_lf['span'][0]), None)
+        if v_tag == 'VBN':
+            # Only check VBN if preceded by HAVE (active perfect 'has scared.'), NOT passive BE/GET
+            anc_vps = [a for a in _ancestors(nd, pmap) if a.get('type') == 'VP']
+            has_have_aux = any(
+                _leaves(a) and _lower(_leaves(a)[0]) in HAVE_SURFACES
+                for a in anc_vps[:2]
+            )
+            has_be_aux = any(
+                _leaves(a) and _lower(_leaves(a)[0]) in (BE_SURFACES | {'get', 'gets', 'got', 'getting', 'become', 'becomes', 'became', 'seem', 'seems', 'seemed'})
+                for a in anc_vps[:2]
+            )
+            if has_be_aux or not has_have_aux:
+                continue
+        if v_tag == 'VBG' and v_low in _PARTICIPIAL_ADJ_ING:
+            continue
+        # Exempt if inside ANY gap-licensing ancestor (wh-question, relative
+        # clause, wh-SBAR, comparative than/as SBAR, tough ADJP, purpose NP)
+        in_gap_env = False
+        for anc in _ancestors(nd, pmap):
+            at = anc.get('type')
+            if at in ('SBARQ', 'SQ', 'ADJP'):
+                in_gap_env = True
+                break
+            if at == 'NP':
+                in_gap_env = True
+                break
+            if at == 'SBAR':
+                sk = anc.get('children', [])
+                if sk and sk[0].get('type', '').startswith('WH'):
+                    wh_lvs = _leaves(sk[0])
+                    if wh_lvs and _lower(wh_lvs[0]) == 'that' and pmap.get(anc['id'], {}).get('type') != 'NP':
+                        pass  # declarative complementizer 'that' does NOT license an object gap!
+                    else:
+                        in_gap_env = True
+                        break
+                elif sk and not sk[0].get('children') and _lower(sk[0]) in {'than', 'as'}:
+                    in_gap_env = True
+                    break
+                elif sk and not sk[0].get('children') and _lower(sk[0]) == 'that':
+                    # High-attached relative clause or it-cleft under VP:
+                    # 'investigate [NP most patients] [SBAR that Sonia was insulting]'
+                    # or "It's [NP itself] [SBAR that that pork would stun]".
+                    anc_par = pmap.get(anc['id'])
+                    if anc_par is not None:
+                        par_kids = anc_par.get('children', [])
+                        try:
+                            a_idx = par_kids.index(anc)
+                        except ValueError:
+                            a_idx = 0
+                        if any(c.get('type') in ('NP', 'PP') for c in par_kids[:a_idx]):
+                            in_gap_env = True
+                            break
+        if in_gap_env:
+            continue
+        out.append(_finding(
+            '6.24', 'error', 'C-MISSING-OBJECT', 'verb transitivity', v_lf['id'],
+            f"The verb '{v_lf['surface']}' requires a direct object here, but none "
+            f"follows it (and no earlier question or relative word supplies one).",
+            _tree_evidence(nd['id'], 'obligatorily transitive V without complement',
+                           [{'node': v_lf['id']}])))
+
+    # --- 6.23 Tough-adjective infinitival missing object gap ----------------- #
+    # 'Carrie is pleasant to explore some public park.' (non-expletive subject
+    # + strict tough-adjective + infinitive whose monotransitive verb already
+    # has a filled direct object and no stranded preposition).
+    _STRICT_TOUGH_ADJS = {
+        'pleasant', 'unpleasant', 'easy', 'hard', 'difficult', 'tough',
+        'impossible', 'enjoyable', 'tiresome', 'boring', 'delicious', 'disgusting',
+        'interesting', 'fun', 'painful', 'awkward', 'dangerous', 'expensive',
+        'cheap', 'useful', 'helpful', 'simple', 'exhausting', 'frustrating',
+        'amusing', 'entertaining', 'exciting', 'fascinating',
+    }
+    for clause in clauses:
+        ckids = clause.get('children', [])
+        subj_np = next((c for c in ckids if c.get('type') == 'NP'), None)
+        vp_nd = next((c for c in ckids if c.get('type') == 'VP'), None)
+        if subj_np is None or vp_nd is None:
+            continue
+        subj_lvs = _leaves(subj_np)
+        if not subj_lvs or _lower(subj_lvs[0]) in {'it', 'there'}:
+            continue
+        if len(subj_lvs) == 1 and _lower(subj_lvs[0]) in {'this', 'that', 'what'}:
+            continue
+        if any(x.get('type') in ('S', 'SBAR', 'VBG') for x in subj_lvs):
+            continue
+        # Find ADJP headed by strict tough adjective + infinitival S/SBAR
+        for adjp in _iter_nodes(vp_nd):
+            if adjp.get('type') != 'ADJP':
+                continue
+            akids = adjp.get('children', [])
+            adj_lf = next((c for c in akids if not c.get('children') and _lower(c) in _STRICT_TOUGH_ADJS), None)
+            inf_nd = next((c for c in akids if c.get('type') in ('S', 'SBAR', 'VP')), None)
+            if adj_lf is None or inf_nd is None:
+                continue
+            inf_lvs = _leaves(inf_nd)
+            if not any(_lower(x) == 'to' for x in inf_lvs[:2]):
+                continue
+            # Find lexical VP inside the infinitive
+            inf_vps = [x for x in _iter_nodes(inf_nd) if x.get('type') == 'VP']
+            if not inf_vps:
+                continue
+            lex_vp = inf_vps[-1]
+            # Must not have nested clause or stranded prep
+            if any(x.get('type') == 'PP' and len([k for k in x.get('children', []) if k.get('type') not in (',', '.', '?', '!')]) == 1
+                   for x in _iter_nodes(inf_nd)):
+                continue
+            lvk = lex_vp.get('children', [])
+            v_h = next((c for c in lvk if not c.get('children') and c.get('type') == 'VB'), None)
+            o_np = next((c for c in lvk if c.get('type') == 'NP'), None)
+            if v_h is None or o_np is None:
+                continue
+            if _lower(v_h) in _DITRANSITIVE_OR_COMPLEX_VERBS:
+                continue
+            oh = _np_head_leaf(o_np)
+            if oh is None or _lower(oh) in _TIME_MEASURE_NP_HEADS:
+                continue
+            out.append(_finding(
+                '6.23', 'error', 'C-TOUGH-COMPLEMENT', 'tough-movement complement',
+                adj_lf['id'],
+                f"With a specific subject like '{subj_np.get('surface', '')}', "
+                f"the adjective '{adj_lf['surface']}' expects the infinitive "
+                f"'{inf_nd.get('surface', '')}' to have an open object gap; "
+                f"use 'It is {adj_lf['surface']} ...' when the object is already filled.",
+                _tree_evidence(adjp['id'], 'non-expletive subject + tough adj + filled infinitive',
+                               [{'node': adj_lf['id']}, {'node': o_np['id']}])))
+            break
+
+    return out
 
 
 def collect(text, root):
@@ -4484,5 +6802,6 @@ def collect(text, root):
     findings.extend(_check_tree(root, clauses, leaves, text, quoted))
     findings.extend(_check_more(root, clauses, leaves))
     findings.extend(_check_context(root, clauses, leaves))
+    findings.extend(_check_syntax_constraints(root, clauses, leaves))
     findings.extend(_check_terminal(root, text))
     return findings
