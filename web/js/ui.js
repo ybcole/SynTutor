@@ -1,6 +1,8 @@
 import { nodeLesson } from './node-lessons.js?v=2026.11.18f';
 import { domTextOffsets } from './correction.js?v=2026.11.21';
 
+import { formatImpactSummary } from './correction.js?v=2026.11.21b';
+
 const $ = (sel) => document.querySelector(sel);
 
 const PLAIN_NAME = {
@@ -220,11 +222,12 @@ export function renderCorrection(summary) {
 
   const head = document.createElement('div');
   head.className = 'nc-head';
+  const isPartial = Boolean(correction.impact && !correction.impact.whole_sentence_clean);
   const dot = document.createElement('span');
-  dot.className = 'nc-dot ok';
+  dot.className = isPartial ? 'nc-dot warn' : 'nc-dot ok';
   const name = document.createElement('span');
   name.className = 'nc-name';
-  name.textContent = 'Suggested revision';
+  name.textContent = isPartial ? 'Partial revision' : 'Suggested revision';
   head.appendChild(dot);
   head.appendChild(name);
   box.appendChild(head);
@@ -265,14 +268,9 @@ export function renderCorrection(summary) {
 
   if (correction.impact) {
     label(box, 'What this revision changes');
-    const impact = correction.impact;
     const line = document.createElement('p');
     line.className = 'ex-text';
-    line.textContent = impact.whole_sentence_clean
-      ? 'Re-parsing finds no remaining rule-level error.'
-      : `Re-parsing after the revision: ${impact.resolved_count || 0} resolved, `
-        + `${impact.remaining_count || 0} still present, `
-        + `${impact.introduced_count || 0} newly introduced.`;
+    line.textContent = formatImpactSummary(correction.impact, { panel: false });
     box.appendChild(line);
   }
 
@@ -451,15 +449,7 @@ export function renderCorrectionPanel(info, handlers = {}) {
       heading.textContent = 'What this fix changes';
       const line = document.createElement('p');
       line.className = 'cp-impact-summary';
-      if (impact.whole_sentence_clean) {
-        line.textContent = 'Re-parsing finds no remaining rule-level error. The whole sentence is clean.';
-      } else {
-        const parts = [];
-        if (impact.resolved_count) parts.push(`${impact.resolved_count} issue${impact.resolved_count === 1 ? '' : 's'} resolved`);
-        if (impact.remaining_count) parts.push(`${impact.remaining_count} still present`);
-        if (impact.introduced_count) parts.push(`${impact.introduced_count} newly introduced`);
-        line.textContent = `Re-parsing after this edit: ${parts.join(', ') || 'no change in the rule-level error set'}.`;
-      }
+      line.textContent = formatImpactSummary(impact, { panel: true });
       section.append(heading, line);
       for (const row of (impact.remaining || []).slice(0, 3)) {
         const item = document.createElement('p');

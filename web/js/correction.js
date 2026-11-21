@@ -227,3 +227,143 @@ export function findScopeNode(payload, scopeType, expected) {
     .find((n) => n.type === scopeType && lower(n.surface) === expected);
   return hit ? hit.id : null;
 }
+
+// ---- correction preview impact & honest completeness reporting -------------
+function errorRowsOf(payload) {
+  return Object.values(payload?.node_details || {})
+    .filter((detail) => detail && detail.status === 'error')
+    .map((detail) => ({
+      detail_id: detail.id,
+      constraint: detail.constraint,
+      type: detail.type,
+      surface: detail.surface,
+      violation: detail.remediation?.violation || detail.text || '',
+      suggested_fix: detail.remediation?.suggested_fix || '',
+    }));
+}
+
+function mergeUnresolvedTokens(...lists) {
+  const out = [];
+  const seen = new Set();
+  for (const list of lists) {
+    if (!Array.isArray(list)) continue;
+    for (const item of list) {
+      if (!item || !item.surface) continue;
+      const key = `${item.token_id ?? ''}|${item.surface}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ token_id: item.token_id, surface: item.surface });
+    }
+  }
+  return out;
+}
+
+export function computePreviewImpact(originalPayload, previewPayload) {
+  if (!originalPayload || !previewPayload) return null;
+  const before = errorRowsOf(originalPayload);
+  const after = errorRowsOf(previewPayload);
+  const key = (row) => `${row.constraint || ''}|${row.type || ''}`;
+  const beforeKeys = new Set(before.map(key));
+  const afterKeys = new Set(after.map(key));
+  const resolved = before.filter((row) => !afterKeys.has(key(row)));
+  const remaining = after.filter((row) => beforeKeys.has(key(row)));
+  const introduced = after.filter((row) => !beforeKeys.has(key(row)));
+  const verdict = previewPayload.summary?.verdict;
+  const origCorr = originalPayload.summary?.correction;
+  const matchesServerCorr = Boolean(
+    origCorr?.corrected_sentence
+    && previewPayload.parse?.text
+    && origCorr.corrected_sentence.trim() === previewPayload.parse.text.trim(),
+  );
+  const unresolvedTokens = mergeUnresolvedTokens(
+    previewPayload.summary?.unresolved_tokens,
+    matchesServerCorr ? origCorr?.impact?.unresolved_tokens : null,
+  );
+  const serverMarkedPartial = matchesServerCorr && origCorr?.impact?.whole_sentence_clean === false;
+  const treeUnresolved = Boolean(
+    previewPayload.br_analysis && previewPayload.br_analysis.status !== 'normalized',
+  );
+  const wholeClean = verdict === 'grammatical'
+    && !remaining.length
+    && !introduced.length
+    && !unresolvedTokens.length
+    && !treeUnresolved
+    && !serverMarkedPartial;
+  return {
+    resolved_count: resolved.length,
+    remaining_count: remaining.length,
+    introduced_count: introduced.length,
+    resolved,
+    remaining,
+    introduced,
+    resulting_verdict: verdict,
+    unresolved_tokens: unresolvedTokens,
+    tree_unresolved: treeUnresolved,
+    whole_sentence_clean: wholeClean,
+    completeness: wholeClean ? 'complete' : 'partial',
+  };
+}
+
+export function formatImpactSummary(impact, { panel = false } = {}) {
+  if (!impact) return '';
+  if (impact.whole_sentence_clean) {
+    return panel
+      ? 'Re-parsing finds no remaining rule-level error. The whole sentence is clean.'
+      : 'Re-parsing finds no remaining rule-level error.';
+  }
+  const parts = [];
+  if (impact.resolved_count) {
+    parts.push(`${impact.resolved_count} ${panel ? (impact.resolved_count === 1 ? 'issue resolved' : 'issues resolved') : 'resolved'}`);
+  }
+  if (impact.remaining_count) parts.push(`${impact.remaining_count} still present`);
+  if (impact.introduced_count) parts.push(`${impact.introduced_count} newly introduced`);
+  const prefix = panel ? 'Re-parsing after this edit' : 'Re-parsing after the revision';
+  const base = parts.length
+    ? `${prefix}: ${parts.join(', ')}.`
+    : `${prefix}: no change in the rule-level error set.`;
+  const extras = [];
+  if (Array.isArray(impact.unresolved_tokens) && impact.unresolved_tokens.length) {
+    const quoted = impact.unresolved_tokens.map((t) => `\u201c${t.surface}\u201d`).join(', ');
+    extras.push(`The spelling of ${quoted} remains uncertain.`);
+  }
+  if (impact.tree_unresolved || (impact.resulting_verdict && impact.resulting_verdict !== 'grammatical')) {
+    extras.push('Full grammaticality could not be verified for the rest of the sentence.');
+  }
+  return extras.length ? `${base} ${extras.join(' ')}` : base;
+}
+
+export function formatRecheckOutcome(payload) {
+  const left = (payload?.summary?.violations || []).length;
+  if (left > 0) {
+    return {
+      kind: 'fixed',
+      complete: false,
+      message: `That error is fixed. ${left} other issue(s) remain \u2014 click a red node to continue.`,
+    };
+  }
+  const unresolved = payload?.summary?.unresolved_tokens || [];
+  if (unresolved.length) {
+    const quoted = unresolved.map((t) => `\u201c${t.surface}\u201d`).join(', ');
+    return {
+      kind: 'fixed',
+      complete: false,
+      message: `That error is fixed, but the spelling of ${quoted} remains uncertain.`,
+    };
+  }
+  const verdict = payload?.summary?.verdict;
+  const treeUnresolved = Boolean(
+    payload?.br_analysis && payload.br_analysis.status !== 'normalized',
+  );
+  if ((verdict && verdict !== 'grammatical') || treeUnresolved) {
+    return {
+      kind: 'fixed',
+      complete: false,
+      message: 'That error is fixed, though the rest of the sentence could not be verified as fully grammatical.',
+    };
+  }
+  return {
+    kind: 'fixed',
+    complete: true,
+    message: 'That error is fixed \u2014 this sentence is clean now.',
+  };
+}

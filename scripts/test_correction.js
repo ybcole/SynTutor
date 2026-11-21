@@ -12,6 +12,7 @@
 import assert from 'node:assert/strict';
 import {
   planFocus, contextWords, applyEdit, expectedScopeWords, findScopeNode, findTargetError,
+  computePreviewImpact, formatImpactSummary, formatRecheckOutcome,
 } from '../web/js/correction.js';
 
 // A tiny parse of "She go to school" with a subject-verb agreement error.
@@ -118,5 +119,97 @@ assert.equal(findTargetError(fixed, focus), null,
 assert.equal(planFocus(broken, 'does-not-exist'), null);
 assert.equal(planFocus(broken, 'n3'), null,
   'only a node with a detail (an error) can be focused');
+
+// --- 6. correction-preview completeness & honest uncertainty reporting -----
+const completeOrig = {
+  parse: { text: 'The cat sleepps.' },
+  node_details: {
+    n4: { id: 'n4', status: 'error', constraint: 'C-LEXICON-MALFORMED', type: 'VBZ', surface: 'sleepps' },
+  },
+  summary: {
+    verdict: 'ungrammatical',
+    correction: { corrected_sentence: 'The cat sleeps.', impact: { whole_sentence_clean: true, completeness: 'complete' } },
+  },
+};
+const completePreview = {
+  parse: { text: 'The cat sleeps.' },
+  node_details: {},
+  br_analysis: { status: 'normalized' },
+  summary: { verdict: 'grammatical', violations: [] },
+};
+const completeImpact = computePreviewImpact(completeOrig, completePreview);
+assert.equal(completeImpact.whole_sentence_clean, true);
+assert.equal(completeImpact.completeness, 'complete');
+assert.match(formatImpactSummary(completeImpact, { panel: true }), /whole sentence is clean/i);
+assert.equal(formatRecheckOutcome(completePreview).complete, true);
+assert.match(formatRecheckOutcome(completePreview).message, /clean now/i);
+
+// Partial repair: "Ths cat sleepps." -> "Ths cat sleeps." must NEVER claim clean
+const partialOrig = {
+  parse: { text: 'Ths cat sleepps.' },
+  node_details: {
+    n4: { id: 'n4', status: 'error', constraint: 'C-LEXICON-MALFORMED', type: 'VBZ', surface: 'sleepps' },
+  },
+  summary: {
+    verdict: 'ungrammatical',
+    correction: {
+      corrected_sentence: 'Ths cat sleeps.',
+      impact: { whole_sentence_clean: false, completeness: 'partial', unresolved_tokens: [{ token_id: 0, surface: 'Ths' }] },
+    },
+  },
+};
+const partialPreviewFromPayload = {
+  parse: { text: 'Ths cat sleeps.' },
+  node_details: {},
+  br_analysis: { status: 'normalized' },
+  summary: { verdict: 'grammatical', violations: [], unresolved_tokens: [{ token_id: 0, surface: 'Ths' }] },
+};
+const partialPreviewServerImpactOnly = {
+  parse: { text: 'Ths cat sleeps.' },
+  node_details: {},
+  br_analysis: { status: 'normalized' },
+  summary: { verdict: 'grammatical', violations: [] },
+};
+for (const preview of [partialPreviewFromPayload, partialPreviewServerImpactOnly]) {
+  const imp = computePreviewImpact(partialOrig, preview);
+  assert.equal(imp.whole_sentence_clean, false, 'partial preview must never report whole_sentence_clean=true');
+  assert.equal(imp.completeness, 'partial');
+  assert.deepEqual(imp.unresolved_tokens, [{ token_id: 0, surface: 'Ths' }]);
+  const panelText = formatImpactSummary(imp, { panel: true });
+  assert.doesNotMatch(panelText, /whole sentence is clean/i);
+  assert.match(panelText, /“Ths” remains uncertain/);
+}
+const partialRecheck = formatRecheckOutcome(partialPreviewFromPayload);
+assert.equal(partialRecheck.complete, false);
+assert.doesNotMatch(partialRecheck.message, /clean now/i);
+assert.match(partialRecheck.message, /“Ths” remains uncertain/);
+
+// Unresolved syntax tree or unverified verdict must never claim clean
+const unverifiedPreview = {
+  parse: { text: 'I am scares tomorrow.' },
+  node_details: {},
+  br_analysis: { status: 'unresolved' },
+  summary: { verdict: 'unverified', violations: [] },
+};
+const unverImpact = computePreviewImpact(completeOrig, unverifiedPreview);
+assert.equal(unverImpact.whole_sentence_clean, false);
+assert.equal(unverImpact.completeness, 'partial');
+assert.doesNotMatch(formatImpactSummary(unverImpact, { panel: true }), /whole sentence is clean/i);
+assert.match(formatImpactSummary(unverImpact, { panel: true }), /could not be verified/i);
+assert.equal(formatRecheckOutcome(unverifiedPreview).complete, false);
+assert.doesNotMatch(formatRecheckOutcome(unverifiedPreview).message, /clean now/i);
+
+// Multi-error sentence where one error remains
+const multiPreview = {
+  parse: { text: 'The boys walks.' },
+  node_details: {
+    n4: { id: 'n4', status: 'error', constraint: 'C-SUBJECT-AGREEMENT', type: 'VBZ', surface: 'walks' },
+  },
+  br_analysis: { status: 'normalized' },
+  summary: { verdict: 'ungrammatical', violations: ['C-SUBJECT-AGREEMENT'] },
+};
+const multiRecheck = formatRecheckOutcome(multiPreview);
+assert.equal(multiRecheck.complete, false);
+assert.match(multiRecheck.message, /1 other issue\(s\) remain/);
 
 console.log('PASS: the correction module plans, edits and re-checks correctly');

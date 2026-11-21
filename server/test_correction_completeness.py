@@ -79,6 +79,10 @@ class CorrectionCompletenessAndSafetyTest(unittest.TestCase):
 
     def test_transposed_ambiguous_determiner_is_not_claimed_complete(self):
         payload = build_payload('Teh cat sleepps.')
+        self.assertEqual(payload['summary']['verdict'], 'ungrammatical')
+        self.assertNotEqual(payload['summary'].get('corrected_sentence'), 'A Teh cat sleeps.')
+        unresolved = payload['summary'].get('unresolved_tokens') or []
+        self.assertTrue(any(t['surface'] == 'Teh' for t in unresolved), unresolved)
         correction = payload['summary'].get('correction')
         if correction:
             impact = correction['impact']
@@ -86,13 +90,50 @@ class CorrectionCompletenessAndSafetyTest(unittest.TestCase):
             self.assertEqual(impact['completeness'], 'partial')
             self.assertTrue(any(t['surface'] == 'Teh' for t in impact.get('unresolved_tokens', [])))
 
+        second = build_payload('Teh cat sleeps.')
+        self.assertEqual(second['summary']['verdict'], 'ungrammatical')
+        self.assertNotEqual(second['summary'].get('corrected_sentence'), 'A Teh cat sleeps.')
+        self.assertTrue(any(f['constraint'] == 'C-SPELLING' for f in second['learner_analysis']['findings']))
+        self.assertTrue(any(t['surface'] == 'Teh' for t in second['summary'].get('unresolved_tokens') or []))
+
     def test_multi_error_sentence_labels_partial_or_resolves_both_honestly(self):
-        payload = build_payload('Ths boys walks yesterday.')
-        correction = payload['summary'].get('correction')
-        if correction:
-            impact = correction['impact']
-            self.assertFalse(impact['whole_sentence_clean'])
-            self.assertEqual(impact['completeness'], 'partial')
+        for text, expected_corr in (
+            ('Ths boys walks.', 'Ths boys walk.'),
+            ('Ths boys walks yesterday.', None),
+        ):
+            with self.subTest(sentence=text):
+                payload = build_payload(text)
+                correction = payload['summary'].get('correction')
+                if expected_corr is not None:
+                    self.assertIsNotNone(correction)
+                    self.assertEqual(correction['corrected_sentence'], expected_corr)
+                if correction:
+                    impact = correction['impact']
+                    self.assertFalse(impact['whole_sentence_clean'])
+                    self.assertEqual(impact['completeness'], 'partial')
+                    self.assertTrue(any(t['surface'] == 'Ths' for t in impact.get('unresolved_tokens', [])))
+
+    def test_standalone_parse_exposes_unresolved_tokens_for_preview_consistency(self):
+        for uncertain, surface in (
+            ('Ths cat sleeps.', 'Ths'),
+            ('Ths boys walk.', 'Ths'),
+        ):
+            with self.subTest(uncertain=uncertain):
+                payload = build_payload(uncertain)
+                unresolved = payload['summary'].get('unresolved_tokens') or []
+                self.assertTrue(any(t['surface'] == surface for t in unresolved), unresolved)
+        for clean in ('The cat sleeps.', 'The boys walk.', 'Tsh arrived yesterday.'):
+            with self.subTest(clean=clean):
+                payload = build_payload(clean)
+                self.assertFalse(payload['summary'].get('unresolved_tokens'))
+
+    def test_copular_finding_is_not_duplicated_in_learner_analysis(self):
+        payload = build_payload('I am scares tomorrow.')
+        findings = payload['learner_analysis']['findings']
+        copula = [f for f in findings if f.get('constraint') == 'C-COPULA']
+        self.assertEqual(len(copula), 1, findings)
+        self.assertEqual(copula[0]['target_token_ids'], [2])
+        self.assertEqual(copula[0]['related_token_ids'], [0, 1])
 
     def test_audit_distinguishes_morph_syntax_safety_from_spelling_completeness(self):
         from run_cycle7_evaluation import independent_check_correction

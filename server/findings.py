@@ -724,9 +724,11 @@ def supported_findings(analysis, details):
             else:
                 continue
             key = (lesson or code, tuple(targets), tuple(participants))
-            if key in seen:
+            target_key = (code, tuple(targets))
+            if key in seen or target_key in seen:
                 continue
             seen.add(key)
+            seen.add(target_key)
             rows.append({'id': f'local-{len(rows) + 1}', 'constraint': code,
                          'authority': 'legacy_matrix', 'status': 'supported_local', 'book_verified': False,
                          'node_id': detail.get('id'), 'text': text,

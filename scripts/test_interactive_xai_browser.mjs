@@ -96,13 +96,24 @@ try {
   const fullText = await explain.innerText();
   assert.match(fullText, /Suggested revision.*The boy with the bags walks\./);
 
-  // 2. Partial vs complete repair labeling
+  // 2. Partial vs complete repair labeling & correction-preview honesty
   const partialPayload = await submitSentence('Ths cat sleepps.');
   assert.equal(partialPayload.learner_analysis.revision.text, 'Ths cat sleeps.');
   assert.equal(partialPayload.learner_analysis.revision.impact.whole_sentence_clean, false);
   const partialText = await explain.innerText();
   assert.match(partialText, /Partial revision — “Ths cat sleeps\.”/);
   assert.match(partialText, /“Ths” remains uncertain/);
+  assert.doesNotMatch(partialText, /whole sentence is clean|clean now/i);
+
+  // Standalone parse of partial output must expose unresolved_tokens so previews never claim clean
+  const standaloneUncertain = await submitSentence('Ths cat sleeps.');
+  assert.ok((standaloneUncertain.summary?.unresolved_tokens || []).some(t => t.surface === 'Ths'),
+    'standalone parse of Ths cat sleeps. must expose unresolved_tokens for preview consistency');
+
+  // Transposed determiner must not fabricate "A Teh cat sleeps."
+  const tehPayload = await submitSentence('Teh cat sleepps.');
+  assert.notEqual(tehPayload.summary?.corrected_sentence, 'A Teh cat sleeps.');
+  assert.ok((tehPayload.summary?.unresolved_tokens || []).some(t => t.surface === 'Teh'));
 
   // 3. Generalized evidence propagation on provisional working tree (2 independent errors)
   const provPayload = await submitSentence('If you dont know, the boys walks.');

@@ -382,13 +382,18 @@ def uncertain_function_words(analysis):
         low = word.lower()
         if low in forms:
             continue
-        if (node.get('type') in {'DT', 'PRP$'} and not has_name_evidence(node)
-                and any(low == form[:i] + form[i + 1:] for form in forms
-                        for i, char in enumerate(form) if char in 'aeiou')):
+        nxt = by_idx.get(idx + 1)
+        vowel_elision = any(
+            low == form[:i] + form[i + 1:] for form in forms
+            for i, char in enumerate(form) if char in 'aeiou'
+        )
+        if (vowel_elision and not known_word(word)
+                and node.get('type') in {'DT', 'PRP$'}
+                and (not has_name_evidence(node)
+                     or (nxt is not None and nxt.get('type') in {'NN', 'NNS', 'JJ'}))):
             seen_ids.add(idx)
             rows.append({'token_id': idx, 'surface': word})
             continue
-        nxt = by_idx.get(idx + 1)
         if (low in transposed_dets and not node.get('fentity')
                 and (node.get('type') in {'DT', 'PRP$'}
                      or (nxt is not None and nxt.get('type') in {'NN', 'NNS', 'JJ'}

@@ -300,6 +300,13 @@ def build_payload(text, sentence_index=0, convention_version=None,
 
     summary["verdict_authority"] = "legacy_diagnostic"
     summary["book_verified"] = False
+    try:
+        from spellcheck import unresolved_spelling_tokens
+        input_unresolved = unresolved_spelling_tokens(analysis)
+        if input_unresolved:
+            summary["unresolved_tokens"] = input_unresolved
+    except Exception:
+        pass
     apply_plain_language(details, summary)
 
     # Preserve the raw Benepar tree separately; br_analysis is the one canonical

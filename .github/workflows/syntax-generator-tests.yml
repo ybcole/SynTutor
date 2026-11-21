@@ -3,14 +3,15 @@ name: Syntax Generator model-free checks
 on:
   push:
     branches:
+      - main
       - milestone-02-syntax-generator
+      - fix/*
+      - feature/*
   pull_request:
     branches:
       - main
-      - feature/milestone-07-*
-      - feature/milestone-08-*
-      - feature/milestone-10-*
-      - feature/cgel-ch20-phase-b
+      - fix/*
+      - feature/*
   workflow_dispatch:
 
 jobs:
@@ -205,11 +206,17 @@ jobs:
         run: |
           node --check web/js/main.js
           node --check web/js/syntax-builder-ui.js
-        npm run test:evidence
-        npm run test:legacy-map
-        node scripts/test_explanation_dedupe.js
-        npm run test:correction
+          node --check web/js/canvas-view.js
+          node --check web/js/explanation-evidence.js
+          node --check web/js/ui.js
+          node --check web/js/correction.js
+          npm run test:evidence
+          npm run test:legacy-map
+          npm run test:node-lessons
+          node scripts/test_explanation_dedupe.js
+          npm run test:correction
           npm run test:quiz
+          npm run test:quiz-v2
           npm run test:lessons
           npm run test:assessments
           npm run test:builder

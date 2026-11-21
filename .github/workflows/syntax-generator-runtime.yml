@@ -3,14 +3,15 @@ name: Syntax Generator parser-backed runtime checks
 on:
   push:
     branches:
+      - main
       - milestone-02-syntax-generator
+      - fix/*
+      - feature/*
   pull_request:
     branches:
       - main
-      - feature/milestone-07-*
-      - feature/milestone-08-*
-      - feature/milestone-10-*
-      - feature/cgel-ch20-phase-b
+      - fix/*
+      - feature/*
   workflow_dispatch:
 
 jobs:
@@ -29,7 +30,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install torch --index-url https://download.pytorch.org/whl/cpu
           python -c "import torch; open('/tmp/syntutor-cpu-constraint.txt', 'w').write('torch==' + torch.__version__ + '\\n')"
-          python -m pip install -r requirements.txt -c /tmp/syntutor-cpu-constraint.txt
+          python -m pip install -r requirements.txt -r requirements-test.txt -c /tmp/syntutor-cpu-constraint.txt
       - name: Install pinned parser models from GitHub release assets
         run: |
           set -euo pipefail
@@ -87,14 +88,15 @@ jobs:
             artifacts/cgel-passive-make-evaluation.json
             artifacts/cgel-passive-make-modifiers-heldout.json
           if-no-files-found: error
-      - name: Run parser-backed Syntax Generator tests
-        working-directory: server
-        run: python -m unittest -v test_parser_runtime test_correction_offsets test_parser_whitespace test_modal_category_runtime
-      - name: Verify Cambridge directive and question context
-        working-directory: server
-        run: CGEL_REQUIRE_PARSER=1 python -m unittest -v test_cgel_imperative_probe test_cgel_inversion_probe test_cgel_negation_probe test_cgel_tag_probe test_cgel_case_probe test_cgel_consist_probe test_cgel_lexical_number_probe test_cgel_coordination_probe test_cgel_comparative_probe test_cgel_remote_conditional_probe test_cgel_since_probe test_cgel_catenative_probe test_cgel_doubling_probe test_cgel_punctuation_probe test_cgel_tense_aspect_probe test_cgel_determiner_probe test_cgel_verb_form_probe test_cgel_usage_probe test_cgel_word_order_probe test_cgel_phase_d test_cgel_candidate_xai test_final_d1_extraposition test_final_d1_heldout_gaps test_cambridge_runtime_pilot
-      - name: Run existing LF/CRLF multiline parser regression
-        run: python server/test_multiline_parse.py
+      - name: Run full parser-backed server regression suite (auto-discovered)
+        env:
+          PYTHONPATH: server
+          CGEL_REQUIRE_PARSER: "1"
+          TOKENIZERS_PARALLELISM: "false"
+        run: |
+          python -m unittest discover -v -s server -p 'test_*.py'
+          python server/test_corrector.py
+          python server/test_multiline_parse.py
       - name: Audit FINAL-D1 sentence coverage
         run: |
           python scripts/audit_final_d1_sentence_coverage.py --output artifacts/final-d1-coverage.json

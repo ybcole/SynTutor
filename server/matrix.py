@@ -1674,6 +1674,11 @@ def _needs_indefinite_article_error(np_node, parent_vp=None):
             return None
         if _lower(first.get('surface','')) in {'one','two','three','four','five','six','seven','eight','nine','ten','some','any','many','few','several','both','all','most','each','every','another','no','such','what','which','whose'}:
             return None
+        # Do not insert an article before a misspelled/transposed determiner
+        # (e.g. 'Teh cat sleeps.' -> avoid 'A Teh cat sleeps.').
+        if (len(leaves) > 1 and _lower(first.get('surface', ''))
+                in {'teh', 'hte', 'tihs', 'taht', 'tey', 'ths', 'tht'}):
+            return None
     # possessive NP as child
     for ch in np_node.get('children', []):
         if ch.get('type') in {'NP','NML','NX'}:

@@ -13,10 +13,11 @@ import {
   log,
   clearOverlay, clearDiagnostics, showCanvasMessage, renderNodeDetail,
   renderDiagnostic, renderCorrection, applySentenceSelection, plainName, renderCorrectionPanel,
-} from './ui.js?v=2026.11.21';
+} from './ui.js?v=2026.11.21b';
 import {
-  planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords, findScopeNode, findTargetError, domTextOffsets,
-} from './correction.js?v=2026.11.21';
+  planFocus, contextWords, correctionPreview, matchesPreviewTokens, expectedScopeWords,
+  findScopeNode, findTargetError, domTextOffsets, computePreviewImpact, formatRecheckOutcome,
+} from './correction.js?v=2026.11.21b';
 import { initLessons, openLessons, closeLessons, renderLessonTree } from './lessons-ui.js?v=2026.11.18f';
 import { initQuizzes, openQuizzes, closeQuizzes } from './quizzes-ui.js?v=2026.11.18f';
 import { initSyntaxBuilder, openBuilderView, mountEmbeddedBuilder, closeBuilderView, isBuilderOpen, clearBuilder, builderDisplayTree, builderTextTree, setCanvasHint } from './syntax-builder-ui.js?v=2026.11.18f';
@@ -164,26 +165,7 @@ function correctionErrorRows(payload) {
 // after so the learner sees cascades instead of an unsupported claim that
 // the whole sentence is now correct.
 function previewImpact(originalPayload, previewPayload) {
-  if (!originalPayload || !previewPayload) return null;
-  const before = correctionErrorRows(originalPayload);
-  const after = correctionErrorRows(previewPayload);
-  const key = (row) => `${row.constraint || ''}|${row.type || ''}`;
-  const beforeKeys = new Set(before.map(key));
-  const afterKeys = new Set(after.map(key));
-  const resolved = before.filter((row) => !afterKeys.has(key(row)));
-  const remaining = after.filter((row) => beforeKeys.has(key(row)));
-  const introduced = after.filter((row) => !beforeKeys.has(key(row)));
-  const verdict = previewPayload.summary?.verdict;
-  return {
-    resolved_count: resolved.length,
-    remaining_count: remaining.length,
-    introduced_count: introduced.length,
-    resolved,
-    remaining,
-    introduced,
-    resulting_verdict: verdict,
-    whole_sentence_clean: verdict === 'grammatical' && !remaining.length && !introduced.length,
-  };
+  return computePreviewImpact(originalPayload, previewPayload);
 }
 
 function refreshCorrectionUi() {
@@ -340,12 +322,7 @@ function recheckFocus(payload) {
   const left = (payload.summary.violations || []).length;
   focus = null;
   correctionMode = 'original';
-  focusResult = {
-    kind: 'fixed',
-    message: left
-      ? `That error is fixed. ${left} other issue(s) remain — click a red node to continue.`
-      : 'That error is fixed — this sentence is clean now.',
-  };
+  focusResult = formatRecheckOutcome(payload);
   // The inspector described the error that is gone: it steps aside so the
   // correction panel carries the message on its own.
   renderNodeDetail(null, null, null);
