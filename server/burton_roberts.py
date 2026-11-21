@@ -206,10 +206,22 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
     uncertainty = None
     work_root = copy.deepcopy(raw_root)
     try:
+        from .spellcheck import uncertain_function_words
+    except ImportError:
+        from spellcheck import uncertain_function_words
+    uncertain_ids = {row["token_id"] for row in uncertain_function_words(analysis)}
+    if uncertain_ids:
+        for lf in _raw_leaves(work_root):
+            span = lf.get("span")
+            if isinstance(span, (list, tuple)) and span and span[0] in uncertain_ids:
+                lf["uncertain_token"] = True
+    try:
         if next(be_past_pairs(leaves), None) is not None:
             raise ProjectionUnavailable('Auxiliary be and the following verb form do not support a canonical analysis')
         if any(leaf.get('ambiguous_contraction_split') for leaf in leaves):
             raise ProjectionUnavailable('The parser split a word without enough evidence to identify a contraction')
+        if uncertain_ids:
+            raise ProjectionUnavailable('Lexical category cannot be verified for an orthographically uncertain function word')
         proj = Projection(raw_tokens)
         # Unwrap transport wrapper to detect standalone textbook/learner phrases
         # (NP, PP, ADJP, ADVP) so FINAL-D1 projects them compositionally rather
@@ -234,7 +246,7 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
             tree = proj.clause(work_root)
     except ProjectionUnavailable as exc:
         uncertainty = str(exc)
-        tree = Projection(raw_tokens).working_tree(copy.deepcopy(raw_root))
+        tree = Projection(raw_tokens).working_tree(copy.deepcopy(work_root))
     envelope = {
         "schema_version": SCHEMA_VERSION,
         "tree_id": _stable_id("sg", sentence + "|FINAL-D1"),

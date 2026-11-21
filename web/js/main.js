@@ -2135,6 +2135,7 @@ function localEvidenceOptions(payload, nodeId = null) {
     overview: analysis?.sentence_text,
     verdict: analysis?.verdict,
     treeUnresolved: payload?.br_analysis?.status !== 'normalized',
+    unresolvedTokens: payload?.summary?.unresolved_tokens || analysis?.unresolved_tokens || [],
     revision: analysis?.revision,
   };
 }

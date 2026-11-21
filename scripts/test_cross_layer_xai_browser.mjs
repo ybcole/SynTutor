@@ -54,7 +54,7 @@ try {
   assert.equal(p1.learner_analysis.revision, undefined);
 
   // Tree has NO fabricated PP / empty P for 'tomorrow'
-  const svgLabels = await page.locator('#canonicalTreeView svg text').allInnerTexts();
+  const svgLabels = (await page.locator('#canonicalTreeView svg text').allTextContents()).map((s) => s.trim());
   assert(!svgLabels.includes('PP'), `Did not expect fabricated PP in tree: ${JSON.stringify(svgLabels)}`);
   assert(!svgLabels.includes('P'), `Did not expect fabricated P in tree: ${JSON.stringify(svgLabels)}`);
 
@@ -115,6 +115,53 @@ try {
   const scaresCtrlText = await page.locator('#explainNode').innerText();
   assert(scaresCtrlText.includes('plural noun'), scaresCtrlText);
   assert(!scaresCtrlText.includes('adjective'), scaresCtrlText);
+
+  // 5. Lexical uncertainty vs canonical determiner/possessive controls ("Ths cat sleeps.", "Ths boys walk.", "His cat sleeps.", "Ana sleeps.")
+  const pHis = await submitAndInspect(page, 'His cat sleeps.');
+  assert.equal(pHis.br_analysis.status, 'normalized');
+  const hisLabels = (await page.locator('#canonicalTreeView svg text').allTextContents()).map((s) => s.trim());
+  assert(hisLabels.includes('POSS'), `Expected canonical POSS on 'His cat sleeps.': ${JSON.stringify(hisLabels)}`);
+
+  const pThs = await submitAndInspect(page, 'Ths cat sleeps.');
+  assert.equal(pThs.br_analysis.status, 'unresolved');
+  assert.equal(pThs.learner_analysis.tree_status, 'provisional');
+  const thsLabels = (await page.locator('#canonicalTreeView svg text').allTextContents()).map((s) => s.trim());
+  assert(!thsLabels.includes('POSS'), `Must not display unverified POSS node for 'Ths': ${JSON.stringify(thsLabels)}`);
+  assert(!thsLabels.includes('DET'), `Must not fabricate canonical DET node for 'Ths': ${JSON.stringify(thsLabels)}`);
+  const noticeText = await page.locator('#treeAuthorityNotice').innerText();
+  assert(noticeText.includes('Provisional B-R working tree'), `Expected provisional notice: ${noticeText}`);
+  const thsFullExplain = await page.locator('#explainNode').innerText();
+  assert(thsFullExplain.includes('Lexical uncertainty'), `Expected lexical uncertainty badge: ${thsFullExplain}`);
+  assert(thsFullExplain.includes('“Ths”') && thsFullExplain.includes('uncertain'), `Expected uncertainty explanation for Ths: ${thsFullExplain}`);
+  assert(thsFullExplain.includes('“The”') && thsFullExplain.includes('“This”'), `Expected plausible readings for Ths: ${thsFullExplain}`);
+  assert(thsFullExplain.includes('agrees with its subject'), `Expected valid agreement between cat and sleeps preserved: ${thsFullExplain}`);
+  assert(!thsFullExplain.includes('The checks found no clear grammatical issue.'), `Must not claim clean verification: ${thsFullExplain}`);
+  assert(!thsFullExplain.toLowerCase().includes('possessive'), `Must not claim possessive for Ths: ${thsFullExplain}`);
+
+  // Click 'Ths' node directly -> verify node-level uncertainty explanation & Determiners lesson
+  const thsNode = page.locator('#canonicalTreeView svg g[data-node-id="sg-root-0-0"]');
+  await thsNode.click();
+  await page.waitForFunction(() => document.querySelector('#explainNode [data-learner-reset-selection]') !== null);
+  const thsNodeText = await page.locator('#explainNode').innerText();
+  assert(thsNodeText.includes('orthographically uncertain token'), `Expected node-level uncertainty on Ths: ${thsNodeText}`);
+  assert(!thsNodeText.toLowerCase().includes('possessive'), `Must not call Ths a possessive word: ${thsNodeText}`);
+  const thsLessonHref = await page.locator('#explainNode .xai-lesson-link').getAttribute('href');
+  assert.equal(thsLessonHref, '#lesson/br-07/concepts');
+
+  // Plural agreement preserved under lexical uncertainty ("Ths boys walk.")
+  const pThsBoys = await submitAndInspect(page, 'Ths boys walk.');
+  assert.equal(pThsBoys.br_analysis.status, 'unresolved');
+  const thsBoysExplain = await page.locator('#explainNode').innerText();
+  assert(thsBoysExplain.includes('“boys”') && thsBoysExplain.includes('“walk”') && thsBoysExplain.includes('agrees with its subject'),
+    `Expected valid plural agreement on Ths boys walk.: ${thsBoysExplain}`);
+  assert(thsBoysExplain.includes('“The”') && thsBoysExplain.includes('“These”') && thsBoysExplain.includes('“Those”'),
+    `Expected plural-compatible determiner readings: ${thsBoysExplain}`);
+
+  // Proper-name control ("Ana sleeps.") stays canonical & clean
+  const pAna = await submitAndInspect(page, 'Ana sleeps.');
+  assert.equal(pAna.br_analysis.status, 'normalized');
+  const anaLabels = (await page.locator('#canonicalTreeView svg text').allTextContents()).map((s) => s.trim());
+  assert(anaLabels.includes('name'), `Expected canonical name node for Ana: ${JSON.stringify(anaLabels)}`);
 
   await context.close();
   console.log('PASS: live Flask + Chromium cross-layer consistency, licensing, explanations, corrections, and lesson routing.');

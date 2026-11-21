@@ -761,17 +761,59 @@ def _dep_role_phrase(leaf, leaves, node_label=None):
     }.get(dep)
 
 
-def _runtime_description(node, graph, by_id, ids, leaves, finding_token_ids=None):
+def _format_candidate_readings(candidates, capitalize=False):
+    items = [_quote(c.capitalize() if capitalize else c) for c in (candidates or [])]
+    if not items:
+        return ''
+    if len(items) == 1:
+        return items[0]
+    if len(items) == 2:
+        return f'{items[0]} or {items[1]}'
+    return f'{", ".join(items[:-1])}, or {items[-1]}'
+
+
+def _runtime_description(node, graph, by_id, ids, leaves, finding_token_ids=None, unresolved_by_id=None):
     """Explain witnessed features, internal structure, and local relations on the existing graph."""
     label = node.get('label') or _word_kind(node, by_id)
     surface = _node_phrase(node)
     if node['kind'] in {'gap', 'empty', 'elided_terminal'} or not str(node.get('surface') or '').strip():
         return _describe_empty_node(node, by_id, graph=graph, leaves=leaves, finding_token_ids=finding_token_ids)
+    if len(ids) == 1 and unresolved_by_id and ids[0] in unresolved_by_id:
+        u = unresolved_by_id[ids[0]]
+        cand_txt = _format_candidate_readings(u.get('candidates'), capitalize=u['surface'][:1].isupper())
+        if cand_txt:
+            return (f'{surface} is an orthographically uncertain token (plausibly intended as a determiner '
+                    f'such as {cand_txt}); its lexical category cannot be confirmed from spelling alone.')
+        return (f'{surface} has an uncertain spelling here, so its lexical category and grammatical role '
+                'cannot be confirmed from spelling alone.')
     basic = _describe_node(node, graph, by_id)
     if graph['status'] == 'provisional':
         # Use the selected observation. Provisional constituents never acquire
         # a head, attachment or function solely from their display position,
         # but single-word nodes may report independently corroborated morphology.
+        node_uncertain = [unresolved_by_id[i] for i in ids if unresolved_by_id and i in unresolved_by_id]
+        if node_uncertain:
+            u = node_uncertain[0]
+            u_tok = _quote(u['surface'])
+            cand_txt = _format_candidate_readings(u.get('candidates'), capitalize=u['surface'][:1].isupper())
+            cand_hint = f' (plausibly {cand_txt})' if cand_txt else ''
+            children = [by_id[i] for i in node.get('child_ids', []) if i in by_id]
+            if label == 'NP':
+                head_leaf = next(
+                    (leaves[i] for i in reversed(ids)
+                     if i in leaves and i not in unresolved_by_id
+                     and leaves[i].get('type') in {'NN', 'NNS', 'NNP', 'NNPS'}),
+                    None,
+                )
+                if head_leaf:
+                    return (f'The working tree provisionally groups {surface} as a noun phrase headed by '
+                            f'{_quote(head_leaf["surface"])}, while the spelling and lexical category of '
+                            f'{u_tok}{cand_hint} remain uncertain.')
+            if label == 'S' and len(children) >= 2 and children[0].get('label') == 'NP' and children[1].get('label') == 'VP':
+                subj = _node_phrase(children[0])
+                pred = _node_phrase(children[1])
+                return (f'In this provisional analysis, {subj} functions as the subject and {pred} as the predicate, '
+                        f'while the spelling and lexical category of {u_tok}{cand_hint} remain uncertain.')
         label_name = NAMES.get(label)
         if len(ids) == 1 and ids[0] in leaves:
             morph_desc = _word_morphology_summary(leaves[ids[0]])
@@ -1129,8 +1171,28 @@ def build_learner_analysis(analysis, br_analysis, explanation, findings, relatio
     source_tokens = _source_tokens_by_node(graph, analysis)
     graph = {**graph, 'source_tokens': source_tokens}
     result['tree_status'] = 'provisional' if graph['status'] == 'provisional' else 'canonical'
+    try:
+        from .spellcheck import uncertain_function_word_candidates, uncertain_function_words, unresolved_spelling_tokens
+    except ImportError:
+        from spellcheck import uncertain_function_word_candidates, uncertain_function_words, unresolved_spelling_tokens
+    unresolved_tokens = list(summary.get('unresolved_tokens') or unresolved_spelling_tokens(analysis) or [])
+    uncertain_fn_ids = {row['token_id'] for row in uncertain_function_words(analysis)}
+    unresolved_by_id = {}
+    for row in unresolved_tokens:
+        tid = row['token_id']
+        nxt_leaf = leaves.get(tid + 1)
+        nxt_type = nxt_leaf.get('type') if nxt_leaf else None
+        cands = uncertain_function_word_candidates(row['surface'], nxt_type) if tid in uncertain_fn_ids else []
+        unresolved_by_id[tid] = {
+            'token_id': tid,
+            'surface': row['surface'],
+            'candidates': cands,
+        }
+    if unresolved_tokens:
+        result['unresolved_tokens'] = unresolved_tokens
     verdict = summary.get('verdict')
-    sentence_not_clean = verdict != 'grammatical' or bool(findings)
+    has_rule_or_verdict_issue = verdict != 'grammatical' or bool(findings)
+    sentence_not_clean = has_rule_or_verdict_issue or bool(unresolved_by_id)
     conflict_tokens = sorted(i for i, lf in leaves.items() if _has_category_conflict(lf))
     finding_token_ids = {i for row in findings for i in row.get('target_token_ids', [])}
     unlicensed_empty = []
@@ -1156,16 +1218,22 @@ def build_learner_analysis(analysis, br_analysis, explanation, findings, relatio
             # this node is directly one of its participants (or wholly within
             # the pair), never leaking onto an outer unverified/broken predicate.
             if not covered or not covered.issubset(part_set):
-                if node['parent_id'] is not None or sentence_not_clean or not covered.intersection(part_set):
+                if node['parent_id'] is not None or has_rule_or_verdict_issue or not covered.intersection(part_set):
                     continue
             rel_text = row['text']
-            if sentence_not_clean:
+            if has_rule_or_verdict_issue:
                 rel_text = f'Locally, {rel_text} This local match does not establish that the rest of the sentence is grammatical.'
+            elif unresolved_by_id:
+                rel_text = f'Locally, {rel_text} This local match holds despite the remaining lexical uncertainty in the sentence.'
             if rel_text not in seen_rel:
                 seen_rel.add(rel_text)
                 observed.append(rel_text)
 
-        node_text = _runtime_description(node, graph, by_id, ids, leaves, finding_token_ids=finding_token_ids)
+        node_text = _runtime_description(
+            node, graph, by_id, ids, leaves,
+            finding_token_ids=finding_token_ids,
+            unresolved_by_id=unresolved_by_id,
+        )
         if node['parent_id'] is None and verdict != 'grammatical' and not findings:
             node_text = f'{node_text} However, the overall sentence could not be verified as grammatical.'
         if (node.get('label') == 'P' and not str(node.get('surface') or '').strip()) or (
@@ -1177,10 +1245,15 @@ def build_learner_analysis(analysis, br_analysis, explanation, findings, relatio
         node_lesson = None
         suppress_category_lesson = False
         is_conflicted = len(ids) == 1 and ids[0] in conflict_tokens
+        is_uncertain_token = len(ids) == 1 and ids[0] in unresolved_by_id
         if not related:
             lbl = node.get('label') or _word_kind(node, by_id)
             parent_n = by_id.get(node.get('parent_id'))
-            if is_conflicted:
+            if is_uncertain_token:
+                suppress_category_lesson = True
+                if unresolved_by_id[ids[0]].get('candidates'):
+                    node_lesson = {'route': '#lesson/br-07/concepts', 'label': 'Determiners and pre-determiners'}
+            elif is_conflicted:
                 suppress_category_lesson = True
             elif lbl == 'DET' and not str(node.get('surface') or '').strip():
                 sib_ids = [i for cid in (parent_n.get('child_ids', []) if parent_n else [])
@@ -1213,10 +1286,14 @@ def build_learner_analysis(analysis, br_analysis, explanation, findings, relatio
             **({'lesson': node_lesson} if node_lesson else {}),
             **({'suppress_category_lesson': True} if suppress_category_lesson else {}),
         }
-        if node['parent_id'] is None and resolved:
-            result['sentence_text'] = result['nodes'][ident]['text']
+        if node['parent_id'] is None and (resolved or (unresolved_by_id and not has_rule_or_verdict_issue)):
+            root_overview = result['nodes'][ident]['text']
+            if unresolved_by_id and not has_rule_or_verdict_issue and observed:
+                root_overview = f'{root_overview} {observed[0]}'
+            result['sentence_text'] = root_overview
     result['consistency'] = {
         'category_conflicts': [leaves[i]['surface'] for i in conflict_tokens],
+        'unresolved_tokens': [row['surface'] for row in unresolved_tokens],
         'unlicensed_empty_nodes': unlicensed_empty,
         'local_only_verdict_qualified': sentence_not_clean,
     }

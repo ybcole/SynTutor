@@ -455,11 +455,13 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   panel.setAttribute('aria-live', 'polite');
   const findings = options.findings || [];
   const selected = options.selected;
+  const unresolvedTokens = options.unresolvedTokens || [];
+  const hasLexicalUncertainty = unresolvedTokens.length > 0;
   const partial = options.treeUnresolved && findings.length;
   const description = selected?.text || options.overview || evidenceParagraphText(evidence, options);
   const text = selected ? description : partial
     ? 'Partial grammatical analysis. The findings below are supported by available evidence.'
-    : options.treeUnresolved
+    : (options.treeUnresolved && !hasLexicalUncertainty)
       ? 'Analysis incomplete. The syntax remains uncertain and the grammatical result is inconclusive.'
       : options.paragraphOverride || description;
   const paragraph = document.createElement('p');
@@ -467,10 +469,11 @@ export function renderEvidence(evidence, host = document.querySelector('#explain
   paragraph.className = 'learner-grammar-paragraph';
   paragraph.textContent = text;
   panel.append(paragraph);
-  if (!selected && options.verdict && !options.treeUnresolved) {
+  if (!selected && (options.verdict || hasLexicalUncertainty) && (!options.treeUnresolved || hasLexicalUncertainty)) {
     const verdict = document.createElement('div');
     verdict.dataset.learnerVerdict = '';
     verdict.textContent = findings.length ? 'Grammar findings'
+      : hasLexicalUncertainty ? 'Lexical uncertainty — provisional analysis'
       : options.verdict === 'grammatical' ? 'The checks found no clear grammatical issue.'
       : 'The grammar result remains inconclusive.';
     panel.append(verdict);

@@ -217,7 +217,7 @@ export function renderLessonTree(envelope, {
     if (node.triangle) {
       const half=Math.min(widthOf(node)/2-12,80);
       const bottom = y + rows.length * 18;
-      g.append(svgNode('polygon',{points:`${x},${bottom+12} ${x-half},${bottom+45} ${x+half},${bottom+45}`}));
+      g.append(svgNode('polygon',{points:`${x},${bottom+12} ${x-half},${bottom+45} ${x+half},${bottom+45}`,'pointer-events':'all'}));
       const words=svgNode('text',{x,y:bottom+68,'text-anchor':'middle'});words.textContent=node.words.join(' ');g.append(words);
       if (highlightWords) wordLabels.set(node, words);
     }

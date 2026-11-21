@@ -353,6 +353,50 @@ if __name__ == '__main__':
         print(f'{line!r} -> {corrected!r}  unknown={unknown}')
 
 
+def uncertain_function_word_candidates(word, next_type=None):
+    """Return plausible closed-class determiner readings for an uncertain token."""
+    low = (word or '').lower()
+    if not low.isascii() or not low.isalpha() or len(low) < 3:
+        return []
+    ordered_forms = (
+        'the', 'this', 'that', 'these', 'those',
+        'his', 'her', 'its', 'our', 'your', 'their', 'my',
+        'whose', 'which', 'what',
+    )
+    singular_only = {'this', 'that', 'a', 'an'}
+    plural_only = {'these', 'those'}
+    low_consonants = [c for c in low if c not in 'aeiou']
+    candidates = []
+    for form in ordered_forms:
+        if form == low:
+            continue
+        if next_type in {'NN', 'NNP'} and form in plural_only:
+            continue
+        if next_type in {'NNS', 'NNPS'} and form in singular_only:
+            continue
+        vowel_deleted = any(
+            low == form[:i] + form[i + 1:]
+            for i, ch in enumerate(form) if ch in 'aeiou'
+        )
+        transposed = any(
+            low == form[:i] + form[i + 1] + form[i] + form[i + 2:]
+            for i in range(len(form) - 1)
+        )
+        same_prefix_sub = (
+            len(low) == len(form) >= 3
+            and low[:2] == form[:2]
+            and sum(a != b for a, b in zip(low, form)) == 1
+        )
+        consonant_skeleton = (
+            len(low_consonants) >= 2
+            and low[0] == form[0]
+            and low_consonants == [c for c in form if c not in 'aeiou']
+        )
+        if vowel_deleted or transposed or same_prefix_sub or consonant_skeleton:
+            candidates.append(form)
+    return candidates
+
+
 def uncertain_function_words(analysis):
     """Identify an unresolved orthographic reading in a closed grammatical slot.
 

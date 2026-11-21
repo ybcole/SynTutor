@@ -173,6 +173,91 @@ class CrossLayerLinguisticConsistencyTest(unittest.TestCase):
         self.assertEqual(v2['tree_status'], 'provisional')
         self.assertIn('reliable syntax tree', v2['sentence_text'])
 
+    def test_lexical_uncertainty_and_determiner_controls(self):
+        # 1-3. Canonical determiner / demonstrative / possessive controls
+        det_controls = [
+            ('The cat sleeps.', 'ART', 'The'),
+            ('This cat sleeps.', 'DEM', 'This'),
+            ('His cat sleeps.', 'POSS', 'His'),
+        ]
+        for sentence, expected_label, expected_word in det_controls:
+            with self.subTest(control=sentence):
+                payload, view = self.inspect(sentence)
+                self.assertGlobalInvariants(sentence, payload, view)
+                self.assertEqual(payload['br_analysis']['status'], 'normalized')
+                self.assertEqual(view['tree_status'], 'canonical')
+                self.assertEqual(view['findings'], [])
+                self.assertIsNone(payload['summary'].get('unresolved_tokens'))
+                root = payload['br_analysis']['tree']['root']
+                labels = [n.get('label') for n in _iter_tree(root)]
+                self.assertIn('DET', labels)
+                self.assertIn(expected_label, labels)
+
+        # 4-5. Uncertain determiner-slot tokens ('Ths cat sleeps.', 'Ths boys walk.')
+        uncertain_cases = [
+            ('Ths cat sleeps.', 'cat', 'sleeps', ('“The”', '“This”')),
+            ('Ths boys walk.', 'boys', 'walk', ('“The”', '“These”', '“Those”')),
+        ]
+        for sentence, noun, verb, expected_readings in uncertain_cases:
+            with self.subTest(uncertain=sentence):
+                payload, view = self.inspect(sentence)
+                self.assertGlobalInvariants(sentence, payload, view)
+                # Must not promote 'Ths' into a verified canonical DET -> POSS tree
+                self.assertEqual(payload['br_analysis']['status'], 'unresolved')
+                self.assertIsNone(payload['br_analysis']['tree'])
+                self.assertIsNotNone(payload['br_analysis']['working_tree'])
+                self.assertEqual(view['tree_status'], 'provisional')
+                self.assertEqual(payload['summary']['unresolved_tokens'], [{'token_id': 0, 'surface': 'Ths'}])
+                self.assertEqual(view['unresolved_tokens'], [{'token_id': 0, 'surface': 'Ths'}])
+                self.assertEqual(view['consistency']['unresolved_tokens'], ['Ths'])
+                w_root = payload['br_analysis']['working_tree']['root']
+                w_labels = [n.get('label') for n in _iter_tree(w_root)]
+                self.assertNotIn('POSS', w_labels)
+                self.assertNotIn('DET', w_labels)
+                # Valid local subject-verb agreement is preserved and qualified
+                self.assertTrue(any(r['matches'] and r['kind'] == 'subject_verb_agreement' for r in view['relationships']))
+                self.assertIn('provisional analysis', view['sentence_text'].lower())
+                self.assertIn('“Ths”', view['sentence_text'])
+                self.assertIn('uncertain', view['sentence_text'].lower())
+                self.assertIn(f'“{noun}”', view['sentence_text'])
+                self.assertIn(f'“{verb}”', view['sentence_text'])
+                self.assertIn('agrees with its subject', view['sentence_text'])
+                for reading in expected_readings:
+                    self.assertIn(reading, view['sentence_text'])
+                # Node explanation for 'Ths' communicates uncertainty and never claims possessive
+                for nd in view['nodes'].values():
+                    self.assertNotIn('possessive word', nd['text'].lower())
+                    self.assertNotIn('possessive position', nd['text'].lower())
+                ths_node = view['nodes']['sg-root-0-0']
+                self.assertIn('uncertain', ths_node['text'].lower())
+                for reading in expected_readings:
+                    self.assertIn(reading, ths_node['text'])
+                self.assertEqual(ths_node.get('lesson', {}).get('route'), '#lesson/br-07/concepts')
+
+        # 6. Clear transposed determiner typo ('Teh cat sleeps.')
+        payload, view = self.inspect('Teh cat sleeps.')
+        self.assertGlobalInvariants('Teh cat sleeps.', payload, view)
+        self.assertEqual(payload['br_analysis']['status'], 'unresolved')
+        self.assertEqual(view['tree_status'], 'provisional')
+        self.assertEqual(payload['summary']['unresolved_tokens'], [{'token_id': 0, 'surface': 'Teh'}])
+        self.assertTrue(any(f['constraint'] == 'C-SPELLING' and '“the”' in f['text'] for f in view['findings']))
+        for nd in view['nodes'].values():
+            self.assertNotIn('“Teh” is a noun', nd['text'])
+
+        # 7-8. Proper-name controls ('Tsh arrived yesterday.', 'Ana sleeps.')
+        for prop in ('Tsh arrived yesterday.', 'Ana sleeps.'):
+            with self.subTest(proper_name=prop):
+                payload, view = self.inspect(prop)
+                self.assertGlobalInvariants(prop, payload, view)
+                self.assertEqual(payload['br_analysis']['status'], 'normalized')
+                self.assertEqual(view['tree_status'], 'canonical')
+                self.assertEqual(view['findings'], [])
+                self.assertIsNone(payload['summary'].get('unresolved_tokens'))
+                self.assertIsNone(view.get('revision'))
+                root = payload['br_analysis']['tree']['root']
+                labels = [n.get('label') for n in _iter_tree(root)]
+                self.assertIn('name', labels)
+
 
 if __name__ == '__main__':
     unittest.main()

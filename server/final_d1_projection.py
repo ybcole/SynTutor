@@ -34,6 +34,9 @@ DETERMINERS = {
     **dict.fromkeys(("this", "that", "these", "those"), "DEM"),
     **dict.fromkeys(("some", "any", "no", "each", "every", "either", "neither", "several", "enough"), "Q"),
 }
+POSSESSIVE_DETERMINERS = {
+    "my", "your", "his", "her", "its", "our", "their", "whose", "thy", "one's",
+}
 DEGREE = {"very", "too", "rather", "quite", "so", "as", "more", "most", "less", "least", "somewhat", "how", "almost", "extremely", "fairly", "any"}
 QA = {"many", "few", "much", "little", "more", "less", "fewer", "most", "least"}
 PREDET = {"all", "both", "half", "double", "twice"}
@@ -211,6 +214,15 @@ class Projection:
             # Coordinators are overt terminals in B-R phrase markers rather
             # than a phrase category of their own.
             return word_node(part)
+        if part.get("uncertain_token") or (
+            tag(part) in {"DT", "PDT", "PRP$"}
+            and word(part) not in (set(DETERMINERS) | POSSESSIVE_DETERMINERS | PREDET)
+        ):
+            return {
+                "triangle": True,
+                "words": [part["surface"]],
+                "notes": ["Lexical category and spelling of this token remain uncertain."],
+            }
         label = self.WORKING_LEAF_LABEL.get(tag(part))
         if tag(part) in VERB_TAGS - {"MD"}:
             child = branch("V", (), word_node(part))
@@ -714,7 +726,13 @@ class Projection:
             det = branch("DET", ("Ch7 p. 143 [10]",))
             start = 0
             first = nodes[0]
-            if leaf(first) and (tag(first) == "PRP$" or word(first) in DETERMINERS):
+            if any(lf.get("uncertain_token") for n in nodes for lf in leaves(n)):
+                raise ProjectionUnavailable("Lexical category cannot be verified for an orthographically uncertain token")
+            if leaf(first) and tag(first) in {"PRP$", "DT", "PDT"} and word(first) not in (
+                POSSESSIVE_DETERMINERS | set(DETERMINERS) | PREDET
+            ):
+                raise ProjectionUnavailable("Determiner or possessive category cannot be verified for this token")
+            if leaf(first) and ((tag(first) == "PRP$" and word(first) in POSSESSIVE_DETERMINERS) or word(first) in DETERMINERS):
                 label = "POSS" if tag(first) == "PRP$" else DETERMINERS[word(first)]
                 det = branch("DET", NOUN, branch(label, NOUN, word_node(first)))
                 start = 1
