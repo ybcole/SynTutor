@@ -305,7 +305,7 @@ PLURAL_ONLY = {
 
 INDEFINITE_PRON = {
     'everyone', 'everybody', 'someone', 'somebody', 'anyone', 'anybody',
-    'nobody', 'nothing', 'everything', 'something', 'anything', 'none',
+    'nobody', 'nothing', 'everything', 'something', 'anything',
 }
 
 STATIVE_PROGRESSIVE = {
@@ -848,6 +848,14 @@ def _predicate_verb(vp):
     return None
 
 
+def possible_indefinite_command(subject, verb, final):
+    """Recognize a root bare predicate that could be a command with a subject."""
+    return (_lower(subject) in {'everyone', 'everybody'}
+            and subject['span'][0] == 0 and subject['span'][1] == verb['span'][0]
+            and verb.get('type') in {'VB', 'VBP'} and verb.get('fpos') == 'VERB'
+            and verb.get('fdep') == 'ROOT' and final.get('surface') == '!')
+
+
 def _verb_key(leaf):
     t = leaf.get('type')
     s = _lower(leaf)
@@ -1351,31 +1359,29 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
 
     # 2.8 Indefinite pronoun agreement
     for clause in clauses:
-        cl = _leaves(clause)
-        for i, lf in enumerate(cl):
-            if _lower(lf) in INDEFINITE_PRON:
-                # Only an indefinite pronoun in subject position governs the
-                # clause verb.  If a finite/aux verb already appeared earlier in
-                # this clause the pronoun is an object ("... that puzzled
-                # everyone"), so it must not be matched with a later verb.
-                if any(x.get('type') in FINITE_TYPES
-                       or _lower(x) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)
-                       for x in cl[:i]):
-                    continue
-                for nxt in cl[i + 1:]:
-                    vk = _verb_key(nxt)
-                    if nxt.get('type') in FINITE_TYPES or _lower(nxt) in (
-                            BE_SURFACES | HAVE_SURFACES | DO_SURFACES):
-                        if vk == ('*', 'non3sg'):
-                            out.append(_finding('2.8', 'error', 'C-INDEFINITE-AGREE',
-                                                'subject-verb agreement', nxt['id'],
-                                                f"'{lf['surface']}' is singular, so it needs a singular "
-                                                f"verb; '{nxt['surface']}' is plural and does not "
-                                                f"agree with it.",
-                                                _tree_evidence(clause['id'], 'indefinite + finite',
-                                                               [{'node': lf['id']},
-                                                                {'node': nxt['id']}])))
-                break
+        core = [child for child in clause.get('children', []) if child.get('type') in ('NP', 'VP')]
+        if [child['type'] for child in core] != ['NP', 'VP']:
+            continue
+        subject, predicate = core
+        verb = _predicate_verb(predicate)
+        if verb is None or verb.get('type') != 'VBP' or _verb_key(verb) != ('*', 'non3sg'):
+            continue
+        start, end = subject['span']
+        nominal = [lf for lf in _own_leaves(clause)
+                   if start <= lf['span'][0] < end
+                   and lf.get('type') in {'NN', 'NNS', 'NNP', 'NNPS', 'PRP', 'CC'}]
+        if len(nominal) != 1 or _lower(nominal[0]) not in INDEFINITE_PRON:
+            continue
+        pronoun = nominal[0]
+        if possible_indefinite_command(pronoun, verb, leaves[-1]):
+            continue
+        out.append(_finding('2.8', 'error', 'C-INDEFINITE-AGREE',
+                            'subject-verb agreement', verb['id'],
+                            f"'{pronoun['surface']}' is a singular subject. "
+                            f"The present-tense verb '{verb['surface']}' needs "
+                            f"the form used with 'he', 'she', or 'it'.",
+                            _tree_evidence(clause['id'], 'indefinite + finite',
+                                           [{'node': pronoun['id']}, {'node': verb['id']}])))
 
     # 2.14 Reflexive-antecedent
     for clause in clauses:
@@ -5654,8 +5660,6 @@ _OBLIGATORILY_TRANSITIVE_VERBS = {
     'reject', 'rejects', 'rejected', 'rejecting',
     'deceive', 'deceives', 'deceived', 'deceiving',
     'bury', 'buries', 'buried', 'burying',
-    'take', 'takes', 'took', 'taken', 'taking',
-    'cure', 'cures', 'cured', 'curing',
     'destroy', 'destroys', 'destroyed', 'destroying',
     'repair', 'repairs', 'repaired', 'repairing',
     'construct', 'constructs', 'constructed', 'constructing',
@@ -6055,12 +6059,19 @@ def _check_syntax_constraints(root, clauses, leaves):
             if obj_lvs and _lower(obj_lvs[0]) in {'a', 'an'}:
                 continue
         if _lower(v_leaf) in {'talk', 'talks', 'talked', 'talking'}:
-            if _lower(obj_head) in {'business', 'sense', 'nonsense', 'politics',
-                                    'shop', 'trash', 'rubbish', 'english',
-                                    'french', 'spanish', 'german', 'chinese',
-                                    'japanese', 'sports', 'money', 'work',
-                                    'turkey', 'smack', 'stuff', 'things'}:
+            # 'Talk' can take a topic as its object, or a person in a
+            # caused-action construction. Diagnose a bare addressee only
+            # where the candidate provides positive personal evidence.
+            person = (obj_head.get('fentity') == 'PERSON'
+                      or _lower(obj_head) in {'me', 'you', 'him', 'her', 'us', 'them'})
+            if not person or ch[obj_idx + 1:]:
                 continue
+            explanation = (f"If '{obj_np.get('surface', obj_head['surface'])}' is the addressee, "
+                           f"use 'to' or 'with' after '{v_leaf['surface']}'.")
+        else:
+            explanation = (f"The verb '{v_leaf['surface']}' is intransitive and cannot take the "
+                           f"direct object '{obj_np.get('surface', obj_head['surface'])}' without "
+                           f"a preposition.")
         if _lower(v_leaf) in {'come', 'comes', 'came', 'coming'}:
             if _lower(obj_head) in {'home', 'way', 'ways', 'place', 'end', 'age',
                                     'distance', 'mile', 'miles', 'step', 'steps',
@@ -6070,9 +6081,7 @@ def _check_syntax_constraints(root, clauses, leaves):
                 continue
         out.append(_finding(
             '6.21', 'error', 'C-INTRANSITIVE-OBJECT', 'verb transitivity', v_leaf['id'],
-            f"The verb '{v_leaf['surface']}' is intransitive and cannot take the "
-            f"direct object '{obj_np.get('surface', obj_head['surface'])}' without "
-            f"a preposition.",
+            explanation,
             _tree_evidence(nd['id'], 'intransitive V + direct NP',
                            [{'node': v_leaf['id']}, {'node': obj_np['id']}])))
 

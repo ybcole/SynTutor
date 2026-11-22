@@ -635,11 +635,15 @@ def _parent_map(root):
     return parents
 
 
-def _antecedent_number(np_node):
-    """'sg' / 'pl' / None for the NP a relative clause modifies."""
+def _antecedent_number_evidence(np_node):
+    """Return number and the overt words that support it."""
     kids = np_node.get('children', [])
-    if any(c.get('type') in ('CC', 'CONJP', 'UCP') for c in kids):
-        return 'pl'
+    coordinators = [c for c in kids if c.get('type') in ('CC', 'CONJP', 'UCP')]
+    if coordinators:
+        if all(_lower(c) == 'and' for c in coordinators):
+            return 'pl', coordinators
+        # Alternative/disjunctive antecedents do not supply a unique number.
+        return None, []
     # Partitive quantifier NPs ('a lot of cafes', 'a number of students',
     # 'a couple of books', 'plenty of options') inherit number from the
     # object of 'of', not from the singular quantifier noun 'lot'/'number'.
@@ -652,21 +656,24 @@ def _antecedent_number(np_node):
                 pp_nouns = [lf for lf in _leaves(of_pp)
                             if lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS')]
                 if pp_nouns:
-                    return ruleset._num_of(pp_nouns[-1])
+                    return ruleset._num_of(pp_nouns[-1]), [pp_nouns[-1]]
     excl_ids = {lf['id'] for c in kids if c.get('type') in ('PP', 'SBAR', 'S', 'VP') for lf in _leaves(c)}
     nouns = [lf for lf in _leaves(np_node)
              if lf['id'] not in excl_ids
              and lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')]
     if nouns:
-        return ruleset._num_of(nouns[-1])
-    first = _leaves(np_node)[0] if _leaves(np_node) else None
+        head = nouns[-1]
+        if _lower(head) in {'i', 'you'}:
+            return None, []
+        return ruleset._num_of(head), [head]
+    first = all_lvs[0] if all_lvs else None
     if first is not None:
         w = _lower(first)
         if w in ('those', 'these'):
-            return 'pl'
+            return 'pl', [first]
         if w in ('that', 'this'):
-            return 'sg'
-    return None
+            return 'sg', [first]
+    return None, []
 
 
 def _antecedent_animacy(np_node):
@@ -834,7 +841,7 @@ def check_relatives(root):
                          if k.get('type') == 'NP'), None)
             if ante is None:
                 continue
-            num = _antecedent_number(ante)
+            num, witnesses = _antecedent_number_evidence(ante)
             verb = _first_finite(clause['children'][0])
             if num is None or verb is None:
                 continue
@@ -842,6 +849,11 @@ def check_relatives(root):
             v_sg = verb.get('type') == 'VBZ' or vlow in SG_FINITE
             v_pl = verb.get('type') == 'VBP' or vlow in PL_FINITE
             if (num == 'pl' and v_sg) or (num == 'sg' and v_pl):
+                number = 'plural' if num == 'pl' else 'singular'
+                reason = (f"The relative pronoun '{wh[0]['surface']}' is the subject within the "
+                          f"relative clause and refers to the {number} antecedent '{ante['surface']}'. "
+                          f"The verb '{verb['surface']}' carries tense here and needs "
+                          f"a form that matches that subject.")
                 if vlow in SWAP_NUMBER:
                     fix = SWAP_NUMBER[vlow]
                 else:
@@ -852,15 +864,10 @@ def check_relatives(root):
                 out.append(_finding(
                     '2.7', 'error', 'C-RELATIVE-AGREE', 'relative clause',
                     verb['id'],
-                    f"The relative pronoun '{wh[0]['surface']}' takes its number "
-                    f"from the antecedent '{ante['surface']}' "
-                    f"({'plural' if num == 'pl' else 'singular'}), but the verb "
-                    f"'{verb['surface']}' is "
-                    f"{'singular' if v_sg else 'plural'}.",
+                    reason,
                     _tree_evidence(sbar['id'], 'antecedent NP + SBAR(WHNP S(VP))',
-                                   [{'node': ante['id']}, {'node': verb['id']}]),
-                    _rem(f"'{ante['surface']} {wh[0]['surface']} {verb['surface']}': "
-                         f"antecedent and verb disagree.",
+                                   [{'node': node['id']} for node in [*witnesses, wh[0], verb]]),
+                    _rem(reason,
                          (f"Change '{verb['surface']}' to '{fix}'." if fix
                           else "Make the verb agree with the antecedent."),
                          ([{'node': verb['id'], 'replacement': fix}] if fix else None),

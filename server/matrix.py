@@ -369,22 +369,7 @@ BARE_ARG_NOUNS = {
     'spring', 'summer', 'autumn', 'fall', 'winter', 'action',
     'badminton', 'basketball', 'football', 'handball', 'netball', 'volleyball',
 }
-# Dual count/mass nouns whose article requirement depends on grammatical context:
-# mass/uncountable in bare generic ('resistance to change'), mass-quantified
-# ('little change'), or domain-classified ('genetic manipulation', 'climate change')
-# uses, but countable when premodified by evaluative/sizing modifiers ('big change').
-DUAL_COUNT_MASS_NOUNS = {'change', 'manipulation'}
-_MASS_DOMAIN_MODIFIERS = {
-    'little', 'much', 'less', 'more', 'enough', 'no', 'some', 'any',
-    'genetic', 'social', 'political', 'economic', 'cultural', 'environmental',
-    'climate', 'technological', 'digital', 'structural', 'systemic',
-    'institutional', 'demographic', 'emotional', 'mental', 'physical',
-    'psychological', 'financial', 'behavioral', 'behavioural', 'data',
-    'market', 'media', 'image', 'gene', 'dna', 'cell', 'chemical',
-    'molecular', 'neural', 'statistical', 'currency', 'rate', 'regime',
-    'policy', 'career', 'lifestyle', 'global', 'constant', 'continuous',
-    'gradual', 'rapid', 'human', 'public', 'corporate', 'scientific',
-}
+DUAL_COUNT_MASS_NOUNS = {'change', 'delay', 'manipulation', 'strategy'}
 # Words the parser may tag as NN but which never take an article: indefinite
 # pronouns (everyone, somebody, ...) and bare temporal/deictic adverbs.
 ARTICLE_EXEMPT = {
@@ -1639,18 +1624,17 @@ def _needs_indefinite_article_error(np_node, parent_vp=None):
     if base in NONCOUNT_NOUNS or base in BARE_ARG_NOUNS \
             or surface in NONCOUNT_NOUNS or surface in BARE_ARG_NOUNS:
         return None
-    # Context-sensitive dual count/mass nouns ('change', 'manipulation'):
-    # exempt bare generic/unmodified uses ('resistance to change'), mass-quantified
-    # uses ('little change'), and relational/domain-modified abstract uses
-    # ('genetic manipulation', 'climate change'), while still catching countable
-    # evaluative/sizing uses ('big change', 'sudden change', 'major change').
+    # An adjective such as 'major' or 'sudden' can also modify a mass noun.
+    # Diagnose a missing determiner only where the phrase ranks a countable
+    # instance ('second change'). Read the NP's own modifiers, not an ordinal
+    # inside a complement ('change in the second quarter').
     if base in DUAL_COUNT_MASS_NOUNS or surface in DUAL_COUNT_MASS_NOUNS:
-        np_lvs = _leaves_list(np_node)
-        pre_lvs = [lf for lf in np_lvs if lf is not head and lf.get('span', [0])[0] < head.get('span', [0])[0]]
-        if not pre_lvs:
-            return None
-        if all(_lower(lf.get('surface', '')) in _MASS_DOMAIN_MODIFIERS
-               or lf.get('type') in ('RB', 'HYPH', ',') for lf in pre_lvs):
+        if not any(lf['span'][0] < head['span'][0]
+                   and _lower(lf['surface']) in {
+                       'first', 'second', 'third', 'fourth', 'fifth', 'sixth',
+                       'seventh', 'eighth', 'ninth', 'tenth',
+                   }
+                   for lf in _np_own_leaves(np_node)):
             return None
     # Irregular/classical plurals and zero-plurals mistagged as NN ('oases',
     # 'oxen', 'fish') do not require an indefinite singular article.
@@ -2459,6 +2443,10 @@ class MatrixEvaluator:
                     f"The words '{self._p(child)}' are the verb part of "
                     f"'{self._p(parent)}'. The subject is not a single word, so "
                     'this is accepted.')
+        if ruleset.possible_indefinite_command(subj_head, vp_head, _leaves_list(self._root)[-1]):
+            return ('unlisted', 'C-UNLISTED',
+                    'The bare verb may be a command. This reading does not require '
+                    'the singular form used in a statement.')
         # A fronted phrase set off by a comma ('Thanks to this, every task was
         # finished') is a topic/adverbial, not the subject, so agreement must not
         # be checked against it.

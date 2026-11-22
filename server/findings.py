@@ -108,10 +108,13 @@ FAMILIES = {
 }
 
 
-def _agreement(index, leaf, head_id, head, dependents):
+def _agreement(index, leaf, head_id, head, dependents, final):
     from matrix import NUMBER_AMBIGUOUS_HEADS, _agreement_ok, subject_key, verb_key
+    from ruleset import possible_indefinite_command
 
     surface = leaf['surface']
+    if possible_indefinite_command(leaf, head, final):
+        return None
     siblings = dependents.get(head_id, [])
     subj_deps = dependents.get(index, [])
     has_and_conj = (
@@ -184,6 +187,7 @@ def local_relationships(leaves):
                          PRONOUN_OBJECT_TO_SUBJECT, PRONOUN_SUBJECT_TO_OBJECT, bare_be_voice)
     from spellcheck import known_word
 
+    final = leaves[max(leaves)] if leaves else {}
     dependents = {}
     for index, leaf in leaves.items():
         if leaf.get('fhead') != index:
@@ -264,7 +268,7 @@ def local_relationships(leaves):
 
         # 1. Subject-verb agreement (present VBP/VBZ + past 'was'/'were')
         if dep in {'nsubj', 'nsubjpass'} and tag in {'NN', 'NNS', 'NNP', 'NNPS', 'PRP'}:
-            relation = _agreement(index, leaf, head_id, head, dependents)
+            relation = _agreement(index, leaf, head_id, head, dependents, final)
             if relation:
                 yield relation
 
@@ -657,6 +661,17 @@ def supported_findings(analysis, details):
                 targets = [span[0]]
                 gov = leaf.get('fhead')
                 participants = [gov] if gov in leaves and gov != span[0] else []
+                parent = nodes.get(detail.get('parent'), {})
+                parent_span = parent.get('span')
+                # Inserting a determiner before a premodifier changes the
+                # phrase, while the head noun remains the error target.
+                if parent.get('type') == 'NP' and parent_span:
+                    for edit in remediation.get('edits') or []:
+                        anchor = nodes.get(edit.get('node'), {}).get('span')
+                        if (edit.get('insert_before') and anchor
+                                and anchor[0] == parent_span[0] < span[0]
+                                and anchor[0] in leaves):
+                            participants.append(anchor[0])
                 lesson = 'determiner'
             elif code == 'C-NOUN-FORM' and span[1] == span[0] + 1:
                 leaf = leaves.get(span[0])

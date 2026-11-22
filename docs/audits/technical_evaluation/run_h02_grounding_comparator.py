@@ -1,6 +1,6 @@
-"""Paired whole-system grounding comparator for SynTutor H02.
+"""Paired grounded versus neural-only diagnostic comparison for SynTutor H02.
 
-Compares two genuinely functional, same-system conditions on the exact same
+Compares two system configurations on the exact same
 frozen external manifest (BLiMP 116, W&I+LOCNESS 120, EXPECT 169):
 
   Condition A (Grounded SynTutor):
@@ -15,7 +15,7 @@ frozen external manifest (BLiMP 116, W&I+LOCNESS 120, EXPECT 169):
     corrector (corrector.sweep + morph_diff), WITHOUT Linguistic Constraint
     Matrix / Cambridge rule grounding or supported_findings() corroboration.
 
-Does NOT modify any frozen evaluation scripts, datasets, or human worksheets.
+This compares subsystems, including their different correction policies.
 Outputs exact paired contingency tables, exact two-sided McNemar binomial tests
 on published external ground-truth labels, official ERRANT and EXPECT metrics,
 and a blank (unfabricated) blinded comparison worksheet for human prose review.
@@ -24,14 +24,14 @@ from __future__ import annotations
 
 import argparse
 import csv
-import hashlib
 import json
 import math
+import os
 import random
-import re
 import sys
 from collections import Counter
 from pathlib import Path
+from secrets import SystemRandom, token_hex
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -73,16 +73,17 @@ def wilson_ci(k: int, n: int, z: float = 1.959963984540054) -> list[float]:
 def run_ungrounded(text: str, grounded_view: dict) -> dict:
     """Run SynTutor's built-in neural detector + MLM perturbation corrector
     without Matrix/Cambridge/supported_findings grounding."""
-    det = grounded_view['summary'].get('detector') or detector.classify(text)
     parse_info = grounded_view['parse']
     tokens = parse_info['tokens']
     sentence = parse_info['text']
+    det = grounded_view['summary'].get('detector') or detector.classify(sentence)
     acceptable = bool(det and det.get('acceptable'))
-    verdict = 'grammatical' if acceptable else 'ungrammatical'
+    verdict = ('grammatical' if acceptable else 'ungrammatical') if (
+        det and det.get('available')) else 'unverified'
     correction = None
     target_ids: list[int] = []
     explanation = (det.get('explanation') if det else 'No acceptability rating available.')
-    if not acceptable and det and det.get('available'):
+    if verdict == 'ungrammatical':
         spans = [(t['start'], t['end']) for t in tokens if (t['t'] or '').isalpha()]
         located = corrector.sweep(sentence, detector.classify_many, spans=spans)
         if located is not None:
@@ -143,11 +144,75 @@ def parse_m2_fp_flags(hyp_path: Path, ref_path: Path) -> list[dict]:
     hyps = _load(hyp_path)
     refs = _load(ref_path)
     rows = []
-    for (hs, he), (rs, re_) in zip(hyps, refs):
+    for (hs, he), (rs, re_) in zip(hyps, refs, strict=True):
+        if hs != rs:
+            raise ValueError('M2 alignment mismatch between hypothesis and reference')
         tp = len(he & re_)
         fp = len(he - re_)
         rows.append({'sentence': rs, 'n_hyp': len(he), 'n_ref': len(re_), 'tp': tp, 'fp': fp})
     return rows
+
+
+CONCEPTS = ('principle', 'application', 'targets', 'evidence', 'no_false_claim')
+
+
+def pair_groups(rows):
+    groups = {}
+    for row in rows:
+        key, label = row['item_id'].rsplit(':', 1)
+        if label != row['gold_label'] or label in groups.setdefault(key, {}):
+            raise ValueError(f'Duplicate or invalid BLiMP pair member: {row["item_id"]}')
+        groups[key][label] = row['sentence']
+    for key, members in groups.items():
+        if set(members) != {'grammatical', 'ungrammatical'} or len(set(members.values())) != 2:
+            raise ValueError(f'Incomplete BLiMP pair: {key}')
+    return groups
+
+
+def paired_interval(groups, replications=10000):
+    """Percentile interval resampling the supplied groups as intact units."""
+    rng = random.Random(20261122)
+    draws = sorted(sum(sum(group) for group in sample) / sum(map(len, sample))
+                   for _ in range(replications)
+                   for sample in [rng.choices(groups, k=len(groups))])
+    return [draws[int((replications - 1) * q)] for q in (.025, .975)]
+
+
+def holm_adjust(tests):
+    adjusted, maximum = {}, 0
+    for i, (name, p) in enumerate(sorted(tests.items(), key=lambda item: item[1])):
+        maximum = max(maximum, min(1, (len(tests) - i) * p))
+        adjusted[name] = maximum
+    return adjusted
+
+
+def write_review(output, pairs):
+    """Include identical and unavailable pairs so the intake denominator is visible."""
+    rng = SystemRandom()
+    worksheet = output / 'BLINDED_GROUNDED_VS_UNGROUNDED_WORKSHEET.csv'
+    key = output / 'BLINDED_KEY_SEALED.json'
+    key_rows = []
+    shown = ('availability', 'verdict', 'correction', 'explanation')
+    ratings = [f'{arm}_{criterion}_rating' for arm in ('X', 'Y') for criterion in CONCEPTS]
+    with worksheet.open('w', newline='', encoding='utf-8') as handle:
+        writer = csv.writer(handle)
+        writer.writerow(['pair_id', 'source_sentence',
+                         *(f'{arm}_{field}' for arm in ('X', 'Y') for field in shown),
+                         *ratings, 'notes'])
+        for text, ground, neural in rng.sample(pairs, len(pairs)):
+            pair_id = token_hex(16)
+            arms = [('grounded', ground), ('neural_only', neural)]
+            rng.shuffle(arms)
+            writer.writerow([pair_id, text, *arms[0][1], *arms[1][1], *[''] * (len(ratings) + 1)])
+            key_rows.append({'pair_id': pair_id, 'X': arms[0][0], 'Y': arms[1][0]})
+    # Keep the identity map out of the reviewer materials.
+    with open(key, 'x', encoding='utf-8', opener=lambda path, flags: os.open(path, flags, 0o600)) as handle:
+        json.dump(key_rows, handle, indent=2)
+    return {'path': str(worksheet), 'n_total_pairs': len(pairs),
+            'n_identical_pairs': sum(x == y for _, x, y in pairs),
+            'n_differing_pairs': sum(x != y for _, x, y in pairs),
+            'n_both_available': sum(x[0] == y[0] == 'available' for _, x, y in pairs),
+            'human_annotated': False}
 
 
 def main():
@@ -156,7 +221,7 @@ def main():
     parser.add_argument('manifest', type=Path)
     parser.add_argument('output', type=Path)
     args = parser.parse_args()
-    args.output.mkdir(parents=True, exist_ok=False)
+    args.output.mkdir(mode=0o700, parents=True, exist_ok=False)
 
     batch = json.loads(args.manifest.read_text(encoding='utf-8'))
     if batch['scorer_sha256'] != external.digest(Path(external.__file__)):
@@ -168,17 +233,28 @@ def main():
     parse_engine.load_models()
     all_rows = [row for name in ('blimp', 'wi', 'expect') for row in batch[name]]
     sentences = list(dict.fromkeys(row['sentence'] for row in all_rows))
+    if len(sentences) != len(all_rows):
+        raise ValueError('Expected distinct inputs across the frozen sample')
+    memberships = pair_groups(batch['blimp'])
 
     grounded_views = {}
     grounded_fail = {}
     ungrounded_views = {}
+    ungrounded_fail = {}
     for text in sentences:
         try:
             view = analysis_api.build_payload(text)
+            if view['parse']['sentence_count'] != 1 or view['parse']['text'] != text.strip():
+                raise ValueError('application did not analyze the entire scoring item as one sentence')
             grounded_views[text] = view
-            ungrounded_views[text] = run_ungrounded(text, view)
         except Exception as exc:
             grounded_fail[text] = f'{type(exc).__name__}: {exc}'
+            ungrounded_fail[text] = grounded_fail[text]
+            continue
+        try:
+            ungrounded_views[text] = run_ungrounded(text, view)
+        except Exception as exc:
+            ungrounded_fail[text] = f'{type(exc).__name__}: {exc}'
 
     def _grounded_loader(text):
         if text in grounded_fail:
@@ -189,8 +265,8 @@ def main():
         return view
 
     def _ungrounded_loader(text):
-        if text in grounded_fail:
-            raise ValueError(grounded_fail[text])
+        if text in ungrounded_fail:
+            raise ValueError(ungrounded_fail[text])
         uv = ungrounded_views[text]
         if uv['parse']['sentence_count'] != 1 or uv['parse']['text'] != text.strip():
             raise ValueError('application did not analyze the entire scoring item as one sentence')
@@ -217,6 +293,7 @@ def main():
     b_all = c_all = 0
     b_fp = c_fp = 0
     by_pair = {}
+    paired_rows = []
     for row in batch['blimp']:
         s = row['sentence']
         gold = row['gold_label']
@@ -238,8 +315,10 @@ def main():
                 b_fp += 1
             elif g_bad and (not u_bad):
                 c_fp += 1
-        pair_key = ':'.join(row['item_id'].split(':')[:2])
+        pair_key = row['item_id'].rsplit(':', 1)[0]
         by_pair.setdefault(pair_key, []).append((g_ok, u_ok))
+        paired_rows.append({'item_id': row['item_id'], 'pair': pair_key,
+                            'gold': gold, 'grounded': gv, 'neural_only': uv})
 
     b_pair = c_pair = g_pair_ok = u_pair_ok = 0
     for pk, items in by_pair.items():
@@ -256,7 +335,9 @@ def main():
     g_m2_rows = parse_m2_fp_flags(g_dir / 'wi-hyp.m2', g_dir / 'wi-ref.m2')
     u_m2_rows = parse_m2_fp_flags(u_dir / 'wi-hyp.m2', u_dir / 'wi-ref.m2')
     b_wi_fp = c_wi_fp = 0
-    for gr, ur in zip(g_m2_rows, u_m2_rows):
+    for gr, ur in zip(g_m2_rows, u_m2_rows, strict=True):
+        if gr['sentence'] != ur['sentence']:
+            raise ValueError('W&I arms disagree on source order')
         g_has_fp = gr['fp'] > 0
         u_has_fp = ur['fp'] > 0
         if (not g_has_fp) and u_has_fp:
@@ -269,47 +350,38 @@ def main():
     g_fp_n = blimp_counts['grounded'][('grammatical', 'ungrammatical')]
     u_fp_n = blimp_counts['ungrounded'][('grammatical', 'ungrammatical')]
 
-    # Generate blank blinded human-review worksheet (NEVER fabricate human ratings)
-    rng = random.Random(20261122)
-    ws_path = args.output / 'BLINDED_GROUNDED_VS_UNGROUNDED_WORKSHEET.csv'
-    key_path = args.output / 'BLINDED_KEY_SEALED.json'
-    sealed_key = []
-    with ws_path.open('w', newline='', encoding='utf-8') as fh:
-        writer = csv.writer(fh)
-        writer.writerow([
-            'pair_id', 'dataset', 'source_sentence',
-            'system_X_verdict', 'system_X_correction', 'system_X_explanation',
-            'system_Y_verdict', 'system_Y_correction', 'system_Y_explanation',
-            'r1_X_principle_0_1', 'r1_X_application_0_1', 'r1_X_targets_0_1',
-            'r1_X_evidence_0_1', 'r1_X_no_false_claim_0_1',
-            'r1_Y_principle_0_1', 'r1_Y_application_0_1', 'r1_Y_targets_0_1',
-            'r1_Y_evidence_0_1', 'r1_Y_no_false_claim_0_1',
-            'r1_preferred_X_Y_tie', 'r1_notes',
-        ])
-        pid = 0
-        for ds_name in ('blimp', 'wi', 'expect'):
-            for row in batch[ds_name]:
-                s = row['sentence']
-                if s not in grounded_views:
-                    continue
-                gv = grounded_views[s]
-                uv = ungrounded_views[s]
-                g_exp = gv['learner_analysis'].get('sentence_text') or gv['summary'].get('explanation') or ''
-                u_exp = uv['explanation']
-                g_tuple = (gv['summary']['verdict'], gv['summary'].get('corrected_sentence') or '', g_exp)
-                u_tuple = (uv['verdict'], uv['corrected_sentence'] or '', u_exp)
-                if g_tuple == u_tuple:
-                    continue
-                pid += 1
-                flip = rng.choice([True, False])
-                sx, sy = (u_tuple, g_tuple) if flip else (g_tuple, u_tuple)
-                writer.writerow([f'H02-PAIR-{pid:03d}', ds_name, s, *sx, *sy] + [''] * 12)
-                sealed_key.append({
-                    'pair_id': f'H02-PAIR-{pid:03d}',
-                    'system_X': 'ungrounded' if flip else 'grounded',
-                    'system_Y': 'grounded' if flip else 'ungrounded',
-                })
-    key_path.write_text(json.dumps(sealed_key, indent=2), encoding='utf-8')
+    unavailable = ('unavailable', '', '', '')
+    packets = []
+    for text in sentences:
+        ground, neural = unavailable, unavailable
+        if text in grounded_views:
+            gv = grounded_views[text]
+            learner = gv['learner_analysis']
+            prose = [learner.get('sentence_text', ''), *(f['text'] for f in learner['findings'])]
+            ground = ('available', gv['summary']['verdict'],
+                      (learner.get('revision') or {}).get('text', ''), '\n'.join(filter(None, prose)))
+        if text in ungrounded_views:
+            uv = ungrounded_views[text]
+            prose = (uv['explanation'] or '').replace('Neural acceptability model', 'An acceptability check')
+            prose = prose.replace('masked-language-model perturbation', 'the correction search')
+            neural = ('available', uv['verdict'], uv['corrected_sentence'] or '', prose)
+        packets.append((text, ground, neural))
+    worksheet = write_review(args.output, packets)
+    (args.output / 'blimp-paired.json').write_text(json.dumps(paired_rows, indent=2), encoding='utf-8')
+    (args.output / 'processing-failures.json').write_text(
+        json.dumps({'grounded': grounded_fail, 'neural_only': ungrounded_fail}, indent=2), encoding='utf-8')
+    fp_groups = []
+    for members in memberships.values():
+        text = members['grammatical']
+        gv = grounded_views.get(text, {}).get('summary', {}).get('verdict')
+        uv = ungrounded_views.get(text, {}).get('verdict')
+        fp_groups.append([int(uv == 'ungrammatical') - int(gv == 'ungrammatical')])
+    tests = {
+        'blimp_exact': exact_mcnemar(b_all, c_all),
+        'blimp_pair_exact': exact_mcnemar(b_pair, c_pair),
+        'blimp_false_positive': exact_mcnemar(b_fp, c_fp),
+        'wi_unmatched_edits': exact_mcnemar(b_wi_fp, c_wi_fp),
+    }
 
     summary = {
         'manifest_sha256': external.digest(args.manifest),
@@ -328,6 +400,8 @@ def main():
             'ungrounded_breakdown': {f'{k[0]}->{k[1]}': v for k, v in sorted(blimp_counts['ungrounded'].items())},
             'mcnemar_exact_verdict': exact_mcnemar(b_all, c_all),
             'mcnemar_fp_reduction_on_grammatical': exact_mcnemar(b_fp, c_fp),
+            'paired_fp_reduction': (u_fp_n - g_fp_n) / len(memberships),
+            'paired_fp_reduction_ci95': paired_interval(fp_groups),
             'minimal_pairs': {
                 'n_pairs': len(by_pair),
                 'grounded_both_exact': g_pair_ok,
@@ -346,11 +420,9 @@ def main():
             'grounded': g_expect,
             'ungrounded': u_expect,
         },
-        'blinded_worksheet': {
-            'path': str(ws_path),
-            'n_differing_pairs': len(sealed_key),
-            'human_annotated': False,
-        },
+        'holm_adjusted_p': holm_adjust({name: test['p_value'] for name, test in tests.items()}),
+        'processing_failures': {'grounded': len(grounded_fail), 'neural_only': len(ungrounded_fail)},
+        'blinded_worksheet': worksheet,
     }
     (args.output / 'summary.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
     print(json.dumps(summary, indent=2))

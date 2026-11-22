@@ -1136,6 +1136,30 @@ class Projection:
             return None
         return raw("S", [lower])
 
+    def peel_finite_vp_adjunct(self, nodes):
+        """Separate a witnessed postposed clause from a simple auxiliary chain."""
+        if len(nodes) < 2 or not leaf(nodes[0]):
+            return nodes, None
+        head, last = nodes[0], nodes[-1]
+        parts = kids(last)
+        if (tag(last) == "SBAR" and len(parts) == 2 and leaf(parts[0])
+                and word(parts[0]) in {"because", "if", "unless", "although"}
+                and tag(parts[1]) == "S" and not self.is_nonfinite(parts[1])):
+            mark, body = parts
+            if self.dependency(mark) == "mark" and any(
+                    self.dependency(verb) == "advcl"
+                    and verb["span"][0] == mark.get("fhead")
+                    and verb.get("fhead") == head.get("span", [None])[0]
+                    for verb in leaves(body)):
+                return nodes[:-1], last
+        # A selected clausal complement, coordination or negative scope is a
+        # boundary. Follow only an auxiliary's single nested VP.
+        if len(nodes) == 2 and tag(last) == "VP" and self.auxiliary(head, [last]):
+            inner, adjunct = self.peel_finite_vp_adjunct(parts)
+            if adjunct is not None:
+                return [head, {**last, "children": inner}], adjunct
+        return nodes, None
+
     def vp(self, nodes, mode, subject, incoming=None, passive=None, fronted=None):
         if not nodes:
             raise ProjectionUnavailable("Missing verb phrase")
@@ -1242,7 +1266,11 @@ class Projection:
                     raise ProjectionUnavailable("Passive has no unambiguous promoted subject")
                 lexical_passive = self.link_subject(subject)
                 lexical_passive.kind = "object"
-            complement = self.vp(kids(complement_vp), "untensed", subject, incoming, lexical_passive)
+            lower = kids(complement_vp)
+            high_adjunct = None
+            if mode == "finite" and not (negation or fronted or incoming or tail[position + 1:]):
+                lower, high_adjunct = self.peel_finite_vp_adjunct(lower)
+            complement = self.vp(lower, "untensed", subject, incoming, lexical_passive)
             before_aux = [
                 branch("AP", NOUN, branch("QA", NOUN, word_node(n)))
                 if (leaf(n) and tag(n) == "DT" and word(n) in {"all", "both", "each"})
@@ -1252,8 +1280,10 @@ class Projection:
             for pre_node in reversed(before_aux):
                 complement = branch("VP", ADVERBIAL, pre_node, complement)
             complement = self.attach(complement, "VP", (), tail[position + 1:])
-            return branch("VP", AUXILIARY, branch(aux, AUXILIARY, *head_words,
-                          features=(aux_tense,) if aux_tense else ()), complement)
+            predicate = branch("VP", AUXILIARY, branch(aux, AUXILIARY, *head_words,
+                               features=(aux_tense,) if aux_tense else ()), complement)
+            # B–R Chapter 8 p. 186 places the clause beside the tensed VP.
+            return self.attach(predicate, "VP", trailing=[high_adjunct]) if high_adjunct else predicate
 
         base = lemma(head)
         feature = tense(head, mode)

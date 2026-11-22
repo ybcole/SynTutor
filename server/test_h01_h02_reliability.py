@@ -158,6 +158,26 @@ class H01BurtonRobertsReliabilityTests(unittest.TestCase):
         self.assertEqual(_br_leaves(s_bar["children"][0]), [])  # C1 is empty
         self.assertIn("to", _br_leaves(s_bar["children"][1]))  # 'to' inside S/VP
 
+    def test_finite_vp_adjunct_attaches_outside_the_auxiliary_chain(self):
+        for sentence, marker, auxiliary in (
+            ("The roads will be slippery if it freezes.", "if", "MOD"),
+            ("The children are cheering because the team won.", "because", "PROG"),
+        ):
+            with self.subTest(sentence=sentence):
+                tree = self._project(sentence)["tree"]["root"]
+                predicate = tree["children"][-1]
+                inner, adjunct = predicate["children"]
+                self.assertEqual(inner["label"], "VP")
+                self.assertEqual(inner["children"][0]["label"], auxiliary)
+                self.assertEqual(adjunct["label"], "S-bar")
+                self.assertEqual(_br_leaves(adjunct)[0], marker)
+
+    def test_auxiliary_retains_a_selected_embedded_clause(self):
+        tree = self._project("The guide will explain whether the trail is open.")["tree"]["root"]
+        predicate = tree["children"][-1]
+        self.assertEqual([node["label"] for node in predicate["children"]], ["MOD", "VP"])
+        self.assertIn("whether", _br_leaves(predicate["children"][1]))
+
     # --- H01 Root Cause 3: Ch. 7 Appendix D1 of-PP complement attachment ---
     def test_of_pp_complement_attaches_inside_nom_before_premodifier(self):
         out = self._project("that tall student of maths in the hat")
@@ -192,6 +212,11 @@ class H02MatrixAndXAIReliabilityTests(unittest.TestCase):
             "We must end indifference to suffering.",
             "Doing excercise is healthy.",
             "My life has change.",
+            "We need major change.",
+            "The new policy produced substantial change.",
+            "The project involves extensive manipulation of images.",
+            "We saw major change in the second quarter.",
+            "We discussed the second change.",
         ]
         for sentence in negative_cases:
             with self.subTest(sentence=sentence):
@@ -203,8 +228,8 @@ class H02MatrixAndXAIReliabilityTests(unittest.TestCase):
             "I saw dog.",
             "She bought book.",
             # Context-sensitive countable uses of dual count/mass nouns
-            "This is big change.",
-            "We need major change.",
+            "We requested second change.",
+            "The editor proposed third manipulation.",
         ]
         for sentence in positive_cases:
             with self.subTest(sentence=sentence):
@@ -227,8 +252,8 @@ class H02MatrixAndXAIReliabilityTests(unittest.TestCase):
             ("Rhonda had said that Jesus isn't describing herself.", "C-REFLEXIVE-ANTECEDENT"),
             ("That guy had explained some screen was confusing himself.", "C-REFLEXIVE-ANTECEDENT"),
             ("Robert hasn't talked Brenda.", "C-INTRANSITIVE-OBJECT"),
-            ("These icicles took.", "C-MISSING-OBJECT"),
-            ("All hospitals were investigating that that boy had cured.", "C-MISSING-OBJECT"),
+            ("The portrait resembled.", "C-MISSING-OBJECT"),
+            ("The studio announced that the portrait resembled.", "C-MISSING-OBJECT"),
             ("Regina finds out who those museums talk about waiters.", "C-FILLED-GAP"),
             ("Most legislatures that only some spotlights stun might ever collaborate.", "C-NPI-LICENSING"),
             ("Which is Samuel passing high school?", "C-LEFT-BRANCH-ISLAND"),
@@ -243,6 +268,62 @@ class H02MatrixAndXAIReliabilityTests(unittest.TestCase):
                 payload = api.build_payload(sentence)
                 self.assertEqual(payload["summary"]["verdict"], "ungrammatical")
                 self.assertIn(expected_code, payload["summary"]["constraints_fired"])
+
+    def test_valency_depends_on_the_construction(self):
+        for sentence in ("The graft took.", "The resin cured.",
+                         "The guards talked strategy.", "They talked him into staying."):
+            with self.subTest(sentence=sentence):
+                codes = _matrix_error_codes(sentence)
+                self.assertFalse({"C-MISSING-OBJECT", "C-INTRANSITIVE-OBJECT",
+                                  "C-ARTICLE"} & set(codes), codes)
+
+    def test_agreement_feedback_identifies_the_grammatical_relation(self):
+        indefinite = api.build_payload("Everyone know the answer.")
+        findings = indefinite["learner_analysis"]["findings"]
+        reason = next(item["text"] for item in findings if item["constraint"] == "C-INDEFINITE-AGREE")
+        self.assertIn("is a singular subject", reason)
+        self.assertIn("the form used with 'he', 'she', or 'it'", reason)
+        self.assertNotIn("is plural", reason)
+        self.assertEqual(indefinite["learner_analysis"]["revision"]["text"], "Everyone knows the answer.")
+        relative = api.build_payload("The researchers who works here published a paper.")
+        finding = next(item for item in relative["learner_analysis"]["findings"]
+                       if item["constraint"] == "C-RELATIVE-AGREE")
+        self.assertIn("'who' is the subject", finding["text"])
+        self.assertIn("plural antecedent", finding["text"])
+        self.assertEqual([relative["parse"]["tokens"][i]["t"] for i in finding["target_token_ids"]], ["works"])
+        self.assertEqual([relative["parse"]["tokens"][i]["t"] for i in finding["related_token_ids"]],
+                         ["researchers", "who"])
+        self.assertEqual(relative["learner_analysis"]["revision"]["text"],
+                         "The researchers who work here published a paper.")
+
+    def test_indefinite_agreement_stays_with_the_finite_predicate(self):
+        for sentence in ("Someone may not be ready.", "I asked everyone to be ready.",
+                         "Everyone who finished can leave.", "None of these candidates are ready.",
+                         "I insist that everyone be ready."):
+            with self.subTest(sentence=sentence):
+                self.assertNotIn("C-INDEFINITE-AGREE", _matrix_error_codes(sentence))
+        command = api.build_payload("Everybody stand up!")
+        self.assertFalse({"C-INDEFINITE-AGREE", "C-SUBJECT-AGREEMENT"}
+                         & set(command["summary"]["constraints_fired"]))
+        self.assertIsNone(command["learner_analysis"].get("revision"))
+        for sentence in ("Someone are ready.", "Everything look finished."):
+            with self.subTest(sentence=sentence):
+                self.assertIn("C-INDEFINITE-AGREE", _matrix_error_codes(sentence))
+
+    def test_delay_countability_depends_on_the_noun_phrase(self):
+        for sentence in ("The closure caused further delay.", "We reported a second delay."):
+            with self.subTest(sentence=sentence):
+                self.assertNotIn("C-ARTICLE", _matrix_error_codes(sentence))
+        self.assertIn("C-ARTICLE", _matrix_error_codes("We reported second delay."))
+
+    def test_article_correction_can_insert_before_a_witnessed_modifier(self):
+        text = "We bought red bicycle."
+        payload = api.build_payload(text)
+        result = payload["learner_analysis"]
+        finding = next(item for item in result["findings"] if item["constraint"] == "C-ARTICLE")
+        self.assertEqual([payload["parse"]["tokens"][i]["t"] for i in finding["target_token_ids"]], ["bicycle"])
+        self.assertIn("red", [payload["parse"]["tokens"][i]["t"] for i in finding["related_token_ids"]])
+        self.assertEqual(result["revision"]["text"], "We bought a red bicycle.")
 
     def test_coordinated_sva_repair_and_determiner_target_alignment(self):
         # Coordinated VP SVA must repair the disagreeing conjunct ('use' -> 'uses')
