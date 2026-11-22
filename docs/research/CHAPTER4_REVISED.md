@@ -32,70 +32,54 @@
   	The presentation layer was developed as an interactive HTML5 canvas that renders the phrase-structure tree produced by the backend. The renderer lays leaves out in uniform slots, centers each internal node over the span of its children, draws parent-child edges (coloring edges of violated constraints red), and exposes per-node hitboxes for selection. It supports drag-to-pan, wheel zoom anchored to the cursor, keyboard navigation, and device-pixel-ratio-aware resizing. The application itself is governed by a finite state machine that drives two feedback loops: a lightweight interaction loop, in which selecting a node reads its precomputed explanation from the in-memory session payload without re-issuing a parse request, and a re-entry loop, in which editing and resubmitting the input restarts the full pipeline. In keeping with the study's instructional stance, the system never auto-corrects the learner's sentence; it displays the violation and a deterministic correction suggestion, and the learner performs the repair.
 
 
-### **4.3 RESEARCH DESIGN**  
+### **4.3 RESEARCH DESIGN**
 
-  	This study employed a mixed-methods, quasi-experimental research design using a One-Group Pretest-Posttest framework integrated with an expert system validation. This design is engineered to evaluate both the technical performance of SynTutor's Natural Language Processing (NLP) architecture and its instructional efficacy in improving deep-structure grammatical competence.
+The study separates two complementary forms of evidence: (a) student learning and usability outcomes, evaluated using the actual collected pretest, posttest, and System Usability Scale (SUS) records; and (b) quantitative technical evaluation of SynTutor's syntax-tree and grammar-feedback functions against published linguistic references. Participant allocation, final sample counts, and any control/experimental comparison must be reported from the actual research records rather than assumed from the original proposed design.
 
-  	Through the combination of quantitative score measurements with qualitative expert analyses, the research design addresses the dual requirements of software validation and educational assessment without relying on single-method assumptions.
+**H01 — Phrase-structure parsing:** The evaluated system is the integrated spaCy + Benepar (\`benepar_en3\`) + Burton–Roberts FINAL-D1 projection pipeline. Four separate measures were used: development-exposed published full-tree PARSEVAL accuracy; unseen published partial structural-relation agreement; unseen deterministic Burton–Roberts rule compliance; and unseen conversion consistency. Rule compliance and conversion consistency are **not substitutes for complete-tree accuracy**. No independent complete-tree gold annotations or expert-adjudicated unseen trees were available.
 
+**H02 — Grammar grounding:** The same sentences were analyzed by rule-grounded SynTutor (Arm A) and an ungrounded neural acceptability/correction baseline (Arm B). Their grammatical judgments, localizations, valid corrections, and incorrect/unsupported feedback were scored with symmetric criteria. The primary endpoint was the absence of demonstrably incorrect or unsupported feedback, together with non-abstaining clean feedback; additional outcomes are reported separately.
 
-  	**Quantitative Quasi-Experimental Component:**
+**Educational outcomes (H03/H04):** Student learning gains and usability are evaluated separately using the study's documented assessment and survey procedures. Technical parsing performance alone cannot establish learning effectiveness, and learner scores alone cannot validate syntax-tree accuracy.
 
-  	The quantitative phase evaluates the pedagogical impact and user experience of the system among student respondents using a structured three-phase sequence:
+**Methodological status:** The wording in this chapter has been aligned retrospectively with frozen Evaluations V1, V2, and V3. This editorial clarification does not revise original result files or transform previously evaluated items into a new unseen test. The reported H01 significance tests on sentence complexity assess differences or trends, not whether complete-tree accuracy clears an independently defined statistical threshold.
 
-1. **Baseline Syntactic Pretest (Form A):** Prior to using SynTutor, the 50 BSCS student respondents complete **Syntactic Assessment Form A**, a 20-item multiple-choice diagnostic test (scored $0–20$, $1 point$ per item) measuring phrase boundary identification, subject-verb agreement across intervening prepositional phrases, collective and correlative agreement, determiner stacking, bare determiners, pronoun case, *a/an* phonotactics, missing articles, post-nominal modifier errors, adjective-for-adverb substitutions, quantifier-countability agreement, double comparatives, modal + finite verb errors, subordinate fragments, capitalization, copula + finite verb L1 interference (*"I am agree"*), and relative-clause agreement.   
-2. **System Intervention:** This is the phase in which participants actively use the SynTutor application. During this phase, users input sentences into the analysis engine, interact with dynamically generated phrase-structure syntax trees, examine parent-child node relationships, and read the Explainable AI (XAI) diagnostic explanations rendered alongside the canvas.  
-3. **Post-Intervention:** Participants complete a parallel posttest to measure knowledge acquisition, followed by the System Usability Scale (SUS) questionnaire to evaluate interface clarity, navigation efficiency, and system responsiveness.
+### **4.4 DATA COLLECTION**
 
-   	**Qualitative Expert Validation Component:**
+Two sources of data were used for distinct research questions: verified student assessment/survey records for pedagogical outcomes, and reproducible textbook-based computational benchmarks for H01 and H02.
 
-   	The qualitative phase evaluates the underlying system logic, parsing accuracy, and pedagogical soundness of SynTutor's backend output. Subject matter experts in English linguistics analyze a standardized benchmark set of syntactically complex and ambiguous sentences processed by the system.
+| Instrument / dataset | Data source | Research question | Scope |
+|---|---|---|---|
+| Syntactic pretest and posttest | Actual student responses | H03 | Learning outcomes; report final participant counts and group allocation from verified records |
+| System Usability Scale (SUS) | Actual completed survey records | H04 | Usability; do not treat intended respondents as completed responses |
+| Frozen technical Evaluations V1, V2, V3 | Three separate 100-sentence datasets (each 50 grammatical and 50 ungrammatical), textbook references, and locked scoring scripts | H01 and H02 | Structural and linguistic-feedback evaluation, independent of learner-test scores |
+| Published Burton–Roberts reference diagrams | 216 development-exposed diagrams and a separately checked published figure | H01 | Full-tree and triangle-aware comparisons **only on disclosed development-exposed references** |
 
-   	Experts evaluate:
+The sources for linguistic reference judgments were Burton–Roberts (2011, 3rd ed.) and Huddleston and Pullum (2002). For unseen sentences without complete authoritative Burton–Roberts answer trees, structural accuracy was assessed only on **published partial relations**, while deterministic compliance and conversion checks were reported under their own names.
 
-* **Tree Generation Accuracy:** Verification that the neural constituency parser and the tree-reconstruction stage produce valid hierarchical constituent structures that conform to phrase-structure conventions.  
-* **Explanation Correctness:** Confirmation that the deterministic evaluation function accurately flags structural violations against the Linguistic Constraint Matrix without producing erroneous or misleading diagnostic explanations.
+Earlier manuscript references to a **104-sentence zero-regression corpus** describe a separate development/regression resource, not the frozen 100-sentence V1–V3 technical evaluations. These datasets and scores must not be conflated.
 
+An Expert Validation Matrix had been proposed in earlier planning drafts. Because no qualified independent reviewer team supplied unseen complete H01 tree gold standards, that proposed instrument is **not represented as completed technical validation**. Any educator feedback actually collected for other objectives requires its own independently verifiable sample, rubric, and records.
 
-  	A mixed-methods approach was used because neither quantitative testing nor qualitative expert review alone can validate the system completely. High posttest scores prove student retention, but they cannot verify whether the parse trees adhere to formal linguistic theory. Additionally, expert approval confirms that the NLP parser and constraint matrices are theoretically sound, but it offers no empirical proof that students can successfully navigate the canvas or retain structural concepts.  
-  	The research design explicitly operationalizes the evaluation of both primary hypotheses (H2 and H3). The quantitative One-Group Pretest-Posttest framework measures whether interactive syntax tree visualizations combined with transparent rule explanations yield statistically significant gains in deep-structure grammatical competence (H3). Concurrently, the qualitative expert validation phase evaluates the constituency parse trees against the Linguistic Constraint Matrix, empirically verifying that grounding the XAI engine on deterministic syntax structures eliminates generative hallucinations (H2). Hypothesis H1 is tested through deterministic parser accuracy on the benchmark corpus (zero-regression audit), and H4 is tested through System Usability Scale scores.
+#### **4.4.1 SAMPLING**
 
+Student recruitment for the pretest, posttest, and usability components was based on the approved eligibility and consent procedure. The original design identified BSCS students at De La Salle University–Dasmariñas as a target population. Actual participant counts, completion counts, and any control/experimental allocation are to be reported according to the original signed records and score sheets, not the initial recruitment targets.
 
-### **4.4 DATA COLLECTION**  
+The 100-sentence V1/V2/V3 technical corpora were **selected linguistic test cases, not human research participants**. Grammatical and ungrammatical sentences were evaluated by automated procedures against published textbook judgments. The contamination audit checked prior exact and near-duplicate overlap; it does not establish the absence of examples from model pretraining.
 
-  	This section details the research instruments and benchmark datasets used to gather empirical data for evaluating the SynTutor system. Data collection is organized into quantitative measurements of student learning gain and system usability, alongside qualitative evaluations of syntactic parsing accuracy. The step-by-step administration procedure is presented in Section 4.4.3.  
+No sample of independent linguists constructed or adjudicated complete unseen reference syntax trees in the reported H01 technical evaluation. Therefore, no missing expert sample size, adjudication rate, or panel-derived accuracy percentage is imputed.
 
-  	**Table 4.1:** SynTutor Data Collection Instruments
+#### **4.4.2 DATA ANALYSIS**
 
-| Instrument / Dataset | Data Type | Primary Objective | Target Group |
-| :---- | :---- | :---- | :---- |
-| Syntactic Pretest & Posttest | Quantitative (Interval) | Measures baseline vs. post-intervention grammatical competence | 50 BSCS Students |
-| System Usability Scale | Quantitative (Interval) | Evaluate interface usability, clarity, and navigation efficiency | 50 BSCS Students |
-| Linguistic Benchmark Dataset | Qualitative / Structural | Provide standardized test sentences for parsing and XAI evaluation | System Input |
-| Expert Validation Matrix | Qualitative (Ordinal/Textual) | Evaluate constituency tree accuracy and XAI diagnostic correctness | 3 English Experts |
+**H01:** Report labeled/unlabeled PARSEVAL F1 and exact match for the development-exposed textbook diagrams, distinguishing raw, aligned, triangle-aware, and complete zero-triangle subsets. For the frozen unseen datasets, report per-item and per-relation published partial-reference agreement, canonical structural-rule compliance, conversion consistency, successful coverage, and unresolved cases. Give denominators and difficulty-stratified results. Wilson confidence intervals describe binary estimates; bootstrap intervals describe structural F1 where available. Kruskal–Wallis, Jonckheere–Terpstra, and Fisher–Freeman–Halton tests evaluate *differences across complexity*; they are not one-sample tests of high accuracy.
 
+**H01 hypothesis interpretation:** The original H01 uses 'statistically significant degree of accuracy' without a prespecified numerical benchmark and lacks unseen complete authoritative full-tree answers. Therefore the available scores do **not** establish confirmatory rejection of H01. The later 80–83% engineering aspiration is not retrospectively substituted for a preregistered null threshold. Development-exposed F1, rule compliance, and conversion consistency must remain separately labeled.
 
-  	To evaluate the instructional impact of SynTutor, two parallel [NUM]-item assessments were developed. The pretest establishes baseline proficiency in identifying deep-structure English grammar concepts, including constituent phrase boundaries, clause hierarchies, and phrase-structure rules. The posttest contains items of equivalent difficulty and structural complexity to measure knowledge acquisition following system intervention without introducing item-recall bias. Both instruments were validated by domain experts prior to administration.
+**H02:** Compare Arm A versus Arm B with exact two-sided paired McNemar tests for the predefined primary incorrect/unsupported-feedback and decided-clean outcomes, followed by secondary grammatical judgment, error localization, correction validity, and full adequacy; apply the documented Holm–Bonferroni adjustments. Report effect sizes, raw paired denominators, abstentions, and error-family coverage. The frozen V3 primary difference is statistically significant **within the tested eight-family curriculum**; it does not imply universal English grammar accuracy.
 
-  	Additionally, user experience and interface clarity are measured using the standardized System Usability Scale. The instrument consists of 10 statements scored on a 5-point Likert scale ranging from 1 (“Strongly Disagree”) to 5 (“Strongly Agree”). The SUS provides a composite score out of 100 and allows the research team to evaluate whether the minimalist workspace and interactive tree canvas support effective user engagement. As for the linguistic benchmark dataset and the qualitative technical evaluation, a benchmark suite of 104 syntactically complex English sentences was constructed, of which 53 are grammatical and 51 are intentionally ungrammatical. The dataset includes sentences featuring structural ambiguities, nested subordinate clauses, and intentional grammatical errors, and it doubles as the system's regression corpus. This benchmark serves as the standardized input to stress-test the backend parsing engine.
+**H03/H04:** Analyze pretest/posttest outcomes and SUS only from actual collected learner records, matching the statistical procedure to the observed group design, paired identifiers, and assumptions. If a controlled comparison was used, do not treat it as one-group data. An educator validation mean or four-point accuracy score is included only if corresponding completed and auditable rating forms exist.
 
-  	Lastly, a structured evaluation matrix was designed for English experts to assess the output generated from the benchmark dataset. The matrix utilizes a 4-point rubric from 1 (“Incorrect”) to 4 (“Fully Accurate”) alongside qualitative commentary fields across two primary criteria:
-
-* **Tree Generation Accuracy:** Evaluating whether the parsing and tree-reconstruction stages generate correct hierarchical constituency trees.  
-* **XAI Explanation Correctness:** Verifying whether error diagnostics generated against the Linguistic Constraint Matrix accurately pinpoint syntactic violations without hallucination.  
-
-
-#### **4.4.1 SAMPLING**  
-  	The study utilizes a purposive sampling technique to select the target population of SynTutor, consisting of select respondents who meet the criteria relevant to SynTutor's usability testing and syntactic validity evaluation.  
-  	The primary sample consists of fifty (50) regular Bachelor of Science in Computer Science (BSCS) students at De La Salle University – Dasmariñas who will be testing the system. BSCS students represent the primary target users whose background allows them to effectively evaluate the User Interface (UI) and functionalities of SynTutor, particularly in the syntax generation, XAI tutor, and the quality of the overall experience. Their status as learners also makes them candidates for assessing the grammatical explanation, syntactic rules, and the clarity of the explanation of the system.  
-  	The secondary sample, who are three (3) English expert evaluators, are the English faculty members/instructors selected based on their credentials and experience in English Syntax. Their familiarity in language learning technologies are also considered as they would conduct quality assurance on both computation and educational outputs. Specifically, they will be evaluating the structural validity of the parser output and verify whether the XAI is able to produce grammatically accurate and educational feedback.  
-
-
-#### **4.4.2 DATA ANALYSIS**  
-  	This section outlines the quantitative and qualitative analytical methods applied to process the data gathered from student participants and English experts. To measure pedagogical learning gains and test Hypothesis H3, student pretest and posttest scores are analyzed using a Paired Samples t-Test at a significance level of $\alpha = 0.05$ (or a Wilcoxon Signed-Rank Test if score normality is violated) to determine whether exposure to SynTutor yields statistically significant improvements in deep-structure grammatical competence. System usability is evaluated by converting student responses on the System Usability Scale into a composite score out of 100 using the standard SUS calculation formula.  
-
-  	This composite score determines interface acceptability, learnability, and navigation efficiency. Ratings from the Expert Validation Matrix are synthesized using mean scores and percentage accuracy across tree generation accuracy and XAI explanation correctness. In addition, the technical output of the backend is analyzed through a deterministic rule-coverage audit over the benchmark corpus, which records the number of gold-standard verdict regressions, the distribution of edge verdicts (valid, error, unlisted), and the number of edge types that fire no dedicated matrix rule. A zero-regression, zero-unrated result on this audit is the operational criterion for accepting Hypothesis H2, namely that grounding the XAI engine on deterministic syntax structures successfully eliminates generative hallucinations, while qualitative expert commentary is synthesized to identify structural edge cases for future rule-matrix refinement. Hypothesis H1 is evaluated through deterministic parser accuracy on the benchmark corpus: every grammatical sentence must be accepted and every intentionally ungrammatical sentence must be rejected, with zero verdict regressions. Hypothesis H4 is tested through the composite SUS score, with scores above 68 indicating acceptable usability.
-
+**Post-evaluation reporting:** V1, V2, and V3 are retained as separate historical frozen evaluations. Post-sprint improvements on those same sentences are regression observations rather than newly unseen results. All changes to methodology prose are explicitly documented as retrospective clarification and not as a pre-execution amendment.
 
 #### **4.4.3 ETHICAL CONSIDERATIONS**  
   	To ensure the protection of the participants, institutional compliance, and data integrity, the study adheres to the following ethical protocols. Participation by both the 50 BSCS students and the 3 English experts is entirely voluntary. Clear, written informed consent forms detailing the scope of the study, potential risks, and data usage will be distributed and signed prior to data collection. All collected test results, SUS surveys, and expert matrices will be stripped of personally identifiable information. Unique alphanumeric participant codes will be assigned to all records to maintain confidentiality in compliance with data privacy regulations. Participants and experts retain the absolute right to withdraw from the evaluation process at any time without penalty or academic prejudice. Lastly, all electronic files containing raw scores, feedback logs, and encrypted transcripts will be stored in a secure storage accessible only by the researchers.
@@ -131,30 +115,36 @@
 * **Client Requirements:** Standard desktop device equipped with a modern web browser (Google Chrome, Mozilla Firefox, Microsoft Edge, etc.) and active internet access for Clerk authentication, Supabase persistence, and model-backed analysis against the deployed API.
 
 
-### **4.6 EVALUATION OF THE PROJECT**  
-	The evaluation phase measures the pedagogical effectiveness, interface usability, and technical precision of SynTutor by gathering empirical data from student end-users and subject matter experts, and by executing the system's built-in technical verification.
+### **4.6 EVALUATION OF THE PROJECT**
 
-#### **4.6.1 RESPONDENTS OF THE STUDY**  
-	The evaluation of the SynTutor system incorporates two distinct respondent groups selected through purposive sampling to evaluate both pedagogical usability and technical precision. The primary group consists of fifty (n = 50) regular Bachelor of Science in Computer Science (BSCS) students at De La Salle University – Dasmariñas (DLSU-D). As the primary end-users, their technical background enables them to effectively evaluate the interactive UI canvas and dynamic tree rendering, while their status as English language learners makes them ideal candidates to evaluate learning gains, explanation clarity, and syntactic priming. The secondary group comprises three (n = 3) English and Linguistics faculty members from DLSU-D. Selected for their academic credentials and tertiary teaching experience in English syntax, these experts perform technical quality assurance by verifying the structural precision of the constituency parser output and the diagnostic validity of the Explainable AI (XAI) feedback.
+Evaluation combines the actual educational intervention/survey evidence (H03/H04) with the separate published-reference technical assessment (H01/H02). The two evidence streams answer different research questions.
 
-#### **4.6.2 RESEARCH INSTRUMENTS AND TECHNIQUES**  
-	Data collection utilizes four primary research instruments designed to measure pedagogical impact, user experience, and computational accuracy. To evaluate instructional effectiveness, two parallel assessments, a syntactic pretest and posttest, measure baseline versus post-intervention student performance in identifying phrase boundaries and structural syntax rules without introducing bias.  
-	User experience and interface clarity are measured using the standardized System Usability Scale (SUS), which consists of 10 statements scored on a 5-point Likert scale ranging from "Strongly Disagree" (1) to "Strongly Agree" (5) to generate a usability score out of 100. For the qualitative evaluation, a standardized linguistic benchmark dataset of 104 sentences containing syntactically complex English sentences that feature structural ambiguities and intentional errors is executed through the backend engine. Finally, a structured Expert Validation Matrix featuring a 4-point rubric (ranging from 1 for "Incorrect" to 4 for "Fully Accurate") and qualitative commentary fields is used by linguistics expert respondents to evaluate tree generation accuracy and XAI explanation correctness.
+#### **4.6.1 RESPONDENTS OF THE STUDY**
 
-#### **4.6.3 DATA GATHERING**  
-	The data gathering procedure is executed across four sequential phases to systematically capture quantitative student outcomes and qualitative expert reviews.
+The primary participant population for the educational and usability components consists of the students who actually provided consent and completed the applicable assessment or survey. Report actual eligibility, totals, group allocation, and attrition from verified study records. No purported independent H01 expert tree annotations are included in this thesis's completed technical evidence.
 
-1. **Phase 1 (Pre-Intervention):** Student participants complete the syntactic pretest in a controlled environment to establish baseline grammatical comprehension prior to exposure to SynTutor.  
-2. **Phase 2 (System Intervention):** Participants undergo an orientation on the interactive canvas and actively engage with the application by submitting sentences, exploring constituent tree boundaries, and reading automated rule-checking feedback.  
-3. **Phase 3 (Post-Intervention Learning Gains & Usability):** Participants complete the parallel syntactic posttest immediately following the system interaction to evaluate knowledge acquisition, followed by the System Usability Scale survey to gather user interface feedback.  
-4. **Phase 4 (Expert Technical Validation):** The standardized benchmark sentence dataset is executed through the SynTutor pipeline, and the resulting visual syntax trees and diagnostic explanations are compiled into review packets for independent evaluation by the English experts using the Expert Validation Matrix.  
+#### **4.6.2 RESEARCH INSTRUMENTS AND TECHNIQUES**
 
-   **4.6.4 TECHNICAL VERIFICATION OF THE SYSTEM**  
-  	Beyond human evaluation, the system's output is verified automatically and repeatably. The gold-corpus regression audit drives the real parsing and evaluation pipeline over the sentence benchmark corpus and checks two properties:  
-  	1. Every grammatical sentence is accepted and every intentionally ungrammatical sentence is rejected (no false positives and no false negatives).  
-  	2. Every parent-child edge type exercised by the corpus is covered by a dedicated rule in the Linguistic Constraint Matrix (no unrated edge types).  
-  	The audit reports the total number of evaluated edges and their verdict distribution and exits with a failure code on any regression, so it can serve as an acceptance gate. The current build passes this audit with zero verdict regressions, and zero unrated edge types. Complementary to the audit, the GET /api/health endpoint verifies that the NLP models are loaded and available before any evaluation session, and the deterministic design of the pipeline guarantees that repeated submissions of identical text return identical trees, verdicts, and explanations.
+The student instruments are the syntactic pretest/posttest and 10-item SUS. The technical instruments are the frozen textbook-derived V1–V3 sentence corpora, their gold judgment/partial-relation specifications, and the corresponding archived H01/H02 scoring procedures. H01 includes published full-tree accuracy on **development-exposed** diagrams and independent partial-reference, compliance, and conversion measurements on unseen sentences. H02 uses an identical-input paired comparison of rule-grounded and ungrounded systems.
 
+The older 104-sentence development corpus and any proposed four-point expert rubric are not substituted for those frozen evaluation measures.
+
+#### **4.6.3 DATA GATHERING**
+
+1. **Educational assessment:** Collect and score the student pretest, intervention exposure, posttest, and SUS responses using the actual approved study design and participant codes.
+2. **Technical benchmark preparation:** Record source editions, grammaticality labels, sentence-complexity strata, partial published relationships, correction alternatives, dataset hashes, and scorer versions before each independent evaluation.
+3. **Technical execution:** Execute each frozen V1–V3 benchmark against the corresponding frozen code and scoring protocol; archive predictions, denominators, exceptions, and statistical outputs.
+4. **Post-evaluation reliability work:** Use previously exposed examples only as development/regression cases. Do not describe post-sprint V3 success as a second independent evaluation.
+
+#### **4.6.4 TECHNICAL VERIFICATION OF THE SYSTEM**
+
+Parser normalization, schema conformance, terminal-yield preservation, deterministic output, H01 partial structural agreement, and H02 outcome reliability were analyzed separately. Passing a rule-coverage audit does not prove that every linguistic attachment is correct. Likewise, automated regression-test success does not provide an independent full-tree reference answer.
+
+For H01, an independently validated **unseen complete-tree F1** remains unavailable in the absence of complete authoritative answers or independent adjudicated trees; its status is **unverified**. The report preserves lower raw full-tree F1, the higher triangle-aware subset, and the independent partial-reference results without presenting any one as universal structural accuracy.
+
+For H02, the actual V3 primary clean-feedback outcome was 89/100 for grounded SynTutor versus 65/100 for the ungrounded baseline (exact two-sided McNemar p = 0.000116; Holm-adjusted p = 0.000232). This supports rejection of the H02 null **for the evaluated benchmark and its covered rule families**, without asserting complete absence of unsupported claims on unrestricted English.
+
+The wording of this chapter was reconciled **after** the frozen evaluations. No historical measurement or original result was changed.
 
 # **REFERENCES:** {#references:}
 
