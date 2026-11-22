@@ -334,7 +334,9 @@ NONCOUNT_NOUNS = {
     'maturity', 'anonymity', 'gravity', 'velocity', 'density', 'humidity',
     'acidity', 'toxicity', 'biodiversity',
     # H02 reliability sprint: standard mass/uncountable & abstract nouns
-    'stuff', 'manipulation', 'indifference', 'change', 'ignorance',
+    # (Dual count/mass nouns like 'change' and 'manipulation' are evaluated
+    # contextually via DUAL_COUNT_MASS_NOUNS rather than unconditionally exempted.)
+    'stuff', 'indifference', 'ignorance',
     'acceptance', 'arrogance', 'obedience', 'disobedience', 'defiance',
     'vigilance', 'eloquence', 'convenience', 'inconvenience', 'innocence',
     'negligence', 'diligence', 'impatience', 'intolerance', 'competence',
@@ -366,6 +368,22 @@ BARE_ARG_NOUNS = {
     # A separate count sense can still take an article ('a summer', 'a handball').
     'spring', 'summer', 'autumn', 'fall', 'winter', 'action',
     'badminton', 'basketball', 'football', 'handball', 'netball', 'volleyball',
+}
+# Dual count/mass nouns whose article requirement depends on grammatical context:
+# mass/uncountable in bare generic ('resistance to change'), mass-quantified
+# ('little change'), or domain-classified ('genetic manipulation', 'climate change')
+# uses, but countable when premodified by evaluative/sizing modifiers ('big change').
+DUAL_COUNT_MASS_NOUNS = {'change', 'manipulation'}
+_MASS_DOMAIN_MODIFIERS = {
+    'little', 'much', 'less', 'more', 'enough', 'no', 'some', 'any',
+    'genetic', 'social', 'political', 'economic', 'cultural', 'environmental',
+    'climate', 'technological', 'digital', 'structural', 'systemic',
+    'institutional', 'demographic', 'emotional', 'mental', 'physical',
+    'psychological', 'financial', 'behavioral', 'behavioural', 'data',
+    'market', 'media', 'image', 'gene', 'dna', 'cell', 'chemical',
+    'molecular', 'neural', 'statistical', 'currency', 'rate', 'regime',
+    'policy', 'career', 'lifestyle', 'global', 'constant', 'continuous',
+    'gradual', 'rapid', 'human', 'public', 'corporate', 'scientific',
 }
 # Words the parser may tag as NN but which never take an article: indefinite
 # pronouns (everyone, somebody, ...) and bare temporal/deictic adverbs.
@@ -1621,6 +1639,19 @@ def _needs_indefinite_article_error(np_node, parent_vp=None):
     if base in NONCOUNT_NOUNS or base in BARE_ARG_NOUNS \
             or surface in NONCOUNT_NOUNS or surface in BARE_ARG_NOUNS:
         return None
+    # Context-sensitive dual count/mass nouns ('change', 'manipulation'):
+    # exempt bare generic/unmodified uses ('resistance to change'), mass-quantified
+    # uses ('little change'), and relational/domain-modified abstract uses
+    # ('genetic manipulation', 'climate change'), while still catching countable
+    # evaluative/sizing uses ('big change', 'sudden change', 'major change').
+    if base in DUAL_COUNT_MASS_NOUNS or surface in DUAL_COUNT_MASS_NOUNS:
+        np_lvs = _leaves_list(np_node)
+        pre_lvs = [lf for lf in np_lvs if lf is not head and lf.get('span', [0])[0] < head.get('span', [0])[0]]
+        if not pre_lvs:
+            return None
+        if all(_lower(lf.get('surface', '')) in _MASS_DOMAIN_MODIFIERS
+               or lf.get('type') in ('RB', 'HYPH', ',') for lf in pre_lvs):
+            return None
     # Irregular/classical plurals and zero-plurals mistagged as NN ('oases',
     # 'oxen', 'fish') do not require an indefinite singular article.
     if surface in IRREGULAR_PLURAL_ONLY or surface in ZERO_PLURALS:
@@ -3431,6 +3462,13 @@ class MatrixEvaluator:
                 'another'}:
             sk = ('3', 'sg')
             coordinated = False
+        # Coordinated predicates ('every citizen owns a car and use it...'):
+        # if the leading verb already agrees, target the disagreeing conjunct.
+        if _agreement_ok(sk, verb_key(vp_head)):
+            for h in self._coordinated_predicate_heads(vp, vp_head):
+                if not _agreement_ok(sk, verb_key(h)):
+                    vp_head = h
+                    break
         verb_surface = vp_head['surface']
         target = _preserve_case(verb_surface, _agree_form(vp_head, sk))
         target_pos = _agree_tag(vp_head, sk)
@@ -4221,6 +4259,32 @@ class MatrixEvaluator:
                          f"The whole sentence '{self._p(root)}' has a subject and a "
                          'verb, so it is a complete sentence.')
             return
+        # Parser-mistag guard: Benepar occasionally parses a plural subject +
+        # bare intransitive present verb ('A lot of pants fray.') as a single NP
+        # ending in NN. Do not condemn a finite VBP verb as a verbless fragment.
+        if root['type'] == 'NP':
+            r_lvs = _leaves_list(root)
+            non_punct = [lf for lf in r_lvs if not lf.get('punct')]
+            if (len(non_punct) >= 3 and r_lvs and r_lvs[-1].get('surface') == '.'
+                    and non_punct[-1].get('type') == 'NN'
+                    and non_punct[-2].get('type') in ('NNS', 'NNPS')
+                    and _lower(non_punct[0].get('surface', '')) in {
+                        'a', 'an', 'the', 'some', 'many', 'all', 'most', 'these',
+                        'those', 'several', 'few', 'both', 'no', 'my', 'your',
+                        'his', 'her', 'our', 'their'}):
+                cand_v = _lower(non_punct[-1].get('surface', ''))
+                try:
+                    from lemminflect import getAllInflections
+                    v_forms = getAllInflections(cand_v, upos='VERB')
+                    if (cand_v in v_forms.get('VBP', ())
+                            and not getAllInflections(cand_v, upos='NOUN').get('NNS')
+                            or cand_v in {'fray', 'melt', 'rust', 'rot', 'warp', 'fade', 'shrink', 'leak', 'drip', 'glow', 'gleam', 'shimmer', 'wilt', 'sprout', 'bloom', 'wither', 'crumble', 'shatter', 'splinter', 'unravel'}):
+                        self._detail(root, None, 'sentence root', 'C-ROOT', 'valid',
+                                     f"The whole sentence '{self._p(root)}' has a subject and a "
+                                     'verb, so it is a complete sentence.')
+                        return
+                except Exception:
+                    pass
         self._detail(root, None, 'fragment root', 'C-TENSE-FINITE', 'error',
                      f"This input '{self._p(root)}' has no subject or verb, so it is "
                      'not a complete sentence.')

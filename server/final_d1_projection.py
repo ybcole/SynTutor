@@ -664,17 +664,26 @@ class Projection:
             if len(inside) == 1 and leaf(inside[0]) and tag(inside[0]) in ADJ_TAGS:
                 ap = branch("AP", ("Ch7 p. 147",), branch("A", ("Ch7 p. 147",), word_node(inside[0])))
                 return branch("NP", NOUN, ap, self.clause(nodes[1]))
-            head_word = word(leaves(nodes[0])[-1])
             sbar_parts = kids(nodes[1])
             if (sbar_parts and leaf(sbar_parts[0])
                     and word(sbar_parts[0]) in {"than", "as"}):
                 # Comparative as/than clauses are complements, not relatives.
                 return branch("NP", NOUN, self.phrase(nodes[0]), self.clause(nodes[1]))
-            if self.noun_complement(head_word, nodes[1]):
-                return branch("NP", NOUN, self.phrase(nodes[0]), self.clause(nodes[1]))
-            # A modifying SBAR with an object/subject gap is a relative clause,
-            # not a complement clause. Project the gap so movement is visible.
-            return branch("NP", WH, self.phrase(nodes[0]), self.relative(nodes[1]))
+            # Restrictive relative clauses (B-R Ch9 [39], [53a], [59]) and noun-complement
+            # clauses (B-R Ch9 [38], [53b]) on DET+NOM NPs attach inside NOM via lines 748-932.
+            # Only non-restrictive relatives, names, pronouns, or complex inner NPs without
+            # a DET+NOM split attach at NP level here.
+            is_name_or_pron = (
+                (len(inside) == 1 and leaf(inside[0])
+                 and (tag(inside[0]) in {"PRP", "EX", "NNP", "NNPS"}
+                      or word(inside[0]) in PRONOUNS | POSSESSIVE_PRONOUNS))
+                or all(leaf(n) and tag(n) in {"NNP", "NNPS"} for n in inside)
+            )
+            if id(nodes[1]) in nonrestrictive or is_name_or_pron:
+                head_word = word(leaves(nodes[0])[-1])
+                if self.noun_complement(head_word, nodes[1]):
+                    return branch("NP", NOUN, self.phrase(nodes[0]), self.clause(nodes[1]))
+                return branch("NP", WH, self.phrase(nodes[0]), self.relative(nodes[1]))
         if (len(nodes) == 2 and tag(nodes[0]) == "NP" and tag(nodes[1]) == "NP"
                 and kids(nodes[1]) and tag(kids(nodes[1])[0]) == "CONJP"):
             conjunction = kids(nodes[1])[0]
@@ -703,7 +712,7 @@ class Projection:
         if tag(nodes[0]) == "SBAR" and len(nodes) == 1:
             return branch("NP", SUBORDINATE, self.clause(nodes[0]))
         if len(nodes) == 1 and leaf(nodes[0]) and (
-                tag(nodes[0]) in {"PRP", "EX"} or word(nodes[0]) in PRONOUNS
+                tag(nodes[0]) in {"PRP", "EX", "WP"} or word(nodes[0]) in PRONOUNS
                 or word(nodes[0]) in POSSESSIVE_PRONOUNS):
             return branch("NP", NOUN, branch("pronoun", NOUN, word_node(nodes[0])))
         if len(nodes) == 1 and leaf(nodes[0]) and word(nodes[0]) in {"this", "that", "these", "those"}:
@@ -1297,6 +1306,15 @@ class Projection:
             v = branch("V(II)", NONFINITE, *head_words, features=features)
             return self.attach(branch("VP", NONFINITE, v, obj, lower), "VP", trailing=tail[2:])
 
+        # Benepar occasionally parses an echo wh-in-situ object + PP
+        # ('taking (SBAR (WHNP what) (PP to Athens))', B-R Ch9 [11a]) as an SBAR.
+        # Unpack it into the in-situ wh-NP object plus its following PP.
+        if (len(tail) >= 1 and tag(tail[0]) == "SBAR" and not self.is_adverbial(tail[0])
+                and len(kids(tail[0])) == 2 and tag(kids(tail[0])[0]) == "WHNP"
+                and tag(kids(tail[0])[1]) in {"PP", "ADVP"}):
+            sb_wh, sb_pp = kids(tail[0])
+            tail[:1] = [raw("NP", kids(sb_wh)), sb_pp]
+
         complement = []
         particle = None
         if tail and tag(tail[0]) == "PRT":
@@ -1762,6 +1780,12 @@ class Projection:
             return branch("S", COORD, *coordination)
         if len(parts) == 1 and tag(parts[0]) == "S":
             return self.clause(parts[0], incoming)
+        # Benepar wraps a zero-that embedded clause + trailing adverbial SBAR under S:
+        # (S (SBAR (S ...)) (SBAR (IN because) (S ...))) (e.g. B-R Ch8 ex. 2b).
+        if (len(parts) >= 2 and tag(parts[0]) == "SBAR" and not self.is_adverbial(parts[0])
+                and len(kids(parts[0])) == 1 and tag(kids(parts[0])[0]) == "S"
+                and all(tag(p) == "SBAR" and self.is_adverbial(p) for p in parts[1:])):
+            return self.attach(self.clause(kids(parts[0])[0], incoming), "S", trailing=parts[1:])
         if (incoming is None and len(parts) == 2 and tag(parts[0]) == "NP"
                 and tag(parts[1]) == "SBAR"):
             return branch("S", TOPIC, self.phrase(parts[0]), self.clause(parts[1]))
@@ -1821,6 +1845,18 @@ class Projection:
             else:
                 raise ProjectionUnavailable("Clause has no single identifiable predicate")
         predicate_parts = kids(parts[0])
+        # Expletive 'it' + Benepar flat extraposition without overt 'that':
+        # (VP (VP is n't my fault) (NP Max) (VP crushed your monocle)) (B-R Ch8 Disc. 2).
+        if (outer_delayed is None
+                and len(predicate_parts) == 3
+                and tag(predicate_parts[0]) == "VP"
+                and tag(predicate_parts[1]) == "NP"
+                and tag(predicate_parts[2]) == "VP"
+                and subject.get("children", [{}])[0].get("label") == "pronoun"
+                and subject["children"][0]["children"][0]["word"].lower() == "it"):
+            outer_delayed = branch("S′", SUBORDINATE, branch("C1", SUBORDINATE),
+                                   self.clause(raw("S", predicate_parts[1:])))
+            predicate_parts = kids(predicate_parts[0])
         if (outer_delayed is None
                 and subject.get("children", [{}])[0].get("label") == "pronoun"
                 and subject["children"][0]["children"][0]["word"].lower() == "it"):
@@ -2019,13 +2055,13 @@ class Projection:
         if label != "WHNP":
             raise ProjectionUnavailable(f"Unsupported {label} dependency")
         parts = kids(body)
-        if tag(body) == "S" and len(parts) == 1 and tag(parts[0]) == "VP":
+        if tag(body) == "S" and len(parts) == 1 and tag(parts[0]) == "VP" and not self.is_nonfinite(body):
             return "subject"
         if tag(body) == "SQ":
             tail = parts[1:] if parts and leaf(parts[0]) else parts
             if tail and leaf(tail[0]) and word(tail[0]) in {"not", "n't"}:
                 tail = tail[1:]
-            if tail and tag(tail[0]) == "VP":
+            if parts and leaf(parts[0]) and tail and tag(tail[0]) == "VP":
                 return "subject"
             if (not any(tag(node) == "VP" for node in tail)
                     and any(tag(node) == "NP" for node in tail)):
@@ -2083,9 +2119,14 @@ class Projection:
                                branch("S", WH, subject, self.vp([head, *tail], "finite", subject, fronted=carrier_link)))
             else:
                 lower = self.question(sq_parts, link)
+        elif tag(body) == "S" and self.is_nonfinite(body):
+            # Non-finite wh-clause ('how many guests to expect', B-R Ch10 [37]):
+            # 'to' stays as AUX[-tense] inside VP and NEVER inverts into C1.
+            lower = branch("S′", NONFINITE, branch("C1", NONFINITE),
+                           self.nonfinite(body, wrap=False, incoming=link))
         elif not relative and link.kind == "subject" and len(kids(body)) == 1:
             vp = kids(kids(body)[0])
-            if vp and leaf(vp[0]) and (
+            if vp and leaf(vp[0]) and tag(vp[0]) != "TO" and (
                 lemma(vp[0]) == "be" or self.auxiliary(vp[0], [n for n in vp[1:] if tag(n) != "ADVP"])
             ):
                 head, *tail = vp
@@ -2107,18 +2148,9 @@ class Projection:
         parts = kids(node)
         if (len(parts) == 2 and tag(parts[0]) == "WHNP" and leaves(parts[0])
                 and word(leaves(parts[0])[0]) == "that" and tag(parts[1]) == "S"):
-            # In a relative clause, "that" is the C1 complementiser and the
-            # relative operator is a covert C2 gap. This is the inverse of the
-            # complement-clause use of "that".
-            link = self.gap(self.wh_gap(parts[0], parts[1]))
-            body = self.clause(parts[1], link)
-            if not link.used:
-                raise ProjectionUnavailable("Relative clause has no uniquely identified gap")
-            operator = branch("C2", WH, {"gap": True, "index": link.index})
-            operator["index"] = link.index
-            carrier = branch("C1", WH, word_node(leaves(parts[0])[0]))
-            return branch("S″", WH, operator,
-                          branch("S′", WH, carrier, body))
+            # B-R Ch9 [53a]: in a gapped 'that'-relative clause, 'that' occupies
+            # C2 with an empty C1 in S-bar (S-dbar -> C2(that) + S-bar(C1[], S)).
+            return self.wh_clause(parts, relative=True)
         if parts and tag(parts[0]).startswith("WH"):
             return self.wh_clause(parts, relative=True)
         if len(parts) == 2 and leaf(parts[0]) and word(parts[0]) == "that" and tag(parts[1]) == "S":

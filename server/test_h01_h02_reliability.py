@@ -110,11 +110,16 @@ class H01BurtonRobertsReliabilityTests(unittest.TestCase):
             "Otto was driven mad by the noise.",
             "Who is taking Violetta's icon to Athens?",
             "How are you?",
+            "Whose is this?",
             "a proposal that we should support the strike",
             "a proposal that we should support",
             "up and down the staircase",
             "all Gulbenkian's contributions to charity",
             "Murtlock having been hospitalised",
+            "it isn't my fault Max crushed your monocle",
+            "I am surprised Rory has learned so much because he is usually asleep",
+            "Vince is taking what to Athens",
+            "how many guests to expect",
         ]
         for sentence in cases:
             with self.subTest(sentence=sentence):
@@ -132,12 +137,26 @@ class H01BurtonRobertsReliabilityTests(unittest.TestCase):
         self.assertIn("S-bar", comp_labels)
         self.assertNotIn("S-dbar", comp_labels)
 
-        # Relative clause with missing object: projects as S-dbar -> C2 + S-bar
+        # Restrictive relative clause: attaches inside NOM (NP -> DET + NOM(NOM + S-dbar))
+        # and places 'that' in C2 per B-R Ch9 [53a]
         rel = self._project("a proposal that we should support")
         self.assertEqual(rel["status"], "normalized")
-        rel_labels = _br_labels(rel["tree"]["root"])
-        self.assertIn("S-dbar", rel_labels)
-        self.assertIn("C2", rel_labels)
+        root = rel["tree"]["root"]
+        self.assertEqual([c["label"] for c in root["children"]], ["DET", "NOM"])
+        nom_kids = root["children"][1]["children"]
+        self.assertEqual([c["label"] for c in nom_kids], ["NOM", "S-dbar"])
+        s_dbar = nom_kids[1]
+        self.assertEqual(s_dbar["children"][0]["label"], "C2")
+        self.assertEqual(_br_leaves(s_dbar["children"][0]), ["that"])
+
+    def test_nonfinite_wh_infinitive_keeps_to_inside_vp(self):
+        # B-R Ch10 [37]: 'to' stays as AUX[-tense] inside VP, never inverted into C1
+        out = self._project("how many guests to expect")
+        self.assertEqual(out["status"], "normalized")
+        s_bar = out["tree"]["root"]["children"][1]
+        self.assertEqual(s_bar["label"], "S-bar")
+        self.assertEqual(_br_leaves(s_bar["children"][0]), [])  # C1 is empty
+        self.assertIn("to", _br_leaves(s_bar["children"][1]))  # 'to' inside S/VP
 
     # --- H01 Root Cause 3: Ch. 7 Appendix D1 of-PP complement attachment ---
     def test_of_pp_complement_attaches_inside_nom_before_premodifier(self):
@@ -183,11 +202,67 @@ class H02MatrixAndXAIReliabilityTests(unittest.TestCase):
         positive_cases = [
             "I saw dog.",
             "She bought book.",
+            # Context-sensitive countable uses of dual count/mass nouns
+            "This is big change.",
+            "We need major change.",
         ]
         for sentence in positive_cases:
             with self.subTest(sentence=sentence):
                 codes = _matrix_error_codes(sentence)
                 self.assertIn("C-ARTICLE", codes, f"Expected C-ARTICLE on {sentence!r}")
+
+    def test_licensing_and_syntactic_accuracy_positive_and_negative_controls(self):
+        # Grammatical negative controls (must be grammatical, not unverified/ungrammatical)
+        for ok in [
+            "The worn blouse was out in the open.",
+            "Ann does remember that those skirts that annoyed Kayla stun Dan.",
+            "A lot of pants fray.",
+        ]:
+            with self.subTest(ok=ok):
+                payload = api.build_payload(ok)
+                self.assertEqual(payload["summary"]["verdict"], "grammatical", payload["summary"])
+
+        # Ungrammatical syntactic positive controls
+        bad_cases = [
+            ("Rhonda had said that Jesus isn't describing herself.", "C-REFLEXIVE-ANTECEDENT"),
+            ("That guy had explained some screen was confusing himself.", "C-REFLEXIVE-ANTECEDENT"),
+            ("Robert hasn't talked Brenda.", "C-INTRANSITIVE-OBJECT"),
+            ("These icicles took.", "C-MISSING-OBJECT"),
+            ("All hospitals were investigating that that boy had cured.", "C-MISSING-OBJECT"),
+            ("Regina finds out who those museums talk about waiters.", "C-FILLED-GAP"),
+            ("Most legislatures that only some spotlights stun might ever collaborate.", "C-NPI-LICENSING"),
+            ("Which is Samuel passing high school?", "C-LEFT-BRANCH-ISLAND"),
+            ("What did Beverly disgust cashiers and Carla listen to?", "C-COORD-ISLAND"),
+            ("Some people can imagine themselves referenced a lot of teachers.", "C-PASSIVE"),
+            ("Some library was enjoyable to order this student to escape.", "C-TOUGH-COMPLEMENT"),
+            ("He asked me to lent him some money.", "C-TO-BASE"),
+            ("But a persons heritage is important.", "C-POSSESSIVE-S"),
+        ]
+        for sentence, expected_code in bad_cases:
+            with self.subTest(sentence=sentence):
+                payload = api.build_payload(sentence)
+                self.assertEqual(payload["summary"]["verdict"], "ungrammatical")
+                self.assertIn(expected_code, payload["summary"]["constraints_fired"])
+
+    def test_coordinated_sva_repair_and_determiner_target_alignment(self):
+        # Coordinated VP SVA must repair the disagreeing conjunct ('use' -> 'uses')
+        p1 = api.build_payload("Every citizen owns a car and use it daily.")
+        self.assertEqual(p1["summary"]["verdict"], "ungrammatical")
+        self.assertEqual(
+            p1["summary"].get("corrected_sentence"),
+            "Every citizen owns a car and uses it daily.",
+        )
+
+        # Indefinite 'a' + plural noun ('a test tubes') targets the edited plural noun
+        p2 = api.build_payload("Bodies can start their days in a test tubes.")
+        self.assertEqual(p2["summary"].get("corrected_sentence"), "Bodies can start their days in a test tube.")
+        det_findings = [
+            f for f in p2["learner_analysis"]["findings"]
+            if f.get("constraint") == "C-DETERMINER-AGREEMENT"
+        ]
+        self.assertEqual(len(det_findings), 1)
+        self.assertEqual(det_findings[0]["target_token_ids"], [8])  # 'tubes'
+        self.assertIn(6, det_findings[0]["related_token_ids"])      # 'a'
 
     # --- H02 Root Cause 2: High-severity false grammatical rules ---
     def test_used_to_passive_and_habitual_not_flagged_but_get_used_to_is(self):

@@ -378,11 +378,23 @@ def check_lexicon(leaves, skip_ids=frozenset()):
                     and tag in ('JJ', 'NN', 'NNS') and info.get('other_pos')):
                 stats['licensed'] += 1
                 continue
+            # Nominalized adjective after 'the' ('in the open', 'the poor', 'the unknown')
+            if (tag == 'NN' and info.get('other_pos') and prev == 'the'
+                    and _lemmas(low, 'ADJ')):
+                stats['licensed'] += 1
+                continue
             lem = info['lemma']
             vforms = _forms(lem, 'VERB') if info.get('upos') == 'VERB' else {}
             vbn_set = set(vforms.get('VBN', ())) | ({low} if low in EXTRA_PARTICIPLES else set())
             vbd_set = set(vforms.get('VBD', ()))
             vb_set = set(vforms.get('VB', ()))
+            # Valid base/present verb form mistagged as VBD by Benepar after a
+            # long relative clause ('those skirts that annoyed Kayla stun Dan'):
+            # the surface is a licensed finite present form, not an unverified word.
+            if (info.get('upos') == 'VERB' and not info.get('other_pos')
+                    and tag == 'VBD' and low in vb_set):
+                stats['licensed'] += 1
+                continue
             det_prev = prev in {
                 'the', 'a', 'an', 'this', 'that', 'these', 'those', 'my',
                 'your', 'his', 'her', 'its', 'our', 'their', 'some', 'any',
@@ -851,7 +863,8 @@ def check_relatives(root):
                          f"antecedent and verb disagree.",
                          (f"Change '{verb['surface']}' to '{fix}'." if fix
                           else "Make the verb agree with the antecedent."),
-                         None, 'verb agrees with the antecedent of the relative')))
+                         ([{'node': verb['id'], 'replacement': fix}] if fix else None),
+                         'verb agrees with the antecedent of the relative')))
     return out
 
 

@@ -249,13 +249,14 @@ def local_relationships(leaves):
         head_word = governor.lower()
         head_deps = dependents.get(head_id, [])
 
-        # Infinitival 'to' + non-base verb ('decided to stays', 'tried to went')
+        # Infinitival 'to' + non-base verb ('decided to stays', 'tried to went', 'asked me to lent')
         if (dep == 'aux' and word == 'to' and tag == 'TO'
-                and head.get('type') in {'VB', 'VBZ', 'VBP', 'VBD'}
-                and head.get('ftag') == head.get('type')
-                and (head.get('type') != 'VBD' or head_word in PAST_ONLY)):
+                and head.get('type') in {'VB', 'VBZ', 'VBP', 'VBD'}):
             base = _base_form(head)
-            if head.get('type') in {'VBZ', 'VBD'} or (head.get('type') == 'VBP' and head_word != base):
+            if (head.get('type') in {'VBZ', 'VBD'} and head.get('ftag') == head.get('type')
+                    and (head.get('type') != 'VBD' or head_word in PAST_ONLY)) \
+                    or (head.get('type') == 'VBP' and head.get('ftag') == 'VBP' and head_word != base) \
+                    or (head_word in PAST_ONLY and base != head_word):
                 yield {'kind': 'infinitive_to_base', 'participants': [index, head_id],
                        'target': head_id, 'matches': False,
                        'text': f'After the infinitive marker “to”, use the plain (base) form “{base}” rather than “{governor}”.',
@@ -285,8 +286,12 @@ def local_relationships(leaves):
                     matches = singular == (head_num == 'sg')
                     text = (f'“{surface}” selects a {"singular" if singular else "plural"} noun. '
                             f'It determines “{governor}”, which is {"singular" if head_num == "sg" else "plural"} here.')
+                    # When indefinite 'a'/'an' governs a plural noun ('a test tubes'),
+                    # the edited error token is the plural noun ('tubes' -> 'tube') and
+                    # the determiner 'a'/'an' is the governing evidence.
+                    det_target = head_id if (word in {'a', 'an'} and head_num == 'pl') else index
                     yield {'kind': 'determiner_noun_agreement', 'participants': [index, head_id],
-                           'target': index, 'matches': matches, 'text': text, 'lesson': 'determiner'}
+                           'target': det_target, 'matches': matches, 'text': text, 'lesson': 'determiner'}
 
         # 3. Indefinite article a/an onset phonology
         if dep == 'det' and tag == 'DT' and word in {'a', 'an'} and head.get('type') == 'NN':
@@ -569,7 +574,7 @@ def supported_findings(analysis, details):
                 and (
                     span[0] <= r['target'] < span[1]
                     or (r['kind'] in {'uncountable_article', 'modal_syntax', 'quantifier_noun_agreement', 'determiner_stacking',
-                                      'auxiliary_complement', 'plain_verb_complement'}
+                                      'determiner_noun_agreement', 'auxiliary_complement', 'plain_verb_complement'}
                         and any(span[0] <= p < span[1] for p in r['participants']))
                 )
             ]
