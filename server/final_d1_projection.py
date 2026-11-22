@@ -2,7 +2,10 @@
 from dataclasses import dataclass
 from copy import deepcopy
 
-
+if __package__:
+    from .ruleset import PAST_ONLY, contracted_verb_class, passive_adjunct_parts
+else:
+    from ruleset import PAST_ONLY, contracted_verb_class, passive_adjunct_parts
 
 CLAUSE = ("Ch2 pp. 29–30",)
 NOUN = ("Ch7 pp. 141–144",)
@@ -72,6 +75,7 @@ LOCATIVE_PREPOSITIONS = {"above", "across", "against", "along", "at", "behind", 
 INTENSIVE = {"be", "become", "seem", "appear", "look", "feel", "sound", "taste", "smell", "remain", "get", "grow", "prove", "stay", "turn"}
 COMPLEX = {"call", "consider", "find", "keep", "make", "paint", "put", "place", "render", "name", "elect", "turn", "get", "drive", "leave", "hold", "declare", "deem"}
 DITRANSITIVE = {"give", "tell", "show", "send", "offer", "lend", "bring", "pay", "buy", "hand", "teach", "ask", "promise", "write", "read", "pass", "sell", "owe", "leave", "remind", "inform", "warn", "assure", "convince", "persuade", "notify", "advise", "ensure"}
+RECIPIENT_TO = {"give", "show", "send", "offer", "lend", "hand", "pass", "sell"}
 SELECTED_PP = {
     "refer": {"to"}, "glance": {"at"}, "look": {"at", "for", "after"}, "listen": {"to"},
     "rely": {"on"}, "depend": {"on", "upon"}, "belong": {"to"}, "think": {"of", "about"},
@@ -209,6 +213,10 @@ class Projection:
             result = branch('TENSE', (), word_node(part),
                             features=('past' if word(part) == 'did' else 'pres',))
             result['notes'] = ['Auxiliary category supported by token evidence. Grouping remains provisional.']
+            return result
+        if word(part) in {"'s", "'d"} and tag(part) in VERB_TAGS:
+            result = branch('AUX', (), word_node(part))
+            result['notes'] = ['The full form of the contracted auxiliary remains uncertain.']
             return result
         if tag(part) == "CC":
             # Coordinators are overt terminals in B-R phrase markers rather
@@ -904,6 +912,13 @@ class Projection:
         core = branch("S", NONFINITE, subject, predicate)
         return branch("S′", NONFINITE, branch("C1", NONFINITE), core) if wrap else core
 
+    def passive_adjunct(self, parts, controller):
+        refs = ('Ch10 p. 246, Discussion 5 [55b]',)
+        link = self.link_subject(controller)
+        subject = branch('NP', refs, link.take())
+        predicate = self.vp(parts, 'nonfinite', subject, passive=Gap(link.index, 'object'))
+        return branch('S′', refs, branch('C1', refs), branch('S', refs, subject, predicate))
+
     def link_subject(self, controller):
         index = controller.get("index")
         if index is None:
@@ -929,6 +944,21 @@ class Projection:
         return tree
 
     def auxiliary(self, head, tail):
+        surface = word(head)
+        if (surface in {"'s", "'d"} and len(tail) == 1
+                and tag(tail[0]) == 'VP' and kids(tail[0]) and leaf(kids(tail[0])[0])
+                and tag(kids(tail[0])[0]) in VERB_TAGS):
+            verb = kids(tail[0])[0]
+            start = verb.get('span', [None])[0]
+            dependents = [node for node in leaves(tail[0]) if start is not None and node.get('fhead') == start]
+            kind = contracted_verb_class(head, verb, dependents)
+            if kind == 'have':
+                return 'PERF'
+            if kind == 'modal':
+                return 'MOD'
+            if kind == 'be':
+                return 'PROG' if tag(verb) == 'VBG' else 'PASS'
+            raise ProjectionUnavailable('The contracted auxiliary has no uniquely supported verb-form analysis')
         if tag(head) == "MD" or (word(head) in {"need", "dare"} and len(tail) == 1
                                   and tag(tail[0]) == "VP" and kids(tail[0]) and tag(kids(tail[0])[0]) == "VB"):
             return "MOD"
@@ -941,9 +971,13 @@ class Projection:
             return None
         base = lemma(head)
         next_tag = tag(first[0])
-        if (base == "have" or word(head) in {"'ve", "'s", "'d"}) and next_tag in VERB_TAGS:
-            return "PASS" if word(head) == "'s" and self.dependency(first[0]) == "ROOT" and self.dependency(head) == "auxpass" else "PERF"
+        if (base == "have" or surface == "'ve") and next_tag in VERB_TAGS:
+            if next_tag != 'VBN' or word(first[0]) in PAST_ONLY:
+                raise ProjectionUnavailable('Perfect have requires a past participle')
+            return 'PERF'
         if base == "be" and next_tag in VERB_TAGS:
+            if next_tag not in {'VBG', 'VBN'} or word(first[0]) in PAST_ONLY:
+                raise ProjectionUnavailable('The VP form does not support a progressive or passive analysis')
             return "PASS" if next_tag == "VBN" else "PROG"
         if base == "do" and next_tag in VERB_TAGS:
             return "TENSE"
@@ -1237,6 +1271,16 @@ class Projection:
                     ap_suffix = [self.phrase(c) for c in adjp_parts[pp_idx + 1:]]
                     frame = "intens"
                     complement.append(branch("AP", WH, *ap_prefix, stranded_pp, *ap_suffix))
+                elif (base in RECIPIENT_TO and len(tail) >= 2
+                      and tag(tail[0]) == "NP" and not self.is_time_np(tail[0])
+                      and tag(tail[1]) == "PP" and len(kids(tail[1])) == 1
+                      and word(kids(tail[1])[0]) == "to"
+                      and sum(tag(node) == "PP" and len(kids(node)) == 1 for node in tail) == 1):
+                    # Ch9 [1b(ii)] strands the recipient preposition and keeps
+                    # the direct object and the recipient PP in the ditransitive VP.
+                    frame = "ditrans"
+                    complement.append(self.phrase(tail.pop(0)))
+                    complement.append(self.pp(kids(tail.pop(0)), incoming))
                 elif not tail or tag(tail[0]) != "PP" or len(kids(tail[0])) != 1:
                     raise ProjectionUnavailable("Wh-phrase has no unique stranded preposition")
                 else:
@@ -1359,8 +1403,13 @@ class Projection:
         elif tail and tag(tail[0]) == "PRT":
             complement.append(branch("Prt", ("Ch5 pp. 93–95",), *(word_node(n) for n in leaves(tail.pop(0)))))
         v = branch("V", v_refs, *head_words, features=(frame, *suffix, *features))
+        participial = {}
         for extra in tail:
             label = tag(extra)
+            parts = passive_adjunct_parts(extra, head) if subject is not None else None
+            if parts:
+                participial[id(extra)] = parts
+                continue
             if (label == "SBAR" and not self.is_adverbial(extra)
                     and passive is not None and base in PASSIVE_TYPE_I):
                 continue
@@ -1377,7 +1426,9 @@ class Projection:
         # adverbial SBAR(PP/SBAR + SBAR) cleanly as sequential VP adjuncts.
         normalized_tail = []
         for extra in tail:
-            if tag(extra) == "S" and not self.is_nonfinite(extra) and len(kids(extra)) == 1 and tag(kids(extra)[0]) == "ADJP":
+            if id(extra) in participial:
+                normalized_tail.append(extra)
+            elif tag(extra) == "S" and not self.is_nonfinite(extra) and len(kids(extra)) == 1 and tag(kids(extra)[0]) == "ADJP":
                 normalized_tail.append(kids(extra)[0])
             elif tag(extra) == "VP" and kids(extra) and tag(kids(extra)[0]) in {"VBG", "VBN"} and base == "be":
                 normalized_tail.append(raw("S", [extra]))
@@ -1386,7 +1437,12 @@ class Projection:
                 normalized_tail.extend(kids(extra))
             else:
                 normalized_tail.append(extra)
-        return self.attach(branch("VP", refs, v, *(self.adjunct(a) for a in medial_advps), *complement), "VP", trailing=normalized_tail)
+        predicate = branch('VP', refs, v, *(self.adjunct(a) for a in medial_advps), *complement)
+        for extra in normalized_tail:
+            dependent = (self.passive_adjunct(participial[id(extra)], subject)
+                         if id(extra) in participial else self.adjunct(extra))
+            predicate = branch('VP', ADVERBIAL, predicate, dependent)
+        return predicate
 
     def temporal_pp(self, node):
         if tag(node) == "PP":

@@ -217,10 +217,16 @@ def build():
     rulebook = load_rulebook()
     concepts = load_concepts()
     constraints = load_constraints()
+    lesson_rules = set(rulebook) | set(catalog)
 
     rules = []
     seen_rules = set()
     for constraint, rule_id, layer in constraints:
+        # The matrix owns runtime constraint IDs. This teaching sheet covers
+        # the legacy rule inventory. NPI licensing shares 9.15 with object
+        # order at runtime, but the legacy 9.15 concept only explains order.
+        if rule_id and (rule_id not in lesson_rules or constraint == 'C-NPI-LICENSING'):
+            continue
         name, example, method = rulebook.get(rule_id, ('', '', ''))
         rules.append({
             'constraint': constraint,
@@ -236,7 +242,7 @@ def build():
 
     # Every catalog/RULEBOOK rule must appear even if it fires no C-* constraint
     # (coverage check + rows for rules detected structurally).
-    for rid in sorted(set(rulebook) | set(catalog)):
+    for rid in sorted(lesson_rules):
         if rid in seen_rules:
             continue
         name, example, method = rulebook.get(rid, ('', '', ''))

@@ -92,6 +92,37 @@ class CambridgeRegistryTests(unittest.TestCase):
         self.assertEqual(result["diagnostics"], [])
         self.assertTrue(all(rule["owner_waiver"] for rule in result["active_rules"]))
 
+    def test_phase_c_requires_an_unambiguous_owner_waived_overlay(self):
+        self.add_rule("unverified")
+        grammar = self.root / 'grammar'
+        source_path = grammar / 'rules' / 'test.json'
+        source = json.loads(source_path.read_text())[0]
+        source['status'] = 'NEEDS_REVIEW'
+        source.pop('runtime_check')
+        source_path.write_text(json.dumps([source]))
+        registry_path = grammar / 'runtime_registry.json'
+        registry = json.loads(registry_path.read_text())
+        entry = registry['enabled_rules'][0]
+        entry.update(independent_review=False, owner_waiver=True,
+                     crosswalk_status='owner_waived_unverified', test_status='source_examples_passed')
+        registry_path.write_text(json.dumps(registry))
+        overlay_path = grammar / 'cambridge_runtime_overlay.json'
+        valid = {'rule_id': 'TEST-001', 'status': 'REVIEWED',
+                 'review_basis': 'owner_waived_ai_review',
+                 'runtime_check': {'kind': 'candidate_probe_set', 'set': 'phase_c'}}
+        for rows in (None, [], [valid, valid], [{**valid, 'review_basis': 'unrelated'}],
+                     [{**valid, 'rule_type': 'constraint'}]):
+            with self.subTest(rows=rows):
+                overlay_path.write_text(json.dumps({'rules': rows}))
+                result = load_runtime_registry(self.root)
+                self.assertEqual(result['active_rule_ids'], [])
+                self.assertEqual(result['diagnostics'][0]['code'], 'RULE_NOT_RUNTIME_ELIGIBLE')
+        overlay_path.write_text(json.dumps({'rules': [valid]}))
+        self.assertEqual(load_runtime_registry(self.root)['active_rule_ids'], ['TEST-001'])
+        entry['independent_review'] = True
+        registry_path.write_text(json.dumps(registry))
+        self.assertEqual(load_runtime_registry(self.root)['active_rule_ids'], [])
+
     def test_unverified_crosswalk_blocks_extracted_approved_rule(self):
         self.add_rule("unverified")
         result = load_runtime_registry(self.root)

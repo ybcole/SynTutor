@@ -543,6 +543,11 @@ def _describe_node(target, graph, by_id):
                     "of the predicate left out through ellipsis and recovered from earlier in the sentence.")
         return ("This position represents an understood or omitted part of the sentence, "
                 "rather than a word that is actually spoken.")
+    label = target.get('label') or _word_kind(target, by_id)
+    if (graph['status'] == 'observed' and label in AUXILIARY_SELECTION
+            and len(target.get('token_ids', [])) == 1 and target.get('surface')):
+        parent = by_id.get(target.get('parent_id'))
+        return _describe_auxiliary(target, parent, by_id, label)
     if target["kind"] == "word":
         return _word(target, graph, by_id)
     return _phrase(target, graph, by_id)
@@ -772,6 +777,55 @@ def _format_candidate_readings(candidates, capitalize=False):
     return f'{", ".join(items[:-1])}, or {items[-1]}'
 
 
+AUXILIARY_SELECTION = {
+    'MOD': ('a modal auxiliary', 'the plain (base) form of the following verb'),
+    'PERF': ('the perfect auxiliary', 'a past participle'),
+    'PROG': ('the progressive auxiliary', 'an -ing participle'),
+    'PASS': ('the passive auxiliary', 'a past participle'),
+    'TENSE': ('a tense-carrying auxiliary (do-support)', 'the plain (base) form of the following verb'),
+    'AUX': ('an auxiliary verb', 'the form of the following verb'),
+    'TO': ('the infinitival marker', 'a plain (base) verb phrase'),
+}
+
+
+def _selected_auxiliary_head(node, parent, by_id, label):
+    """Find the selected VP's head rather than the shared dependency governor."""
+    if parent and parent.get('label') == label:
+        node, parent = parent, by_id.get(parent.get('parent_id'))
+    if not parent or parent.get('label') != 'VP':
+        return None
+    siblings = parent.get('child_ids', [])
+    if node['node_id'] not in siblings:
+        return None
+    following = (by_id[k] for k in siblings[siblings.index(node['node_id']) + 1:] if k in by_id)
+    selected = next((part for part in following if part.get('label') == 'VP'), None)
+    heads = {'VP', 'V', 'V(I)', 'V(II)', 'MOD', 'PERF', 'PROG', 'PASS', 'TENSE', 'AUX', 'TO', 'V-part'}
+    while selected and selected.get('label') == 'VP':
+        selected = next((by_id[k] for k in selected.get('child_ids', [])
+                         if k in by_id and by_id[k].get('label') in heads), None)
+    return selected if selected and selected.get('surface') else None
+
+
+def _describe_auxiliary(node, parent, by_id, label, tense=''):
+    role, requirement = AUXILIARY_SELECTION[label]
+    head = _selected_auxiliary_head(node, parent, by_id, label)
+    target = f', here {_node_phrase(head)}' if head else ''
+    word = node['surface'].lower().replace('’', "'")
+    if label == 'PROG' and word in BE:
+        form = ('a present-tense' if word in {'am', 'is', 'are'}
+                else 'a past-tense' if word in {'was', 'were'} else 'a')
+        start = (f'{_node_phrase(node)} is {form} form of the verb “be”.' if node['kind'] == 'word'
+                 else f'The progressive auxiliary position contains {_node_phrase(node)}, {form} form of the verb “be”.')
+        return (f'{start} '
+                f'The progressive auxiliary selects {requirement}{target} to present the activity in progress.')
+    expanded = {("'s", 'PROG'): 'is', ("'s", 'PASS'): 'is', ("'s", 'PERF'): 'has',
+                ("'d", 'PERF'): 'had', ("'d", 'MOD'): 'would'}.get((word, label))
+    full_form = f' It stands for {_quote(expanded)}.' if expanded else ''
+    start = (f'{_node_phrase(node)} is {role}{tense}.' if node['kind'] == 'word'
+             else f'The tree uses {_node_phrase(node)} as {role}{tense}.')
+    return f'{start}{full_form} It selects {requirement}{target}.'
+
+
 def _runtime_description(node, graph, by_id, ids, leaves, finding_token_ids=None, unresolved_by_id=None):
     """Explain witnessed features, internal structure, and local relations on the existing graph."""
     label = node.get('label') or _word_kind(node, by_id)
@@ -953,20 +1007,9 @@ def _runtime_description(node, graph, by_id, ids, leaves, finding_token_ids=None
             return f'{surface} heads this verb phrase and {valency}{ctrl_note}. It is {form}.'
         if form:
             return f'{surface} is the lexical verb heading this verb phrase{ctrl_note}. It is {form}.'
-    if len(ids) == 1 and label in {'MOD', 'PERF', 'PROG', 'PASS', 'TENSE', 'AUX', 'TO'}:
-        aux_role = {
-            'MOD': ('a modal auxiliary', 'the plain (base) form of the following verb'),
-            'PERF': ('the perfect auxiliary', 'a past participle'),
-            'PROG': ('the progressive auxiliary', 'an -ing participle'),
-            'PASS': ('the passive auxiliary', 'a past participle'),
-            'TENSE': ('a tense-carrying auxiliary (do-support)', 'the plain (base) form of the following verb'),
-            'AUX': ('an auxiliary verb', 'the form of the following verb'),
-            'TO': ('the infinitival marker', 'a plain (base) verb phrase'),
-        }[label]
-        gov = leaves.get(leaf.get('fhead'))
-        target_v = f' supporting {_quote(gov["surface"])}' if gov and gov['surface'] != leaf['surface'] else ''
+    if len(ids) == 1 and label in AUXILIARY_SELECTION:
         tense_txt = {'VBD': ' (past tense)', 'VBZ': ' (3rd-person singular present)', 'VBP': ' (present tense)'}.get(leaf.get('type'), '')
-        return f'{surface} is {aux_role[0]}{tense_txt}{target_v}; it selects {aux_role[1]}.'
+        return _describe_auxiliary(node, parent, by_id, label, tense_txt)
     if len(ids) == 1 and label in {'pronoun', 'PRON', 'PRO'}:
         morph = leaf.get('fmorph') or {}
         case = {'Nom': 'subject', 'Acc': 'object'}.get(morph.get('Case'))

@@ -17,6 +17,8 @@ PILOTS = {path.name[:5]: json.loads(path.read_text())
           for path in sorted((DIST / 'content/lessons').glob('br-*-pilot.json'))}
 assert len(PILOTS) == 11
 COURSE = json.loads((DIST / 'content/lessons/course.json').read_text())
+TOTAL_LESSONS = len(COURSE['lessons'])
+assert TOTAL_LESSONS >= 12
 BOOK_COVERAGE = json.loads(subprocess.check_output([
     'node', '--input-type=module', '-e',
     "import { foundationsBookContent } from './dist/js/foundations-book-content.js';"
@@ -49,7 +51,9 @@ try:
         def route(request):
             url = request.request.url
             if '/api/parse' in url:
-                parser_calls.append(url)
+                payload = request.request.post_data_json or {}
+                if not (page.url.rstrip('/') == base and payload.get('text') == 'The clever boy reads a book.'):
+                    parser_calls.append((page.url, payload))
             if url.startswith('https://esm.sh/'):
                 request.fulfill(content_type='application/javascript', body='export const createClient = () => null;')
             elif url.startswith(base) and '/api/parse' not in url:
@@ -93,7 +97,7 @@ try:
         }
         page.evaluate("progress => localStorage.setItem('syntutor:lessons:v1:guest', JSON.stringify(progress))", published)
         page.reload(wait_until='domcontentloaded')
-        expect(view.locator('.lesson-total')).to_have_text('1 / 12 lessons completed · 15 lesson XP')
+        expect(view.locator('.lesson-total')).to_have_text(f'1 / {TOTAL_LESSONS} lessons completed · 15 lesson XP')
 
         # Start an individual draft before loading the combined preview in this same browser.
         open_lesson(base + '/?preview=br-02#lesson/br-02/introduction')
@@ -102,7 +106,7 @@ try:
         individual.get_by_role('button', name='Next question →', exact=True).click()
 
         open_lesson(preview + 'catalog')
-        expect(view.locator('.lesson-total')).to_have_text('0 / 12 lessons completed · 0 lesson XP')
+        expect(view.locator('.lesson-total')).to_have_text(f'0 / {TOTAL_LESSONS} lessons completed · 0 lesson XP')
         expect(view.get_by_role('button', name='Start lesson', exact=True)).to_have_count(11)
         assert view.locator('.lesson-module h2').all_text_contents() == [pilot['title'] for pilot in PILOTS.values()]
 
@@ -177,13 +181,15 @@ try:
                 expect(panel.get_by_text('15 / 15 lesson XP on this device')).to_be_visible()
 
         open_lesson(preview + 'catalog')
-        expect(view.locator('.lesson-total')).to_have_text('3 / 12 lessons completed · 45 lesson XP')
+        expect(view.locator('.lesson-total')).to_have_text(f'3 / {TOTAL_LESSONS} lessons completed · 45 lesson XP')
         view.get_by_role('button', name='Grammar and Analysis', exact=True).click()
         cambridge = view.locator('.lesson-module').first
         expect(cambridge.locator('.lesson-prerequisite')).to_have_count(0)
         cambridge.get_by_role('button', name='Start lesson', exact=True).click()
         expect(view.locator('.lesson-stage-body')).to_be_visible()
-        expect(view.get_by_text('Chapter pilot · progress saved on this device')).to_have_count(0)
+        first_grammar = next(l for l in COURSE['lessons'] if l.get('track') == 'grammar')
+        has_pilot = (DIST / f"content/lessons/{first_grammar['lesson_id']}-pilot.json").exists()
+        expect(view.get_by_text('Chapter pilot · progress saved on this device')).to_have_count(1 if has_pilot else 0)
 
         # Check keyboard navigation in the desktop sidebar and tap navigation in
         # the dark mobile reader using representative early, middle and late chapters.
@@ -246,13 +252,13 @@ try:
         open_lesson(base + '/?preview=br-02#lesson/br-02/introduction')
         expect(check_panel('opening')).to_contain_text('Question 2 of 5')
         open_lesson(base + '/?preview=legacy#lesson/catalog')
-        expect(view.locator('.lesson-total')).to_have_text('1 / 12 lessons completed · 15 lesson XP')
+        expect(view.locator('.lesson-total')).to_have_text(f'1 / {TOTAL_LESSONS} lessons completed · 15 lesson XP')
         assert view.locator('.lesson-module h2').all_text_contents() != [pilot['title'] for pilot in PILOTS.values()]
         page.goto(base, wait_until='domcontentloaded')
         page.locator('.sidebar-item[data-view="lessons"]').click()
         expect(view.locator('.lesson-module')).to_have_count(11)
         assert view.locator('.lesson-module h2').all_text_contents() == [pilot['title'] for pilot in PILOTS.values()]
-        expect(view.locator('.lesson-total')).to_have_text('0 / 12 lessons completed · 0 lesson XP in this view')
+        expect(view.locator('.lesson-total')).to_have_text(f'0 / {TOTAL_LESSONS} lessons completed · 0 lesson XP in this view')
         open_lesson(base + '/#lesson/br-01/introduction')
         dictionary_example = view.get_by_role('button', name='Define constituent', exact=True).first
         dictionary_example.hover()

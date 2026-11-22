@@ -178,10 +178,10 @@ def _agreement(index, leaf, head_id, head, dependents):
 
 def local_relationships(leaves):
     """Describe narrow token relations that can be checked without projection."""
-    from matrix import (A_SOUND_CONST_WORDS, NONCOUNT_NOUNS, NUMBER_AMBIGUOUS_HEADS,
+    from matrix import (ADJ_CLASS, A_SOUND_CONST_WORDS, NONCOUNT_NOUNS, NUMBER_AMBIGUOUS_HEADS,
                         _base_form, _indefinite_article, num_of)
     from ruleset import (BE_SURFACES_LEAF, HAVE_FORM, MODAL_SURFACES, PAST_ONLY,
-                         PRONOUN_OBJECT_TO_SUBJECT, PRONOUN_SUBJECT_TO_OBJECT)
+                         PRONOUN_OBJECT_TO_SUBJECT, PRONOUN_SUBJECT_TO_OBJECT, bare_be_voice)
     from spellcheck import known_word
 
     dependents = {}
@@ -232,6 +232,16 @@ def local_relationships(leaves):
                        'target': index + 1, 'matches': False,
                        'text': f'After the auxiliary “{surface}”, use an -ing participle or past participle rather than the finite form “{nxt["surface"]}”.',
                        'lesson': 'auxiliary'}
+            for verb_id, verb in dependents.get(index, ()):
+                bare = verb['surface'].lower()
+                if (verb_id > index and verb.get('fdep') == 'acomp'
+                        and verb.get('type') in {'VB', 'VBP'} and verb.get('type') == verb.get('ftag')
+                        and known_word(bare) and _base_form(verb) == bare):
+                    yield {'kind': 'auxiliary_complement', 'participants': [index, verb_id],
+                           'target': verb_id, 'matches': False,
+                           'text': (f'“{verb["surface"]}” is the plain form after “{surface}”. '
+                                    'The progressive uses an -ing form and the passive uses a past participle.'),
+                           'lesson': 'auxiliary'}
 
         if head is None or head_id == index:
             continue
@@ -336,7 +346,8 @@ def local_relationships(leaves):
                            'target': head_id, 'matches': False,
                            'text': f'“{surface}” selects a plural countable noun, so “{governor}” needs its plural form.',
                            'lesson': 'quantifier'}
-            elif word in {'much', 'little', 'less'} and head_num == 'pl':
+            elif (word in {'much', 'little', 'less'} and head_num == 'pl'
+                  and (word != 'little' or (dep == 'det' and leaf.get('ftag') not in ADJ_CLASS))):
                 paired = {'much': 'many', 'little': 'few', 'less': 'fewer'}[word]
                 yield {'kind': 'quantifier_noun_agreement', 'participants': [index, head_id],
                        'target': index, 'matches': False,
@@ -362,8 +373,22 @@ def local_relationships(leaves):
                        'target': index if word in BE_SURFACES_LEAF else head_id, 'matches': False,
                        'text': f'“{governor}” is a simple past form. Auxiliary “{surface}” takes {expected}.',
                        'lesson': 'auxiliary'}
+            elif (word in BE_SURFACES_LEAF and index < head_id
+                    and head.get('type') in {'VB', 'VBP'} and head.get('ftag') == head.get('type')
+                    and known_word(head_word) and _base_form(head) == head_word):
+                voice = bare_be_voice(leaf, head, (other for _, other in head_deps))
+                expected = ('a past participle in this passive construction' if voice == 'passive'
+                            else 'an -ing form in the progressive or a past participle in the passive')
+                agents = [i for i, other in head_deps
+                          if voice == 'passive' and other.get('fdep') == 'agent'
+                          and other['surface'].lower() == 'by']
+                yield {'kind': 'auxiliary_complement', 'participants': [index, head_id, *agents],
+                       'target': head_id, 'matches': False,
+                       'text': (f'“{governor}” is in the plain form. Auxiliary “{surface}” takes '
+                                f'{expected}.'),
+                       'lesson': 'auxiliary'}
             elif ((word in MODAL_SURFACES and tag == 'MD' or word in {'do', 'does', 'did'})
-                  and head.get('type') in {'VB', 'VBP', 'VBZ', 'VBD'}
+                    and head.get('type') in {'VB', 'VBP', 'VBZ', 'VBD', 'VBG'}
                   and head.get('ftag') == head.get('type')
                   and (head.get('type') != 'VBD' or head_word in PAST_ONLY)):
                 base = _base_form(head)
@@ -504,7 +529,7 @@ def supported_findings(analysis, details):
     or (c) an explicit structural tree witness pointing to real tokens in the
     sentence.
     """
-    from matrix import NONCOUNT_NOUNS, _noun_form_issue
+    from matrix import BARE_ARG_NOUNS, NONCOUNT_NOUNS, _noun_form_issue
     from ruleset import (ADVERB_FIX, CONTRACTIONS, IRREGULAR_COMPARATIVE,
                          IRREGULAR_PART_REGULARIZED, ORAL_PAST_REGULARIZED,
                          REFLEXIVE_FIX, SPELLING_FIX, VERB_ENDING_FIX,
@@ -543,7 +568,8 @@ def supported_findings(analysis, details):
                 if not r['matches'] and code in FAMILIES[r['kind']]
                 and (
                     span[0] <= r['target'] < span[1]
-                    or (r['kind'] in {'uncountable_article', 'modal_syntax', 'quantifier_noun_agreement', 'determiner_stacking', 'auxiliary_complement'}
+                    or (r['kind'] in {'uncountable_article', 'modal_syntax', 'quantifier_noun_agreement', 'determiner_stacking',
+                                      'auxiliary_complement', 'plain_verb_complement'}
                         and any(span[0] <= p < span[1] for p in r['participants']))
                 )
             ]
@@ -614,7 +640,8 @@ def supported_findings(analysis, details):
                 # Corroborate bare singular countable noun without determiner/possessive/numeral
                 leaf = leaves.get(span[0])
                 if (not leaf or leaf.get('type') != 'NN' or leaf.get('ftag') != 'NN'
-                        or has_name_evidence(leaf) or leaf['surface'].lower() in NONCOUNT_NOUNS):
+                        or has_name_evidence(leaf)
+                        or leaf['surface'].lower() in NONCOUNT_NOUNS | BARE_ARG_NOUNS):
                     continue
                 has_det = any(
                     other.get('fhead') == span[0] and other.get('fdep') in {'det', 'poss', 'nummod', 'predet'}

@@ -7,6 +7,7 @@
 //   npm run test:quiz
 
 import assert from 'node:assert/strict';
+import { execFileSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -15,6 +16,14 @@ const root = dirname(dirname(fileURLToPath(import.meta.url)));
 const sheet = JSON.parse(
   readFileSync(join(root, 'web', 'content', 'tree_sheet.json'), 'utf8'),
 );
+const freshSheet = JSON.parse(execFileSync('python3', ['scripts/tree_sheet.py', '--json'], {
+  cwd: root,
+  encoding: 'utf8',
+}));
+const { generatedAt: trackedDate, ...trackedCounts } = sheet.meta;
+const { generatedAt: freshDate, ...freshCounts } = freshSheet.meta;
+assert.deepEqual(freshCounts, trackedCounts, 'regeneration changed the sheet counts');
+assert.deepEqual(freshSheet.stages, sheet.stages, 'regeneration changed the teaching inventory');
 
 assert.ok(Array.isArray(sheet.stages), 'sheet.stages must be an array');
 assert.equal(sheet.stages.length, 4, 'sheet must have exactly 4 stages');

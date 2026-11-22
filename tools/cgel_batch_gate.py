@@ -47,6 +47,63 @@ def _within_repo(root: Path, relative: Any) -> Path | None:
     return candidate
 
 
+def load_owner_waived_overlay(root: Path = ROOT) -> dict[str, dict[str, Any]]:
+    """Load the explicit Phase-C owner-waived candidate overlay indexed by rule_id."""
+    overlay_path = root / "grammar/cambridge_runtime_overlay.json"
+    if not overlay_path.is_file():
+        return {}
+    payload = load(overlay_path)
+    if not isinstance(payload, dict) or not isinstance(payload.get("rules"), list):
+        return {}
+    return {
+        str(row["rule_id"]): row
+        for row in payload["rules"]
+        if isinstance(row, dict) and row.get("rule_id")
+    }
+
+
+def is_owner_waived_phase_c_entry(
+    entry: Any,
+    overlay_by_id: dict[str, dict[str, Any]],
+    rule: dict[str, Any] | None,
+) -> bool:
+    """Return True only when a registry entry satisfies the strict Phase-C owner-waived overlay contract.
+
+    Phase B source extractions remain status='NEEDS_REVIEW' in grammar/rules/*.json.
+    A rule may appear in grammar/runtime_registry.json ONLY if it is an executable
+    constraint/variety_restricted rule with an explicit owner waiver (never claiming
+    independent human review) AND a matching cambridge_runtime_overlay.json record
+    pinned to the allow-listed phase_c candidate probe set.
+    """
+    if not isinstance(entry, dict) or not isinstance(rule, dict):
+        return False
+    rid = entry.get("rule_id")
+    if not isinstance(rid, str) or not rid.strip():
+        return False
+    if rule.get("rule_type") not in ERROR_TYPES:
+        return False
+    if entry.get("owner_waiver") is not True or entry.get("independent_review") is not False:
+        return False
+    if not isinstance(entry.get("reviewed_by"), str) or not entry["reviewed_by"].strip():
+        return False
+    if not isinstance(entry.get("reviewed_on"), str) or not entry["reviewed_on"].strip():
+        return False
+    if entry.get("crosswalk_status") != "owner_waived_unverified":
+        return False
+    if entry.get("test_status") != "source_examples_passed":
+        return False
+    if entry.get("runtime_status") != "enabled":
+        return False
+    overlay = overlay_by_id.get(rid)
+    if not isinstance(overlay, dict):
+        return False
+    return (
+        overlay.get("status") == "REVIEWED"
+        and overlay.get("review_basis") == "owner_waived_ai_review"
+        and overlay.get("runtime_check") == {"kind": "candidate_probe_set", "set": "phase_c"}
+    )
+
+
 def scaffold(chapter: int, start: int, end: int, report: str) -> dict[str, Any]:
     """Create an explicit not-checked-yet starting point; cannot certify a page."""
     if start < 1 or end < start:
@@ -171,8 +228,12 @@ def check_batch(manifest: Any, root: Path = ROOT) -> list[str]:
     schema = load(root / "grammar/schema.json")
     validator = Draft202012Validator(schema)
     runtime = load(root / "grammar/runtime_registry.json")
-    enabled = {rule.get("rule_id") for rule in runtime.get("enabled_rules", [])
-               if isinstance(rule, dict)}
+    overlay_by_id = load_owner_waived_overlay(root)
+    enabled_by_id = {
+        rule.get("rule_id"): rule
+        for rule in runtime.get("enabled_rules", [])
+        if isinstance(rule, dict) and rule.get("rule_id")
+    }
     for rid in ids:
         rule = by_id.get(rid)
         if rule is None:
@@ -180,7 +241,9 @@ def check_batch(manifest: Any, root: Path = ROOT) -> list[str]:
             continue
         for failure in validator.iter_errors(rule):
             errors.append(f"{rid} {failure.json_path}: {failure.message}")
-        if rid in enabled:
+        if rid in enabled_by_id and not is_owner_waived_phase_c_entry(
+            enabled_by_id[rid], overlay_by_id, rule
+        ):
             errors.append(f"{rid}: freshly extracted rule already in production registry")
         if rule.get("status") != "NEEDS_REVIEW":
             errors.append(f"{rid}: newly extracted record must not claim independent approval")

@@ -65,3 +65,18 @@ def concept(rule_id):
     """The conceptual explanation of what a rule governs ('' if unknown)."""
     entry = _rules_by_id().get(rule_id)
     return (entry or {}).get('concept', '') or ''
+
+
+@lru_cache(maxsize=1)
+def _constraint_concepts():
+    return {
+        (item['rule'], item['constraint']): item.get('concept', '')
+        for stage in sections() if stage.get('id') == 4
+        for item in stage.get('items', [])
+        if item.get('rule') and item.get('constraint')
+    }
+
+
+def finding_concept(rule_id, constraint):
+    """Look up the legacy teaching concept for this exact finding."""
+    return _constraint_concepts().get((rule_id, constraint), '')

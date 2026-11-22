@@ -216,12 +216,30 @@ def audit(root: Path = ROOT) -> tuple[dict, list[str], dict]:
     if len(all_rules) < 887:
         errors.append("The full catalog unexpectedly declined below 887")
 
-    # Fail closed: a source-extracted candidate may never appear in the active registry.
+    # Fail closed: a source-extracted candidate may appear in the active registry
+    # only under the explicit Phase-C owner-waived overlay contract, never unwaived.
+    try:
+        from tools.cgel_batch_gate import is_owner_waived_phase_c_entry, load_owner_waived_overlay
+    except ImportError:
+        from cgel_batch_gate import is_owner_waived_phase_c_entry, load_owner_waived_overlay
     registry = load_json(root / "grammar/runtime_registry.json")
-    enabled = {entry.get("rule_id") for entry in registry.get("enabled_rules", [])}
-    unsafe = enabled.intersection({r.get("id") for r in chapter_rules
-                                   if r.get("status") == "NEEDS_REVIEW"
-                                   or (r.get("diagnostic") or {}).get("detector") == "spec_only"})
+    overlay_by_id = load_owner_waived_overlay(root)
+    enabled_entries = {
+        entry.get("rule_id"): entry
+        for entry in registry.get("enabled_rules", [])
+        if isinstance(entry, dict) and entry.get("rule_id")
+    }
+    chapter_by_id = {r.get("id"): r for r in chapter_rules}
+    unsafe = {
+        rid
+        for rid, entry in enabled_entries.items()
+        if rid in chapter_by_id
+        and (
+            chapter_by_id[rid].get("status") == "NEEDS_REVIEW"
+            or (chapter_by_id[rid].get("diagnostic") or {}).get("detector") == "spec_only"
+        )
+        and not is_owner_waived_phase_c_entry(entry, overlay_by_id, chapter_by_id[rid])
+    }
     if unsafe:
         errors.append("Source-only Chapter 3 rules were unsafely enabled: "
                       + ", ".join(sorted(str(x) for x in unsafe)))

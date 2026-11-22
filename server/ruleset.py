@@ -717,6 +717,72 @@ def _lower(leaf):
     return (leaf.get('surface') or '').lower()
 
 
+def contracted_verb_class(auxiliary, verb, dependents):
+    """Resolve 's/'d only where the selected VP supplies distinguishing evidence."""
+    form = _lower(auxiliary).replace('’', "'")
+    tag = verb.get('type')
+    word = _lower(verb).replace('’', "'")
+    if form == "'d":
+        if tag not in {'VB', 'VBN'} or word in PAST_ONLY:
+            return None
+        from lemminflect import getAllLemmas, getInflection
+
+        bases = getAllLemmas(word).get('VERB', ())
+        same_form = word in bases and any(word in getInflection(base, tag='VBN') for base in bases)
+        if not same_form:
+            return 'have' if tag == 'VBN' else 'modal'
+    if form == "'s":
+        if tag == 'VBG':
+            return 'be'
+        if tag == 'VBN' and word not in PAST_ONLY:
+            if word == 'been':
+                return 'have'
+            relations = {leaf.get('fdep') for leaf in dependents}
+            if 'agent' in relations and 'dobj' not in relations:
+                return 'be'
+            if ('dobj' in relations and 'agent' not in relations
+                    and word not in _DITRANSITIVE_OR_COMPLEX_VERBS):
+                return 'have'
+    return None
+
+
+def passive_adjunct_parts(node, governor):
+    """Recognize a postverbal past-participial adjunct with an overt by-agent."""
+    parts = node.get('children', [])
+    if node.get('type') == 'S' and len(parts) == 1:
+        node = parts[0]
+        parts = node.get('children', [])
+    if node.get('type') not in {'ADJP', 'VP', 'PP'} or len(parts) != 2:
+        return None
+    participle, phrase = parts
+    prep = phrase.get('children', [])
+    if (participle.get('type') != 'VBN' or participle.get('ftag') != 'VBN'
+            or participle.get('fdep') != 'advcl' or phrase.get('type') != 'PP'
+            or len(prep) != 2 or _lower(prep[0]) != 'by' or prep[1].get('type') != 'NP'):
+        return None
+    host_start = governor.get('span', [None])[0]
+    head_start = participle.get('span', [None])[0]
+    if (host_start is not None and participle.get('fhead') == host_start
+            and head_start is not None and prep[0].get('fdep') == 'agent'
+            and prep[0].get('fhead') == head_start):
+        return parts
+    return None
+
+
+def bare_be_voice(aux, verb, dependents):
+    """Conservative voice evidence for a plain verb in an auxiliary be slot."""
+    if verb.get('type') not in {'VB', 'VBP'}:
+        return None
+    if aux.get('fdep') == 'auxpass' and aux.get('fhead') == verb['span'][0]:
+        if any(_lower(part) == 'by' and part.get('fdep') == 'agent'
+               and part.get('fhead') == verb['span'][0] for part in dependents):
+            return 'passive'
+        return 'ambiguous'
+    if verb.get('fdep') == 'acomp' and verb.get('fhead') == aux['span'][0]:
+        return 'ambiguous'
+    return None
+
+
 def _num_of(leaf):
     t = leaf.get('type')
     if t in {'NNS', 'NNPS'}:
@@ -1229,30 +1295,39 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                              and _lower(x) not in _EXISTENTIAL_TEMPORAL_ADVS]
                     head = after[0] if after else None
                     if head is not None:
+                        quantifier = None
+                        head_start = head['span'][0]
+                        if (_lower(head) in {'plenty', 'lots'} or
+                                (_lower(head) == 'lot' and any(
+                                    _lower(part) in {'a', 'an'} and part.get('fhead') == head_start
+                                    and part.get('fdep') == 'det' for part in cl[i + 2:]))):
+                            quantifier = head
+                            prep = next((part for part in cl if part['span'][0] == head_start + 1
+                                         and _lower(part) == 'of' and part.get('fhead') == head_start), None)
+                            head = next((part for part in after if prep
+                                         and part.get('fhead') == prep['span'][0]
+                                         and part.get('fdep') == 'pobj'), None)
+                            if head is None:
+                                continue
                         be_sg = _lower(nxt) in ('is', 'was')
                         noun_pl = (head.get('type') in ('NNS', 'NNPS')
                                    or _lower(head) in _EXISTENTIAL_IRREG_PLURALS)
-                        if be_sg and noun_pl:
-                            fix = 'were' if _lower(nxt) == 'was' else 'are'
+                        if be_sg == noun_pl:
+                            past = _lower(nxt) in {'was', 'were'}
+                            fix = ('were' if past else 'are') if noun_pl else ('was' if past else 'is')
+                            number = 'plural' if noun_pl else 'singular'
+                            witnesses = [head]
+                            reason = f"The noun '{head['surface']}' is {number}."
+                            if quantifier is not None:
+                                witnesses.extend([quantifier, prep])
+                                reason = (f"The quantity phrase takes its number from '{head['surface']}' "
+                                          f"after 'of'. That noun is {number}.")
                             out.append(_finding('2.4', 'error', 'C-EXISTENTIAL',
                                                 'existential there', nxt['id'],
-                                                f"In this sentence, 'there {nxt['surface']}' is followed "
-                                                f"by the plural noun '{head['surface']}'; write "
-                                                f"'there {fix}' instead.",
-                                                _tree_evidence(clause['id'], 'there + be + NP'),
-                                                remediation={
-                                                    'suggested_fix': f"write 'there {fix}'",
-                                                    'edits': [{'node': nxt['id'],
-                                                               'replacement': fix}],
-                                                }))
-                        elif (not be_sg) and not noun_pl:
-                            fix = 'was' if _lower(nxt) == 'were' else 'is'
-                            out.append(_finding('2.4', 'error', 'C-EXISTENTIAL',
-                                                'existential there', nxt['id'],
-                                                f"In this sentence, 'there {nxt['surface']}' is followed "
-                                                f"by the singular noun '{head['surface']}'; write "
-                                                f"'there {fix}' instead.",
-                                                _tree_evidence(clause['id'], 'there + be + NP'),
+                                                f"{reason} In formal writing, use 'there {fix}' "
+                                                f"instead of 'there {nxt['surface']}'.",
+                                                _tree_evidence(clause['id'], 'there + be + NP',
+                                                               [{'node': part['id']} for part in witnesses]),
                                                 remediation={
                                                     'suggested_fix': f"write 'there {fix}'",
                                                     'edits': [{'node': nxt['id'],
@@ -1501,9 +1576,9 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
         types = [c.get('type') for c in clause.get('children', [])]
         if 'VP' in types:
             continue
-        has_subject = 'NP' in types or 'SBAR' in types
-        predicate = [t for t in types if t in ('ADJP', 'ADVP', 'PP')]
-        if has_subject and predicate and not any(
+        subject_at = next((i for i, category in enumerate(types) if category in {'NP', 'SBAR'}), None)
+        predicate = subject_at is not None and any(t in {'ADJP', 'ADVP', 'PP'} for t in types[subject_at + 1:])
+        if predicate and not any(
                 lf.get('type') in FINITE_TYPES for lf in _leaves(clause)):
             out.append(_finding('6.3', 'error', 'C-COPULA', 'predicate',
                                 clause['id'],
@@ -3838,9 +3913,9 @@ def _check_basic(root, clauses, leaves):
                     'suggested_fix': f"write '{fix}' instead of '{low}'",
                     'edits': [{'node': lf['id'], 'replacement': fix}],
                 }))
-        elif low in ('much', 'little') and leaves[i + 1].get('type') in (
+        elif low == 'much' and leaves[i + 1].get('type') in (
                 'NNS', 'NNPS') and nlow not in UNCOUNTABLE_SINGULAR:
-            fix = 'many' if low == 'much' else 'few'
+            fix = 'many'
             out.append(_finding(
                 '3.15', 'error', 'C-COUNT-MASS', 'quantifier', lf['id'],
                 f"'{lf['surface']}' is for things you cannot count, but "
@@ -5665,6 +5740,35 @@ def _ancestors(node, pmap):
     return out
 
 
+def _ever_has_continual_reading(leaf, following_leaf, parents, root):
+    modifier = parents.get(leaf['id'], {})
+    if modifier.get('type') != 'ADVP' or len(_leaves(modifier)) != 1:
+        modifier = leaf
+    phrase = parents.get(modifier['id'], {})
+    if phrase.get('type') == 'ADJP':
+        return (following_leaf.get('type') == 'JJ'
+                and parents.get(following_leaf['id'], {}).get('id') == phrase['id'])
+    if phrase.get('type') == 'VP':
+        siblings = phrase.get('children', [])
+        for preceding, adverb, following in zip(siblings, siblings[1:], siblings[2:]):
+            if adverb['id'] == modifier['id'] and _lower(preceding) in BE_SURFACES:
+                return following.get('type') == 'ADJP' or (
+                    following.get('type') == 'VP' and following_leaf.get('type') == 'VBG'
+                )
+    # An initial detached ever + determined NP expresses a characteristic
+    # of the following subject, as in "Ever a gentleman, he offered his seat."
+    parts = root.get('children', [])
+    phrase_parts = phrase.get('children', [])
+    if (len(parts) >= 3 and parts[0] is phrase and parts[1].get('type') == ','
+            and len(phrase_parts) == 2 and phrase_parts[0] is modifier
+            and phrase_parts[1].get('type') == 'NP' and _lower(following_leaf) in {'a', 'an', 'the'}):
+        main = parts[2].get('children', []) if parts[2].get('type') == 'S' else parts[2:]
+        if len(main) >= 2 and main[0].get('type') == 'NP' and main[1].get('type') == 'VP':
+            head = _predicate_verb(main[1])
+            return head is not None and head.get('type') in FINITE_TYPES
+    return False
+
+
 def _check_syntax_constraints(root, clauses, leaves):
     """Tree-driven syntactic constraints (Cycle 5):
       - 9.15 C-NPI-LICENSING: c-commanding downward-entailing licensor for 'ever'
@@ -5687,6 +5791,10 @@ def _check_syntax_constraints(root, clauses, leaves):
     )
     for i, lf in enumerate(leaves):
         if lows[i] != 'ever':
+            continue
+        # Adjectival and progressive modifiers can use ever to mean
+        # continually (ever grateful, is ever changing).
+        if i + 1 < len(leaves) and _ever_has_continual_reading(lf, leaves[i + 1], pmap, root):
             continue
         # Fixed idioms: 'ever since', 'for ever', 'as ever', 'than ever',
         # 'ever so', 'ever after', 'hardly ever', 'if ever'.
@@ -5743,13 +5851,13 @@ def _check_syntax_constraints(root, clauses, leaves):
         if not licensed:
             out.append(_finding(
                 '9.15', 'error', 'C-NPI-LICENSING', 'negative polarity', lf['id'],
-                f"The negative polarity word '{lf['surface']}' needs a licensing "
-                f"negative word (such as 'not', 'never', or 'only') or a question "
-                f"that scopes over this clause.",
+                f"On the ‘at any time’ reading, '{lf['surface']}' needs a context "
+                f"that licenses it, such as a question, negation, or a restriction "
+                f"with 'only' that scopes over this part of the sentence.",
                 _tree_evidence(lf['id'], 'unlicensed NPI ever', [{'node': lf['id']}]),
                 remediation={
-                    'suggested_fix': "remove 'ever' or add negation",
-                    'edits': [{'node': lf['id'], 'delete': True}],
+                    'suggested_fix': "Choose a revision that matches the intended question or statement.",
+                    'edits': [],
                 }))
 
     # --- 6.21 Strictly intransitive verb with direct NP object --------------- #

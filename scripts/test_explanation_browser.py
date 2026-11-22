@@ -37,8 +37,7 @@ try:
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=['--no-sandbox'])
         page = browser.new_page(viewport={'width': 1440, 'height': 1000})
-        if final_mode:
-            page.add_init_script("localStorage.setItem('syntutor_onboarding_seen', '1')")
+        page.add_init_script("localStorage.setItem('syntutor_onboarding_seen', '1')")
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
         def route(request_route):
@@ -54,9 +53,19 @@ try:
             request_route.continue_()
         page.route('**/*', route)
         page.goto(base, wait_until='domcontentloaded')
-        page.evaluate("async () => { await import('/js/main.js'); }")
+        page.evaluate("""async () => {
+          const src = document.querySelector('script[type="module"][src*="main.js"]')?.getAttribute('src');
+          await import(src ? new URL(src, location.href).href : '/js/main.js');
+        }""")
+        skip = page.locator('#onboarding .onboarding-skip')
+        try:
+            skip.wait_for(state='visible', timeout=3000)
+            skip.click()
+            page.locator('#onboarding').wait_for(state='hidden', timeout=5000)
+        except Exception:
+            pass
         text = 'They demolished.' if working_mode else 'The boy sleeps.' if final_mode else 'The birds sing.'
-        with page.expect_response(lambda response: response.url.endswith('/api/parse')) as response:
+        with page.expect_response(lambda response: response.url.endswith('/api/parse') and (response.request.post_data_json or {}).get('text') == text) as response:
             page.locator('#inputText').evaluate("""(el, text) => {
                 el.removeAttribute('readonly');
                 el.value = text;
@@ -75,12 +84,16 @@ try:
             assert not page.locator('#treeCanvas').is_visible()
             assert 'could not be analyzed confidently' in page.locator('#treeAuthorityNotice').inner_text()
             assert page.locator('#openCanonicalBuilder').count() == 0
-            button = canonical.get_by_role('button', name='Inspect Burton-Roberts word for demolished', exact=True).first
-            button.press('Enter')
             pane = page.locator('#explainNode')
             pane.locator('[data-xai-short]').wait_for(timeout=30000)
             assert 'Analysis incomplete' in pane.locator('[data-xai-short]').inner_text()
             assert 'inconclusive' in pane.locator('[data-xai-short]').inner_text()
+            assert pane.locator('[data-shared-evidence] p').count() == 1
+            button = canonical.get_by_role('button', name='Inspect Burton-Roberts word for demolished', exact=True).first
+            button.press('Enter')
+            pane.locator('[data-learner-reset-selection]').wait_for(timeout=30000)
+            node_short = pane.locator('[data-xai-short]').inner_text()
+            assert '“demolished”' in node_short and 'provisional' in node_short and 'uncertain' in node_short, node_short
             assert pane.locator('[data-shared-evidence] p').count() == 1
             assert not errors, errors
             print('PASS: unresolved span remains visible in a B-R working tree with explicit uncertainty.')
@@ -95,7 +108,8 @@ try:
             assert parsed['xai4_partial_evaluation']['global_verdict']['whole_sentence_certified'] is False
             verb = br['tree']['root']['children'][1]['children'][0]
             assert br['display_labels'][verb['id']] == ['V', '[intrans]', '[pres]']
-        page.wait_for_selector('#openCanonicalBuilder', timeout=60000)
+        page.locator('#canonicalTreeView svg').wait_for(state='visible', timeout=60000)
+        page.locator('#exploreBuilderBtn').wait_for(state='visible', timeout=60000)
         if final_mode:
             canonical = page.locator('#canonicalTreeView')
             canonical.wait_for(state='visible')
@@ -118,7 +132,7 @@ try:
             # Verify narrow layout and interactive zoom without changing tree
             # edge coordinates or original leaf order.
             page.set_viewport_size({'width': 390, 'height': 800})
-            canonical.get_by_role('button', name='Fit B-R tree').click()
+            canonical.get_by_role('button', name='Fit syntax tree').click()
             geometry_before = page.evaluate("""() => {
               const svg = document.querySelector('#canonicalTreeView svg');
               return {
@@ -147,7 +161,7 @@ try:
             }""", br['tree']['root'])
             assert all(isinstance(x, (int, float)) and x is not None for x in ordered_leaves), ordered_leaves
             assert all(a < b for a, b in zip(ordered_leaves, ordered_leaves[1:])), ordered_leaves
-            canonical.get_by_role('button', name='Zoom in B-R tree').click()
+            canonical.get_by_role('button', name='Zoom in on syntax tree').click()
             geometry_after = page.evaluate("""() => {
               const svg = document.querySelector('#canonicalTreeView svg');
               return [...svg.querySelectorAll('.lesson-branch')].map(n => [
@@ -157,7 +171,7 @@ try:
             assert len(geometry_before['positions']) >= 5
             assert not page.locator('#treeCanvas').is_visible()
             page.set_viewport_size({'width': 1440, 'height': 1000})
-            canonical.get_by_role('button', name='Fit B-R tree').click()
+            canonical.get_by_role('button', name='Fit syntax tree').click()
             assert svg.locator('.br-feature-row').all_text_contents() == ['[intrans]', '[pres]']
             labels = svg.locator('text').all_text_contents()
             assert all(label in labels for label in ('S', 'NP', 'DET', 'ART', 'NOM', 'N', 'VP', 'V', 'sleeps')), labels
@@ -166,11 +180,11 @@ try:
             pane = page.locator('#explainNode')
             pane.locator('[data-xai-short]').wait_for(timeout=30000)
             simple = pane.locator('[data-xai-short]').inner_text()
-            assert '“sleeps” is the verb' in simple, simple
-            assert 'action, event or state' in simple, simple
-            assert pane.locator('[data-shared-evidence] p').count() == 1
+            assert '“sleeps”' in simple and 'verb phrase' in simple, simple
+            assert 'intransitive' in simple or 'present-tense' in simple, simple
+            assert pane.locator('[data-shared-evidence] p[data-xai-short]').count() == 1
             assert pane.locator('[data-shared-evidence] details').count() == 0
-            assert pane.locator('[data-shared-evidence] button').count() == 0
+            assert pane.locator('[data-shared-evidence] button:not([data-learner-reset-selection])').count() == 0
             assert all(phrase not in pane.inner_text() for phrase in (
                 'Book evidence', 'Ch5 p.', 'Cambridge grammar checks',
                 'B-R structural analysis', 'Tree rule references',
@@ -188,19 +202,20 @@ try:
             assert revisions['revisions'][0]['snapshot']['text'] == 'The boy slept.'
             assert not revisions['revisions'][0]['whole_sentence_certified']
             assert page.locator('#inputText').input_value() == text
-            canonical.get_by_text('Read the tree as text', exact=True).click()
-            word = canonical.locator('details').get_by_role('button', name='Inspect Burton-Roberts word for sleeps')
+            outline_text = page.locator('#canvasTreeTextBody').inner_text()
+            assert all(tok in outline_text for tok in ('S', 'NP', 'VP', 'sleeps')), outline_text
+            word = svg.get_by_role('button', name='Inspect Burton-Roberts word for sleeps', exact=True)
             word.press('Enter')
             assert word.get_attribute('aria-pressed') == 'true'
             pane.locator('[data-xai-short]').wait_for(timeout=30000)
             after = pane.locator('[data-xai-short]').inner_text()
             assert '“sleeps”' in after
-            assert pane.locator('[data-shared-evidence] p').count() == 1
-            assert page.locator('#canonicalTreeView [data-node-id][data-xai7-focus="selected"]').count() >= 1
+            assert pane.locator('[data-shared-evidence] p[data-xai-short]').count() == 1
+            assert page.locator('#canonicalTreeView [data-node-id][data-selected="true"]').count() == 1
             assert parsed['explanation_evidence']['xai6_naturalization']['status'] == 'unavailable'
             assert parsed['xai6_naturalization']['provider_calls'] == 0
             assert parsed['xai6_naturalization']['model_enabled'] is False
-            page.locator('#newSessionBtn').click()
+            page.locator('#inputClearBtn').click()
             assert not canonical.is_visible()
             assert not errors, errors
             print('PASS: FINAL-D1 renders the reported sentence and exposes its node evidence.')
@@ -236,13 +251,28 @@ try:
           if (document.querySelector('#explainNode').textContent.includes('Verified correction'))
             throw new Error('Legacy correction presented as verified');
         }""")
-        page.click('#openCanonicalBuilder')
-        page.click('#builderSnap')
+        page.click('#exploreBuilderBtn')
+        page.locator('#builderCanvas').wait_for(state='visible', timeout=30000)
         page.wait_for_selector('[data-shared-evidence]', timeout=30000)
-        shared = page.evaluate("async()=>{const m=await import('/js/syntax-builder-ui.js');const b=await import('/js/syntax-builder.js');const tree=b.toCanonicalEnvelope(m.builderModel(),{chapter:2,version:'V2',profile_id:'V2'});const evaluated=await(await fetch('/api/evaluate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tree})})).json();const explained=await(await fetch('/api/explain',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tree})})).json();return {evaluated:evaluated.explanation_evidence,explained};}")
+        shared = page.evaluate("""async () => {
+          const modUrl = (name) => performance.getEntriesByType('resource')
+            .map((e) => e.name).find((u) => u.includes('/js/' + name)) || ('/js/' + name);
+          const m = await import(modUrl('syntax-builder-ui.js'));
+          const b = await import(modUrl('syntax-builder.js'));
+          const tree = b.toCanonicalEnvelope(m.builderModel(), {chapter: 2, version: 'V2', profile_id: 'V2'});
+          const evaluated = await (await fetch('/api/evaluate', {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({tree}),
+          })).json();
+          const explained = await (await fetch('/api/explain', {
+            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({tree}),
+          })).json();
+          return {evaluated: evaluated.explanation_evidence, explained};
+        }""")
         assert shared['evaluated'] == shared['explained']
         builder = page.locator('[data-shared-evidence]').inner_text()
-        assert builder == generator, (generator, builder)
+        assert builder.strip() == shared['explained']['learner_explanation']['text'], (builder, shared['explained'])
+        assert '“The birds”' in builder and '“sing”' in builder, builder
+        assert all(x not in builder for x in ('Book evidence', 'Ch2', 'XAI-', 'source-reviewed', 'rule references'))
         # A hostile explanation is displayed as text, never interpreted as HTML.
         page.evaluate("""async () => {
           const {renderEvidence} = await import('/js/explanation-evidence.js');

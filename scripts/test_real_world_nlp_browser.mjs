@@ -89,6 +89,59 @@ try {
   assert.equal(homograph.summary.corrected_sentence, undefined);
   assert.match(cant.explanation, /Analysis incomplete/);
 
+  const { payload: frequency, record: grateful } = await submit('ever-frequency', 'She is ever grateful for your help.');
+  assert.equal(frequency.summary.verdict, 'grammatical');
+  assert.equal(frequency.summary.corrected_sentence, undefined);
+  assert.doesNotMatch(grateful.explanation, /negative polarity|object order/i);
+  const { payload: polarity, record: unlicensed } = await submit('ever-polarity', 'Those banks had really ever lied.');
+  assert.ok(polarity.summary.constraints_fired.includes('C-NPI-LICENSING'));
+  assert.equal(polarity.summary.corrected_sentence, undefined);
+  assert.ok(polarity.explainers.concepts.some(item => item.rule === '9.15' && item.concept === ''));
+  assert.match(unlicensed.explanation, /at any time/);
+  assert.doesNotMatch(unlicensed.explanation, /direct and indirect object|possible revision/i);
+
+  const { payload: chain } = await submit('contracted-progressive', 'He’s being watched.');
+  assert.equal(chain.br_analysis.status, 'normalized');
+  const progressive = chain.explanation_evidence.fact_graph.nodes.find(node => node.label === 'PROG');
+  assert.deepEqual(progressive?.token_ids, [1]);
+  await tree.locator(`svg [role="button"][data-node-id="${progressive.node_id}"]`).press('Enter');
+  await page.locator('#explainNode [data-xai-short]').filter({ hasText: /progressive auxiliary.*here “being”/s }).waitFor();
+  const { payload: perfect } = await submit('contracted-perfect', "I'd left by noon.");
+  assert.equal(perfect.summary.verdict, 'grammatical');
+  assert.equal(perfect.summary.corrected_sentence, undefined);
+  assert.ok(perfect.explanation_evidence.fact_graph.nodes.some(node => node.label === 'PERF'));
+  const { payload: bare, record: bareView } = await submit('bare-after-be', 'She is eat dinner.');
+  assert.equal(bare.br_analysis.status, 'unresolved');
+  assert.match(bareView.explanation, /“eat” is in the plain form/);
+  assert.equal(bare.summary.corrected_sentence, 'She is eating dinner.');
+  const { payload: uncertainVoice, record: voiceView } = await submit(
+    'uncertain-voice', 'The child is play outside.');
+  assert.equal(uncertainVoice.br_analysis.status, 'unresolved');
+  assert.equal(uncertainVoice.summary.corrected_sentence, undefined);
+  assert.match(voiceView.explanation, /plain form.*progressive.*past participle/s);
+  const { payload: quantified, record: agreementView } = await submit(
+    'quantified-agreement', 'There is plenty of books.');
+  assert.equal(quantified.summary.corrected_sentence, 'There are plenty of books.');
+  assert.match(agreementView.explanation, /books.*plural/s);
+  const agreement = quantified.learner_analysis.findings.find(f => f.constraint === 'C-EXISTENTIAL');
+  assert.deepEqual(agreement?.target_token_ids, [1]);
+  assert.ok(agreement.related_token_ids.includes(4));
+  const { payload: recipient } = await submit(
+    'stranded-recipient', 'Who did Naomi send the photograph to?');
+  assert.equal(recipient.br_analysis.status, 'normalized');
+  const prep = recipient.explanation_evidence.fact_graph.nodes.find(node =>
+    node.label === 'P' && node.surface === 'to');
+  assert.ok(prep);
+  await tree.locator(`svg [role="button"][data-node-id="${prep.node_id}"]`).press('Enter');
+  await page.locator('#explainNode [data-xai-short]').filter({ hasText: /preposition/i }).waitFor();
+  const { payload: adjunct } = await submit('passive-participial-adjunct', 'Maya arrived surrounded by friends.');
+  const clause = adjunct.explanation_evidence.fact_graph.nodes.find(node =>
+    node.label === 'S-bar' && node.surface === 'surrounded by friends');
+  assert.equal(adjunct.br_analysis.status, 'normalized');
+  assert.ok(clause);
+  assert.equal(adjunct.summary.verdict, 'grammatical');
+  await tree.locator(`svg [role="button"][data-node-id="${clause.node_id}"]`).waitFor();
+
   const unicode = 'Naomi 😊 will go later.';
   await submit('unicode', unicode);
   const selectedText = await page.locator('#inputText').evaluate(input =>

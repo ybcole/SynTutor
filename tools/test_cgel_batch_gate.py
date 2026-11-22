@@ -6,7 +6,12 @@ import copy
 import unittest
 
 from tools import ledger
-from tools.cgel_batch_gate import check_batch, scaffold
+from tools.cgel_batch_gate import (
+    check_batch,
+    is_owner_waived_phase_c_entry,
+    load_owner_waived_overlay,
+    scaffold,
+)
 
 
 def completed_manifest(page, rule_id):
@@ -125,6 +130,29 @@ class TestCambridgeBatchGate(unittest.TestCase):
         bad = copy.deepcopy(good)
         bad["page_checks"][0]["source_checked"] = False
         self.assertTrue(any("not checked" in e for e in check_batch(bad)))
+
+    def test_owner_waived_phase_c_governance_fails_closed_on_unwaived_or_invalid(self):
+        overlay = load_owner_waived_overlay()
+        valid_entry = {
+            "rule_id": "COMP-034",
+            "owner_waiver": True,
+            "independent_review": False,
+            "reviewed_by": "owner waiver + AI source examples/guards",
+            "reviewed_on": "2026-11-14",
+            "crosswalk_status": "owner_waived_unverified",
+            "test_status": "source_examples_passed",
+            "runtime_status": "enabled",
+        }
+        constraint_rule = {"id": "COMP-034", "rule_type": "constraint", "status": "NEEDS_REVIEW"}
+        self.assertTrue(is_owner_waived_phase_c_entry(valid_entry, overlay, constraint_rule))
+        # Unwaived entry is rejected
+        self.assertFalse(is_owner_waived_phase_c_entry({**valid_entry, "owner_waiver": False}, overlay, constraint_rule))
+        # False independent_review claim is rejected
+        self.assertFalse(is_owner_waived_phase_c_entry({**valid_entry, "independent_review": True}, overlay, constraint_rule))
+        # Missing overlay entry is rejected
+        self.assertFalse(is_owner_waived_phase_c_entry(valid_entry, {}, constraint_rule))
+        # Non-constraint descriptive/classification rule is rejected even with overlay
+        self.assertFalse(is_owner_waived_phase_c_entry(valid_entry, overlay, {**constraint_rule, "rule_type": "classification"}))
 
 
 if __name__ == "__main__":

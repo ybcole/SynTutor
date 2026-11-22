@@ -2,7 +2,7 @@ import {createBuilderTools} from './builder-tools.js';
 import {renderLessonTree} from './lessons-ui.js?v=2026.11.18f';
 import {nodeLesson, nodeLessonRoute} from './node-lessons.js?v=2026.11.18f';
 import { API_BASE } from './config.js';
-import { requestEvidence, renderEvidence } from './explanation-evidence.js?v=2026.11.18f';
+import { requestEvidence, renderEvidence } from './explanation-evidence.js?v=2026.11.21b';
 // Syntax Builder view: a free-form canvas node editor for assembling syntax
 // trees by hand. It is shown as a sidebar destination (like Achievements) and
 // also drives the Matrix Quiz's "rebuild the tree" questions.
@@ -1150,7 +1150,11 @@ export function openBuilderView(opts = {}) {
     document.getElementById('builderTopLeft')?.setAttribute('hidden', '');
   }
   canvas.focus();
-  explainSelected();
+  if (opts.canonicalTree) {
+    showBuilderEvidence(null);
+  } else {
+    explainSelected();
+  }
   state.treeCorrect = treeIsComplete();
   draw();
 }

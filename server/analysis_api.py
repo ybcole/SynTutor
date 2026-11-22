@@ -509,7 +509,7 @@ def _rule_concepts(details, summary):
     """Concept text (from tree_sheet.json) for every rule that fired.
 
     Gives the *why* behind each violation using the same concept that the tree
-    quiz teaches, keyed by rule id.
+    quiz teaches, when the reported constraint has a matching teaching entry.
     """
     try:
         from . import master
@@ -519,25 +519,22 @@ def _rule_concepts(details, summary):
         except Exception:  # noqa: BLE001
             return []
     seen = {}
+    def add(finding):
+        rid = finding.get('rule_id')
+        if not rid:
+            return
+        concept = master.finding_concept(rid, finding.get('constraint'))
+        if rid not in seen or (concept and not seen[rid]['concept']):
+            seen[rid] = {'rule': rid, 'concept': concept, 'note': finding.get('text', '')}
+
     for detail in details.values():
         if not isinstance(detail, dict):
             continue
-        rid = detail.get('rule_id')
-        status = detail.get('status')
-        if rid and status in ('error', 'unverified'):
-            seen.setdefault(rid, detail.get('text', ''))
+        if detail.get('status') in ('error', 'unverified'):
+            add(detail)
         for finding in detail.get('findings', []) or []:
-            frid = finding.get('rule_id')
-            if frid:
-                seen.setdefault(frid, finding.get('text', ''))
-    out = []
-    for rid, text in seen.items():
-        out.append({
-            'rule': rid,
-            'concept': master.concept(rid),
-            'note': text,
-        })
-    return out
+            add(finding)
+    return list(seen.values())
 
 
 def _validate_correction(candidate):

@@ -338,6 +338,10 @@ BARE_ARG_NOUNS = {
     'home', 'school', 'work', 'bed', 'church', 'town', 'court', 'class',
     'college', 'breakfast', 'lunch', 'dinner', 'supper', 'brunch', 'schoolwork',
     'tv', 'television', 'radio',  # 'watch TV' is idiomatic without an article
+    # These can name a season, an activity or an undifferentiated course of action.
+    # A separate count sense can still take an article ('a summer', 'a handball').
+    'spring', 'summer', 'autumn', 'fall', 'winter', 'action',
+    'badminton', 'basketball', 'football', 'handball', 'netball', 'volleyball',
 }
 # Words the parser may tag as NN but which never take an article: indefinite
 # pronouns (everyone, somebody, ...) and bare temporal/deictic adverbs.
@@ -1905,7 +1909,7 @@ class MatrixEvaluator:
             item = dict(finding)
             item['id'] = f"{nid}:{finding.get('rule_id')}"
             if master is not None:
-                item['concept'] = master.concept(finding.get('rule_id'))
+                item['concept'] = master.finding_concept(finding.get('rule_id'), finding.get('constraint'))
             detail.setdefault('findings', []).append(item)
             if finding['status'] == 'error':
                 # The front end keys token colouring on the node's own status,
@@ -2680,7 +2684,7 @@ class MatrixEvaluator:
                             f"but '{self._p(head)}' is more than one. Change "
                             'one of them so they match.')
             if ct in ADJ_CLASS and _lower(child.get('surface', '')) in \
-                    {'less', 'fewer', 'much', 'many', 'little', 'few'}:
+                    {'less', 'fewer', 'much', 'many', 'few'}:
                 nxt = _next_leaf_after(grandparent, child)
                 if nxt in {'than', 'as'}:
                     return ('valid', 'C-QUANTIFIER',
@@ -2771,6 +2775,8 @@ class MatrixEvaluator:
                     f"'{self._p(parent)}'.")
         base = _base_form(head)
         num = num_of(head)
+        if word == 'little' and child.get('ftag') in ADJ_CLASS:
+            return self._modifier_pos(parent, child)
         # selection map: word -> required number (None = number-neutral)
         requires = {'less': 'sg', 'much': 'sg', 'little': 'sg',
                     'fewer': 'pl', 'many': 'pl', 'few': 'pl'}
@@ -2899,6 +2905,9 @@ class MatrixEvaluator:
     def _vp_rule(self, parent, child, grandparent=None):
         ct = child['type']
         head = phrase_head(parent)
+        if ct in {'ADJP', 'PP', 'S', 'VP'} and head is not None and ruleset.passive_adjunct_parts(child, head):
+            return ('valid', 'C-ADJUNCT',
+                    f"'{self._p(child)}' is a passive participial clause adding a circumstance to the action.")
         if ct in VERB_CLASS:
             if self._aux_class(child):
                 return self._aux_check(parent, child, grandparent)
@@ -3072,7 +3081,7 @@ class MatrixEvaluator:
     @staticmethod
     def _aux_class(child):
         return child['type'] in {'MD', 'AUX'} or \
-            _lower(child.get('surface', '')) in (MODALS | BE_FORM | HAVE_FORM | DO_FORM) \
+            _lower(child.get('surface', '')) in (MODALS | BE_FORM | HAVE_FORM | {'do', 'does', 'did'}) \
             or _clitic_core(child.get('surface', '')) is not None
 
     @staticmethod
@@ -3114,7 +3123,18 @@ class MatrixEvaluator:
     def _aux_check(self, parent, child, grandparent=None):
         surface = _lower(child['surface'])
         clitic = _clitic_core(child['surface'])
-        if child['type'] in {'MD', 'AUX'} or surface in MODALS or clitic == 'modal':
+        verb_node = self._following_verb(parent, child)
+        if verb_node is None:
+            return self._verb_head(parent, child)
+        if surface.replace('’', "'") in {"'s", "'d"}:
+            start = verb_node.get('span', [None])[0]
+            dependents = [leaf for leaf in _leaves_list(parent)
+                          if start is not None and leaf.get('fhead') == start]
+            cls = ruleset.contracted_verb_class(child, verb_node, dependents)
+            if cls is None:
+                return ('unlisted', 'C-UNLISTED',
+                        f"The verb form after '{self._p(child)}' does not establish which auxiliary the contraction represents.")
+        elif child['type'] in {'MD', 'AUX'} or surface in MODALS or clitic == 'modal':
             cls = 'modal'
         elif surface in BE_FORM or clitic == 'be':
             cls = 'be'
@@ -3124,15 +3144,23 @@ class MatrixEvaluator:
             cls = 'do'
         else:
             return self._verb_head(parent, child)
-        verb_node = self._following_verb(parent, child)
-        if verb_node is None:
-            return self._verb_head(parent, child)
         if (cls == 'be' and verb_node.get('type') in {'VB', 'VBP'}
                 and self._is_specificational_pseudocleft(grandparent, parent)):
             return ('valid', 'C-AUXILIARY',
                     f"'{self._p(child)} {self._p(verb_node)}' is a specificational "
                     'pseudo-cleft, where a bare infinitive after copular "be" is '
                     'standard English.')
+        if cls == 'be':
+            voice = ruleset.bare_be_voice(child, verb_node, _leaves_list(parent))
+            if voice == 'passive':
+                return ('error', 'C-AUX-FORM',
+                        f"Passive '{self._p(child)}' takes a past participle. "
+                        f"'{self._p(verb_node)}' is a plain verb form here.")
+            if voice == 'ambiguous':
+                return ('error', 'C-AUX-FORM',
+                        f"'{self._p(verb_node)}' is a plain form. Auxiliary '{self._p(child)}' "
+                        "takes either an -ing form for the progressive or a past participle "
+                        "for the passive.")
         leaves = _leaves_list(parent)
         idx = next((i for i, lf in enumerate(leaves)
                     if lf.get('id') == child.get('id')), None)
@@ -3203,11 +3231,16 @@ class MatrixEvaluator:
 
     @staticmethod
     def _following_verb(parent, aux_child):
-        after = [c for c in parent['children'] if c['id'] != aux_child['id']]
-        for c in after:
-            verb_leaves = _leaves_list(c)
-            if verb_leaves and verb_leaves[0]['type'] in VERB_CLASS:
-                return verb_leaves[0]
+        for child in parent['children']:
+            if child['span'][0] < aux_child['span'][1]:
+                continue
+            if child['type'] in {'ADVP', 'RB', 'RBR', 'RBS'}:
+                continue
+            if child['type'] == 'VP':
+                children = child.get('children', [])
+                child = next((part for part in children
+                              if part['type'] not in {'ADVP', 'RB', 'RBR', 'RBS'}), child)
+            return child if child['type'] in VERB_CLASS else None
         return None
 
     # ------------------------------------------------------------------ #
@@ -3603,6 +3636,7 @@ class MatrixEvaluator:
         verb = self._following_verb(parent, node) if parent else None
         if verb is None or parent is None:
             return None
+        voice = ruleset.bare_be_voice(node, verb, _leaves_list(parent)) if cls == 'be' else None
         got_label = VERB_FORM_LABEL.get(verb['type'], verb['type'])
         base = _verb_lemma(_lower(verb.get('surface', ''))) or _base_form(verb)
         aux_s = node['surface']
@@ -3631,6 +3665,18 @@ class MatrixEvaluator:
                           "'have' is followed by the past participle (third form).")
             alternative = None
             outcome = f"'{aux_s}' + '{target}' instead of '{aux_s}' + '{v_s}'"
+        elif voice == 'passive':
+            target = _preserve_case(v_s, _vbn_form(base))
+            violation = f"Passive '{aux_s}' takes a past participle. '{v_s}' is a plain form here."
+            suggested = f"Use the past participle '{target}' after '{aux_s}' for the passive."
+            alternative = None
+            outcome = f"'{aux_s} {target}'"
+        elif voice == 'ambiguous':
+            return {
+                'violation': (f"'{v_s}' is a plain form after '{aux_s}'. The progressive "
+                              "uses an -ing form and the passive uses a past participle."),
+                'suggested_fix': "Choose the verb form that expresses the intended voice and aspect.",
+            }
         else:  # be
             target = _preserve_case(v_s, _vbg_form(base))
             suggested = (f"Change '{v_s}' to the '-ing' form '{target}' after "

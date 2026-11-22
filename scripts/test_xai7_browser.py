@@ -42,12 +42,9 @@ try:
         return
       r.continue_()
     page.route('**/*',route)
-    page.goto(base+'/?preview=legacy',wait_until='domcontentloaded')
-    page.evaluate("async () => { await import('/js/main.js'); }")
     # LESSON — choose an actual B-R node, prove selected/tree parent and
     # navigate to another node without stale highlight.
-    page.locator('.sidebar-item[data-view="lessons"]').click()
-    page.evaluate("async () => {const m=await import('/js/lessons-ui.js');await m.openLessons('br-04')}")
+    page.goto(base+'/?preview=legacy#lesson/br-04/worked-example',wait_until='domcontentloaded')
     lesson=page.locator('#curriculumView')
     tree=lesson.locator('.lesson-tree-canvas')
     tree.wait_for(timeout=30000)
@@ -75,9 +72,9 @@ try:
     feature.press('Enter')
     expect(area.locator('[data-xai-short]')).to_contain_text('transitive',timeout=30000)
     current=tree.locator('svg').bounding_box()['width']
-    tree.get_by_role('button',name='Zoom in B-R tree').click()
+    tree.get_by_role('button',name='Zoom in on syntax tree').click()
     assert tree.locator('svg').bounding_box()['width']>current
-    tree.get_by_role('button',name='Fit B-R tree').click()
+    tree.get_by_role('button',name='Fit syntax tree').click()
     assert tree.locator('svg').bounding_box()['width']==current
     page.set_viewport_size({'width':390,'height':844})
     assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
@@ -86,10 +83,8 @@ try:
     # QUIZ — grade an actual assessment before the quiz source channel is
     # available. Then select its authentic reviewed answer tree and confirm
     # a *separate* server evidence panel without replacing the quiz feedback.
-    page.locator('.sidebar-item[data-view="quizzes"]').click()
+    page.evaluate("location.hash = '#quiz/quiz-br-02'")
     quiz=page.locator('#quizzesView')
-    quiz.locator('[data-assessment="quiz-br-02"]').get_by_role(
-      'button',name='Start assessment',exact=True).click()
     quiz.locator('[data-quiz-item]').wait_for()
     for n in range(5):
       question=quiz.locator('[data-quiz-item]')
@@ -100,8 +95,8 @@ try:
       if n<4:
         quiz.get_by_role('button',name='Next question',exact=True).click()
         expect(quiz).to_have_attribute('aria-busy','false')
-    quiz.get_by_role('button',name='Submit assessment',exact=True).click()
-    quiz.locator('.quiz-score').wait_for(timeout=30000)
+    quiz.get_by_role('button',name='Submit',exact=True).click()
+    expect(quiz.locator('.quiz-score')).to_contain_text('5/5',timeout=30000)
     review=quiz.locator('[data-xai7-quiz-tree]').first
     review.wait_for(timeout=30000)
     review.locator('summary').first.click()

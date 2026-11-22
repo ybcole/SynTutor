@@ -1,5 +1,9 @@
 # SynTutor — Continuous NLP Reliability Improvement Progress Report
 
+## 2026-11-22 Manila handoff checkpoint
+
+The independent review started at `5451d72` on `fix/syntutor-system-reliability-xai` and preserved the working Antigravity patches. The offline backend suite passed 982 tests with loopback enabled. The tree-sheet quiz gate passed before and after a clean build. The review corrected Phase-C runtime overlay handling, the `9.15` teaching association, false polarity findings on continual `ever`, and the live-browser workflow origin. The XAI-7 browser suite passed through the current lesson and assessment routes. Both publication digest gates still require independent review of the changed Cambridge material. The branch is suitable for continued engineering. See the [independent handoff review](SYNTUTOR_INDEPENDENT_AGY_HANDOFF_REVIEW.md) and the [evidence and XAI traceability matrix](SYNTUTOR_UNIFIED_EVIDENCE_XAI_RELIABILITY_REMEDIATION.md).
+
 **Project:** *SynTutor: An Explainable AI-Based Framework for Syntax Tree-Driven Grammar Analysis and Learning Using NLP*  
 **Starting Point:** Cycle 2 locked baseline ([SYNTUTOR_FINAL_NLP_RELIABILITY_AUDIT.md](file:///Users/kiyel/Desktop/SynTutor/docs/audits/SYNTUTOR_FINAL_NLP_RELIABILITY_AUDIT.md))  
 **Updated Timestamp (UTC):** `2026-11-20T12:25:00Z`  

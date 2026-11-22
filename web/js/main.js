@@ -2050,6 +2050,7 @@ function startNewSession() {
   renderer.select(null);
   renderer.clear();
   hideExploreBuilder();
+  syncCanvasModeButton();
   clearOverlay();
   renderNodeDetail(null, null, null);
   resetFocusState();

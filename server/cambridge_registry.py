@@ -66,12 +66,16 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
         overlay = json.loads(overlay_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         overlay = {}
-    for row in overlay.get("rules", []) if isinstance(overlay, dict) else []:
-        if not isinstance(row, dict) or not row.get("rule_id"):
+    overlay_rows = overlay.get("rules", []) if isinstance(overlay, dict) else []
+    overlay_by_id = {}
+    duplicate_overlay_ids = set()
+    for row in overlay_rows if isinstance(overlay_rows, list) else []:
+        if not isinstance(row, dict) or not isinstance(row.get("rule_id"), str):
             continue
-        rule_id = str(row["rule_id"])
-        if rule_id in by_id:
-            by_id[rule_id] = {**by_id[rule_id], **{k: v for k, v in row.items() if k != "rule_id"}}
+        rule_id = row["rule_id"]
+        if rule_id in overlay_by_id:
+            duplicate_overlay_ids.add(rule_id)
+        overlay_by_id[rule_id] = row
 
     active, diagnostics, seen = [], [], set()
     entries = registry.get("enabled_rules", [])
@@ -88,6 +92,21 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
             continue
         seen.add(rule_id)
         rule = by_id.get(rule_id)
+        phase_c_overlay = (
+            rule is not None and rule.get("status") == "NEEDS_REVIEW"
+            and rule_id not in duplicate_overlay_ids
+            and overlay_by_id.get(rule_id) == {
+                "rule_id": rule_id, "status": "REVIEWED",
+                "review_basis": "owner_waived_ai_review",
+                "runtime_check": {"kind": "candidate_probe_set", "set": "phase_c"},
+            }
+            and entry.get("owner_waiver") is True
+            and entry.get("independent_review") is False
+            and entry.get("crosswalk_status") == "owner_waived_unverified"
+            and entry.get("test_status") == "source_examples_passed"
+        )
+        if phase_c_overlay:
+            rule = {**rule, "status": "REVIEWED", "runtime_check": overlay_by_id[rule_id]["runtime_check"]}
         reasons = []
         if rule is None:
             reasons.append("source rule not found")
@@ -140,8 +159,8 @@ def load_runtime_registry(root: Path | None = None) -> dict[str, Any]:
                 if set(check) != {"kind", "probe"} or check.get("probe") not in supported_probe_names():
                     reasons.append("candidate_probe must name one allow-listed probe")
             elif check.get("kind") == "candidate_probe_set":
-                if set(check) != {"kind", "set"} or check.get("set") != "phase_c":
-                    reasons.append("candidate_probe_set must name the allow-listed phase_c set")
+                if not phase_c_overlay:
+                    reasons.append("candidate_probe_set requires the explicit Phase-C owner waiver and overlay")
             elif check.get("kind") != "forbidden_token_sequences":
                 reasons.append("runtime_check kind is not supported by the deterministic evaluator")
             else:

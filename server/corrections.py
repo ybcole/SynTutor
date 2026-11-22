@@ -426,7 +426,7 @@ _NEGATION_RE = re.compile(
     r"hadnt|shouldnt|wouldnt|couldnt|mustnt|aint|nt)(?!\w)|n't(?!\w))",
     re.I,
 )
-_NEGATION_AUTH_CONSTRAINTS = {'C-DOUBLE-NEG', 'C-NPI-LICENSING'}
+_NEGATION_AUTH_CONSTRAINTS = {'C-DOUBLE-NEG'}
 
 
 def _negation_count(text):
@@ -441,7 +441,7 @@ def _has_corrupt_artifact(original_sentence, candidate, used_edits=None):
     - embedded sentence-ending punctuation inside a prose-scraped token edit
       ('Whose car did you see? had Irene...'),
     - silent polarity inversion (dropping/adding negation without a
-      double-negative or NPI rule authorizing it), or
+      double-negative rule authorizing it), or
     - morphologically invalid comparative -erly/-estly adverbs.
     """
     for m in _DUPLICATE_ADJ_WORD.finditer(candidate):

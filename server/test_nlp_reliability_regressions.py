@@ -152,6 +152,88 @@ class NlpReliabilityRegressionTests(unittest.TestCase):
                 br.build_canonical_analysis(an)
                 self.assertEqual(an["root"], before)
 
+    def test_contractions_follow_the_selected_verb_and_preserve_aspect(self):
+        cases = (
+            ("She’s leaving early.", 'PROG', 'is', 'leaving'),
+            ("She's eaten the apple.", 'PERF', 'has', 'eaten'),
+            ("She's eaten by the monster.", 'PASS', 'is', 'eaten'),
+            ("He's being watched.", 'PROG', 'is', 'being'),
+            ("She's been studying.", 'PERF', 'has', 'been'),
+            ("I'd leave tomorrow.", 'MOD', 'would', 'leave'),
+            ("I'd left by noon.", 'PERF', 'had', 'left'),
+        )
+        for sentence, label, expansion, selected in cases:
+            with self.subTest(sentence=sentence):
+                payload = api.build_payload(sentence)
+                self.assertEqual(payload['br_analysis']['status'], 'normalized')
+                self.assertEqual(payload['summary']['verdict'], 'grammatical')
+                self.assertIsNone(payload['summary'].get('corrected_sentence'))
+                graph = payload['explanation_evidence']['fact_graph']
+                node = next(n for n in graph['nodes'] if n.get('label') == label
+                            and n.get('token_ids') == [1])
+                explanation = compose_learner_explanation(graph, node_id=node['node_id'])['text']
+                generator = payload['learner_analysis']['nodes'][node['node_id']]['text']
+                for text in (explanation, generator):
+                    self.assertIn(f'“{expansion}”', text)
+                    self.assertIn(f'here “{selected}”', text)
+
+    def test_auxiliary_ambiguity_and_incompatible_forms_stay_provisional(self):
+        for sentence in ("She's given a prize.", "I'd put the keys away."):
+            with self.subTest(sentence=sentence):
+                payload = api.build_payload(sentence)
+                self.assertEqual(payload['br_analysis']['status'], 'unresolved')
+                self.assertNotIn('C-AUX-FORM', payload['summary']['constraints_fired'])
+                self.assertIsNone(payload['summary'].get('corrected_sentence'))
+
+        payload = api.build_payload('She is eat dinner.')
+        self.assertEqual(payload['br_analysis']['status'], 'unresolved')
+        self.assertIn('C-AUX-FORM', payload['summary']['constraints_fired'])
+        finding = next(row for row in payload['learner_analysis']['findings']
+                       if row['constraint'] == 'C-AUX-FORM')
+        self.assertEqual(finding['target_token_ids'], [2])
+        self.assertEqual(finding['related_token_ids'], [1])
+        self.assertEqual(payload['summary']['corrected_sentence'], 'She is eating dinner.')
+
+    def test_detached_ever_nominal_is_not_a_missing_copula_or_unlicensed_polarity(self):
+        for sentence in ("Ever the optimist, she tried again.",
+                         "Ever a gentleman, he offered his seat."):
+            with self.subTest(sentence=sentence):
+                payload = api.build_payload(sentence)
+                self.assertNotEqual(payload['summary']['verdict'], 'ungrammatical')
+                self.assertFalse({'C-COPULA', 'C-NPI-LICENSING'} & set(payload['summary']['constraints_fired']))
+                self.assertIsNone(payload['summary'].get('corrected_sentence'))
+        missing = api.build_payload('She very happy.')
+        self.assertIn('C-COPULA', missing['summary']['constraints_fired'])
+        polarity = api.build_payload('Those banks had really ever lied.')
+        self.assertIn('C-NPI-LICENSING', polarity['summary']['constraints_fired'])
+
+    def test_passive_participial_adjunct_retains_its_clause_boundary(self):
+        for sentence in ('We returned disappointed by our evening.',
+                         'Maya arrived surrounded by friends.',
+                         'They returned accompanied by a guide.'):
+            with self.subTest(sentence=sentence):
+                result = br.normalize_benepar_candidate(parse_engine.analyze(sentence), br.convention_profile())
+                self.assertEqual(result['status'], 'normalized')
+                root = result['tree']['root']
+                controller, vp = root['children']
+                adjunct = vp['children'][-1]
+                self.assertEqual(adjunct['label'], 'S-bar')
+                body = adjunct['children'][-1]
+                self.assertEqual(body['label'], 'S')
+                controlled_subject, predicate = body['children']
+                core, agent = predicate['children']
+                self.assertEqual(agent['label'], 'PP')
+                self.assertEqual(controlled_subject['children'][0]['index'], controller['index'])
+                self.assertEqual(core['children'][1]['children'][0]['index'], controller['index'])
+                payload = api.build_payload(sentence)
+                self.assertNotIn('C-ADJ-ADV', payload['summary']['constraints_fired'])
+                self.assertIsNone(payload['summary'].get('corrected_sentence'))
+        linking = api.build_payload('Maya seems disappointed by the result.')
+        self.assertTrue(any(node.get('label') == 'AP'
+                            for node in linking['explanation_evidence']['fact_graph']['nodes']))
+        manner = api.build_payload('She waltzed gentle.')
+        self.assertIn('C-ADJ-ADV', manner['summary']['constraints_fired'])
+
     # --- Scenario F: Multiple simultaneous errors ---
     def test_multiple_simultaneous_errors_separated_and_repaired(self):
         payload = api.build_payload("She go to school with he.")
@@ -232,6 +314,27 @@ class NlpReliabilityRegressionTests(unittest.TestCase):
                 self.assertTrue(res["validation"]["valid"])
 
     # --- Scenario J: Cycle 5 syntactic rules (minimal pairs + negative controls) ---
+    def test_polarity_ever_preserves_frequency_and_does_not_guess_intent(self):
+        for sentence in (
+            "She is ever grateful for your help.",
+            "The coastline is ever changing.",
+            "Have the banks ever lied?",
+            "Few of the banks had ever lied.",
+        ):
+            with self.subTest(sentence=sentence):
+                payload = api.build_payload(sentence)
+                self.assertEqual(payload['summary']['verdict'], 'grammatical')
+                self.assertIsNone(payload['summary'].get('corrected_sentence'))
+
+        payload = api.build_payload("Those banks had really ever lied.")
+        self.assertIn('C-NPI-LICENSING', payload['summary']['constraints_fired'])
+        self.assertIsNone(payload['summary'].get('corrected_sentence'))
+        finding = next(finding for detail in payload['node_details'].values()
+                       for finding in detail.get('findings', [])
+                       if finding.get('constraint') == 'C-NPI-LICENSING')
+        self.assertEqual(finding['concept'], '')
+        self.assertIn('at any time', finding['text'])
+
     def test_cycle5_syntactic_rules_catch_errors_without_overgeneralizing(self):
         ungrammatical = [
             ("Those banks had really ever lied.", "C-NPI-LICENSING"),

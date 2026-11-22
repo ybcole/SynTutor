@@ -104,6 +104,20 @@ class SyntaxGeneratorApiContractTests(unittest.TestCase):
             },
         }
 
+    def test_rule_concept_requires_matching_constraint(self):
+        polarity = {'rule_id': '9.15', 'constraint': 'C-NPI-LICENSING',
+                    'text': 'This use of ever needs a licensor.'}
+        order = {'rule_id': '9.15', 'constraint': 'C-OBJECT-ORDER',
+                 'text': 'The objects are in the wrong order.'}
+        self.assertEqual(api._rule_concepts({'n0': {'findings': [polarity]}}, {}), [
+            {'rule': '9.15', 'concept': '', 'note': polarity['text']},
+        ])
+        for findings in ([order], [polarity, order], [order, polarity]):
+            concepts = api._rule_concepts({'n0': {'findings': findings}}, {})
+            self.assertEqual(len(concepts), 1)
+            self.assertIn('object', concepts[0]['concept'])
+            self.assertEqual(concepts[0]['note'], order['text'])
+
     def test_v2_payload_exposes_candidate_and_canonical_analysis_separately(self):
         with patch.object(api, "analyze", return_value=self.analysis()), \
              patch.object(api, "evaluate", return_value=self.clean_evaluation()), \

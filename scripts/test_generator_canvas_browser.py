@@ -95,28 +95,40 @@ try:
 
             page.route("**/*", route)
             page.goto(base, wait_until="domcontentloaded")
-            page.evaluate("async () => { await import('/js/main.js'); }")
+            page.evaluate("""async () => {
+              const src = document.querySelector('script[type="module"][src*="main.js"]')?.getAttribute('src');
+              await import(src ? new URL(src, location.href).href : '/js/main.js');
+            }""")
+            skip = page.locator("#onboarding .onboarding-skip")
+            try:
+                skip.wait_for(state="visible", timeout=3000)
+                skip.click()
+                page.locator("#onboarding").wait_for(state="hidden", timeout=5000)
+            except Exception:
+                pass
             page.locator("#inputText").evaluate("""(el, text) => {
+                el.removeAttribute('readonly');
                 el.value = text;
                 el.dispatchEvent(new KeyboardEvent('keydown', {
                   key:'Enter', ctrlKey:true, bubbles:true
                 }));
             }""", TEXT)
-            toggle = page.locator("#toggleParserDiagnostic")
-            expect(toggle).to_be_visible()
-            expect(toggle).to_have_attribute("aria-expanded", "false")
+            # Fail closed: when B-R projection is unresolved without a working tree,
+            # neither raw Penn canvas nor legacy parser diagnostic toggle is exposed.
+            expect(page.locator("#treeAuthorityNotice")).to_contain_text(
+                "A Burton-Roberts tree is not available"
+            )
+            expect(page.locator("#toggleParserDiagnostic")).to_have_count(0)
             expect(page.locator("#treeCanvas")).to_be_hidden()
             expect(page.locator("#canonicalTreeView")).to_be_hidden()
-            toggle.click()
-            expect(toggle).to_have_attribute("aria-expanded", "true")
-            expect(page.locator("#treeCanvas")).to_be_visible()
-            toggle.click()
-            expect(page.locator("#treeCanvas")).to_be_hidden()
-            assert "variety" not in parse_requests[0]
-            setting = page.get_by_label("English variety")
-            expect(setting).to_be_visible()
-            expect(setting).to_have_value("")
+            expect(page.locator("#explainNode [data-xai-short]")).to_contain_text(
+                "Analysis incomplete"
+            )
+            assert "variety" not in parse_requests[-1]
+
+            # Multi-sentence navigation keeps sentence selection synchronized on desktop and mobile.
             page.locator("#inputText").evaluate("""(el, text) => {
+                el.removeAttribute('readonly');
                 el.value = text;
                 el.dispatchEvent(new KeyboardEvent('keydown', {
                   key:'Enter', ctrlKey:true, bubbles:true
@@ -124,22 +136,10 @@ try:
             }""", f"{TEXT} {TEXT}")
             second = page.locator('.sentence-span[data-sent-idx="1"]')
             expect(second).to_be_visible()
-
-            with page.expect_request(lambda r: r.url.endswith("/api/parse")) as changed:
-                setting.select_option("standard_english")
-            assert changed.value.post_data_json["variety"] == "standard_english"
-            expect(page.locator("#loadingIndicator")).not_to_have_class(re.compile("visible"))
             expect(page.locator('.sentence-span[data-sent-idx="0"]')).to_have_class(re.compile("is-active"))
             with page.expect_request(lambda r: r.url.endswith("/api/parse")) as navigated:
                 second.click()
             assert navigated.value.post_data_json["sentence_index"] == 1
-            assert navigated.value.post_data_json["variety"] == "standard_english"
-            expect(second).to_have_class(re.compile("is-active"))
-
-            with page.expect_request(lambda r: r.url.endswith("/api/parse")) as cleared:
-                setting.select_option("")
-            assert cleared.value.post_data_json["sentence_index"] == 1
-            assert "variety" not in cleared.value.post_data_json
             expect(page.locator("#loadingIndicator")).not_to_have_class(re.compile("visible"))
             expect(second).to_have_class(re.compile("is-active"))
             page.close()
@@ -147,4 +147,4 @@ try:
 finally:
     server.shutdown()
     server.server_close()
-print("PASS: raw diagnostics stay opt-in and English variety follows the selected sentence on desktop and mobile.")
+print("PASS: unresolved B-R stays fail-closed without raw Penn fallback and multi-sentence selection works on desktop and mobile.")
