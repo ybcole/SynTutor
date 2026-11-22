@@ -67,11 +67,18 @@ MULTIWORD_PREPOSITIONS = {
     ("regardless", "of"), ("contrary", "to"), ("thanks", "to"), ("subject", "to"),
 }
 TEMPORAL_P = {"after", "before", "until"}
-TIME_NOUNS = {"today", "tomorrow", "yesterday", "tonight", "night", "morning", "afternoon", "evening", "week", "month", "year", "day", "time", "moment", "hour", "minute", "second", "decade", "century"}
+TIME_NOUNS = {
+    "today", "tomorrow", "yesterday", "tonight", "night", "morning", "afternoon",
+    "evening", "week", "month", "year", "day", "time", "moment", "hour", "minute",
+    "second", "decade", "century", "weekend", "fortnight", "midnight", "noon",
+    "dawn", "dusk", "winter", "spring", "summer", "autumn", "fall", "season",
+    "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday",
+}
 LOCATIVE_WORDS = {"here", "there", "upstairs", "downstairs", "outside", "inside"}
 TEMPORAL_P_WORDS = {"now", "then"}
 LOCATIVE_PREPOSITIONS = {"above", "across", "against", "along", "at", "behind", "below", "beside",
                         "between", "beyond", "by", "in", "inside", "near", "on", "outside", "under"}
+DIRECTIONAL_LOCATIVE_PREPOSITIONS = LOCATIVE_PREPOSITIONS | {"into", "onto", "to", "from", "through", "over", "off", "out", "upon", "around", "round", "towards", "toward"}
 INTENSIVE = {"be", "become", "seem", "appear", "look", "feel", "sound", "taste", "smell", "remain", "get", "grow", "prove", "stay", "turn"}
 COMPLEX = {
     "call", "consider", "find", "keep", "make", "paint", "put", "place",
@@ -84,6 +91,12 @@ COMPLEX = {
     "wipe", "sweep", "push", "pull", "hammer", "wash", "cut", "dye",
     "stain", "colour", "color", "boil", "freeze", "shoot", "knock",
     "slam", "set", "send", "beat", "bake", "slice",
+    "lay", "stick", "tuck", "stow", "shove", "stuff", "slide", "park",
+    "plant", "hang", "position", "deposit", "insert",
+}
+LOCATIVE_COMPLEX = {
+    "put", "place", "set", "lay", "stick", "tuck", "stow", "shove", "stuff",
+    "slide", "park", "plant", "hang", "position", "deposit", "insert",
 }
 DITRANSITIVE = {
     "give", "tell", "show", "send", "offer", "lend", "bring", "pay", "buy",
@@ -96,12 +109,80 @@ DITRANSITIVE = {
     "toss", "sing", "play", "fix", "draw", "cut", "mix", "prepare", "win",
     "earn", "choose", "pick", "deal", "allocate", "allot", "accord", "advance",
     "guarantee", "issue", "mail", "post", "quote", "render", "slip", "supply",
-    "wire", "yield", "make", "get", "keep", "call",
+    "wire", "yield", "make", "get", "keep", "call", "find",
 }
 RECIPIENT_TO = {
     "give", "show", "send", "offer", "lend", "hand", "pass", "sell",
     "award", "grant", "assign", "mail", "post", "throw", "toss", "feed",
     "serve", "pay", "bring", "read", "write", "teach", "tell", "promise", "owe",
+    "advance", "allocate", "allot", "accord", "quote", "render", "slip",
+    "supply", "wire", "yield", "leave", "issue", "guarantee",
+}
+BENEFACTIVE_FOR = {
+    "save", "reserve", "book", "buy", "bake", "cook", "make", "build", "fetch",
+    "get", "order", "pour", "find", "keep", "leave", "prepare", "fix", "draw",
+    "cut", "mix", "sing", "play", "win", "earn", "choose", "pick", "paint",
+    "sew", "knit", "carve", "brew", "fry", "roast", "grill", "grab", "hold",
+    "set", "write",
+}
+FOR_SELECTING_NOUNS = {
+    "ticket", "pass", "voucher", "receipt", "invitation", "permit", "license",
+    "licence", "visa", "passport", "key", "cure", "remedy", "recipe", "manual",
+    "guide", "textbook", "book", "novel", "magazine", "programme", "program",
+    "schedule", "budget", "plan", "proposal", "application", "request", "demand",
+    "need", "reason", "excuse", "preference", "passion", "love", "respect",
+    "admiration", "sympathy", "affection", "apology", "penalty", "punishment",
+    "reward", "prize", "price", "fee", "rent", "market", "shelter", "cover",
+    "case", "bag", "box", "holder", "stand", "frame", "test", "exam", "quiz",
+    "course", "class", "lesson", "rule", "law", "policy", "tax", "bill",
+    "fund", "grant", "loan", "award", "medal", "trophy", "search", "hunt",
+    "quest", "wait",
+}
+ANIMATE_HEAD_NOUNS = {
+    "mother", "father", "mom", "mum", "dad", "parent", "parents", "brother",
+    "sister", "son", "daughter", "child", "children", "baby", "infant", "kid",
+    "kids", "wife", "husband", "spouse", "partner", "friend", "friends",
+    "neighbour", "neighbor", "neighbours", "neighbors", "guest", "guests",
+    "visitor", "visitors", "teacher", "teachers", "student", "students",
+    "pupil", "pupils", "doctor", "doctors", "nurse", "nurses", "patient",
+    "patients", "client", "clients", "customer", "customers", "boss", "manager",
+    "director", "colleague", "colleagues", "assistant", "chef", "cook", "guard",
+    "guards", "driver", "pilot", "player", "players", "team", "family",
+    "grandmother", "grandfather", "aunt", "uncle", "cousin", "nephew", "niece",
+    "king", "queen", "prince", "princess", "minister", "mayor", "judge",
+    "lawyer", "author", "artist", "singer", "actor", "actress", "dog", "dogs",
+    "cat", "cats", "horse", "horses", "bird", "birds", "pet", "pets", "people",
+    "person", "man", "men", "woman", "women", "boy", "boys", "girl", "girls",
+    "lady", "ladies", "gentleman", "gentlemen", "crew", "staff", "crowd",
+    "audience", "committee", "board", "club", "group", "class", "winner",
+    "winners", "host", "owner", "recipient", "beneficiary", "member", "members",
+    "traveller", "traveler", "passenger", "passengers", "elder", "elders",
+    "stranger", "folks", "couple", "duo", "companion", "companions", "mate",
+    "soldier", "soldiers", "officer", "officers", "worker", "workers", "clerk",
+    "secretary", "waiter", "waitress", "butler", "servant", "chef", "baker",
+    "tailor", "carpenter", "plumber", "surgeon", "professor", "dean", "captain",
+    "coach", "mentor", "intern", "trainee", "trainees", "volunteer", "volunteers",
+}
+ANIMATE_PRONOUNS = {
+    "i", "me", "you", "he", "him", "she", "her", "we", "us", "they", "them",
+    "myself", "yourself", "himself", "herself", "ourselves", "yourselves",
+    "themselves", "everyone", "everybody", "someone", "somebody", "anyone",
+    "anybody", "nobody", "who", "whom", "whoever", "whomever",
+}
+INANIMATE_LOCATION_NOUNS = {
+    "station", "airport", "harbour", "harbor", "port", "beach", "park", "forest",
+    "mountain", "island", "village", "town", "city", "country", "continent",
+    "capital", "border", "coast", "north", "south", "east", "west", "abroad",
+    "overseas", "home", "room", "hall", "kitchen", "garden", "yard", "street",
+    "road", "avenue", "square", "bridge", "building", "tower", "castle", "palace",
+    "warehouse", "depot", "field", "valley", "river", "lake", "sea", "ocean",
+    "desert", "jungle", "woods", "hill", "cliff", "cave", "hole", "cellar",
+    "attic", "basement", "roof", "floor", "ground", "table", "desk", "chair",
+    "bench", "shelf", "counter", "cabinet", "drawer", "box", "bag", "pocket",
+    "envelope", "bottle", "jar", "cup", "glass", "plate", "bowl", "dish", "pot",
+    "pan", "oven", "fridge", "freezer", "wall", "door", "window", "gate", "fence",
+    "car", "bus", "train", "ship", "boat", "plane", "truck", "van", "bike",
+    "bicycle", "venue",
 }
 SELECTED_PP = {
     "refer": {"to"}, "glance": {"at"}, "look": {"at", "for", "after"}, "listen": {"to"},
@@ -117,12 +198,26 @@ SELECTED_PP = {
     "contribute": {"to"}, "object": {"to"}, "submit": {"to"}, "react": {"to"},
     "respond": {"to"}, "adapt": {"to"}, "adhere": {"to"}, "attend": {"to"},
     "allude": {"to"}, "amount": {"to"}, "care": {"for", "about"}, "search": {"for"},
-    "hope": {"for"}, "call": {"for"}, "account": {"for"}, "pay": {"for"}, "vote": {"for"},
+    "hope": {"for"}, "call": {"for"}, "account": {"for"}, "pay": {"for"}, "vote": {"for", "against"},
+    "argue": {"for", "against", "about"}, "decide": {"on", "upon"},
     "suffer": {"from"}, "recover": {"from"}, "benefit": {"from"}, "abstain": {"from"},
     "refrain": {"from"}, "differ": {"from"}, "emerge": {"from"}, "escape": {"from"},
     "cope": {"with"}, "comply": {"with"}, "interfere": {"with"}, "coincide": {"with"},
     "hear": {"of", "about"}, "speak": {"of", "about", "to"}, "boast": {"of", "about"},
     "know": {"of", "about"}, "learn": {"of", "about"},
+}
+EXTRAPOSITION_NP_VERBS = {
+    "occur", "spread", "arise", "arrive", "emerge", "circulate", "surface",
+    "persist", "remain", "exist", "grow", "develop", "prevail", "come",
+    "appear", "seem", "happen", "follow", "disappear", "fade", "linger",
+    "dawn", "begin", "start", "continue", "end", "pass", "die", "vanish",
+    "hold", "stand", "wait", "lurk", "loom",
+}
+PROPOSITIONAL_PP_VERBS = {
+    "admit", "announce", "claim", "confess", "confirm", "declare", "demonstrate",
+    "explain", "hint", "imply", "indicate", "mention", "note", "prove", "remark",
+    "report", "reveal", "say", "show", "signal", "state", "suggest", "swear",
+    "whisper", "write", "complain", "boast", "reply", "respond",
 }
 SENTENCE_FINAL_DISJUNCT_PPS = {
     "in my view", "in my opinion", "in our view", "in our opinion",
@@ -141,20 +236,48 @@ SENTENCE_FINAL_DISJUNCT_ADVS = {
     "regrettably", "mercifully", "curiously", "sadly", "happily",
     "luckily", "clearly", "plainly", "undoubtedly", "surely",
 }
-TIME_UNITS = {"second", "minute", "hour", "day", "week", "month", "year", "moment"}
-KNOWN_INTRANS = {"arrive", "die", "disappear", "bark", "rain", "sneeze", "happen", "occur"}
+TIME_UNITS = {"second", "minute", "hour", "day", "week", "month", "year", "moment", "while", "age", "decade", "century", "fortnight", "weekend"}
+KNOWN_INTRANS = {"arrive", "die", "disappear", "bark", "rain", "sneeze", "happen", "occur", "arise", "emerge"}
 REQUIRES_COMPLEMENT = {"demolish", "use", "dread", "inspect", "spot", "put", "make", "devour"}
 TYPE_I = {"believe", "expect", "prefer", "want", "know", "hear", "watch", "like", "suppose", "consider", "imagine", "find", "see", "notice", "feel", "help", "declare", "prove", "allow", "cause", "enable", "let", "have", "need", "require", "wish"}
 PASSIVE_TYPE_I = {"assume", "believe", "consider", "expect", "know", "report", "say", "suppose", "think", "declare", "find", "prove", "show", "understand", "allege", "claim"}
 TYPE_II = {"persuade", "ask", "encourage", "force", "invite", "order", "tell", "teach", "promise", "advise", "require", "allow", "oblige", "entice", "convince", "remind", "warn", "permit", "enable", "cause", "help", "get", "lead", "urge", "command", "instruct", "compel"}
-SUBJECT_CONTROL = {"agree", "ask", "begin", "continue", "decide", "fail", "forget", "hope", "intend", "learn", "like", "love", "manage", "need", "offer", "plan", "prefer", "promise", "refuse", "remember", "start", "stop", "try", "want", "enjoy", "avoid", "afford", "choose", "aim", "attempt", "tend", "seem", "appear", "happen", "mean", "wish", "desire", "seek", "strive", "prepare", "expect", "claim", "pretend", "hesitate", "dare", "ought", "use", "have", "go", "come"}
+TO_SUBJECT_CONTROL = {
+    "agree", "aim", "appear", "ask", "attempt", "afford", "begin", "cease",
+    "choose", "claim", "come", "consent", "continue", "dare", "decide",
+    "decline", "deserve", "desire", "determine", "endeavour", "endeavor",
+    "expect", "fail", "forget", "go", "guarantee", "happen", "hate", "have",
+    "hesitate", "hope", "intend", "learn", "like", "long", "love", "manage",
+    "mean", "need", "offer", "ought", "plan", "pledge", "prefer", "prepare",
+    "pretend", "promise", "refuse", "remember", "resolve", "seek", "seem",
+    "start", "stop", "strive", "swear", "tend", "threaten", "try", "undertake",
+    "use", "volunteer", "vow", "wait", "want", "wish", "yearn",
+}
+ING_SUBJECT_CONTROL = {
+    "acknowledge", "admit", "advocate", "anticipate", "appreciate", "avoid",
+    "begin", "cease", "celebrate", "complete", "consider", "contemplate",
+    "continue", "defer", "delay", "deny", "detest", "discuss", "dislike",
+    "dread", "endure", "enjoy", "escape", "fancy", "finish", "forget",
+    "forgive", "hate", "imagine", "keep", "like", "love", "mention", "mind",
+    "miss", "pardon", "postpone", "practice", "practise", "prefer", "propose",
+    "quit", "recall", "recollect", "recommend", "regret", "remember", "report",
+    "resent", "resist", "resume", "risk", "start", "stop", "suggest",
+    "tolerate", "try",
+}
+ING_FREE_CONTROL = {
+    "allow", "entail", "forbid", "involve", "justify", "permit", "prohibit", "require",
+}
+ING_ONLY_VERBS = (ING_SUBJECT_CONTROL | ING_FREE_CONTROL) - TO_SUBJECT_CONTROL
+SUBJECT_CONTROL = TO_SUBJECT_CONTROL | ING_SUBJECT_CONTROL
 CONTROL_ADJECTIVES = {"anxious", "eager", "keen", "hesitant", "unwilling", "willing", "happy", "liable", "reluctant", "ready", "able", "unable", "glad", "proud", "afraid", "sorry", "pleased", "delighted", "prepared", "determined", "free", "quick", "slow", "careful", "ashamed", "content", "lucky", "fortunate", "welcome"}
 RAISING_ADJECTIVES = {"likely", "unlikely", "sure", "certain", "bound", "apt", "supposed", "due", "set"}
 OBJECT_GAP_ADJECTIVES = {"easy", "hard", "difficult", "tough", "tiresome", "boring", "enjoyable", "disgusting", "delicious", "impossible", "worth", "interesting", "pleasant", "unpleasant", "nice", "fun", "safe", "dangerous", "helpful", "useful", "simple", "awkward", "painful", "expensive", "cheap", "good", "bad", "great", "wonderful", "terrible", "fine"}
 CLAUSAL_NOUNS = {
     "fact", "idea", "claim", "news", "belief", "rumour", "rumor", "report",
     "decision", "question", "possibility", "thought", "conclusion",
-    "suggestion", "plan", "promise", "wish", "need",
+    "suggestion", "plan", "promise", "wish", "need", "proposal", "suspicion",
+    "prediction", "expectation", "realisation", "realization", "conviction",
+    "awareness", "story", "word",
     "evidence", "chance", "opportunity", "willingness", "ability", "inability",
     "attempt", "effort", "desire", "right", "duty", "way", "reason", "power",
     "freedom", "tendency", "failure", "refusal", "proof", "sign", "indication",
@@ -170,6 +293,14 @@ CLAUSAL_NOUNS = {
 
 class ProjectionUnavailable(ValueError):
     """A construction lacks an unambiguous projection rule."""
+
+
+class AmbiguousProjection(ProjectionUnavailable):
+    """A construction admits multiple structurally licensed Burton-Roberts analyses."""
+
+    def __init__(self, message, alternatives=()):
+        super().__init__(message)
+        self.alternatives = list(alternatives)
 
 
 def branch(label, refs, *children, features=()):
@@ -492,41 +623,95 @@ class Projection:
             return self.modifier([node], adjective=True, quantifying=True)
         raise ProjectionUnavailable(f"Unsupported {label} phrase")
 
-    def nml_phrase(self, node):
-        """Project a Penn Treebank v3 NML compound premodifier ('long-term',
-        'second-hand', 'World Cup', '2006') into a schema-valid B-R N/NOM/AP."""
+    def nml_phrase(self, node, as_nominal=False):
+        """Project a Penn Treebank v3 NML compound or coordinated nominal
+        ('long-term', 'second-hand', 'World Cup', 'Health and Safety',
+        'dancing and colourful language') into a schema-valid B-R N/NOM/AP."""
         parts = kids(node)
         if not parts:
             raise ProjectionUnavailable("Empty NML constituent")
+        # Coordinated NML ('Health and Safety', 'trade and tariff', 'social and economic',
+        # or 'dancing and colourful language' under a shared determiner).
+        if any(leaf(p) and tag(p) == "CC" for p in parts):
+            def _is_bare_noun_chunk(chunk):
+                if len(chunk) == 1 and tag(chunk[0]) == "NML":
+                    return _is_bare_noun_chunk(kids(chunk[0]))
+                return bool(chunk) and all(leaf(p) and tag(p) in NOUN_TAGS for p in chunk)
+
+            def _is_adj_chunk(chunk):
+                return bool(chunk) and all(leaf(p) and tag(p) in ADJ_TAGS for p in chunk)
+
+            links = [i for i, p in enumerate(parts) if leaf(p) and tag(p) == "CC"]
+            chunks = []
+            prev = 0
+            valid_split = bool(links) and links[0] > 0 and links[-1] < len(parts) - 1
+            if valid_split:
+                for idx in links:
+                    if idx <= prev:
+                        valid_split = False
+                        break
+                    chunks.append(parts[prev:idx])
+                    prev = idx + 1
+                chunks.append(parts[prev:])
+            if valid_split and chunks:
+                if not as_nominal and all(_is_bare_noun_chunk(ch) for ch in chunks):
+                    def _proj_n(chunk):
+                        if len(chunk) == 1 and tag(chunk[0]) == "NML":
+                            return self.nml_phrase(chunk[0], as_nominal=False)
+                        nouns = [branch("N", NOUN, word_node(p)) for p in chunk]
+                        return nouns[0] if len(nouns) == 1 else branch("N", NOUN, *nouns)
+                    coord = self.coordinate(parts, _proj_n)
+                    if coord:
+                        return branch("N", COORD, *coord)
+                if not as_nominal and all(_is_adj_chunk(ch) for ch in chunks):
+                    coord = self.coordinate(parts, lambda ch: self.modifier(ch, adjective=True))
+                    if coord:
+                        return branch("AP", COORD, *coord)
+                # General nominal coordination: NOM -> NOM CC NOM (B-R Ch. 7 pp. 142-144)
+                def _proj_nom(chunk):
+                    if len(chunk) == 1 and tag(chunk[0]) == "NML":
+                        res = self.nml_phrase(chunk[0], as_nominal=True)
+                    else:
+                        res = self.nml_phrase(raw("NML", chunk), as_nominal=True)
+                    return res if res.get("label") == "NOM" else branch("NOM", NOMINAL, res)
+                coord = self.coordinate(parts, _proj_nom)
+                if coord:
+                    return branch("NOM", COORD, *coord)
         # Single fused hyphenated adjective NML ('second-hand', 'long-term')
         if len(parts) == 1 and leaf(parts[0]) and tag(parts[0]) in ADJ_TAGS:
             return self.modifier(parts, adjective=True)
         # All-noun or proper-noun NML ('World Cup', 'car park')
         if all(leaf(p) and tag(p) in NOUN_TAGS for p in parts):
             nouns = [branch("N", NOUN, word_node(p)) for p in parts]
-            return nouns[0] if len(nouns) == 1 else branch("N", NOUN, *nouns)
+            core = nouns[0] if len(nouns) == 1 else branch("N", NOUN, *nouns)
+            return branch("NOM", NOMINAL, core) if as_nominal else core
         # All-numeral NML ('2006' split as '2 0 0 6')
         if all(leaf(p) and tag(p) == "CD" for p in parts):
             return branch("AP", NOUN, *(branch("QA", NOUN, word_node(p)) for p in parts))
-        # Modifier + noun compound NML ('long-term', 'second-hand', 'high-speed')
+        # Modifier + noun compound NML ('long-term', 'second-hand', 'high-speed', 'colourful language')
         if leaf(parts[-1]) and tag(parts[-1]) in NOUN_TAGS:
-            head_n = branch("N", NOUN, word_node(parts[-1]))
-            mods = []
-            for p in parts[:-1]:
+            noun_start = len(parts) - 1
+            while noun_start > 0 and leaf(parts[noun_start - 1]) and tag(parts[noun_start - 1]) in NOUN_TAGS:
+                noun_start -= 1
+            nouns = [branch("N", NOUN, word_node(p)) for p in parts[noun_start:]]
+            head_n = nouns[0] if len(nouns) == 1 else branch("N", NOUN, *nouns)
+            nominal = branch("NOM", NOMINAL, head_n)
+            for p in reversed(parts[:noun_start]):
                 if leaf(p) and tag(p) in ADJ_TAGS:
-                    mods.append(self.modifier([p], adjective=True))
+                    mod = self.modifier([p], adjective=True)
                 elif leaf(p) and tag(p) == "CD":
-                    mods.append(self.modifier([p], adjective=True, quantifying=True))
+                    mod = self.modifier([p], adjective=True, quantifying=True)
                 elif leaf(p) and tag(p) in NOUN_TAGS:
-                    mods.append(branch("N", NOUN, word_node(p)))
+                    mod = branch("N", NOUN, word_node(p))
                 elif leaf(p) and tag(p) in ADV_TAGS:
-                    mods.append(self.modifier([p]))
+                    mod = self.modifier([p])
                 elif leaf(p) and tag(p) in {"VBN", "VBG"}:
-                    mods.append(branch("PartP", ("Ch7 pp. 147–148, 158",),
-                                       branch("V-part", ("Ch7 p. 158",), word_node(p))))
+                    mod = branch("PartP", ("Ch7 pp. 147–148, 158",),
+                                 branch("V-part", ("Ch7 p. 158",), word_node(p)))
                 else:
-                    mods.append(self.phrase(p))
-            return branch("NOM", NOMINAL, *mods, head_n)
+                    mod = self.phrase(p)
+                nominal = branch("NOM", NOMINAL, mod, nominal)
+            return nominal
         # Fallback: try projecting as NP if it has a valid nominal structure
         return self.np(parts)
 
@@ -714,7 +899,11 @@ class Projection:
                     children.append(self.phrase(part))
             if len(children) >= 2:
                 return branch("NP", COORD, *children)
-        coordination = self.coordinate(nodes, lambda part: self.np(part, nonrestrictive))
+        def _coord_np_part(part):
+            if len(part) == 1 and tag(part[0]) == "S" and self.is_nonfinite(part[0]):
+                return branch("NP", NONFINITE, self.nonfinite(part[0]))
+            return self.np(part, nonrestrictive)
+        coordination = self.coordinate(nodes, _coord_np_part)
         if coordination:
             return branch("NP", COORD, *coordination)
         if len(nodes) == 1 and tag(nodes[0]) == "NP":
@@ -867,81 +1056,115 @@ class Projection:
                              start and i > start and tag(nodes[i]) == "CD" and word(nodes[i]) == "one"
                              and tag(nodes[i - 1]) in (ADJ_TAGS | {"DT"})))), None)
             if head is None:
-                if len(nodes) == 1 and leaf(nodes[0]) and tag(nodes[0]) == "CD":
-                    return branch("NP", NOUN, det, branch("NOM", NOMINAL, self.modifier(nodes, adjective=True, quantifying=True)))
-                # Elided-head quantifier NP (Ch7 ellipsis convention: "going to
-                # many", "loved few", "discovered more", "at least as many"):
-                # project the quantifying AP over an explicit empty N(E).
-                if (start == 0 and stop >= 1
-                        and (
-                            (stop == 1 and leaf(nodes[0]) and (word(nodes[0]) in QA or tag(nodes[0]) == "CD"))
-                            or (stop == 1 and tag(nodes[0]) == "QP")
-                            or (stop == 1 and tag(nodes[0]) == "ADJP"
-                                and any(word(lf) in QA or tag(lf) == "CD" for lf in leaves(nodes[0])))
-                            or (all(leaf(n) and (word(n) in QA | DEGREE or tag(n) in {"CD", "RB", "IN", "JJS", "JJR"}) for n in nodes[:stop])
-                                and any(word(n) in QA or tag(n) == "CD" for n in nodes[:stop]))
-                        )):
-                    q_nodes = kids(nodes[0]) if (stop == 1 and tag(nodes[0]) in {"QP", "ADJP"}) else nodes[:stop]
-                    q_ap = self.modifier(q_nodes, adjective=True, quantifying=True)
-                    nominal = branch("NOM", NOMINAL, q_ap,
-                                     branch("NOM", NOMINAL, branch("N", NOUN, {"elided": True, "symbol": "E"})))
-                    for mod in nodes[stop:]:
-                        nominal = branch("NOM", NOMINAL, nominal, self.phrase(mod))
-                    return branch("NP", NOUN, det, nominal)
-                if start and stop - start <= 1:
-                    nominal = branch("NOM", NOMINAL, branch("N", NOUN, {"elided": True, "symbol": "E"}))
-                    if start < stop:
-                        mod = nodes[start]
-                        nominal = branch("NOM", NOMINAL, self.modifier([mod], adjective=True,
-                                         quantifying=tag(mod) == "CD" or word(mod) in QA), nominal)
-                    for mod in nodes[stop:]:
-                        nominal = branch("NOM", NOMINAL, nominal, self.phrase(mod))
-                    return branch("NP", NOUN, det, nominal)
-                if len(nodes) == 1 and leaf(nodes[0]) and word(nodes[0]) in {"plenty", "several"}:
-                    if word(nodes[0]) == "several":
-                        return self.np([dict(nodes[0], type="DT")])
-                    return branch("NP", NOUN, det, branch("NOM", NOMINAL, branch("N", NOUN, word_node(nodes[0]))))
-                raise ProjectionUnavailable("NP has no identifiable noun head")
-            head_word = word(nodes[head])
-            noun_start = head
-            while noun_start > start and leaf(nodes[noun_start - 1]) and tag(nodes[noun_start - 1]) in NOUN_TAGS:
-                noun_start -= 1
-            pro_nominal = head_word in {"one", "ones"} and (start > 0 or head_word == "ones") and noun_start == head
-            if pro_nominal:
-                noun = word_node(nodes[head])
+                # Shared determiner scoping over a coordinated or compound NML
+                # nominal: (NP (PRP$ your) (NML (NML (NN dancing)) (CC and) (NML (JJ colourful) (NN language))))
+                # -> NP -> DET + NOM(NOM + CC + NOM) per B-R Ch. 7 pp. 142-144.
+                if start < stop and tag(nodes[stop - 1]) == "NML":
+                    nominal = self.nml_phrase(nodes[stop - 1], as_nominal=True)
+                    if nominal.get("label") != "NOM":
+                        nominal = branch("NOM", NOMINAL, nominal)
+                    for mod in reversed(nodes[start:stop - 1]):
+                        if leaf(mod) and tag(mod) in {"VBG", "VBN"}:
+                            phrase = branch("PartP", ("Ch7 pp. 147–148, 158",),
+                                            branch("V-part", ("Ch7 p. 158",), word_node(mod)))
+                        elif tag(mod) in {"ADJP", "ADVP"}:
+                            phrase = self.phrase(mod)
+                        elif tag(mod) == "NML":
+                            phrase = self.nml_phrase(mod)
+                        elif tag(mod) == "QP":
+                            phrase = self.modifier(kids(mod), adjective=True, quantifying=True)
+                        else:
+                            phrase = self.modifier([mod], adjective=True, quantifying=word(mod) in QA or tag(mod) == "CD")
+                        nominal = branch("NOM", NOMINAL, phrase, nominal)
+                    head_word = word(leaves(nodes[stop - 1])[-1])
+                    modifiers = nodes[stop:]
+                else:
+                    if len(nodes) == 1 and leaf(nodes[0]) and tag(nodes[0]) == "CD":
+                        return branch("NP", NOUN, det, branch("NOM", NOMINAL, self.modifier(nodes, adjective=True, quantifying=True)))
+                    # Elided-head quantifier NP (Ch7 ellipsis convention: "going to
+                    # many", "loved few", "discovered more", "at least as many"):
+                    # project the quantifying AP over an explicit empty N(E).
+                    if (start == 0 and stop >= 1
+                            and (
+                                (stop == 1 and leaf(nodes[0]) and (word(nodes[0]) in QA or tag(nodes[0]) == "CD"))
+                                or (stop == 1 and tag(nodes[0]) == "QP")
+                                or (stop == 1 and tag(nodes[0]) == "ADJP"
+                                    and any(word(lf) in QA or tag(lf) == "CD" for lf in leaves(nodes[0])))
+                                or (all(leaf(n) and (word(n) in QA | DEGREE or tag(n) in {"CD", "RB", "IN", "JJS", "JJR"}) for n in nodes[:stop])
+                                    and any(word(n) in QA or tag(n) == "CD" for n in nodes[:stop]))
+                            )):
+                        q_nodes = kids(nodes[0]) if (stop == 1 and tag(nodes[0]) in {"QP", "ADJP"}) else nodes[:stop]
+                        q_ap = self.modifier(q_nodes, adjective=True, quantifying=True)
+                        nominal = branch("NOM", NOMINAL, q_ap,
+                                         branch("NOM", NOMINAL, branch("N", NOUN, {"elided": True, "symbol": "E"})))
+                        for mod in nodes[stop:]:
+                            nominal = branch("NOM", NOMINAL, nominal, self.phrase(mod))
+                        return branch("NP", NOUN, det, nominal)
+                    if start and stop - start <= 1:
+                        nominal = branch("NOM", NOMINAL, branch("N", NOUN, {"elided": True, "symbol": "E"}))
+                        if start < stop:
+                            mod = nodes[start]
+                            nominal = branch("NOM", NOMINAL, self.modifier([mod], adjective=True,
+                                             quantifying=tag(mod) == "CD" or word(mod) in QA), nominal)
+                        for mod in nodes[stop:]:
+                            nominal = branch("NOM", NOMINAL, nominal, self.phrase(mod))
+                        return branch("NP", NOUN, det, nominal)
+                    if len(nodes) == 1 and leaf(nodes[0]) and word(nodes[0]) in {"plenty", "several"}:
+                        if word(nodes[0]) == "several":
+                            return self.np([dict(nodes[0], type="DT")])
+                        return branch("NP", NOUN, det, branch("NOM", NOMINAL, branch("N", NOUN, word_node(nodes[0]))))
+                    raise ProjectionUnavailable("NP has no identifiable noun head")
             else:
-                nouns = [branch("N", NOUN, word_node(n)) for n in nodes[noun_start:head + 1]]
-                noun = nouns[0] if len(nouns) == 1 else branch("N", NOUN, *nouns)
-            nominal = branch("NOM", NOMINAL, noun)
-            modifiers = nodes[head + 1:]
-            # Complements of nouns precede any outer premodification in the hierarchy.
-            if not pro_nominal and modifiers and self.noun_complement(head_word, modifiers[0]):
-                selected = modifiers[0]
-                if tag(selected) == "S":
-                    controller = det if det["children"] and det["children"][0]["label"] == "POSS" else None
-                    complement = self.nonfinite(selected, controller)
+                head_word = word(nodes[head])
+                noun_start = head
+                while noun_start > start and leaf(nodes[noun_start - 1]) and tag(nodes[noun_start - 1]) in NOUN_TAGS:
+                    noun_start -= 1
+                pro_nominal = head_word in {"one", "ones"} and (start > 0 or head_word == "ones") and noun_start == head
+                modifiers = nodes[head + 1:]
+                # Compound nominal + particle ('the washing up', 'the clearing up',
+                # 'a grown up'): fuse adjacent RP leaf into compound N.
+                compound_prt = None
+                if (not pro_nominal and modifiers and leaf(modifiers[0])
+                        and tag(modifiers[0]) == "RP"
+                        and word(modifiers[0]) in {"up", "down", "out", "in", "off", "on", "over", "by", "away", "back", "through"}):
+                    compound_prt = modifiers.pop(0)
+                if pro_nominal:
+                    noun = word_node(nodes[head])
+                elif compound_prt is not None:
+                    head_words_n = [word_node(n) for n in nodes[noun_start:head + 1]] + [word_node(compound_prt)]
+                    noun = branch("N", NOUN, *head_words_n)
                 else:
-                    complement = self.phrase(selected)
-                nominal = branch("NOM", NOMINAL, noun, complement)
-                modifiers = modifiers[1:]
-            for mod in reversed(nodes[start:noun_start]):
-                if leaf(mod) and tag(mod) == "VBG":
-                    phrase = branch("PartP", ("Ch7 pp. 147–148, 158",), branch("V-part", ("Ch7 p. 158",), word_node(mod)))
-                elif leaf(mod) and tag(mod) == "VBN":
-                    # A past-participial premodifier ("the revised report") is a
-                    # reduced relative, not an adjective phrase with no head.
-                    phrase = branch("PartP", ("Ch7 pp. 147–148, 158",), branch("V-part", ("Ch7 p. 158",), word_node(mod)))
-                elif tag(mod) == "ADJP":
-                    phrase = self.phrase(mod)
-                elif tag(mod) == "ADVP":
-                    phrase = self.phrase(mod)
-                elif tag(mod) == "NML":
-                    phrase = self.nml_phrase(mod)
-                elif tag(mod) == "QP":
-                    phrase = self.modifier(kids(mod), adjective=True, quantifying=True)
-                else:
-                    phrase = self.modifier([mod], adjective=True, quantifying=word(mod) in QA or tag(mod) == "CD")
-                nominal = branch("NOM", NOMINAL, phrase, nominal)
+                    nouns = [branch("N", NOUN, word_node(n)) for n in nodes[noun_start:head + 1]]
+                    noun = nouns[0] if len(nouns) == 1 else branch("N", NOUN, *nouns)
+                nominal = branch("NOM", NOMINAL, noun)
+                # Complements of nouns precede any outer premodification in the hierarchy.
+                if not pro_nominal and modifiers and self.noun_complement(head_word, modifiers[0]):
+                    selected = modifiers[0]
+                    if tag(selected) == "S":
+                        controller = det if det["children"] and det["children"][0]["label"] == "POSS" else None
+                        complement = self.nonfinite(selected, controller)
+                    else:
+                        complement = self.phrase(selected)
+                    nominal = branch("NOM", NOMINAL, noun, complement)
+                    modifiers = modifiers[1:]
+                for mod in reversed(nodes[start:noun_start]):
+                    if leaf(mod) and tag(mod) == "VBG":
+                        phrase = branch("PartP", ("Ch7 pp. 147–148, 158",), branch("V-part", ("Ch7 p. 158",), word_node(mod)))
+                    elif leaf(mod) and tag(mod) == "VBN":
+                        # A past-participial premodifier ("the revised report") is a
+                        # reduced relative, not an adjective phrase with no head.
+                        phrase = branch("PartP", ("Ch7 pp. 147–148, 158",), branch("V-part", ("Ch7 p. 158",), word_node(mod)))
+                    elif tag(mod) == "ADJP":
+                        phrase = self.phrase(mod)
+                    elif tag(mod) == "ADVP":
+                        phrase = self.phrase(mod)
+                    elif tag(mod) == "NML":
+                        phrase = self.nml_phrase(mod)
+                    elif tag(mod) == "QP":
+                        phrase = self.modifier(kids(mod), adjective=True, quantifying=True)
+                    else:
+                        phrase = self.modifier([mod], adjective=True, quantifying=word(mod) in QA or tag(mod) == "CD")
+                    nominal = branch("NOM", NOMINAL, phrase, nominal)
         for mod in modifiers:
             if tag(mod) == "SBAR":
                 sbar_parts = kids(mod)
@@ -1022,7 +1245,30 @@ class Projection:
             vp = kids(vp[0])
         return bool(vp) and tag(vp[0]) in {"TO", "VB", "VBG", "VBN"}
 
-    def nonfinite(self, node, controller=None, wrap=True, incoming=None):
+    def nonfinite_head_kind(self, node):
+        """Return 'to', 'ing', 'en', or 'bare' for a non-finite clause's head verb."""
+        components = kids(node)
+        if components and tag(components[-1]) == "S" and len(components) == 2:
+            return self.nonfinite_head_kind(components[-1])
+        if not components or tag(components[-1]) != "VP":
+            return None
+        vp = kids(components[-1])
+        while vp and tag(vp[0]) == "VP":
+            vp = kids(vp[0])
+        if not vp:
+            return None
+        t = tag(vp[0])
+        if t == "TO":
+            return "to"
+        if t == "VBG":
+            return "ing"
+        if t == "VBN":
+            return "en"
+        if t == "VB":
+            return "bare"
+        return None
+
+    def nonfinite(self, node, controller=None, wrap=True, incoming=None, subject_gap=None):
         parts = kids(node)
         if len(parts) == 2 and tag(parts[-1]) == "S" and len(kids(parts[-1])) == 1:
             parts[-1] = kids(parts[-1])[0]
@@ -1030,6 +1276,8 @@ class Projection:
             raise ProjectionUnavailable("Unsupported non-finite clause shape")
         if len(parts) == 2:
             subject = self.phrase(parts[0])
+        elif subject_gap is not None:
+            subject = branch("NP", WH, subject_gap.take())
         elif controller is not None:
             link = self.link_subject(controller)
             subject = branch("NP", NONFINITE, link.take())
@@ -1405,9 +1653,26 @@ class Projection:
             if incoming is not None and incoming.kind in {"adverbial", "pp"}:
                 vp = self.vp(nodes, mode, subject, passive=passive)
                 return branch("VP", ADVERBIAL, vp, branch("PP" if incoming.kind == "pp" else "AdvP", WH, incoming.take()))
-            if incoming is not None and incoming is not passive:
+            if incoming is not None and incoming.kind == "preposition":
+                # Non-overlapping passive object gap + wh-extracted stranded-PP gap
+                # (e.g., 'Who were they given to?', 'Which saw was the timber cut with?').
+                # Keep BOTH passive and incoming live for _project_stranded_pp_vp below.
+                pass
+            elif incoming is not None and incoming.kind == "object" and base in DITRANSITIVE and not (tail and tag(tail[0]) == "NP" and not self.is_time_np(tail[0])):
+                # Passive double-object ditransitive wh-extraction ('What were the winners awarded?'):
+                # passive binds the promoted indirect object, incoming binds the wh-fronted direct object.
+                pass
+            elif incoming is not None and incoming is not passive:
                 raise ProjectionUnavailable("Overlapping dependencies inside passive VP")
-            incoming = passive
+            else:
+                incoming = passive
+
+        # Recover flat compound-particle NP if Benepar drops the NP wrapper
+        # around 'DET + NN/NNS + RP' ('finish (DT the) (NN clearing) (RP up)').
+        if (len(tail) >= 3 and leaf(tail[0]) and tag(tail[0]) in {"DT", "PRP$"}
+                and leaf(tail[1]) and tag(tail[1]) in NOUN_TAGS
+                and leaf(tail[2]) and tag(tail[2]) == "RP"):
+            tail[:3] = [raw("NP", tail[:3])]
 
         if tail and tag(tail[0]) == "S" and not self.is_nonfinite(tail[0]):
             small = kids(tail[0])
@@ -1423,14 +1688,88 @@ class Projection:
             lower = self.nonfinite(tail[0], subject if base == "promise" else obj)
             v = branch("V(II)", NONFINITE, *head_words, features=features)
             return self.attach(branch("VP", NONFINITE, v, obj, lower), "VP", trailing=tail[1:])
-        if tail and tag(tail[0]) == "S" and self.is_nonfinite(tail[0]) and base in SUBJECT_CONTROL | TYPE_I:
+        if tail and tag(tail[0]) == "S" and self.is_nonfinite(tail[0]) and base in (TO_SUBJECT_CONTROL | ING_SUBJECT_CONTROL | ING_FREE_CONTROL | TYPE_I):
             lower = tail.pop(0)
             overt = len(kids(lower)) == 2
-            if overt and base not in TYPE_I or not overt and base not in SUBJECT_CONTROL:
-                raise ProjectionUnavailable("Non-finite complement has no supported control analysis")
-            clause = self.nonfinite(lower, None if overt else subject, incoming=incoming)
-            v = branch("V(I)" if overt else "V", NONFINITE, *head_words, features=features)
-            return self.attach(branch("VP", NONFINITE, v, clause), "VP", trailing=tail)
+            nf_kind = self.nonfinite_head_kind(lower)
+            if overt:
+                overt_ok = (base in TYPE_I) or (nf_kind == "ing" and base in ING_SUBJECT_CONTROL)
+                if not overt_ok:
+                    raise ProjectionUnavailable("Non-finite complement has no supported control analysis")
+                clause = self.nonfinite(lower, None, incoming=incoming)
+                v = branch("V(I)", NONFINITE, *head_words, features=features)
+                return self.attach(branch("VP", NONFINITE, v, clause), "VP", trailing=tail)
+            # Subjectless non-finite clause: check exact complementation form.
+            subj_ctrl_ok = (
+                (nf_kind == "to" and base in TO_SUBJECT_CONTROL)
+                or (nf_kind == "ing" and base in ING_SUBJECT_CONTROL)
+                or (nf_kind == "bare" and base in {"help", "dare", "need"})
+            )
+            free_ctrl_ok = (nf_kind == "ing" and base in ING_FREE_CONTROL and not subj_ctrl_ok)
+            ecm_wh_ok = (
+                incoming is not None and incoming.kind == "object" and not passive
+                and base in TYPE_I and nf_kind in {"to", "ing", "bare"}
+            )
+            # When an incoming wh-NP gap can potentially target EITHER the embedded
+            # non-finite subject (Type I ECM) OR an internal complement gap (subject
+            # control), test both licensed analyses explicitly and never force a
+            # unique interpretation if both are structurally valid.
+            if ecm_wh_ok:
+                saved_idx = self.index
+                cand_ctrl = None
+                cand_ecm = None
+                if subj_ctrl_ok:
+                    trial_subj = deepcopy(subject) if subject is not None else None
+                    trial_gap = Gap(incoming.index, incoming.kind)
+                    try:
+                        c_tree = self.nonfinite(lower, trial_subj, incoming=trial_gap)
+                        if trial_gap.used:
+                            v_ctrl = branch("V", NONFINITE, *head_words, features=features)
+                            cand_ctrl = (self.attach(branch("VP", NONFINITE, v_ctrl, c_tree), "VP", trailing=tail),
+                                         trial_subj, self.index)
+                    except ProjectionUnavailable:
+                        pass
+                    self.index = saved_idx
+                trial_ecm_gap = Gap(incoming.index, incoming.kind)
+                try:
+                    e_tree = self.nonfinite(lower, controller=None, incoming=None, subject_gap=trial_ecm_gap)
+                    if trial_ecm_gap.used:
+                        v_ecm = branch("V(I)", NONFINITE, *head_words, features=features)
+                        cand_ecm = (self.attach(branch("VP", NONFINITE, v_ecm, e_tree), "VP", trailing=tail),
+                                    self.index)
+                except ProjectionUnavailable:
+                    pass
+                self.index = saved_idx
+                if cand_ctrl is not None and cand_ecm is not None:
+                    raise AmbiguousProjection(
+                        "Ambiguous non-finite wh-extraction: wh-phrase can bind either the embedded subject (Type I) or an embedded complement gap",
+                        alternatives=[
+                            ("Type I ECM: wh-phrase fills the embedded non-finite subject position", cand_ecm[0]),
+                            ("Subject control: wh-phrase fills an internal complement gap in the non-finite clause", cand_ctrl[0]),
+                        ],
+                    )
+                if cand_ecm is not None:
+                    incoming.used = True
+                    self.index = cand_ecm[1]
+                    return cand_ecm[0]
+                if cand_ctrl is not None:
+                    incoming.used = True
+                    if subject is not None and cand_ctrl[1] is not None:
+                        subject.update(cand_ctrl[1])
+                    self.index = cand_ctrl[2]
+                    return cand_ctrl[0]
+                raise ProjectionUnavailable("Object gap conflicts with the verb frame or an overt object")
+            if subj_ctrl_ok:
+                clause = self.nonfinite(lower, subject, incoming=incoming)
+                v = branch("V", NONFINITE, *head_words, features=features)
+                return self.attach(branch("VP", NONFINITE, v, clause), "VP", trailing=tail)
+            if free_ctrl_ok:
+                clause = self.nonfinite(lower, controller=None, incoming=incoming)
+                v = branch("V", NONFINITE, *head_words, features=features)
+                return self.attach(branch("VP", NONFINITE, v, clause), "VP", trailing=tail)
+            if nf_kind == "to" and base in ING_ONLY_VERBS:
+                raise ProjectionUnavailable("Non-finite complement form does not match the verb's complementation frame")
+            raise ProjectionUnavailable("Non-finite complement has no supported control analysis")
         if len(tail) >= 2 and tag(tail[0]) == "NP" and tag(tail[1]) == "S" and self.is_nonfinite(tail[1]) and base in TYPE_II:
             obj = self.phrase(tail[0])
             lower = self.nonfinite(tail[1], subject if base == "promise" else obj, incoming=incoming)
@@ -1496,7 +1835,7 @@ class Projection:
             elif incoming.kind == "preposition":
                 # Predicative AP with stranded preposition ('subjects they are
                 # interested in', 'things we are proud of', 'people she is fond of').
-                if (base in INTENSIVE and tail and tag(tail[0]) == "ADJP"
+                if (passive is None and base in INTENSIVE and tail and tag(tail[0]) == "ADJP"
                         and any(tag(c) == "PP" and len(kids(c)) == 1 for c in kids(tail[0]))):
                     adjp_parts = kids(tail.pop(0))
                     pp_idx = next(i for i, c in enumerate(adjp_parts) if tag(c) == "PP" and len(kids(c)) == 1)
@@ -1515,44 +1854,76 @@ class Projection:
                     ap_suffix = [self.phrase(c) for c in adjp_parts[pp_idx + 1:]]
                     frame = "intens"
                     complement.append(branch("AP", WH, *ap_prefix, stranded_pp, *ap_suffix))
-                elif (base in RECIPIENT_TO and len(tail) >= 2
-                      and tag(tail[0]) == "NP" and not self.is_time_np(tail[0])
-                      and tag(tail[1]) == "PP" and len(kids(tail[1])) == 1
-                      and word(kids(tail[1])[0]) == "to"
-                      and sum(tag(node) == "PP" and len(kids(node)) == 1 for node in tail) == 1):
-                    # Ch9 [1b(ii)] strands the recipient preposition and keeps
-                    # the direct object and the recipient PP in the ditransitive VP.
-                    frame = "ditrans"
-                    complement.append(self.phrase(tail.pop(0)))
-                    complement.append(self.pp(kids(tail.pop(0)), incoming))
-                elif (base in {"put", "place"} and len(tail) >= 2
-                      and tag(tail[0]) == "NP" and not self.is_time_np(tail[0])
-                      and tag(tail[1]) == "PP" and len(kids(tail[1])) == 1
-                      and sum(tag(node) == "PP" and len(kids(node)) == 1 for node in tail) == 1):
-                    # Complex-transitive verb with stranded locative preposition
-                    # ('Which envelope did Hannah put the receipt in?').
-                    frame = "complex"
-                    complement.append(self.phrase(tail.pop(0)))
-                    complement.append(self.pp(kids(tail.pop(0)), incoming))
-                elif not tail or tag(tail[0]) != "PP" or len(kids(tail[0])) != 1:
-                    raise ProjectionUnavailable("Wh-phrase has no unique stranded preposition")
                 else:
-                    prep = tail.pop(0)
-                    frame = "prep" if word(kids(prep)[0]) in SELECTED_PP.get(base, ()) else "intrans"
-                    stranded = self.pp(kids(prep), incoming)
-                    if frame == "prep":
-                        complement.append(stranded)
+                    stranded_indices = [i for i, n in enumerate(tail) if tag(n) == "PP" and len(kids(n)) == 1]
+                    if len(stranded_indices) != 1:
+                        raise ProjectionUnavailable("Wh-phrase has no unique stranded preposition")
+                    pp_idx = stranded_indices[0]
+                    prep_node = tail[pp_idx]
+                    prep_word = word(kids(prep_node)[0])
+                    before_pp = tail[:pp_idx]
+                    after_pp = tail[pp_idx + 1:]
+                    stranded_pp = self.pp(kids(prep_node), incoming)
+                    if passive is not None:
+                        if base in KNOWN_INTRANS:
+                            raise ProjectionUnavailable("Intransitive verb cannot passivize an NP object")
+                        if (not before_pp
+                                and ((base in RECIPIENT_TO and prep_word == "to")
+                                     or (base in BENEFACTIVE_FOR and prep_word == "for"))):
+                            # Passive ditransitive with stranded recipient/benefactive PP
+                            # ('Who were they given to?', 'Who was the ticket reserved for?').
+                            frame = "ditrans"
+                            complement.extend([branch("NP", AUXILIARY, passive.take()), stranded_pp])
+                            tail = after_pp
+                        elif (not before_pp and base in LOCATIVE_COMPLEX
+                              and prep_word in DIRECTIONAL_LOCATIVE_PREPOSITIONS):
+                            # Passive complex-transitive with stranded locative PP
+                            # ('Which shelf was the sculpture placed on?').
+                            frame = "complex"
+                            complement.extend([branch("NP", AUXILIARY, passive.take()), stranded_pp])
+                            tail = after_pp
+                        else:
+                            # General passive transitive + stranded adjunct PP
+                            # ('Which saw was the timber cut with?').
+                            core_nodes = [head]
+                            if particle is not None:
+                                core_nodes.append(particle)
+                            core_nodes.extend(medial_advps)
+                            core_nodes.extend(before_pp)
+                            core_vp = self.vp(core_nodes, mode, subject, incoming=None, passive=passive, fronted=fronted)
+                            vp_tree = branch("VP", ADVERBIAL, core_vp, stranded_pp)
+                            return self.attach(vp_tree, "VP", trailing=after_pp)
+                    elif (pp_idx == 1 and tag(before_pp[0]) == "NP" and not self.is_time_np(before_pp[0])
+                          and ((base in RECIPIENT_TO and prep_word == "to")
+                               or (base in BENEFACTIVE_FOR and prep_word == "for"))):
+                        # Ditransitive with stranded recipient/benefactive preposition
+                        # ('Who will Julia give the pen to?', 'Who did Daniel bake the tart for?').
+                        frame = "ditrans"
+                        complement.extend([self.phrase(before_pp[0]), stranded_pp])
+                        tail = after_pp
+                    elif (pp_idx == 1 and tag(before_pp[0]) == "NP" and not self.is_time_np(before_pp[0])
+                          and base in LOCATIVE_COMPLEX and prep_word in DIRECTIONAL_LOCATIVE_PREPOSITIONS):
+                        # Complex-transitive with stranded locative preposition
+                        # ('Which envelope did Hannah put the receipt in?').
+                        frame = "complex"
+                        complement.extend([self.phrase(before_pp[0]), stranded_pp])
+                        tail = after_pp
+                    elif pp_idx == 0 and prep_word in SELECTED_PP.get(base, ()):
+                        frame = "prep"
+                        complement.append(stranded_pp)
+                        tail = after_pp
                     else:
-                        phrasal_suffix = ("phrasal",) if particle is not None else ()
+                        # General stranded adjunct PP on any transitive, intransitive,
+                        # phrasal, or ditransitive VP ('Whose toothbrush did he clean
+                        # his keyboard with?', 'What did Sara turn up in?').
+                        core_nodes = [head]
                         if particle is not None:
-                            head_words.extend(word_node(n) for n in leaves(particle))
-                        v = branch("V", FRAME_REFS[frame], *head_words,
-                                   features=(frame, *phrasal_suffix, *features))
-                        core_vp = branch("VP", FRAME_REFS[frame], v)
-                        for adv in medial_advps:
-                            core_vp = branch("VP", ADVERBIAL, core_vp, self.adjunct(adv))
-                        vp = branch("VP", ADVERBIAL, core_vp, stranded)
-                        return self.attach(vp, "VP", trailing=tail)
+                            core_nodes.append(particle)
+                        core_nodes.extend(medial_advps)
+                        core_nodes.extend(before_pp)
+                        core_vp = self.vp(core_nodes, mode, subject, incoming=None, passive=None, fronted=fronted)
+                        vp_tree = branch("VP", ADVERBIAL, core_vp, stranded_pp)
+                        return self.attach(vp_tree, "VP", trailing=after_pp)
             elif incoming.kind in {"adverbial", "pp"}:
                 if base in INTENSIVE and not tail:
                     frame = "intens"
@@ -1562,6 +1933,10 @@ class Projection:
                         raise ProjectionUnavailable("Unresolved adjunct with a fronted lexical verb")
                     v = self.vp(nodes, mode, subject)
                     return branch("VP", ADVERBIAL, v, branch("PP" if incoming.kind == "pp" else "AdvP", WH, incoming.take()))
+            elif passive is not None and incoming is not passive and incoming.kind == "object" and base in DITRANSITIVE:
+                # Passive double-object ditransitive wh-extraction ('What were the winners awarded?').
+                frame = "ditrans"
+                complement.extend([branch("NP", AUXILIARY, passive.take()), branch("NP", WH, incoming.take())])
             elif tail and tag(tail[0]) == "NP" and base in DITRANSITIVE:
                 frame = "ditrans"
                 obj = self.phrase(tail.pop(0))
@@ -1618,9 +1993,20 @@ class Projection:
               and not self.is_temporal_coordination(tail[0])):
             if base in KNOWN_INTRANS:
                 raise ProjectionUnavailable(f"{base} has an overt object without a licensed object frame")
+            # Benepar's low-NP attachment bias occasionally buries a benefactive
+            # 'for + animate' indirect object inside the direct-object NP
+            # ('Laura saved (NP (NP a place) (PP for Martha))'). Detach it ONLY
+            # when verb frame, inner-noun selection, and animate-beneficiary
+            # selection all jointly license benefactive ditransitivity.
+            detached = self.detach_low_benefactive_for(base, tail[0])
+            if detached is not None:
+                inner_obj, benef_pp = detached
+                tail[:1] = [inner_obj, benef_pp]
             frame = "trans"
             complement.append(self.phrase(tail.pop(0)))
-            if tail and tag(tail[0]) == "SBAR" and base in DITRANSITIVE and not self.is_adverbial(tail[0]):
+            if (tail and tag(tail[0]) == "SBAR" and base in DITRANSITIVE
+                    and not self.is_adverbial(tail[0])
+                    and not self.is_which_relative_sbar(tail[0])):
                 frame = "ditrans"
                 complement.append(branch("NP", SUBORDINATE, self.clause(tail.pop(0))))
             if tail and frame == "trans" and tag(tail[0]) == "S" and not self.is_nonfinite(tail[0]) and base in COMPLEX:
@@ -1631,10 +2017,20 @@ class Projection:
                 second = tail[0]
                 label = tag(second)
                 if base == "find" and label == "NP":
-                    raise ProjectionUnavailable("Two noun phrases after find can have ditransitive or object-predicative readings")
-                if label == "NP" and base in DITRANSITIVE or (label == "PP" and base in DITRANSITIVE and word(kids(second)[0]) in {"to", "for"}):
+                    raise AmbiguousProjection(
+                        "Two noun phrases after find can have ditransitive or object-predicative readings",
+                        alternatives=[
+                            ("Ditransitive reading: find [iO NP] [dO NP]", None),
+                            ("Complex-transitive reading: find [dO NP] [oP NP]", None),
+                        ],
+                    )
+                if label == "NP" and base in DITRANSITIVE:
                     frame = "ditrans"
-                elif base in COMPLEX and (label in {"NP", "ADJP"} or base in {"put", "place"}):
+                elif label == "PP":
+                    pp_frame = self.classify_post_object_pp(base, second)
+                    if pp_frame is not None:
+                        frame = pp_frame
+                elif base in COMPLEX and label in {"NP", "ADJP"}:
                     frame = "complex"
                 if frame != "trans":
                     complement.append(self.phrase(tail.pop(0)))
@@ -1643,7 +2039,10 @@ class Projection:
         elif tail and tag(tail[0]) == "PP" and self.selected_pp(base, tail[0]):
             frame = "prep"
             complement.append(self.phrase(tail.pop(0)))
-        elif tail and tag(tail[0]) == "SBAR" and not self.is_adverbial(tail[0]):
+        elif (tail and tag(tail[0]) == "SBAR" and not self.is_adverbial(tail[0])
+              and not self.is_which_relative_sbar(tail[0])):
+            if base in KNOWN_INTRANS:
+                raise ProjectionUnavailable(f"{base} cannot take a direct clausal object")
             frame = "intens" if base == "be" else "trans"
             clause = self.clause(tail.pop(0))
             complement.append(clause if frame == "intens" else branch("NP", SUBORDINATE, clause))
@@ -1735,15 +2134,118 @@ class Projection:
         words = leaves(node)
         if not words:
             return False
-        if self.dependency(node) == "npadvmod":
+        if any(self.dependency(lf) == "npadvmod" for lf in words):
             return True
         last_w = word(words[-1]).rstrip("s")
         if last_w in TIME_NOUNS:
             if len(words) == 1:
                 return True
-            if word(words[0]) in {"all", "every", "last", "next", "this", "that", "even", "most", "some", "each", "one"}:
+            first_w = word(words[0])
+            if first_w in {"all", "every", "last", "next", "this", "that", "even", "most", "some", "each", "one"}:
+                return True
+            if (first_w == "the" and len(words) >= 3
+                    and word(words[1]) in {"next", "following", "previous", "same", "last", "very", "first", "final", "other"}):
                 return True
         return False
+
+    @staticmethod
+    def is_which_relative_sbar(node):
+        parts = kids(node)
+        if tag(node) != "SBAR" or len(parts) != 2 or tag(parts[0]) != "WHNP":
+            return False
+        wh_leaves = leaves(parts[0])
+        return len(wh_leaves) == 1 and word(wh_leaves[0]) == "which"
+
+    def is_temporal_pp(self, pp_node):
+        parts = kids(pp_node)
+        if len(parts) < 2:
+            return False
+        obj = parts[-1]
+        obj_leaves = leaves(obj)
+        if not obj_leaves:
+            return False
+        if any(lf.get("fentity") in {"TIME", "DATE"} for lf in obj_leaves):
+            return True
+        head_w = word(obj_leaves[-1])
+        head_stem = head_w.rstrip("s")
+        return head_w in TIME_NOUNS | TIME_UNITS or head_stem in TIME_NOUNS | TIME_UNITS
+
+    def is_inanimate_location_pp(self, pp_node):
+        parts = kids(pp_node)
+        if len(parts) < 2:
+            return False
+        obj_leaves = leaves(parts[-1])
+        if not obj_leaves:
+            return False
+        ents = {lf.get("fentity") for lf in obj_leaves if lf.get("fentity")}
+        if ents & {"LOC", "GPE", "FAC"} and not (ents & {"PERSON", "ORG"}):
+            return True
+        head_w = word(obj_leaves[-1])
+        return head_w in INANIMATE_LOCATION_NOUNS or head_w.rstrip("s") in INANIMATE_LOCATION_NOUNS
+
+    def is_animate_recipient_or_beneficiary(self, np_node):
+        obj_leaves = leaves(np_node)
+        if not obj_leaves:
+            return False
+        if self.is_temporal_pp(raw("PP", [raw("IN", []), np_node])):
+            return False
+        if len(obj_leaves) == 1 and word(obj_leaves[0]) in ANIMATE_PRONOUNS:
+            return True
+        ents = {lf.get("fentity") for lf in obj_leaves if lf.get("fentity")}
+        if ents & {"PERSON", "ORG", "NORP"}:
+            return True
+        if ents & {"LOC", "GPE", "FAC", "TIME", "DATE", "EVENT", "WORK_OF_ART", "PRODUCT", "MONEY", "QUANTITY", "PERCENT"}:
+            return False
+        head_leaf = obj_leaves[-1]
+        head_w = word(head_leaf)
+        if head_w in ANIMATE_HEAD_NOUNS or head_w.rstrip("s") in ANIMATE_HEAD_NOUNS:
+            return True
+        if tag(head_leaf) in {"NNP", "NNPS"} and head_w not in INANIMATE_LOCATION_NOUNS:
+            return True
+        return False
+
+    def detach_low_benefactive_for(self, base, np_node):
+        """Detach a low-attached benefactive 'for + animate' PP from a direct-object NP."""
+        if base not in BENEFACTIVE_FOR or tag(np_node) != "NP":
+            return None
+        parts = kids(np_node)
+        if len(parts) != 2 or tag(parts[0]) != "NP" or tag(parts[1]) != "PP":
+            return None
+        inner_obj, pp_node = parts
+        pp_parts = kids(pp_node)
+        if len(pp_parts) != 2 or not leaf(pp_parts[0]) or word(pp_parts[0]) != "for":
+            return None
+        inner_leaves = leaves(inner_obj)
+        if not inner_leaves:
+            return None
+        inner_head = word(inner_leaves[-1])
+        if inner_head in FOR_SELECTING_NOUNS or inner_head.rstrip("s") in FOR_SELECTING_NOUNS:
+            return None
+        if self.is_temporal_pp(pp_node):
+            return None
+        if not self.is_animate_recipient_or_beneficiary(pp_parts[1]):
+            return None
+        return inner_obj, pp_node
+
+    def classify_post_object_pp(self, base, pp_node):
+        """Classify a post-object PP as 'ditrans', 'complex', or None (VP adjunct)."""
+        pp_parts = kids(pp_node)
+        if not pp_parts or not leaf(pp_parts[0]):
+            return None
+        prep = word(pp_parts[0])
+        if self.is_temporal_pp(pp_node):
+            return None
+        if prep == "to" and base in RECIPIENT_TO:
+            if self.is_inanimate_location_pp(pp_node):
+                return None
+            return "ditrans"
+        if prep == "for" and base in BENEFACTIVE_FOR:
+            if len(pp_parts) >= 2 and self.is_animate_recipient_or_beneficiary(pp_parts[1]):
+                return "ditrans"
+            return None
+        if base in LOCATIVE_COMPLEX and prep in DIRECTIONAL_LOCATIVE_PREPOSITIONS:
+            return "complex"
+        return None
 
     def is_predicative(self, base, node):
         label = tag(node)
@@ -1816,6 +2318,137 @@ class Projection:
                     children[idx] = updated_child
                     return {**node, "children": children}, found
         return node, None
+
+    def peel_sentential_relative(self, vp_node):
+        """Peel a sentence-final comma-delimited sentential non-restrictive relative
+        (', which surprised me', ', which nobody had expected', ', which was astonishing')
+        from a VP (or from a plural final NP whose verb shows 3sg sentential agreement)
+        per Burton-Roberts Ch. 9 pp. 210, 222."""
+        raw_kids = [c for c in vp_node.get("children", [])
+                    if not (leaf(c) and c.get("surface") in {".", "?", "!", ";", ":"})]
+        # Case 1: comma + SBAR(WHNP(which), S) attached directly to VP
+        if (len(raw_kids) >= 3 and leaf(raw_kids[-2]) and raw_kids[-2].get("surface") == ","
+                and self.is_which_relative_sbar(raw_kids[-1])):
+            last = raw_kids[-1]
+            comma = raw_kids[-2]
+            remaining = [c for c in vp_node.get("children", []) if c is not last and c is not comma]
+            if len(remaining) == 1 and tag(remaining[0]) == "VP":
+                return remaining[0], last
+            return {**vp_node, "children": remaining}, last
+        # Case 2: recurse into a single trailing nested VP (auxiliary chain)
+        for idx in range(len(raw_kids) - 1, -1, -1):
+            if tag(raw_kids[idx]) == "VP":
+                updated_child, found = self.peel_sentential_relative(raw_kids[idx])
+                if found is not None:
+                    new_kids = [updated_child if c is raw_kids[idx] else c for c in vp_node.get("children", [])]
+                    return {**vp_node, "children": new_kids}, found
+                break
+        # Case 3: Benepar occasionally buries a sentential ', which <3sg verb>' inside
+        # a plural final NP ('She passed all the exams, which was astonishing.').
+        if raw_kids and tag(raw_kids[-1]) in {"NP", "PP"}:
+            holder = raw_kids[-1]
+            target_np = holder
+            via_pp = False
+            if tag(holder) == "PP":
+                pp_k = kids(holder)
+                if len(pp_k) == 2 and tag(pp_k[1]) == "NP":
+                    target_np = pp_k[1]
+                    via_pp = True
+                else:
+                    target_np = None
+            if target_np is not None:
+                np_raw = list(target_np.get("children", []))
+                if (len(np_raw) >= 3 and tag(np_raw[0]) == "NP"
+                        and leaf(np_raw[-2]) and np_raw[-2].get("surface") == ","
+                        and self.is_which_relative_sbar(np_raw[-1])):
+                    ant_leaves = leaves(np_raw[0])
+                    ant_plural = bool(ant_leaves) and (
+                        tag(ant_leaves[-1]) in {"NNS", "NNPS"}
+                        or any(tag(lf) == "CC" and word(lf) == "and" for lf in ant_leaves)
+                    )
+                    rel_s = kids(np_raw[-1])[1]
+                    rel_s_kids = kids(rel_s)
+                    rel_3sg = False
+                    if len(rel_s_kids) == 1 and tag(rel_s_kids[0]) == "VP":
+                        rel_v = next((lf for lf in leaves(rel_s_kids[0]) if tag(lf) in VERB_TAGS), None)
+                        if rel_v is not None and (tag(rel_v) == "VBZ" or word(rel_v) == "was"):
+                            rel_3sg = True
+                    if ant_plural and rel_3sg:
+                        found = np_raw[-1]
+                        cleaned_np = np_raw[0]
+                        if via_pp:
+                            new_pp_kids = [cleaned_np if c is target_np else c for c in holder.get("children", [])]
+                            new_holder = {**holder, "children": new_pp_kids}
+                        else:
+                            new_holder = cleaned_np
+                        new_vp_kids = [new_holder if c is holder else c for c in vp_node.get("children", [])]
+                        return {**vp_node, "children": new_vp_kids}, found
+        return vp_node, None
+
+    def subject_head_noun(self, raw_subject):
+        """Return the lexical head noun word of a raw Benepar subject NP, if any."""
+        if tag(raw_subject) != "NP":
+            return None
+        parts = kids(raw_subject)
+        if not parts:
+            return None
+        if tag(parts[0]) == "NP":
+            return self.subject_head_noun(parts[0])
+        for n in reversed(parts):
+            if leaf(n) and tag(n) in NOUN_TAGS:
+                return word(n)
+        return None
+
+    def extract_np_extraposed_sbar(self, raw_subject, vp_node):
+        """Extract an extraposed noun-complement 'that'/'whether' SBAR from VP
+        when the subject head noun is in CLAUSAL_NOUNS and the predicate does not
+        itself select a direct clausal object (B-R Ch. 8 Further Ex. 4, p. 195)."""
+        head_n = self.subject_head_noun(raw_subject)
+        if head_n is None or (head_n not in CLAUSAL_NOUNS and head_n.rstrip("s") not in CLAUSAL_NOUNS):
+            return vp_node, None, None
+        # Inspect deepest lexical VP chain to determine the lexical verb and voice.
+        probe = vp_node
+        is_passive = False
+        lexical_base = None
+        lexical_children = []
+        while tag(probe) == "VP":
+            p_kids = kids(probe)
+            if not p_kids or not leaf(p_kids[0]):
+                break
+            v_leaf = p_kids[0]
+            rest = [c for c in p_kids[1:] if tag(c) != "ADVP" and not (leaf(c) and word(c) in {"not", "n't"})]
+            aux_kind = self.auxiliary(v_leaf, rest)
+            if aux_kind:
+                if aux_kind == "PASS":
+                    is_passive = True
+                probe = rest[0]
+                continue
+            lexical_base = lemma(v_leaf)
+            lexical_children = p_kids[1:]
+            break
+        if lexical_base is None:
+            return vp_node, None, None
+        # Only extrapose when the trailing SBAR is 'that'/'whether' (non-adverbial).
+        cleaned, found = self.extract_delayed_sbar(vp_node)
+        if found is None:
+            return vp_node, None, None
+        sbar_parts = kids(found)
+        if not (len(sbar_parts) == 2 and leaf(sbar_parts[0])
+                and word(sbar_parts[0]) in {"that", "whether"}
+                and tag(sbar_parts[1]) == "S"):
+            return vp_node, None, None
+        has_intervening_comp = any(
+            c is not found and tag(c) in {"NP", "PP"} and not self.is_time_np(c)
+            for c in lexical_children
+        )
+        can_extrapose = (
+            lexical_base in EXTRAPOSITION_NP_VERBS
+            or (is_passive and lexical_base not in PASSIVE_TYPE_I)
+            or (has_intervening_comp and lexical_base not in (DITRANSITIVE | PROPOSITIONAL_PP_VERBS))
+        )
+        if not can_extrapose:
+            return vp_node, None, None
+        return cleaned, found, head_n
 
     def peel_sentence_final_s_adverbial(self, vp_node):
         """Peel a comma-delimited sentence-final S-adverbial PP/ADVP from VP (B-R Ch5 pp. 92-93)."""
@@ -2009,10 +2642,12 @@ class Projection:
             loc = before.pop()
             inv = self.locative_inversion([loc, kids(parts[0])[0], parts[1]])
             return self.attach(inv, "S", before)
+        raw_subject_node = None
         if len(parts) == 1 and tag(parts[0]) == "VP" and incoming and incoming.kind == "subject":
             subject = branch("NP", WH, incoming.take())
         elif len(parts) >= 2 and tag(parts[0]) in {"NP", "SBAR", "S"}:
             first = parts.pop(0)
+            raw_subject_node = first
             if tag(first) == "S" and self.is_nonfinite(first):
                 subject = branch("NP", NONFINITE, self.nonfinite(first))
             elif tag(first) == "SBAR":
@@ -2024,7 +2659,14 @@ class Projection:
         early = []
         while len(parts) > 1 and tag(parts[0]) == "ADVP":
             early.append(parts.pop(0))
+        # Clause-level sentential non-restrictive relative attached directly to S
+        # (e.g., (S (NP ...) (VP ...) (, ,) (SBAR (WHNP (WDT which)) (S ...)))).
+        sentential_rel = None
+        if (incoming is None and len(parts) == 2 and tag(parts[0]) == "VP"
+                and self.is_which_relative_sbar(parts[1])):
+            sentential_rel = parts.pop()
         outer_delayed = None
+        extraposed_from_noun = None
         if (len(parts) == 2 and tag(parts[0]) == "VP" and tag(parts[1]) == "SBAR"
                 and not self.is_adverbial(parts[1])
                 and subject.get("children", [{}])[0].get("label") == "pronoun"
@@ -2038,6 +2680,8 @@ class Projection:
                 parts[0] = raw("VP", [parts[0]])
             else:
                 raise ProjectionUnavailable("Clause has no single identifiable predicate")
+        if incoming is None and sentential_rel is None and tag(parts[0]) == "VP":
+            parts[0], sentential_rel = self.peel_sentential_relative(parts[0])
         trailing_s_adv = []
         if incoming is None and tag(parts[0]) == "VP":
             parts[0], trailing_s_adv = self.peel_sentence_final_s_adverbial(parts[0])
@@ -2062,6 +2706,17 @@ class Projection:
                 parts[0] = cleaned_vp
                 predicate_parts = kids(parts[0])
                 outer_delayed = self.clause(found)
+        # Extraposed noun-complement 'that'/'whether' clause from a lexical
+        # CLAUSAL_NOUN subject ('The thought occurred to him that...', 'A rumour
+        # is spreading that...', B-R Ch. 8 Further Ex. 4 p. 195).
+        if (outer_delayed is None and incoming is None and raw_subject_node is not None
+                and tag(parts[0]) == "VP"):
+            cleaned_vp, found, ext_noun = self.extract_np_extraposed_sbar(raw_subject_node, parts[0])
+            if found is not None:
+                parts[0] = cleaned_vp
+                predicate_parts = kids(parts[0])
+                outer_delayed = self.clause(found)
+                extraposed_from_noun = ext_noun
         # Expletive subject and a delayed that-clause in the documented extraposition frame.
         delayed = None
         if (len(predicate_parts) >= 2 and leaf(predicate_parts[0]) and lemma(predicate_parts[0]) in {"be", "seem", "appear", "happen"}
@@ -2082,7 +2737,16 @@ class Projection:
         vp = self.attach(vp, "VP", early)
         delayed = delayed or outer_delayed
         core = branch("S", SUBORDINATE if delayed else CLAUSE, subject, vp, *([delayed] if delayed else []))
-        return self.attach(core, "S", before, trailing_s_adv)
+        if extraposed_from_noun is not None:
+            core["notes"] = [
+                f"Extraposed noun-complement clause associated with subject head noun '{extraposed_from_noun}'."
+            ]
+        core = self.attach(core, "S", before, trailing_s_adv)
+        if sentential_rel is not None:
+            rel_tree = self.relative(sentential_rel)
+            core = branch("S", WH, core, rel_tree)
+            core["notes"] = ["Sentential non-restrictive relative clause modifying the preceding clause S."]
+        return core
 
     def locative_inversion(self, parts):
         if len(parts) == 3 and tag(parts[1]) == "VP" and len(kids(parts[1])) == 1:
@@ -2266,6 +2930,10 @@ class Projection:
         if tag(body) == "S" and len(parts) == 1 and tag(parts[0]) == "VP" and not self.is_nonfinite(body):
             return "subject"
         if tag(body) == "SQ":
+            # Benepar wraps root subject wh-questions as (SBARQ (WHNP Who) (SQ (VP ...)))
+            # ('Who was laughing?', 'Who laughed?', 'Who was invited?').
+            if len(parts) == 1 and tag(parts[0]) == "VP" and not self.is_nonfinite(body):
+                return "subject"
             tail = parts[1:] if parts and leaf(parts[0]) else parts
             if tail and leaf(tail[0]) and word(tail[0]) in {"not", "n't"}:
                 tail = tail[1:]
@@ -2278,7 +2946,12 @@ class Projection:
                     and any(tag(n) == "SBAR" and not self.is_adverbial(n) for n in tail)
                 )
             )
+            has_wrapped_passive_or_prog_vp = (
+                len(tail) == 1 and tag(tail[0]) == "NP" and len(kids(tail[0])) == 2
+                and tag(kids(tail[0])[0]) == "NP" and tag(kids(tail[0])[1]) == "VP"
+            )
             if (not any(tag(node) == "VP" for node in tail)
+                    and not has_wrapped_passive_or_prog_vp
                     and not has_extraposed_or_adj_clause
                     and any(tag(node) == "NP" for node in tail)):
                 return "predicative"
@@ -2323,7 +2996,20 @@ class Projection:
         fronted["index"] = link.index
         if tag(body) == "SQ":
             sq_parts = kids(body)
-            if (not relative and link.kind == "subject" and sq_parts and leaf(sq_parts[0])
+            # Unwrap Benepar's single-VP SQ shell on root subject wh-questions
+            # ('Who was laughing?', 'Who laughed?', 'Who was invited?').
+            # Do NOT fire this on matrix auxiliary-inversion questions with an
+            # overt subject NP ('Who did you discover was giving the lecture?'),
+            # where link.kind == "subject" binds an embedded clause's subject!
+            single_vp_sq = (
+                not relative and link.kind == "subject"
+                and len(sq_parts) == 1 and tag(sq_parts[0]) == "VP"
+            )
+            if single_vp_sq:
+                sq_parts = kids(sq_parts[0])
+            if (not relative and link.kind == "subject"
+                    and (single_vp_sq or not self.is_aux_inversion(sq_parts))
+                    and sq_parts and leaf(sq_parts[0])
                     and (lemma(sq_parts[0]) == "be"
                          or self.auxiliary(sq_parts[0], [n for n in sq_parts[1:] if tag(n) != "ADVP" and not (leaf(n) and word(n) in {"not", "n't"})]))):
                 head, *tail = sq_parts
@@ -2334,6 +3020,12 @@ class Projection:
                 carrier["index"] = carrier_link.index
                 lower = branch("S′", WH, carrier,
                                branch("S", WH, subject, self.vp([head, *tail], "finite", subject, fronted=carrier_link)))
+            elif single_vp_sq and sq_parts and leaf(sq_parts[0]):
+                # Lexical-verb subject wh-question ('Who laughed?', 'What happened?'):
+                # no auxiliary fronting, C1 remains empty per B-R Ch. 9.
+                subject = branch("NP", WH, link.take())
+                lower = branch("S′", WH, branch("C1", WH),
+                               branch("S", WH, subject, self.vp(sq_parts, "finite", subject)))
             else:
                 lower = self.question(sq_parts, link)
         elif tag(body) == "S" and self.is_nonfinite(body):

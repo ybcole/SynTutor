@@ -21,13 +21,13 @@ from zipfile import BadZipFile
 
 if __package__:
     from .final_d1_labels import final_d1_display_labels
-    from .final_d1_projection import Projection, ProjectionUnavailable
+    from .final_d1_projection import AmbiguousProjection, Projection, ProjectionUnavailable
     from .br_native_grammar import audit_br_constructions
     from .br_native_chart import generate_br_chart_candidates
     from .ruleset import be_past_pairs
 else:
     from final_d1_labels import final_d1_display_labels
-    from final_d1_projection import Projection, ProjectionUnavailable
+    from final_d1_projection import AmbiguousProjection, Projection, ProjectionUnavailable
     from br_native_grammar import audit_br_constructions
     from br_native_chart import generate_br_chart_candidates
     from ruleset import be_past_pairs
@@ -332,6 +332,8 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
            for token in tokens for start, end in [token["char_span"]]):
         raise ProjectionUnavailable("Candidate token offsets do not match the submitted sentence")
     uncertainty = None
+    uncertainty_code = "PROFILE_MAPPING_NOT_APPROVED"
+    ambiguity_rationales: list[str] = []
     work_root = copy.deepcopy(raw_root)
     sent_start = _sentence_start(analysis)
     canonical_tokens = _fuse_orthographic_tokens(work_root, sentence, tokens, raw_tokens, sent_start)
@@ -374,6 +376,12 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
                 tree = proj.vp(vp_kids, "finite", None)
         else:
             tree = proj.clause(work_root)
+    except AmbiguousProjection as exc:
+        uncertainty = str(exc)
+        uncertainty_code = "STRUCTURAL_AMBIGUITY"
+        ambiguity_rationales = [str(rat) for rat, _ in getattr(exc, "alternatives", ())]
+        canonical_tokens = tokens
+        tree = Projection(raw_tokens).working_tree(copy.deepcopy(raw_root))
     except ProjectionUnavailable as exc:
         uncertainty = str(exc)
         canonical_tokens = tokens
@@ -397,7 +405,13 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
     }]
     if uncertainty:
         envelope["source"]["evidence_status"] = "UNCERTAIN"
-        envelope["source"]["review_note"] = "B-R working view with provisional grouping and locally unresolved spans."
+        envelope["source"]["review_note"] = (
+            "Structurally ambiguous construction; multiple B-R analyses are licensed."
+            if uncertainty_code == "STRUCTURAL_AMBIGUITY"
+            else "B-R working view with provisional grouping and locally unresolved spans."
+        )
+        if ambiguity_rationales:
+            envelope["notes"] = [f"alternative_reading: {rat}" for rat in ambiguity_rationales]
     validation = validate_canonical_tree(envelope)
     if not validation["valid"]:
         return {"status": "rejected", "tree": None,
@@ -406,8 +420,11 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
                 "normalization_trace": trace, "validation": validation}
     if uncertainty:
         result = _unresolved_result(profile, [
-            {"code": "PROFILE_MAPPING_NOT_APPROVED", "detail": uncertainty}
+            {"code": uncertainty_code, "detail": uncertainty}
         ], trace, analysis, tokens)
+        if ambiguity_rationales:
+            result["ambiguous"] = True
+            result["alternative_readings"] = ambiguity_rationales
         result.update(working_tree=envelope, validation=validation)
         return result
     return {"status": "normalized", "tree": envelope, "reasons": [],
