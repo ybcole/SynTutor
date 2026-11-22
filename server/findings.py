@@ -752,10 +752,13 @@ def supported_findings(analysis, details):
                 continue
             key = (lesson or code, tuple(targets), tuple(participants))
             target_key = (code, tuple(targets))
-            if key in seen or target_key in seen:
+            text_key = (code, text) if code not in {'C-SPELLING', 'C-SPACING-REPEAT'} else None
+            if key in seen or target_key in seen or (text_key is not None and text_key in seen):
                 continue
             seen.add(key)
             seen.add(target_key)
+            if text_key is not None:
+                seen.add(text_key)
             rows.append({'id': f'local-{len(rows) + 1}', 'constraint': code,
                          'authority': 'legacy_matrix', 'status': 'supported_local', 'book_verified': False,
                          'node_id': detail.get('id'), 'text': text,

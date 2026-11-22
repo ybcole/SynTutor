@@ -521,7 +521,15 @@ PREP_GERUND_PHRASES = (
     ('opposed', 'to'),
     ('committed', 'to'),
     ('accustomed', 'to'),
-    ('used', 'to'),
+    ('get', 'used', 'to'),
+    ('gets', 'used', 'to'),
+    ('got', 'used', 'to'),
+    ('gotten', 'used', 'to'),
+    ('getting', 'used', 'to'),
+    ('become', 'used', 'to'),
+    ('becomes', 'used', 'to'),
+    ('became', 'used', 'to'),
+    ('becoming', 'used', 'to'),
 )
 
 SHORT_MORPH_ADJ = {
@@ -1945,7 +1953,12 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                 or (i + 1 < len(tops)
                     and tops[i + 1].get('surface', '') in ('"', '\u201c', '\u201d')):
             continue  # comma adjacent to a quotation mark (dialogue tag)
-        before = tops[:i]
+        _last_break = max(
+            (k for k in range(i)
+             if tops[k].get('surface') in (':', ';')),
+            default=-1,
+        )
+        before = tops[_last_break + 1:i]
         after = tops[i + 1:]
         before_verbs = [x for x in before if x.get('type') in FINITE_TYPES
                         or _lower(x) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES)]
@@ -2704,15 +2717,47 @@ def _check_more(root, clauses, leaves):
                                     _tree_evidence(lf['id'], "do + n't + finite")))
 
     # 6.16 conditional with 'will' (If I will go)
+    # Scope strictly to the conditional 'if'-clause itself (never crossing into
+    # the matrix apodosis 'If we miss the boat I think we will...' or into a
+    # nested relative/complement SBAR 'laws that would unite it').
+    _if_sbar_by_id = {}
+    for _nd in _iter_nodes(root):
+        if _nd.get('type') == 'SBAR':
+            _sk = _nd.get('children', [])
+            _if_ch = next((c for c in _sk if not c.get('children') and _lower(c) == 'if'), None)
+            _s_ch = next((c for c in _sk if c.get('type') == 'S'), None)
+            if _if_ch is not None and _s_ch is not None:
+                _if_sbar_by_id[_if_ch['id']] = _s_ch
+
+    def _own_clause_leaves(clause_node):
+        res = []
+        def _walk_own(n, is_root=False):
+            if not is_root and n.get('type') in ('SBAR', 'S', 'SQ', 'SINV'):
+                return
+            if not n.get('children'):
+                res.append(n)
+                return
+            for ch in n.get('children', []):
+                _walk_own(ch, False)
+        _walk_own(clause_node, True)
+        return res
+
     for i, lf in enumerate(leaves):
         if _lower(lf) == 'if':
             hit = None
-            for candidate in leaves[i + 1:]:
-                if candidate.get('type') == ',' or candidate.get('surface') == ',':
-                    break
-                if _lower(candidate) in ('will', 'would'):
-                    hit = _lower(candidate)
-                    break
+            cond_s = _if_sbar_by_id.get(lf['id'])
+            if cond_s is not None:
+                for candidate in _own_clause_leaves(cond_s):
+                    if _lower(candidate) in ('will', 'would'):
+                        hit = _lower(candidate)
+                        break
+            else:
+                for candidate in leaves[i + 1:]:
+                    if candidate.get('type') in (',', ':', ';') or candidate.get('surface') in (',', ':', ';'):
+                        break
+                    if _lower(candidate) in ('will', 'would'):
+                        hit = _lower(candidate)
+                        break
             if hit:
                 out.append(_finding('6.16', 'error', 'C-CONDITIONAL-WILL',
                                     'conditional', leaves[i]['id'],
@@ -3843,7 +3888,8 @@ def _check_basic(root, clauses, leaves):
                                       f"'{OBJECT_TO_SUBJECT[core]}'"),
                     'edits': [{'node': lf['id'], 'replacement': target}],
                 }))
-        elif core in SUBJECT_TO_OBJECT and prev_core in PREPOSITIONS:
+        elif core in SUBJECT_TO_OBJECT and prev_core in PREPOSITIONS \
+                and not (i > 0 and leaves[i - 1].get('type') == 'RP'):
             # Prepositions that take clausal complements ('before he left',
             # 'after she arrived', 'for he knew', 'since we came') license a
             # nominative clausal subject when followed by a finite verb/aux
@@ -4139,6 +4185,8 @@ def _check_basic(root, clauses, leaves):
 
     # --- 5.1 preposition + subject-form pronoun ------------------------------ #
     for i, lf in enumerate(leaves):
+        if lf.get('type') == 'RP':
+            continue
         if lows[i] in TRUE_PREPS and i + 1 < len(leaves):
             nxt = _lower(leaves[i + 1]).rstrip('.,;:!?')
             if nxt in SUBJECT_PRON:
@@ -5928,6 +5976,7 @@ def _check_syntax_constraints(root, clauses, leaves):
         'helpful', 'simple', 'awkward', 'painful', 'expensive', 'cheap',
         'worth', 'fine', 'harder', 'easier', 'tougher', 'simpler', 'nicer',
         'better', 'worse', 'best', 'worst', 'hardest', 'easiest', 'toughest',
+        'ready', 'fit', 'suitable', 'eligible', 'available', 'free', 'open',
     }
     for nd in all_nodes:
         if nd.get('type') != 'PP':
@@ -6000,6 +6049,20 @@ def _check_syntax_constraints(root, clauses, leaves):
                 if pmap.get(anc['id'], {}).get('type') == 'NP':
                     licensed_gap = True
                     break
+                # It-cleft ('It is X that some girl was listening to.'):
+                # the clefted NP focus binds the gap inside the SBAR.
+                sbar_par = pmap.get(anc['id'])
+                if sbar_par is not None and sbar_par.get('type') == 'VP':
+                    vp_lvs_c = _leaves(sbar_par)
+                    sbar_gp = pmap.get(sbar_par['id'])
+                    if (vp_lvs_c and _lower(vp_lvs_c[0]) in (BE_SURFACES | {"'s"})
+                            and sbar_gp is not None and sbar_gp.get('type') == 'S'):
+                        gp_subj = next((c for c in sbar_gp.get('children', [])
+                                        if c.get('type') == 'NP'), None)
+                        gp_subj_lvs = _leaves(gp_subj) if gp_subj is not None else []
+                        if len(gp_subj_lvs) == 1 and _lower(gp_subj_lvs[0]) == 'it':
+                            licensed_gap = True
+                            break
             if at == 'ADJP':
                 adj_lvs = _leaves(anc)
                 if any(_lower(x) in _TOUGH_ADJP_HEADS or _lower(x) in {'too', 'enough'} for x in adj_lvs[:4]):

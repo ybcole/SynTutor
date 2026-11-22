@@ -192,6 +192,134 @@ def _is_raw_leaf(node: dict[str, Any]) -> bool:
     return isinstance(node, dict) and not node.get("children") and "surface" in node
 
 
+_NEG_AUX_BASES = {
+    "do": "do", "does": "do", "did": "do",
+    "have": "have", "has": "have", "had": "have",
+    "is": "be", "are": "be", "was": "be", "were": "be",
+    "ca": "can", "can": "can", "could": "could",
+    "wo": "will", "will": "will", "would": "would",
+    "sha": "shall", "shall": "shall", "should": "should",
+    "may": "may", "might": "might", "must": "must",
+    "need": "need", "dare": "dare", "ai": "be",
+}
+
+
+def _fuse_orthographic_tokens(work_root: dict[str, Any], sentence: str,
+                              tokens: list[dict[str, Any]],
+                              raw_tokens: dict[int, dict[str, Any]],
+                              sent_start: int) -> list[dict[str, Any]]:
+    """Fuse contiguous hyphenated compounds and contracted negative auxiliaries
+    (e.g. ``second-hand``, ``off-putting``, ``didn't``, ``hasn't``) into single
+    orthographic B-R terminals when the source text has zero whitespace between
+    the split spaCy/Benepar pieces (Burton-Roberts 3rd ed. Ch. 6–10).
+    """
+    span_merges: dict[int, tuple[int, str]] = {}
+
+    def _raw_char_bounds(leaf_node: dict[str, Any]) -> tuple[int, int] | None:
+        sp = leaf_node.get("span")
+        if not isinstance(sp, (list, tuple)) or len(sp) != 2:
+            return None
+        first_tok = raw_tokens.get(sp[0])
+        last_tok = raw_tokens.get(sp[1] - 1)
+        if not first_tok or not last_tok:
+            return None
+        return int(first_tok["start"]) - sent_start, int(last_tok["end"]) - sent_start
+
+    def _walk(node: dict[str, Any]) -> None:
+        children = node.get("children")
+        if not children:
+            return
+        for child in children:
+            _walk(child)
+        # Pass 1: contiguous hyphenated compounds (w1 + HYPH('-') + w2) within the same constituent.
+        fused: list[dict[str, Any]] = []
+        i = 0
+        while i < len(children):
+            if (i + 2 < len(children)
+                    and _is_raw_leaf(children[i])
+                    and _is_raw_leaf(children[i + 1])
+                    and _is_raw_leaf(children[i + 2])
+                    and str(children[i + 1].get("surface", "")) == "-"
+                    and children[i + 2].get("type") not in {"VBN", "VBG"}
+                    and any(ch.isalnum() for ch in str(children[i].get("surface", "")))
+                    and any(ch.isalnum() for ch in str(children[i + 2].get("surface", "")))):
+                b1 = _raw_char_bounds(children[i])
+                bh = _raw_char_bounds(children[i + 1])
+                b2 = _raw_char_bounds(children[i + 2])
+                if b1 and bh and b2 and b1[1] == bh[0] and bh[1] == b2[0]:
+                    combined = sentence[b1[0]:b2[1]]
+                    if combined:
+                        merged = dict(children[i + 2])
+                        merged["surface"] = combined
+                        merged["span"] = [children[i]["span"][0], children[i + 2]["span"][1]]
+                        # Hyphenated prenominal modifier (e.g. 'second-hand' in NML) acts as JJ.
+                        if (node.get("type") == "NML"
+                                and children[i].get("type") in {"JJ", "JJR", "JJS", "CD", "RB"}
+                                and children[i + 2].get("type") in {"NN", "NNS"}):
+                            merged["type"] = "JJ"
+                        span_merges[b1[0]] = (b2[1], combined)
+                        fused.append(merged)
+                        i += 3
+                        continue
+            fused.append(children[i])
+            i += 1
+        # Pass 2: contiguous contracted negative auxiliaries (aux + n't / n’t).
+        fused2: list[dict[str, Any]] = []
+        i = 0
+        while i < len(fused):
+            if (i + 1 < len(fused)
+                    and _is_raw_leaf(fused[i])
+                    and _is_raw_leaf(fused[i + 1])
+                    and not fused[i].get("ambiguous_contraction_split")
+                    and not fused[i + 1].get("ambiguous_contraction_split")
+                    and str(fused[i + 1].get("surface", "")).lower().replace("’", "'") == "n't"
+                    and str(fused[i].get("surface", "")).lower() in _NEG_AUX_BASES):
+                b1 = _raw_char_bounds(fused[i])
+                b2 = _raw_char_bounds(fused[i + 1])
+                if b1 and b2 and b1[1] == b2[0]:
+                    combined = sentence[b1[0]:b2[1]]
+                    if combined:
+                        merged = dict(fused[i])
+                        merged["surface"] = combined
+                        merged["span"] = [fused[i]["span"][0], fused[i + 1]["span"][1]]
+                        merged["fused_aux_base"] = _NEG_AUX_BASES[str(fused[i].get("surface", "")).lower()]
+                        merged["fused_negative"] = True
+                        span_merges[b1[0]] = (b2[1], combined)
+                        fused2.append(merged)
+                        i += 2
+                        continue
+            fused2.append(fused[i])
+            i += 1
+        node["children"] = fused2
+
+    _walk(work_root)
+    if not span_merges:
+        return tokens
+    new_tokens: list[dict[str, Any]] = []
+    idx = 0
+    while idx < len(tokens):
+        tok = tokens[idx]
+        c_start = tok["char_span"][0]
+        if c_start in span_merges:
+            target_end, combined = span_merges[c_start]
+            end_idx = idx
+            while end_idx + 1 < len(tokens) and tokens[end_idx]["char_span"][1] < target_end:
+                end_idx += 1
+            if tokens[end_idx]["char_span"][1] == target_end:
+                merged_tok = dict(tok)
+                merged_tok["index"] = len(new_tokens)
+                merged_tok["text"] = combined
+                merged_tok["char_span"] = [c_start, target_end]
+                new_tokens.append(merged_tok)
+                idx = end_idx + 1
+                continue
+        copied = dict(tok)
+        copied["index"] = len(new_tokens)
+        new_tokens.append(copied)
+        idx += 1
+    return new_tokens
+
+
 def _final_projection(raw_root, sentence, tokens, profile, analysis):
     """Build and validate a FINAL-D1 tree for the observed candidate structure."""
     raw_tokens = {row.get("i", index): row for index, row in enumerate(analysis.get("tokens") or [])}
@@ -205,6 +333,8 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
         raise ProjectionUnavailable("Candidate token offsets do not match the submitted sentence")
     uncertainty = None
     work_root = copy.deepcopy(raw_root)
+    sent_start = _sentence_start(analysis)
+    canonical_tokens = _fuse_orthographic_tokens(work_root, sentence, tokens, raw_tokens, sent_start)
     try:
         from .spellcheck import uncertain_function_words
     except ImportError:
@@ -224,7 +354,7 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
             raise ProjectionUnavailable('Lexical category cannot be verified for an orthographically uncertain function word')
         proj = Projection(raw_tokens)
         # Unwrap transport wrapper to detect standalone textbook/learner phrases
-        # (NP, PP, ADJP, ADVP) so FINAL-D1 projects them compositionally rather
+        # (NP, PP, ADJP, ADVP, UCP) so FINAL-D1 projects them compositionally rather
         # than failing with 'Unsupported clause structure NP/PP/ADJP/ADVP'.
         inner = work_root
         while inner.get("type") in {"ROOT", "TOP"}:
@@ -233,7 +363,7 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
             if len(sem) != 1:
                 break
             inner = sem[0]
-        if inner.get("type") in {"NP", "PP", "ADJP", "ADVP"}:
+        if inner.get("type") in {"NP", "PP", "ADJP", "ADVP", "UCP"}:
             tree = proj.phrase(inner)
         elif inner.get("type") == "VP":
             vp_kids = [c for c in (inner.get("children") or [])
@@ -246,17 +376,18 @@ def _final_projection(raw_root, sentence, tokens, profile, analysis):
             tree = proj.clause(work_root)
     except ProjectionUnavailable as exc:
         uncertainty = str(exc)
-        tree = Projection(raw_tokens).working_tree(copy.deepcopy(work_root))
+        canonical_tokens = tokens
+        tree = Projection(raw_tokens).working_tree(copy.deepcopy(raw_root))
     envelope = {
         "schema_version": SCHEMA_VERSION,
         "tree_id": _stable_id("sg", sentence + "|FINAL-D1"),
         "sentence": sentence,
-        "tokens": tokens,
+        "tokens": canonical_tokens,
         "convention_profile": profile,
         "source": {"book": BOOK_TITLE, "edition": BOOK_EDITION, "chapter": 10,
                    "evidence_status": "DERIVED_FROM_INSTRUCTIONS",
                    "review_note": "FINAL-D1 projection. Printed evidence is recorded on each category node."},
-        "root": _build_canonical_node(tree, tokens, [0], "sg-root", []),
+        "root": _build_canonical_node(tree, canonical_tokens, [0], "sg-root", []),
         "movement": [],
         "accepted_alternatives": [],
     }

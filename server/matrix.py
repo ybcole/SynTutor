@@ -333,6 +333,30 @@ NONCOUNT_NOUNS = {
     'solidarity', 'prosperity', 'adversity', 'intensity', 'clarity', 'purity',
     'maturity', 'anonymity', 'gravity', 'velocity', 'density', 'humidity',
     'acidity', 'toxicity', 'biodiversity',
+    # H02 reliability sprint: standard mass/uncountable & abstract nouns
+    'stuff', 'manipulation', 'indifference', 'change', 'ignorance',
+    'acceptance', 'arrogance', 'obedience', 'disobedience', 'defiance',
+    'vigilance', 'eloquence', 'convenience', 'inconvenience', 'innocence',
+    'negligence', 'diligence', 'impatience', 'intolerance', 'competence',
+    'incompetence', 'affluence', 'guidance', 'reliance', 'compliance',
+    'governance', 'dominance', 'abundance', 'elegance', 'extravagance',
+    'brilliance', 'vengeance', 'sustenance', 'perseverance', 'interference',
+    'adherence', 'reverence', 'deference', 'prudence', 'permanence',
+    'prominence', 'abstinence', 'lenience', 'turbulence', 'opulence',
+    'presence', 'absence', 'significance', 'importance', 'relevance',
+    'resistance', 'persistence', 'maintenance', 'excellence', 'dependence',
+    'harassment', 'resentment', 'contentment', 'amusement', 'excitement',
+    'amazement', 'astonishment', 'bewilderment', 'encouragement',
+    'discouragement', 'empowerment', 'enlightenment', 'fulfillment',
+    'fulfilment', 'retirement', 'enforcement', 'nourishment', 'abandonment',
+    'destruction', 'construction', 'degradation', 'devastation',
+    'deforestation', 'meditation', 'relaxation', 'procrastination',
+    'isolation', 'alienation', 'humiliation', 'intimidation', 'speculation',
+    'circulation', 'collaboration', 'coordination', 'negotiation',
+    'litigation', 'assimilation', 'privatization', 'industrialization',
+    'modernization', 'commercialization', 'polarization', 'gentrification',
+    'stagnation', 'deprivation', 'hydration', 'immunization', 'dedication',
+    'determination', 'overconsumption',
 }
 BARE_ARG_NOUNS = {
     'home', 'school', 'work', 'bed', 'church', 'town', 'court', 'class',
@@ -948,6 +972,8 @@ def _noun_form_issue(leaf):
         return None
     observed = _lower(leaf['surface'])
     if observed in ACCEPTED_PLURALS or observed in POSS_PRON_SURFACES:
+        return None
+    if re.fullmatch(r'\d{2,4}s', observed):
         return None
     singular = _singular_noun(leaf)
     if not singular or singular == observed or singular is False:
@@ -1588,6 +1614,10 @@ def _needs_indefinite_article_error(np_node, parent_vp=None):
     surface = _lower(head['surface'])
     if surface in POSS_PRON_SURFACES:
         return None
+    # Unknown or misspelled tokens ('excercise', 'enviroment') are lexical/spelling
+    # issues, not verified singular countable nouns requiring an article.
+    if surface.isalpha() and not spellcheck.known_word(surface):
+        return None
     if base in NONCOUNT_NOUNS or base in BARE_ARG_NOUNS \
             or surface in NONCOUNT_NOUNS or surface in BARE_ARG_NOUNS:
         return None
@@ -1658,7 +1688,7 @@ def _needs_indefinite_article_error(np_node, parent_vp=None):
         for k_idx, k_node in enumerate(vp_kids):
             if k_node is np_node and k_idx > 0:
                 prev_leaves = _leaves_list(vp_kids[k_idx - 1])
-                if prev_leaves and _lower(prev_leaves[-1].get('surface', '')) in DO_FORM:
+                if prev_leaves and _lower(prev_leaves[-1].get('surface', '')) in (DO_FORM | MODALS):
                     try:
                         from lemminflect import getLemma
                         if surface in set(getLemma(surface, upos='VERB', lemmatize_oov=False)):
@@ -2158,7 +2188,8 @@ class MatrixEvaluator:
                                      'plain', 'flat', 'clean', 'clear', 'dead',
                                      'first', 'second', 'third', 'fourth',
                                      'fifth', 'sixth', 'seventh', 'eighth',
-                                     'ninth', 'tenth', 'last'}):
+                                     'ninth', 'tenth', 'last'}
+                        or bool(re.fullmatch(r'\d+(?:st|nd|rd|th)', low_c))):
                     return ('valid', 'C-ADJ-FIXED',
                             f"In '{self._p(parent)}', the word "
                             f"'{self._p(child)}' is valid in this adverbial form.")
@@ -2336,7 +2367,10 @@ class MatrixEvaluator:
                     f"The sentence '{self._p(parent)}' has a subject but no verb, so "
                     'it is not complete. Add a verb.')
         if vp_head['type'] in NONFINITE:
-            if child['children'] and child['children'][0].get('type') == 'TO':
+            _p_kids = parent.get('children', [])
+            _c_idx = next((idx for idx, k in enumerate(_p_kids) if k is child), -1)
+            if ((child['children'] and child['children'][0].get('type') == 'TO')
+                    or (_c_idx > 0 and _p_kids[_c_idx - 1].get('type') == 'TO')):
                 return ('valid', 'C-INFINITIVAL-COMPLEMENT',
                         f"The words '{self._p(child)}' name an action after 'to'. "
                         'They have no time of their own; the main verb shows the '
@@ -2346,9 +2380,22 @@ class MatrixEvaluator:
             # its subject.  Only skip this when the clause is subjunctive,
             # licensed by a mandative verb ("... that he be on time"), or
             # embedded under an inverted modal/do question ("What lights could
-            # Spain sell and Andrea discover?").
+            # Spain sell and Andrea discover?" / "What cashiers did Beverly
+            # disgust and Carla listen to?").
+            _root_is_q = (
+                self._root.get('type') in {'SQ', 'SBARQ'}
+                or any(c.get('type') in {'SQ', 'SBARQ'}
+                       for c in self._root.get('children', []))
+            )
+            _coord_q_vp = (
+                _root_is_q
+                and grandparent is not None
+                and grandparent.get('type') == 'VP'
+                and any(c.get('type') == 'CC' for c in grandparent.get('children', []))
+            )
             in_modal_question = (
-                grandparent is not None and grandparent.get('type') in {'NP', 'SQ', 'SBARQ'}
+                grandparent is not None
+                and (grandparent.get('type') in {'NP', 'SQ', 'SBARQ'} or _coord_q_vp)
                 and any(
                     lf.get('span', [9999])[0] < parent.get('span', [0])[0]
                     and (lf.get('type') == 'MD' or _lower(lf.get('surface', '')) in DO_FORM)
