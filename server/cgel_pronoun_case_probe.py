@@ -168,7 +168,13 @@ def probe_genitive_reflexive(sentence: str) -> list[dict[str, Any]]:
         ))
     pattern = re.compile(
         r"\b([A-Z][a-z]+)['’]s\s+(herself|himself|themselves|ourselves|myself|yourself)\b")
+    _COPULA_CONTRACTIONS = {
+        "it", "he", "she", "that", "there", "here", "who", "what",
+        "where", "when", "why", "how",
+    }
     for match in pattern.finditer(sentence):
+        if match.group(1).lower() in _COPULA_CONTRACTIONS:
+            continue
         replacement = f"{match.group(1)} {match.group(2)}"
         rows.append(_candidate(
             "PHR-582", 17, [1497], "genitive_with_np_internal_reflexive",

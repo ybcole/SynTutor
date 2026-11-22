@@ -291,6 +291,10 @@ PAST_ONLY = {past for past, participle in PAST_PARTICIPLE_OF.items()
 UNCOUNTABLE_PLURAL = {
     'informations', 'advices', 'knowledges', 'furnitures', 'luggages',
     'equipments', 'homeworks', 'evidences', 'softwares', 'moneys',
+    'researches', 'staffs', 'hardwares', 'machineries', 'sceneries',
+    'traffics', 'baggages', 'crockeries', 'cutleries', 'stationeries',
+    'clothings', 'footwears', 'paperworks', 'houseworks', 'jewelleries',
+    'jewelries',
 }
 
 UNCOUNTABLE_SINGULAR = {
@@ -942,9 +946,17 @@ def _context_evidence(condition, options, confidence):
             'confidence': confidence}
 
 
-def _rem(violation, fix, alt=None, outcome=None):
-    return {'violation': violation, 'suggested_fix': fix,
-            'alternative_fix': alt, 'targeted_outcome': outcome}
+def _rem(violation, fix, alt=None, outcome=None, edits=None, alternative_edits=None):
+    if isinstance(alt, list) and edits is None:
+        edits = alt
+        alt = None
+    out = {'violation': violation, 'suggested_fix': fix,
+           'alternative_fix': alt, 'targeted_outcome': outcome}
+    if edits is not None:
+        out['edits'] = edits
+    if alternative_edits is not None:
+        out['alternative_edits'] = alternative_edits
+    return out
 
 
 # --------------------------------------------------------------------------- #
@@ -1036,13 +1048,18 @@ def _check_wordlists(leaves):
                                      f"Write '{fix}' instead of '{lf['surface']}'.")))
 
         if low in UNCOUNTABLE_PLURAL:
+            sg = (low[:-3] + 'y' if low.endswith('ies') else low.rstrip('s'))
+            sg_rep = sg.capitalize() if lf['surface'][:1].isupper() else sg
             out.append(_finding('4.1', 'error', 'C-UNCOUNTABLE', 'noun number',
                                 lf['id'],
                                 f"'{lf['surface']}' is an uncountable noun, so in this "
                                 f"sentence it has no plural form; use the singular "
-                                f"'{low.rstrip('s')}'.",
-                                _wordlist_evidence(lf['surface'], [low.rstrip('s')],
-                                                   'uncountable-noun list')))
+                                f"'{sg}'.",
+                                _wordlist_evidence(lf['surface'], [sg],
+                                                   'uncountable-noun list'),
+                                _rem(f"'{lf['surface']}' is an uncountable noun and has no plural form.",
+                                     f"Change '{lf['surface']}' to '{sg_rep}'.",
+                                     edits=[{'node': lf['id'], 'replacement': sg_rep}])))
 
         if low in IRREGULAR_COMPARATIVE:
             fix = IRREGULAR_COMPARATIVE[low]
@@ -2252,10 +2269,18 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                 or _lower(nxt).endswith(('ies', 'es')) \
                 or irreg_base is not None
             if finite:
-                base = irreg_base or {'is': 'be', 'are': 'be', 'was': 'be', 'were': 'be',
-                        'am': 'be', 'been': 'be', 'has': 'have', 'had': 'have',
-                        'does': 'do', 'did': 'do'}.get(nlow) \
-                    or _base_of(nlow)
+                modal_inf_map = {
+                    'can': 'be able to', 'could': 'be able to',
+                    'must': 'have to', 'may': 'be allowed to',
+                    'might': 'be allowed to',
+                }
+                if _is_central_modal(nxt) and nlow in modal_inf_map:
+                    base = modal_inf_map[nlow]
+                else:
+                    base = irreg_base or {'is': 'be', 'are': 'be', 'was': 'be', 'were': 'be',
+                            'am': 'be', 'been': 'be', 'has': 'have', 'had': 'have',
+                            'does': 'do', 'did': 'do'}.get(nlow) \
+                        or _base_of(nlow)
                 out.append(_finding('6.10', 'error', 'C-TO-BASE', 'infinitive',
                                     nxt['id'],
                                     f"After 'to' in this sentence the verb must be in its "
@@ -2266,8 +2291,8 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                     _rem(f"'{nxt['surface']}' follows 'to' in this sentence.",
                                          f"Write '{base}' after 'to' instead of "
                                          f"'{nxt['surface']}'.",
-                                         ([{'node': nxt['id'], 'replacement': base}]
-                                          if base and base != nlow else None))))
+                                         edits=([{'node': nxt['id'], 'replacement': base}]
+                                                if base and base != nlow else None))))
         # 6.12 modal + to
         if _is_central_modal(lf) \
                 and _lower(lf) != 'ought' \
@@ -2276,7 +2301,10 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                 lf['id'],
                                 f"The modal '{lf['surface']}' takes the verb directly "
                                 f"without 'to'; drop 'to' here.",
-                                _tree_evidence(lf['id'], 'MD + TO')))
+                                _tree_evidence(lf['id'], 'MD + TO'),
+                                _rem(f"The modal '{lf['surface']}' cannot be followed by 'to'.",
+                                     "Drop 'to' after the modal.",
+                                     edits=[{'node': leaves[i + 1]['id'], 'delete': True}])))
 
     # 6.19 Causative + to (make/let + pronoun object + to + VB)
     for i, lf in enumerate(leaves):
@@ -2316,6 +2344,8 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                 and leaves[i + 1].get('type') == 'TO':
             ger = _vbg_of(_base_of(_lower(leaves[i + 2]))) \
                 if i + 2 < len(leaves) else 'the -ing form'
+            g_edits = ([{'nodes': [leaves[i + 1]['id'], leaves[i + 2]['id']], 'replacement': ger}]
+                       if i + 2 < len(leaves) and leaves[i + 2].get('type') in {'VB', 'VBP', 'VBZ', 'VBG', 'VBN'} else None)
             out.append(_finding('6.9', 'error', 'C-GERUND-INFINITIVE',
                                 'complement type', lf['id'],
                                 f"'{lf['surface']}' is followed by the 'ing' form, not "
@@ -2323,7 +2353,10 @@ def _check_tree(root, clauses, leaves, text=None, quoted=None):
                                 f"'{lf['surface']} {ger}' "
                                 f"instead of '{lf['surface']} to {_lower(leaves[i + 2]) if i + 2 < len(leaves) else '...'}'.",
                                 _wordlist_evidence(lf['surface'], [ger],
-                                                   'gerund-taking verbs')))
+                                                   'gerund-taking verbs'),
+                                _rem(f"'{lf['surface']}' takes an -ing complement rather than a to-infinitive.",
+                                     f"Write '{lf['surface']} {ger}'.",
+                                     edits=g_edits)))
 
     # 6.20 Verb + clause pattern (suggest him to go)
     for i, lf in enumerate(leaves):
@@ -2843,11 +2876,15 @@ def _check_more(root, clauses, leaves):
                                     f"'{hit}'; drop '{hit}' and use the present tense there.",
                                     _tree_evidence(lf['id'], 'if + will')))
 
-    # 6.18 reported speech (She said me)
+    # 6.18 reported speech (She said me) — exclude active ECM 'say him to be ...'
+    # which is handled by the dedicated CGEL active-ECM constraint (finite that-clause).
     for i, lf in enumerate(leaves):
         if _lower(lf) in ('said', 'say') and i + 1 < len(leaves) \
                 and _lower(leaves[i + 1]) in PRON_OBJ \
                 and _lower(leaves[i + 1]) not in ('it',):
+            if (i + 2 < len(leaves) and leaves[i + 2].get('type') == 'TO'
+                    and i + 3 < len(leaves) and _lower(leaves[i + 3]) == 'be'):
+                continue
             fix = 'told' if _lower(lf) == 'said' else 'tell'
             out.append(_finding('6.18', 'error', 'C-REPORTED-SPEECH',
                                 'reported speech', lf['id'],
@@ -2967,8 +3004,17 @@ def _check_more(root, clauses, leaves):
         vhead = _predicate_verb(vp)
         if vhead is None:
             continue
-        if vhead.get('type') == 'VBP' or _lower(vhead) in ('are', 'were'):
-            singular = 'is' if _lower(vhead) == 'are' else 'was'
+        if vhead.get('type') == 'VBP' or _lower(vhead) in ('are', 'were', 'have', 'do'):
+            vlow_num = _lower(vhead)
+            if vlow_num in ('are', 'were', 'have', 'do'):
+                singular = {'are': 'is', 'were': 'was', 'have': 'has', 'do': 'does'}[vlow_num]
+            else:
+                try:
+                    from lemminflect import getInflection
+                    inf = getInflection(_base_of(vlow_num), tag='VBZ')
+                    singular = inf[0] if inf else (vlow_num + 's')
+                except Exception:
+                    singular = vlow_num + 's'
             out.append(_finding('2.9', 'error', 'C-NUMBER-AGREE',
                                 'agreement', vhead['id'],
                                 f"With the phrase 'the number of', this sentence takes "
@@ -3354,6 +3400,10 @@ f"The possessive '{lf['surface']}' in this sentence "
             if joined in {'bread and butter', 'peanut butter and jelly',
                           'fish and chips', 'gin and tonic'}:
                 continue
+            # Distributive 'every X and (every) Y' / 'each X and (each) Y' takes
+            # a singular verb in standard English (CGEL Ch. 5 §18.5).
+            if sleaves and _lower(sleaves[0]) in ('every', 'each'):
+                continue
             if vkey == ('3', 'sg') or vlow in ('is', 'was', 'has', 'does'):
                 agreeing = ({'is': 'are', 'was': 'were', 'has': 'have',
                              'does': 'do'}.get(vlow) or _base_of(vlow))
@@ -3653,23 +3703,33 @@ f"The possessive '{lf['surface']}' in this sentence "
             if _lower(verb) not in DITRANSITIVE:
                 continue
             pobj = _np_head_leaf(k)
-            if pobj is None or pobj.get('type') != 'PRP':
+            if pobj is None:
                 continue
             nxt = kids[i + 1] if i + 1 < len(kids) else None
             if nxt is None or nxt.get('type') != 'NP':
                 continue
+            nxt_lvs = _leaves(nxt)
+            # Only flag V + short PP(to/for + short recipient) + light direct object NP
+            # (heavy NP shift like 'gave to Mary the book that she had asked for' is grammatical).
+            if pobj.get('type') != 'PRP':
+                if len(kl) > 3 or len(nxt_lvs) > 3:
+                    continue
+                if any(c.get('type') in ('PP', 'SBAR', 'S', 'VP') for c in nxt.get('children', [])):
+                    continue
+            swap_text = f"{nxt.get('surface', '')} {k.get('surface', '')}".strip()
             out.append(_finding('9.15', 'error', 'C-OBJECT-ORDER',
-                                'object order', verb['id'],
+                                'object order', k['id'],
                                 f"The direct object in this sentence should come "
                                 f"right after the verb '{verb['surface']}'; write "
-                                f"'{verb['surface']} {pobj['surface']} "
-                                f"{nxt.get('surface', '')}', or "
-                                f"'{verb['surface']} {nxt.get('surface', '')} "
-                                f"{kl[0]['surface']} {pobj['surface']}'.",
+                                f"'{verb['surface']} {swap_text}'.",
                                 _tree_evidence(node['id'],
-                                               'V + PP(to/for + PRP) + NP',
+                                               'V + PP(to/for + NP) + light NP',
                                                [{'node': verb['id']},
-                                                {'node': pobj['id']}])))
+                                                {'node': k['id']},
+                                                {'node': nxt['id']}]),
+                                _rem(f"The prepositional recipient '{k.get('surface', '')}' comes before the light direct object '{nxt.get('surface', '')}'.",
+                                     f"Write '{verb['surface']} {swap_text}'.",
+                                     edits=[{'nodes': [k['id'], nxt['id']], 'replacement': swap_text}])))
 
     # 10.1 sentence-initial capitalization (the boy runs)
     first = None
@@ -3754,6 +3814,11 @@ _ZERO_PLURAL_NOUNS = {
     'sheep', 'fish', 'deer', 'series', 'species', 'offspring', 'aircraft',
     'spacecraft', 'hovercraft', 'moose', 'bison', 'salmon', 'trout', 'swine',
     'buffalo', 'means', 'headquarters', 'crossroads', 'corps',
+    'staff', 'police', 'cattle', 'clergy', 'gentry', 'folk', 'personnel',
+    'vermin', 'livestock', 'poultry', 'quail', 'grouse', 'shrimp', 'cod',
+    'herring', 'mackerel', 'carp', 'pike', 'plaice', 'squid', 'reindeer',
+    'caribou', 'elk', 'antelope', 'cannon', 'chassis', 'rendezvous',
+    'whereabouts',
 }
 
 _IRREG_PLURAL_NOUNS = {
@@ -3947,14 +4012,34 @@ def _check_basic(root, clauses, leaves):
                 f"The modal '{lf['surface']}' is followed directly by "
                 f"the verb, without 'to': write '{lf['surface']} {n2}', not "
                 f"'to {n2}'.",
-                _tree_evidence(nxt['id'], 'MD + to', [{'node': nxt['id']}])))
+                _tree_evidence(nxt['id'], 'MD + to', [{'node': nxt['id']}]),
+                _rem(f"The modal '{lf['surface']}' takes a bare verb without 'to'.",
+                     f"Drop 'to' after '{lf['surface']}'.",
+                     edits=[{'node': nxt['id'], 'delete': True}])))
         elif _is_central_modal(nxt):
+            nxt_low = _lower(nxt)
+            if nxt_low in {'can', 'could'}:
+                stack_edits = [{'node': nxt['id'], 'replacement': 'be able to'}]
+                stack_alt = [{'node': nxt['id'], 'delete': True}]
+                stack_fix = f"Replace '{nxt['surface']}' with 'be able to' or keep only one modal."
+            elif nxt_low == 'must':
+                stack_edits = [{'node': nxt['id'], 'replacement': 'have to'}]
+                stack_alt = [{'node': nxt['id'], 'delete': True}]
+                stack_fix = f"Replace '{nxt['surface']}' with 'have to' or keep only one modal."
+            else:
+                stack_edits = [{'node': nxt['id'], 'delete': True}]
+                stack_alt = None
+                stack_fix = f"Remove the second modal '{nxt['surface']}'."
             out.append(_finding(
                 '6.12', 'error', 'C-MODAL-STACK', 'verb form', nxt['id'],
                 f"This sentence has two modals in a row, "
                 f"'{lf['surface']}' and '{nxt['surface']}'; "
                 'English uses only one modal.',
-                _tree_evidence(nxt['id'], 'MD + MD', [{'node': nxt['id']}])))
+                _tree_evidence(nxt['id'], 'MD + MD', [{'node': nxt['id']}]),
+                _rem(f"Two central modals ('{lf['surface']} {nxt['surface']}') cannot appear together.",
+                     stack_fix,
+                     edits=stack_edits,
+                     alternative_edits=stack_alt)))
 
     # --- 5.1/5.6 pronoun case and possessive determiner ---------------------- #
     OBJECT_TO_SUBJECT = PRONOUN_OBJECT_TO_SUBJECT
@@ -3974,8 +4059,16 @@ def _check_basic(root, clauses, leaves):
         nxt = leaves[i + 1] if i + 1 < len(leaves) else None
         finite_next = nxt is not None and (
             nxt.get('type') in FINITE_TYPES or _lower(nxt) in BE_SURFACES)
-        at_clause_edge = i == 0 or prev_raw in PUNCT or prev_core in (
-            'and', 'but', 'or', 'so', 'yet')
+        _EXCEPTIVE_HOSTS = {
+            'nobody', 'nothing', 'none', 'everyone', 'everybody', 'everything',
+            'anyone', 'anybody', 'anything', 'all', 'who', 'what', 'one',
+        }
+        prev2_core = _lower(leaves[i - 2]).rstrip('.,!?;:') if i >= 2 else ''
+        is_exceptive_but = (prev_core == 'but' and prev2_core in _EXCEPTIVE_HOSTS)
+        at_clause_edge = (
+            i == 0 or prev_raw in PUNCT
+            or (prev_core in ('and', 'but', 'or', 'so', 'yet') and not is_exceptive_but)
+        )
         if core in OBJECT_TO_SUBJECT and at_clause_edge and finite_next:
             target = OBJECT_TO_SUBJECT[core] + tail
             out.append(_finding(
@@ -4452,7 +4545,10 @@ def _check_basic(root, clauses, leaves):
                     f"instead of '{lf['surface']} to {n2}'.",
                     _wordlist_evidence(f"{low} to {n2}",
                                        [f"{low} {ger}"],
-                                       'gerund-taking verb')))
+                                       'gerund-taking verb'),
+                    _rem(f"'{lf['surface']}' takes an -ing complement rather than 'to {n2}'.",
+                         f"Write '{lf['surface']} {ger}'.",
+                         edits=[{'nodes': [leaves[i + 1]['id'], leaves[i + 2]['id']], 'replacement': ger}])))
             elif leaves[i + 1].get('type') == 'VB':
                 ger = _vbg_of(_base_of(nln))
                 out.append(_finding(
@@ -4462,19 +4558,26 @@ def _check_basic(root, clauses, leaves):
                     f"'{lf['surface']} {ger}' "
                     f"instead of '{low} {nln}'.",
                     _wordlist_evidence(f"{low} {nln}", [f"{low} {ger}"],
-                                       'gerund-taking verb')))
+                                       'gerund-taking verb'),
+                    _rem(f"'{lf['surface']}' takes an -ing complement.",
+                         f"Write '{lf['surface']} {ger}'.",
+                         edits=[{'node': leaves[i + 1]['id'], 'replacement': ger}])))
         elif low in ('want', 'wants', 'wanted', 'wanting'):
             if leaves[i + 1].get('type') == 'VBG':
                 vbg = _lower(leaves[i + 1])
+                base_v = _base_of(vbg)
                 out.append(_finding(
                     '6.9', 'error', 'C-GERUND-INFIN', 'verb complement',
                     leaves[i + 1]['id'],
                     f"'want' takes a 'to' + verb form: write "
-                    f"'{low} to {_base_of(vbg)}', not "
+                    f"'{low} to {base_v}', not "
                     f"'{low} {vbg}'.",
                     _wordlist_evidence(f"{low} {vbg}",
-                                       [f"{low} to {_base_of(vbg)}"],
-                                       'want + to-infinitive')))
+                                       [f"{low} to {base_v}"],
+                                       'want + to-infinitive'),
+                    _rem(f"'want' takes a to-infinitive rather than '{vbg}'.",
+                         f"Write '{low} to {base_v}'.",
+                         edits=[{'node': leaves[i + 1]['id'], 'replacement': f"to {base_v}"}])))
 
     # --- 8.6 preposition + to-infinitive; 'look forward to' ------------------- #
     for i, lf in enumerate(leaves):
@@ -5820,7 +5923,46 @@ _DITRANSITIVE_OR_COMPLEX_VERBS = {
     'charge', 'charges', 'charged', 'charging',
     'save', 'saves', 'saved', 'saving',
     'spare', 'spares', 'spared', 'sparing',
-    'wish', 'wishes', 'wished', ' wishing',
+    'wish', 'wishes', 'wished', 'wishing',
+    'bring', 'brings', 'brought', 'bringing',
+    'feed', 'feeds', 'fed', 'feeding',
+    'cook', 'cooks', 'cooked', 'cooking',
+    'bake', 'bakes', 'baked', 'baking',
+    'build', 'builds', 'built', 'building',
+    'fetch', 'fetches', 'fetched', 'fetching',
+    'pour', 'pours', 'poured', 'pouring',
+    'read', 'reads', 'reading',
+    'order', 'orders', 'ordered', 'ordering',
+    'throw', 'throws', 'threw', 'thrown', 'throwing',
+    'toss', 'tosses', 'tossed', 'tossing',
+    'allow', 'allows', 'allowed', 'allowing',
+    'deny', 'denies', 'denied', 'denying',
+    'refuse', 'refuses', 'refused', 'refusing',
+    'guarantee', 'guarantees', 'guaranteed', 'guaranteeing',
+    'ensure', 'ensures', 'ensured', 'ensuring',
+    'book', 'books', 'booked', 'booking',
+    'reserve', 'reserves', 'reserved', 'reserving',
+    'serve', 'serves', 'served', 'serving',
+    'sing', 'sings', 'sang', 'sung', 'singing',
+    'play', 'plays', 'played', 'playing',
+    'fix', 'fixes', 'fixed', 'fixing',
+    'draw', 'draws', 'drew', 'drawn', 'drawing',
+    'cut', 'cuts', 'cutting',
+    'mix', 'mixes', 'mixed', 'mixing',
+    'prepare', 'prepares', 'prepared', 'preparing',
+    'win', 'wins', 'won', 'winning',
+    'earn', 'earns', 'earned', 'earning',
+    'choose', 'chooses', 'chose', 'chosen', 'choosing',
+    'pick', 'picks', 'picked', 'picking',
+    'deal', 'deals', 'dealt', 'dealing',
+    'inform', 'informs', 'informed', 'informing',
+    'remind', 'reminds', 'reminded', 'reminding',
+    'warn', 'warns', 'warned', 'warning',
+    'assure', 'assures', 'assured', 'assuring',
+    'convince', 'convinces', 'convinced', 'convincing',
+    'persuade', 'persuades', 'persuaded', 'persuading',
+    'advise', 'advises', 'advised', 'advising',
+    'notify', 'notifies', 'notified', 'notifying',
     'envy', 'envies', 'envied', 'envying',
     'forgive', 'forgives', 'forgave', 'forgiven', 'forgiving',
     'grant', 'grants', 'granted', 'granting',
@@ -7253,6 +7395,1095 @@ def _check_syntax_constraints(root, clauses, leaves):
     return out
 
 
+def _check_h02_cgel_constraints(root, clauses, leaves, text):
+    """High-precision Cambridge Grammar (CGEL) constraints with deterministic edits.
+
+    Covers supportive do with be/have, lexical-verb inversion without do-support,
+    auxiliary chain ordering, who/whom case, determiner-noun countability,
+    non-dative double objects, verb-adverb-object ordering, mixed non-finite
+    coordination, unlicensed NPI 'at all', and counterfactual conditional apodosis.
+    """
+    out = []
+    if not leaves:
+        return out
+    lows = [_lower(lf) for lf in leaves]
+    n_lvs = len(leaves)
+    is_question = bool(text and text.strip().endswith('?'))
+
+    # 1. Supportive 'do' with copular/auxiliary 'be' or perfect 'have' (CGEL Ch. 3 §3.1)
+    #    Exclude imperatives ('Don't be late!', 'Do be careful!', 'Please don't be rude.')
+    for i, lf in enumerate(leaves):
+        low = lows[i]
+        if low not in {'do', 'does', 'did'}:
+            continue
+        # Case 1a: Declarative/non-imperative 'Subj + do/does/did + (not/n't) + be'
+        #          OR 'Subj + do/does/did + (not/n't) + have + VBN'
+        if i > 0 and lows[i - 1] not in {',', ';', ':', 'please', 'and', 'but', 'or', 'so'}:
+            j = i + 1
+            neg_nodes = []
+            while j < n_lvs and lows[j] in {'not', "n't", 'never'}:
+                neg_nodes.append(leaves[j])
+                j += 1
+            if j < n_lvs and lows[j] == 'be':
+                prev_low = lows[i - 1]
+                if low == 'did':
+                    be_rep = 'were' if prev_low in {'you', 'we', 'they'} or leaves[i - 1].get('type') in ('NNS', 'NNPS') else 'was'
+                elif low == 'does':
+                    be_rep = 'is'
+                else:
+                    be_rep = 'am' if prev_low == 'i' else 'are'
+                if neg_nodes and lows[i + 1] == "n't":
+                    rep = f"{be_rep}n't"
+                    nodes_to_rep = [lf['id'], leaves[i + 1]['id'], leaves[j]['id']]
+                elif neg_nodes:
+                    rep = f"{be_rep} {' '.join(nd['surface'] for nd in neg_nodes)}"
+                    nodes_to_rep = [lf['id'], *(nd['id'] for nd in neg_nodes), leaves[j]['id']]
+                else:
+                    rep = be_rep
+                    nodes_to_rep = [lf['id'], leaves[j]['id']]
+                out.append(_finding(
+                    '6.1', 'error', 'C-AUX-FORM', 'auxiliary do-support', lf['id'],
+                    f"Supportive '{lf['surface']}' is not used with the verb 'be' in declarative clauses; use '{rep}' instead.",
+                    _tree_evidence(lf['id'], 'do-support with be', [{'node': lf['id']}, {'node': leaves[j]['id']}]),
+                    _rem(f"Supportive '{lf['surface']}' cannot combine with 'be' here.",
+                         f"Write '{rep}'.",
+                         edits=[{'nodes': nodes_to_rep, 'replacement': rep}])))
+            elif (j + 1 < n_lvs and lows[j] == 'have'
+                  and leaves[j + 1].get('type') == 'VBN'
+                  and lows[j + 1] not in {'to', 'got'}
+                  and not (j + 2 < n_lvs and leaves[j + 2].get('type') in ('NN', 'NNS', 'NNP', 'NNPS'))):
+                # Declarative 'do/does/did (+ not/n't) + have + VBN'
+                # ('They don't have departed yet.' -> 'They haven't departed yet.')
+                have_rep = 'had' if low == 'did' else ('has' if low == 'does' else 'have')
+                if neg_nodes and lows[i + 1] == "n't":
+                    rep = f"{have_rep}n't"
+                    nodes_to_rep = [lf['id'], leaves[i + 1]['id'], leaves[j]['id']]
+                elif neg_nodes:
+                    rep = f"{have_rep} {' '.join(nd['surface'] for nd in neg_nodes)}"
+                    nodes_to_rep = [lf['id'], *(nd['id'] for nd in neg_nodes), leaves[j]['id']]
+                else:
+                    rep = have_rep
+                    nodes_to_rep = [lf['id'], leaves[j]['id']]
+                out.append(_finding(
+                    '6.1', 'error', 'C-AUX-FORM', 'auxiliary do-support', lf['id'],
+                    f"Supportive '{lf['surface']}' is not used with perfect auxiliary 'have'; write '{rep} {leaves[j + 1]['surface']}'.",
+                    _tree_evidence(lf['id'], 'do-support with perfect have', [{'node': lf['id']}, {'node': leaves[j]['id']}]),
+                    _rem(f"Supportive '{lf['surface']}' cannot combine with perfect 'have'.",
+                         f"Write '{rep}'.",
+                         edits=[{'nodes': nodes_to_rep, 'replacement': rep}])))
+        # Case 1b: Interrogative 'Do/Does/Did + <Subj NP> + be' or 'Do/Does/Did + <Subj NP> + have + VBN'
+        if is_question and (i == 0 or lows[i - 1] in {'why', 'where', 'when', 'how', 'what', 'who'}):
+            subj_nodes = []
+            k = i + 1
+            while (k < n_lvs and len(subj_nodes) < 5
+                   and leaves[k].get('type') in ('PRP', 'DT', 'PRP$', 'JJ', 'JJR', 'JJS', 'NN', 'NNS', 'NNP', 'NNPS', 'CD')
+                   and lows[k] not in {'be', 'have'}):
+                subj_nodes.append(leaves[k])
+                k += 1
+            if subj_nodes and k < n_lvs:
+                v_lf = leaves[k]
+                v_low = lows[k]
+                subj_text = ' '.join(nd['surface'] for nd in subj_nodes)
+                subj_last = subj_nodes[-1]
+                subj_is_pl = (
+                    (len(subj_nodes) == 1 and _lower(subj_last) in {'you', 'we', 'they'})
+                    or subj_last.get('type') in ('NNS', 'NNPS')
+                )
+                subj_is_i = (len(subj_nodes) == 1 and _lower(subj_last) == 'i')
+                if v_low == 'be':
+                    if low == 'did':
+                        be_rep = 'Were' if subj_is_pl else 'Was'
+                    elif low == 'does':
+                        be_rep = 'Is'
+                    else:
+                        be_rep = 'Am' if subj_is_i else ('Are' if subj_is_pl else 'Is')
+                    if i > 0:
+                        be_rep = be_rep.lower()
+                    span_ids = [lf['id'], *(nd['id'] for nd in subj_nodes), v_lf['id']]
+                    out.append(_finding(
+                        '6.1', 'error', 'C-AUX-FORM', 'auxiliary do-support', lf['id'],
+                        f"Questions with 'be' invert 'be' directly instead of using '{lf['surface']}'; write '{be_rep} {subj_text}'.",
+                        _tree_evidence(lf['id'], 'do-support question with be', [{'node': lf['id']}, {'node': v_lf['id']}]),
+                        _rem(f"Do not use supportive '{lf['surface']}' with 'be'.",
+                             f"Write '{be_rep} {subj_text}'.",
+                             edits=[{'nodes': span_ids, 'replacement': f"{be_rep} {subj_text}"}])))
+                elif (v_low == 'have' and k + 1 < n_lvs
+                      and leaves[k + 1].get('type') == 'VBN'
+                      and lows[k + 1] not in {'to', 'got'}
+                      and not (k + 2 < n_lvs and leaves[k + 2].get('type') in ('NN', 'NNS', 'NNP', 'NNPS'))):
+                    have_rep = 'Had' if low == 'did' else ('Has' if low == 'does' else 'Have')
+                    if i > 0:
+                        have_rep = have_rep.lower()
+                    span_ids = [lf['id'], *(nd['id'] for nd in subj_nodes), v_lf['id']]
+                    out.append(_finding(
+                        '6.1', 'error', 'C-AUX-FORM', 'auxiliary do-support', lf['id'],
+                        f"Perfect 'have' inverts directly in questions without '{lf['surface']}'; write '{have_rep} {subj_text} {leaves[k + 1]['surface']}'.",
+                        _tree_evidence(lf['id'], 'do-support question with perfect have', [{'node': lf['id']}, {'node': v_lf['id']}]),
+                        _rem(f"Do not use supportive '{lf['surface']}' with perfect 'have'.",
+                             f"Write '{have_rep} {subj_text}'.",
+                             edits=[{'nodes': span_ids, 'replacement': f"{have_rep} {subj_text}"}])))
+
+    # 2. Lexical verb inverted without do-support in closed questions (CGEL Ch. 3 §3.1)
+    #    e.g., 'Danced he at the party?', 'Saw she the film?', 'Works he here?'
+    if is_question and n_lvs >= 3:
+        v0, s1 = leaves[0], leaves[1]
+        v0_low, s1_low = lows[0], lows[1]
+        if (v0.get('type') in {'VBD', 'VBZ', 'VBP'}
+                and v0_low not in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES | {'let', 'please', 'dare', 'need'})
+                and s1.get('type') == 'PRP'
+                and s1_low in {'i', 'you', 'he', 'she', 'it', 'we', 'they'}):
+            aux_w = 'Did' if v0.get('type') == 'VBD' else ('Does' if v0.get('type') == 'VBZ' else 'Do')
+            base_v = _base_of(v0_low)
+            subj_s = 'I' if s1_low == 'i' else s1_low
+            rep = f"{aux_w} {subj_s} {base_v}"
+            out.append(_finding(
+                '6.1', 'error', 'C-AUX-FORM', 'auxiliary do-support', v0['id'],
+                f"Lexical verbs like '{v0['surface']}' cannot invert before the subject in questions; use '{aux_w.lower()}'-support: write '{rep}'.",
+                _tree_evidence(v0['id'], 'lexical verb inversion without do-support',
+                               [{'node': v0['id']}, {'node': s1['id']}]),
+                _rem(f"Lexical verb '{v0['surface']}' inverted without do-support.",
+                     f"Write '{rep}'.",
+                     edits=[{'nodes': [v0['id'], s1['id']], 'replacement': rep}])))
+
+    # 3. Auxiliary chain ordering violations (CGEL Ch. 3 §2.5)
+    #    (a) have/has/had/having + MD ('They had must leave early.')
+    #    (b) be + having + VBN ('She is having finished.')
+    for i in range(n_lvs - 1):
+        low = lows[i]
+        nxt = leaves[i + 1]
+        nlow = lows[i + 1]
+        if (low in {'have', 'has', 'had', 'having'}
+                and (_is_central_modal(nxt)
+                     or (nlow in {'can', 'could', 'may', 'might', 'must', 'shall', 'should', 'will', 'would'}
+                         and i + 2 < n_lvs and leaves[i + 2].get('type') in {'VB', 'VBP', 'VBZ', 'VBD', 'VBN'}))):
+            if nlow in {'can', 'could'}:
+                pri_edits = [{'node': nxt['id'], 'replacement': 'been able to'}]
+                alt_edits = [{'node': leaves[i]['id'], 'delete': True}]
+                fix_msg = f"Write '{leaves[i]['surface']} been able to' (or drop '{leaves[i]['surface']}')."
+            elif nlow == 'must':
+                pri_edits = [{'nodes': [leaves[i]['id'], nxt['id']], 'replacement': f"{leaves[i]['surface']} to"}]
+                alt_edits = [{'node': leaves[i]['id'], 'delete': True}]
+                fix_msg = f"Write '{leaves[i]['surface']} to' instead of '{leaves[i]['surface']} {nxt['surface']}'."
+            else:
+                pri_edits = [{'node': leaves[i]['id'], 'delete': True}]
+                alt_edits = None
+                fix_msg = f"Remove '{leaves[i]['surface']}'."
+            out.append(_finding(
+                '6.1', 'error', 'C-AUX-FORM', 'auxiliary ordering', leaves[i]['id'],
+                f"Modal auxiliaries like '{nxt['surface']}' must precede perfect 'have', not follow '{leaves[i]['surface']}'.",
+                _tree_evidence(leaves[i]['id'], 'have + MD ordering violation',
+                               [{'node': leaves[i]['id']}, {'node': nxt['id']}]),
+                _rem(f"Perfect '{leaves[i]['surface']}' cannot precede modal '{nxt['surface']}'.",
+                     fix_msg,
+                     edits=pri_edits,
+                     alternative_edits=alt_edits)))
+        elif (low in BE_SURFACES and nlow == 'having'
+              and i + 2 < n_lvs and leaves[i + 2].get('type') == 'VBN'):
+            have_form = 'had' if low in {'was', 'were'} else ('has' if low == 'is' else 'have')
+            out.append(_finding(
+                '6.1', 'error', 'C-AUX-FORM', 'auxiliary ordering', leaves[i]['id'],
+                f"Perfect 'have' must precede progressive 'be'; '{leaves[i]['surface']} having {leaves[i + 2]['surface']}' reverses auxiliary order.",
+                _tree_evidence(leaves[i]['id'], 'be + having + VBN ordering violation',
+                               [{'node': leaves[i]['id']}, {'node': nxt['id']}]),
+                _rem("Perfect 'have' cannot follow progressive 'be'.",
+                     f"Write '{have_form} {leaves[i + 2]['surface']}'.",
+                     edits=[{'nodes': [leaves[i]['id'], nxt['id']], 'replacement': have_form}])))
+        elif (low in {'am', 'is', 'are', 'was', 'were'} and nlow == 'been'
+              and i + 2 < n_lvs and leaves[i + 2].get('type') in {'VBN', 'VBG'}):
+            have_form = 'had' if low in {'was', 'were'} else ('has' if low == 'is' else 'have')
+            out.append(_finding(
+                '6.1', 'error', 'C-AUX-FORM', 'auxiliary form', nxt['id'],
+                f"Auxiliary '{leaves[i]['surface']}' cannot be followed by past participle 'been'; use progressive '{leaves[i]['surface']} being' or perfect '{have_form} been'.",
+                _tree_evidence(nxt['id'], 'be + been + VBN/VBG',
+                               [{'node': leaves[i]['id']}, {'node': nxt['id']}]),
+                _rem(f"'{leaves[i]['surface']} been' mixes auxiliary 'be' with perfect participle 'been'.",
+                     f"Change 'been' to 'being' (or change '{leaves[i]['surface']}' to '{have_form}').",
+                     edits=[{'node': nxt['id'], 'replacement': 'being'}],
+                     alternative_edits=[{'node': leaves[i]['id'], 'replacement': have_form}])))
+
+    # 3e. Positive declarative modal polarity: bare 'need'/'dare' + VB without 'to' (CGEL Ch. 3 §2.5.7)
+    #     e.g., 'You need stay until dusk.' -> 'You need to stay until dusk.'
+    _MODAL_POLARITY_LICENSORS = {
+        'not', "n't", 'never', 'no', 'none', 'nobody', 'nothing', 'nowhere',
+        'neither', 'nor', 'hardly', 'scarcely', 'barely', 'seldom', 'rarely',
+        'only', 'if', 'unless', 'whether', 'without', 'before', 'until', 'few', 'little',
+    }
+    _NOUN_AMBIG_AFTER_NEED = {
+        'help', 'time', 'money', 'water', 'food', 'work', 'sleep', 'rest', 'care',
+        'love', 'space', 'room', 'support', 'advice', 'information', 'access',
+        'control', 'change', 'repair', 'practice', 'training', 'exercise', 'study',
+        'research', 'focus', 'trust', 'respect', 'patience', 'courage', 'energy',
+        'power', 'peace', 'light', 'air', 'heat', 'paper', 'cash', 'credit',
+        'proof', 'evidence', 'attention', 'service', 'cover', 'shelter', 'protection',
+        'treatment', 'transport', 'fuel', 'gas', 'oil', 'wood', 'glass', 'stone',
+        'salt', 'sugar', 'milk', 'bread', 'tea', 'coffee', 'order', 'funding',
+        'guidance', 'assistance', 'approval', 'permission', 'consent', 'backup',
+        'relief', 'aid', 'shelter', 'housing', 'clothing', 'staff', 'equipment',
+    }
+    if not is_question:
+        for i in range(1, n_lvs - 1):
+            if lows[i] in {'need', 'dare'} and leaves[i].get('type') in {'VBP', 'MD', 'VB'}:
+                nxt = leaves[i + 1]
+                if (nxt.get('type') == 'VB' and lows[i + 1] not in _NOUN_AMBIG_AFTER_NEED
+                        and lows[i + 1] not in {'to', 'not', "n't"}
+                        and leaves[i - 1].get('type') in ('PRP', 'NNS', 'NNPS', 'NN', 'NNP')
+                        and not any(w in _MODAL_POLARITY_LICENSORS for w in lows[:i])):
+                    out.append(_finding(
+                        '6.12', 'error', 'C-MODAL-TO', 'modal polarity', nxt['id'],
+                        f"In a positive declarative clause, '{leaves[i]['surface']}' is a lexical verb and requires 'to' before '{nxt['surface']}'; write '{leaves[i]['surface']} to {nxt['surface']}'.",
+                        _tree_evidence(leaves[i]['id'], 'positive declarative bare need/dare + VB',
+                                       [{'node': leaves[i]['id']}, {'node': nxt['id']}]),
+                        _rem(f"Modal '{leaves[i]['surface']}' without 'to' is restricted to negative and interrogative contexts.",
+                             f"Insert 'to' before '{nxt['surface']}'.",
+                             edits=[{'node': nxt['id'], 'insert_before': 'to'}])))
+
+    # 4. who / whom case (CGEL Ch. 5 §16.2)
+    #    (a) Subject 'whom' immediately followed by a finite verb ('Whom broke the window?')
+    #    (b) Pied-piped preposition + 'who' ('To who did you speak?', 'the man to who I spoke')
+    _PIED_PIPE_PREPS = {'to', 'with', 'for', 'by', 'from', 'of', 'at', 'on', 'in', 'about', 'against', 'between', 'without', 'among', 'under', 'over', 'through'}
+    for i, lf in enumerate(leaves):
+        low = lows[i]
+        if low == 'whom' and i + 1 < n_lvs:
+            nxt = leaves[i + 1]
+            nlow = lows[i + 1]
+            # Subject 'whom' directly before finite lexical verb/aux (NOT 'whom did you see'
+            # where aux is followed by overt subject NP/PRP!).
+            nxt2 = leaves[i + 2] if i + 2 < n_lvs else None
+            is_inverted_aux = (
+                (nxt.get('type') == 'MD' or nlow in (DO_SURFACES | HAVE_SURFACES | BE_SURFACES))
+                and nxt2 is not None and (
+                    nxt2.get('type') in ('PRP', 'DT', 'NN', 'NNS', 'NNP', 'NNPS', 'PRP$', 'EX')
+                    or lows[i + 2] in {'not', "n't"}
+                )
+            )
+            if (nxt.get('type') in {'VBD', 'VBZ', 'VBP', 'MD'}
+                    and not is_inverted_aux):
+                rep = 'Who' if lf['surface'][:1].isupper() else 'who'
+                out.append(_finding(
+                    '5.1', 'error', 'C-PRONOUN-CASE', 'pronoun case', lf['id'],
+                    f"'{lf['surface']}' is the object form, but here it is the subject of '{nxt['surface']}'; use '{rep}'.",
+                    _wordlist_evidence(lf['surface'], [rep], 'who vs whom subject case'),
+                    _rem(f"'{lf['surface']}' cannot serve as a finite clause subject.",
+                         f"Change '{lf['surface']}' to '{rep}'.",
+                         edits=[{'node': lf['id'], 'replacement': rep}])))
+        elif low == 'who' and i > 0 and lows[i - 1] in _PIED_PIPE_PREPS:
+            # Guard against embedded interrogative clauses ('talk about who broke the window',
+            # 'ask about who is coming', 'depends on who you ask'): only flag when
+            # (a) sentence-initial pied-piping ('To who did you speak?'), OR
+            # (b) immediately followed by an overt non-verb subject + verb inside a relative clause
+            #     ('the person to who I spoke') where prev is NOT preceded by a clause-taking verb.
+            nxt = leaves[i + 1] if i + 1 < n_lvs else None
+            nlow = lows[i + 1] if nxt is not None else ''
+            is_subj_who = nxt is not None and (
+                nxt.get('type') in {'VBD', 'VBZ', 'VBP', 'MD'}
+                and not (i == 1 and is_question)
+            )
+            is_pied_piped_q = (i == 1 and is_question)
+            is_pied_piped_rel = (
+                i >= 2 and leaves[i - 2].get('type') in ('NN', 'NNS', 'NNP', 'NNPS', 'PRP')
+                and nxt is not None and nxt.get('type') in ('PRP', 'DT', 'NNP', 'NN', 'NNS', 'PRP$')
+                and not is_subj_who
+            )
+            if is_pied_piped_q or is_pied_piped_rel:
+                out.append(_finding(
+                    '5.1', 'error', 'C-PREP-PRON-CASE', 'pronoun case', lf['id'],
+                    f"Immediately after the preposition '{leaves[i - 1]['surface']}', standard English requires 'whom', not 'who'.",
+                    _wordlist_evidence(f"{lows[i - 1]} who", [f"{lows[i - 1]} whom"], 'preposition + whom'),
+                    _rem(f"Use 'whom' immediately after preposition '{leaves[i - 1]['surface']}'.",
+                         "Change 'who' to 'whom'.",
+                         edits=[{'node': lf['id'], 'replacement': 'whom'}])))
+
+    # 5. Determiner-noun countability (CGEL Ch. 5 §6)
+    #    (a) every / each / another + mass noun ('Every luggage was checked.')
+    #    (b) all + bare singular count noun ('All book was damaged.')
+    _MASS_STRICT = UNCOUNTABLE_SINGULAR | {
+        'luggage', 'baggage', 'furniture', 'equipment', 'crockery', 'cutlery',
+        'jewelry', 'jewellery', 'machinery', 'scenery', 'stationery', 'clothing',
+        'footwear', 'hardware', 'software', 'traffic', 'information', 'advice',
+        'homework', 'housework', 'paperwork', 'evidence', 'research', 'news',
+        'bread', 'rice', 'water', 'milk', 'sugar', 'butter', 'cheese', 'flour',
+        'money', 'cash', 'garbage', 'rubbish', 'trash', 'junk', 'clutter',
+    }
+    _ALL_SINGULAR_EXEMPT = _MASS_STRICT | _ZERO_PLURAL_NOUNS | {
+        'day', 'night', 'week', 'month', 'year', 'morning', 'afternoon', 'evening',
+        'summer', 'winter', 'spring', 'autumn', 'fall', 'time', 'along', 'right',
+        'over', 'around', 'about', 'through', 'together', 'alone', 'aboard',
+        'kind', 'sort', 'manner', 'way', 'hope', 'chance', 'cost', 'costs',
+        'speed', 'power', 'life', 'world', 'humanity', 'mankind', 'nature',
+        'history', 'truth', 'work', 'fun', 'music', 'art', 'food', 'rain', 'snow',
+        'air', 'land', 'fire', 'ice', 'wood', 'gold', 'silver', 'paper', 'glass',
+        'sand', 'dirt', 'dust', 'smoke', 'oil', 'coffee', 'tea', 'wine', 'beer',
+        'meat', 'fruit', 'soup', 'cake', 'help', 'support', 'progress', 'knowledge',
+        'access', 'control', 'authority', 'responsibility', 'blame', 'credit',
+        'respect', 'attention', 'interest', 'effort', 'energy', 'freedom', 'peace',
+        'justice', 'health', 'wealth', 'safety', 'security', 'privacy', 'value',
+        'worth', 'harm', 'damage', 'loss', 'profit', 'growth', 'noise', 'silence',
+        'light', 'darkness', 'heat', 'cold', 'weather', 'space', 'room', 'stuff',
+        'nonsense', 'gossip', 'poetry', 'slang', 'jargon', 'accommodation',
+        'transport', 'transportation', 'travel', 'education', 'employment',
+        'funding', 'housing', 'training', 'practice', 'experience', 'theory',
+        'science', 'politics', 'economics', 'business', 'law', 'medicine',
+        'language', 'culture', 'society', 'technology', 'data', 'content',
+        'meaning', 'purpose', 'reason', 'logic', 'courage', 'patience', 'anger',
+        'fear', 'love', 'hate', 'joy', 'pride', 'shame', 'guilt', 'doubt', 'faith',
+        'trust', 'belief', 'confidence', 'honesty', 'wisdom', 'kindness',
+        'strength', 'weakness', 'illness', 'disease', 'pain', 'stress', 'sleep',
+        'rest', 'death', 'existence', 'reality', 'luck', 'fate', 'risk', 'danger',
+    }
+    for i in range(n_lvs - 1):
+        low = lows[i]
+        nxt = leaves[i + 1]
+        nlow = lows[i + 1]
+        nxt2 = leaves[i + 2] if i + 2 < n_lvs else None
+        if (low in {'every', 'each', 'another'} and nlow in _MASS_STRICT
+                and nxt.get('type') in ('NN', 'NNS')
+                and not (nxt2 is not None and nxt2.get('type') in ('NN', 'NNS', 'NNP', 'NNPS'))):
+            out.append(_finding(
+                '3.15', 'error', 'C-COUNT-MASS', 'determiner-noun countability', leaves[i]['id'],
+                f"'{leaves[i]['surface']}' selects a singular countable noun, but '{nxt['surface']}' is uncountable; write '{leaves[i]['surface']} piece of {nxt['surface']}' (or use 'all').",
+                _wordlist_evidence(f"{low} {nlow}", [f"{low} piece of {nlow}"],
+                                   'singular count determiner + mass noun'),
+                _rem(f"'{leaves[i]['surface']}' cannot directly determine uncountable '{nxt['surface']}'.",
+                     f"Insert 'piece of' before '{nxt['surface']}'.",
+                     edits=[{'node': nxt['id'], 'insert_before': 'piece of'}],
+                     alternative_edits=[{'node': leaves[i]['id'],
+                                         'replacement': 'All' if leaves[i]['surface'][:1].isupper() else 'all'}])))
+        elif (low == 'all' and nxt.get('type') == 'NN'
+              and nlow not in _ALL_SINGULAR_EXEMPT
+              and not nxt['surface'][:1].isupper()
+              and (i == 0 or lows[i - 1] not in {'of', 'at', 'in', 'after', 'for', 'above', 'beyond'})
+              and not (nxt2 is not None and nxt2.get('type') in ('NN', 'NNS', 'NNP', 'NNPS'))):
+            rep_det = 'Every' if leaves[i]['surface'][:1].isupper() else 'every'
+            out.append(_finding(
+                '2.10', 'error', 'C-DETERMINER-AGREEMENT', 'determiner-noun agreement', leaves[i]['id'],
+                f"'all' does not combine directly with the bare singular countable noun '{nxt['surface']}'; use '{rep_det} {nxt['surface']}' or pluralize the noun.",
+                _wordlist_evidence(f"all {nlow}", [f"every {nlow}"], 'all + singular count noun'),
+                _rem(f"'all' cannot determine a bare singular countable noun '{nxt['surface']}'.",
+                     f"Change '{leaves[i]['surface']}' to '{rep_det}'.",
+                     edits=[{'node': leaves[i]['id'], 'replacement': rep_det}])))
+
+    # 6. Non-dative-alternation verbs with double-object NP_pron + NP (CGEL Ch. 4 §4.3)
+    #    e.g. 'She explained me the rule.' -> 'She explained the rule to me.'
+    _NON_DATIVE_TO = {
+        'explain', 'explains', 'explained', 'explaining',
+        'suggest', 'suggests', 'suggested', 'suggesting',
+        'describe', 'describes', 'described', 'describing',
+        'mention', 'mentions', 'mentioned', 'mentioning',
+        'introduce', 'introduces', 'introduced', 'introducing',
+        'recommend', 'recommends', 'recommended', 'recommending',
+        'report', 'reports', 'reported', 'reporting',
+        'admit', 'admits', 'admitted', 'admitting',
+        'confess', 'confesses', 'confessed', 'confessing',
+        'declare', 'declares', 'declared', 'declaring',
+        'demonstrate', 'demonstrates', 'demonstrated', 'demonstrating',
+        'repeat', 'repeats', 'repeated', 'repeating',
+        'say', 'says', 'said', 'saying',
+        'announce', 'announces', 'announced', 'announcing',
+        'communicate', 'communicates', 'communicated', 'communicating',
+        'contribute', 'contributes', 'contributed', 'contributing',
+        'deliver', 'delivers', 'delivered', 'delivering',
+        'donate', 'donates', 'donated', 'donating',
+        'return', 'returns', 'returned', 'returning',
+        'reveal', 'reveals', 'revealed', 'revealing',
+        'exhibit', 'exhibits', 'exhibited', 'exhibiting',
+        'submit', 'submits', 'submitted', 'submitting',
+        'transfer', 'transfers', 'transferred', 'transferring',
+    }
+    _NON_DATIVE_FROM = {
+        'borrow', 'borrows', 'borrowed', 'borrowing',
+        'steal', 'steals', 'stole', 'stolen', 'stealing',
+        'obtain', 'obtains', 'obtained', 'obtaining',
+        'demand', 'demands', 'demanded', 'demanding',
+    }
+    for nd in _iter_nodes(root):
+        if nd.get('type') != 'VP':
+            continue
+        vk = nd.get('children', [])
+        if len(vk) < 3:
+            continue
+        v_lf = vk[0] if not vk[0].get('children') else None
+        if v_lf is None:
+            continue
+        vlow = _lower(v_lf)
+        if vlow not in (_NON_DATIVE_TO | _NON_DATIVE_FROM):
+            continue
+        if vk[1].get('type') == 'NP' and vk[2].get('type') == 'NP':
+            rec_lvs = _leaves(vk[1])
+            thm_lvs = _leaves(vk[2])
+            is_pron_rec = (
+                len(rec_lvs) == 1 and rec_lvs[0].get('type') == 'PRP'
+                and _lower(rec_lvs[0]) in {'me', 'him', 'her', 'us', 'them', 'you'}
+            )
+            is_np_rec = (
+                1 <= len(rec_lvs) <= 5
+                and _lower(rec_lvs[-1]) not in _TIME_MEASURE_NP_HEADS
+                and not any(c.get('type') in ('PP', 'SBAR', 'S', 'VP') for c in vk[1].get('children', []))
+                and vlow not in {'declare', 'declare', 'report', 'say', 'admit'}
+            )
+            if ((is_pron_rec or is_np_rec)
+                    and thm_lvs and _lower(thm_lvs[-1]) not in _TIME_MEASURE_NP_HEADS):
+                prep = 'from' if vlow in _NON_DATIVE_FROM else 'to'
+                thm_surf = vk[2].get('surface', '').strip()
+                rec_surf = vk[1].get('surface', '').strip()
+                rep = f"{thm_surf} {prep} {rec_surf}"
+                out.append(_finding(
+                    '6.8', 'error', 'C-TRANSITIVITY', 'verb complementation', vk[1]['id'],
+                    f"The verb '{v_lf['surface']}' does not allow a double-object construction ('{v_lf['surface']} {rec_surf} {thm_surf}'); use a '{prep}'-phrase: '{v_lf['surface']} {rep}'.",
+                    _tree_evidence(nd['id'], 'non-dative verb + NP + NP',
+                                   [{'node': v_lf['id']}, {'node': vk[1]['id']}, {'node': vk[2]['id']}]),
+                    _rem(f"'{v_lf['surface']}' requires '{prep} {rec_surf}' after the direct object.",
+                         f"Write '{v_lf['surface']} {rep}'.",
+                         edits=[{'nodes': [vk[1]['id'], vk[2]['id']], 'replacement': rep}])))
+
+    # 7. Verb + manner -ly adverb + light direct object NP (CGEL Ch. 8 §16)
+    #    e.g., 'He read carefully the letter.' -> 'He read the letter carefully.'
+    _NON_MANNER_LY = {
+        'only', 'merely', 'simply', 'nearly', 'hardly', 'barely', 'scarcely',
+        'really', 'truly', 'actually', 'certainly', 'probably', 'possibly',
+        'definitely', 'clearly', 'obviously', 'apparently', 'generally', 'usually',
+        'normally', 'typically', 'frequently', 'rarely', 'seldom', 'recently',
+        'lately', 'finally', 'eventually', 'immediately', 'suddenly', 'gradually',
+        'directly', 'specifically', 'especially', 'particularly', 'mainly',
+        'mostly', 'largely', 'chiefly', 'primarily', 'partially', 'partly',
+        'completely', 'entirely', 'totally', 'wholly', 'fully', 'deeply',
+        'strongly', 'greatly', 'highly', 'badly', 'severely', 'seriously',
+        'strictly', 'closely', 'widely', 'broadly', 'firmly', 'openly',
+        'publicly', 'actively', 'automatically', 'effectively', 'essentially',
+        'virtually', 'practically', 'literally', 'absolutely', 'utterly',
+        'exclusively', 'solely', 'purely', 'precisely', 'exactly', 'roughly',
+        'approximately', 'likely', 'unlikely', 'early', 'daily', 'weekly',
+        'monthly', 'yearly', 'hourly', 'nightly', 'friendly', 'lovely', 'lonely',
+        'costly', 'deadly', 'lively', 'silly', 'ugly', 'elderly', 'holy', 'jolly',
+        'timely', 'likely', 'presumably', 'undoubtedly', 'surely', 'frankly',
+        'honestly', 'unfortunately', 'fortunately', 'surprisingly', 'naturally',
+        'briefly', 'previously', 'formerly', 'originally', 'initially', 'currently',
+        'simultaneously', 'subsequently', 'ultimately', 'constantly', 'continually',
+        'continuously', 'repeatedly', 'occasionally', 'regularly', 'automatically',
+        'deliberately', 'intentionally', 'accidentally', 'inadvertently',
+    }
+    for nd in _iter_nodes(root):
+        if nd.get('type') != 'VP':
+            continue
+        vk = nd.get('children', [])
+        if len(vk) < 3:
+            continue
+        v_lf = vk[0] if not vk[0].get('children') and vk[0].get('type', '').startswith('VB') else None
+        if v_lf is None or _lower(v_lf) in (BE_SURFACES | HAVE_SURFACES | DO_SURFACES | {'seem', 'appear', 'become', 'remain', 'look', 'feel', 'sound', 'taste', 'smell', 'grow', 'stay', 'turn'}):
+            continue
+        adv_nd = vk[1]
+        obj_nd = vk[2]
+        if adv_nd.get('type') not in ('ADVP', 'RB') or obj_nd.get('type') != 'NP':
+            continue
+        adv_lvs = _leaves(adv_nd)
+        obj_lvs = _leaves(obj_nd)
+        if len(adv_lvs) != 1 or not obj_lvs or len(obj_lvs) > 3:
+            continue
+        adv_w = _lower(adv_lvs[0])
+        if (not adv_w.endswith('ly') or len(adv_w) < 5
+                or adv_w in _NON_MANNER_LY or adv_lvs[0].get('type') != 'RB'):
+            continue
+        if any(c.get('type') in ('PP', 'SBAR', 'S', 'VP') for c in obj_nd.get('children', [])):
+            continue
+        if _lower(obj_lvs[-1]) in _TIME_MEASURE_NP_HEADS:
+            continue
+        reordered = f"{obj_nd.get('surface', '').strip()} {adv_lvs[0]['surface']}"
+        out.append(_finding(
+            '9.6', 'error', 'C-ADVERB-PLACEMENT', 'adverb placement', adv_lvs[0]['id'],
+            f"A manner adverb like '{adv_lvs[0]['surface']}' should not come between the verb '{v_lf['surface']}' and its short direct object '{obj_nd.get('surface', '').strip()}'; write '{v_lf['surface']} {reordered}'.",
+            _tree_evidence(nd['id'], 'V + manner-Adv + light NP',
+                           [{'node': v_lf['id']}, {'node': adv_lvs[0]['id']}, {'node': obj_nd['id']}]),
+            _rem(f"Do not place manner adverb '{adv_lvs[0]['surface']}' between verb and light direct object.",
+                 f"Write '{v_lf['surface']} {reordered}'.",
+                 edits=[{'nodes': [adv_nd['id'], obj_nd['id']], 'replacement': reordered}])))
+
+    # 8. Mixed non-finite coordination: VBG ... (and|or) to VB (CGEL Ch. 15)
+    #    e.g. 'She enjoys swimming or to run.' -> 'She enjoys swimming or running.'
+    for i in range(n_lvs - 3):
+        is_gerund_tok = (
+            leaves[i].get('type') == 'VBG'
+            or (leaves[i].get('type') == 'NN' and lows[i].endswith('ing') and len(lows[i]) > 4)
+        )
+        if (is_gerund_tok
+                and lows[i + 1] in {'and', 'or'}
+                and leaves[i + 2].get('type') == 'TO'
+                and leaves[i + 3].get('type') == 'VB'):
+            # Ensure not progressive tense ('is walking and to buy' -> rare, check prev != be)
+            if i > 0 and lows[i - 1] in BE_SURFACES:
+                continue
+            ger = _vbg_of(_base_of(lows[i + 3]))
+            out.append(_finding(
+                '9.9', 'error', 'C-COORD-PARALLEL', 'parallel coordination', leaves[i + 2]['id'],
+                f"Coordinated complements should keep parallel non-finite forms: pair '{leaves[i]['surface']}' with '{ger}' rather than 'to {leaves[i + 3]['surface']}'.",
+                _tree_evidence(leaves[i + 2]['id'], 'VBG + CC + to VB mismatch',
+                               [{'node': leaves[i]['id']}, {'node': leaves[i + 2]['id']}, {'node': leaves[i + 3]['id']}]),
+                _rem(f"Mixed gerund '{leaves[i]['surface']}' and to-infinitive 'to {leaves[i + 3]['surface']}'.",
+                     f"Change 'to {leaves[i + 3]['surface']}' to '{ger}'.",
+                     edits=[{'nodes': [leaves[i + 2]['id'], leaves[i + 3]['id']], 'replacement': ger}])))
+
+    # 9. Unlicensed NPI 'at all' in positive declarative clauses (CGEL Ch. 9 §4)
+    _AT_ALL_LICENSORS = {
+        'not', "n't", 'never', 'no', 'none', 'nobody', 'nothing', 'nowhere',
+        'neither', 'nor', 'hardly', 'scarcely', 'barely', 'without', 'few',
+        'little', 'seldom', 'rarely', 'if', 'unless', 'whether', 'than', 'too',
+        'before', 'until', 'only', 'doubt', 'doubts', 'doubted', 'refuse',
+        'refuses', 'refused', 'deny', 'denies', 'denied', 'fail', 'fails',
+        'failed', 'prevent', 'prevents', 'prevented', 'unlikely', 'impossible',
+        'surprised', 'wonder', 'wonders', 'wondered', 'any', 'anything',
+        'anyone', 'anybody', 'anywhere', 'ever', 'anyway', 'whatsoever',
+        'sorry', 'reluctant', 'hesitant', 'unwilling', 'unable', 'lack',
+        'lacks', 'lacked', 'lacking', 'stop', 'stopped', 'avoid', 'avoided',
+    }
+    if not is_question:
+        for i in range(n_lvs - 1):
+            if lows[i] == 'at' and lows[i + 1] == 'all':
+                # Skip idioms like 'not at all', 'at all costs', 'at all times', 'after all'
+                if i + 2 < n_lvs and leaves[i + 2].get('type') in ('NN', 'NNS'):
+                    continue
+                licensed = (
+                    any(w in _AT_ALL_LICENSORS for w in lows[:i])
+                    or any(lf.get('type') in ('JJS', 'RBS') for lf in leaves[:i])
+                )
+                if not licensed:
+                    out.append(_finding(
+                        '9.15', 'error', 'C-NPI-LICENSING', 'negative polarity', leaves[i]['id'],
+                        "'at all' is a negative polarity expression that requires negation, a question, or a conditional/restrictive context.",
+                        _tree_evidence(leaves[i]['id'], 'unlicensed NPI at all',
+                                       [{'node': leaves[i]['id']}, {'node': leaves[i + 1]['id']}]),
+                        _rem("'at all' is not licensed in a simple positive declarative clause.",
+                             "Remove 'at all' (or negate the clause).",
+                             edits=[{'nodes': [leaves[i]['id'], leaves[i + 1]['id']], 'delete': True}])))
+
+    # 10. Counterfactual conditional apodosis missing modal (CGEL Ch. 8 §14)
+    #     'If he had known earlier, he called us.' -> 'would have called'
+    #     'If I were you, I took the job.' -> 'would take'
+    if lows and lows[0] == 'if' and ',' in lows:
+        comma_idx = lows.index(',')
+        protasis = leaves[1:comma_idx]
+        prot_lows = lows[1:comma_idx]
+        apodosis = leaves[comma_idx + 1:]
+        apod_lows = lows[comma_idx + 1:]
+        has_modal_in_apod = any(
+            lf.get('type') == 'MD' or _lower(lf) in MODAL_SURFACES | {"'d"}
+            for lf in apodosis
+        )
+        if not has_modal_in_apod and len(apodosis) >= 2:
+            # Find first finite verb in apodosis
+            apod_v_idx = next((idx for idx, lf in enumerate(apodosis)
+                               if lf.get('type') == 'VBD' and _lower(lf) not in MODAL_SURFACES), None)
+            if apod_v_idx is not None:
+                apod_v = apodosis[apod_v_idx]
+                is_past_perf_prot = any(
+                    prot_lows[k] == 'had' and k + 1 < len(protasis)
+                    and (protasis[k + 1].get('type') == 'VBN'
+                         or (k + 2 < len(protasis) and prot_lows[k + 1] in {'not', "n't"} and protasis[k + 2].get('type') == 'VBN'))
+                    for k in range(len(protasis))
+                )
+                is_subj_were_prot = any(
+                    prot_lows[k] == 'were' and k > 0 and prot_lows[k - 1] in {'i', 'he', 'she', 'it'}
+                    for k in range(len(protasis))
+                )
+                if is_past_perf_prot:
+                    vbn = _base_of(_lower(apod_v))
+                    try:
+                        from lemminflect import getInflection
+                        inf = getInflection(vbn, tag='VBN')
+                        vbn_form = inf[0] if inf else apod_v['surface']
+                    except Exception:
+                        vbn_form = apod_v['surface']
+                    rep = f"would have {vbn_form}"
+                    out.append(_finding(
+                        '6.16', 'error', 'C-CONDITIONAL-WILL', 'conditional mood', apod_v['id'],
+                        f"A past counterfactual 'if ... had ...' clause requires a modal perfect in the main clause; write '{rep}' instead of '{apod_v['surface']}'.",
+                        _tree_evidence(apod_v['id'], 'counterfactual past-perfect protasis with plain past apodosis',
+                                       [{'node': apod_v['id']}]),
+                        _rem(f"Main clause verb '{apod_v['surface']}' needs 'would have' in a past counterfactual conditional.",
+                             f"Change '{apod_v['surface']}' to '{rep}'.",
+                             edits=[{'node': apod_v['id'], 'replacement': rep}])))
+                elif is_subj_were_prot:
+                    base_v = _base_of(_lower(apod_v))
+                    rep = f"would {base_v}"
+                    out.append(_finding(
+                        '6.16', 'error', 'C-CONDITIONAL-WILL', 'conditional mood', apod_v['id'],
+                        f"A counterfactual 'if ... were ...' clause requires a modal like 'would' in the main clause; write '{rep}' instead of '{apod_v['surface']}'.",
+                        _tree_evidence(apod_v['id'], 'counterfactual were-protasis with plain past apodosis',
+                                       [{'node': apod_v['id']}]),
+                        _rem(f"Main clause verb '{apod_v['surface']}' needs 'would' in a counterfactual conditional.",
+                             f"Change '{apod_v['surface']}' to '{rep}'.",
+                             edits=[{'node': apod_v['id'], 'replacement': rep}])))
+
+    # 11. Double comparative / superlative across nested ADVP shells (CGEL Ch. 13)
+    #     e.g. 'much more better', 'even more worse', 'most tallest'
+    for i in range(n_lvs - 1):
+        if lows[i] in {'more', 'most'} and leaves[i + 1].get('type') in {'JJR', 'JJS', 'RBR', 'RBS'}:
+            nlow = lows[i + 1]
+            if nlow not in {'more', 'less', 'most', 'least'}:
+                out.append(_finding(
+                    '7.6', 'error', 'C-COMPARATIVE-DOUBLE', 'double comparative', leaves[i]['id'],
+                    f"'{leaves[i]['surface']}' and '{leaves[i + 1]['surface']}' double-mark the comparison; drop '{leaves[i]['surface']}'.",
+                    _tree_evidence(leaves[i]['id'], 'more/most + inflected comparative/superlative',
+                                   [{'node': leaves[i]['id']}, {'node': leaves[i + 1]['id']}]),
+                    _rem(f"Do not combine '{leaves[i]['surface']}' with '{leaves[i + 1]['surface']}'.",
+                         f"Remove '{leaves[i]['surface']}'.",
+                         edits=[{'node': leaves[i]['id'], 'delete': True}])))
+
+    # 12. Pronoun case extensions (CGEL Ch. 5 §16):
+    #     (a) Inverted SQ subject pronoun ('Did us miss the ferry?')
+    #     (b) Question-tag subject pronoun ("..., didn't him?")
+    #     (c) Sentence-final spaCy-merged 'I.' after transitive verb/prep ('Us know I.')
+    #     (d) Exceptive 'but'/'except' + nominative pronoun ('Nobody but she knew...')
+    _AUX_INV = BE_SURFACES | HAVE_SURFACES | DO_SURFACES | MODAL_SURFACES
+    _OBJ_TO_SUBJ_MAP = {'me': 'I', 'him': 'he', 'her': 'she', 'us': 'we', 'them': 'they'}
+    _SUBJ_TO_OBJ_MAP = {'i': 'me', 'he': 'him', 'she': 'her', 'we': 'us', 'they': 'them'}
+    if is_question:
+        for i in range(n_lvs - 1):
+            if lows[i] in _AUX_INV and (i == 0 or lows[i - 1] in {',', 'why', 'where', 'when', 'how', 'what', 'who'}):
+                j = i + 1
+                if j < n_lvs and lows[j] in {'not', "n't"}:
+                    j += 1
+                if j < n_lvs and lows[j] in _OBJ_TO_SUBJ_MAP and leaves[j].get('type') == 'PRP':
+                    # Guard against 'Did him a favor' (only flag when followed by verb/pred or '?' in a tag)
+                    nxt_after = leaves[j + 1] if j + 1 < n_lvs else None
+                    is_tag = i > 0 and lows[i - 1] == ',' and nxt_after is not None and lows[j + 1] == '?'
+                    is_inv_subj = (
+                        (i == 0 or lows[i - 1] in {'why', 'where', 'when', 'how', 'what', 'who'})
+                        and nxt_after is not None
+                        and (nxt_after.get('type', '').startswith('VB')
+                             or nxt_after.get('type') in ('JJ', 'RB', 'DT', 'IN', 'TO', 'PRP', 'NN', 'NNS', 'NNP', 'NNPS', '?'))
+                    )
+                    if is_tag or is_inv_subj:
+                        rep = _OBJ_TO_SUBJ_MAP[lows[j]]
+                        out.append(_finding(
+                            '5.1', 'error', 'C-PRONOUN-CASE', 'pronoun case', leaves[j]['id'],
+                            f"'{leaves[j]['surface']}' is the object form, but here it is the subject; use '{rep}'.",
+                            _wordlist_evidence(leaves[j]['surface'], [rep], 'inverted/tag subject pronoun'),
+                            _rem(f"Subject position requires '{rep}' instead of '{leaves[j]['surface']}'.",
+                                 f"Change '{leaves[j]['surface']}' to '{rep}'.",
+                                 edits=[{'node': leaves[j]['id'], 'replacement': rep}])))
+    _ROMAN_PREFIXES = {
+        'king', 'queen', 'pope', 'emperor', 'czar', 'tsar', 'duke', 'prince',
+        'chapter', 'part', 'section', 'act', 'scene', 'book', 'volume', 'grade',
+        'type', 'class', 'level', 'war', 'world', 'tier', 'phase', 'stage',
+        'henry', 'charles', 'edward', 'george', 'elizabeth', 'james', 'richard',
+        'william', 'louis', 'philip', 'peter', 'paul', 'john', 'benedict',
+        'francis', 'leo', 'pius', 'gregory', 'alexander', 'nicholas', 'frederick',
+    }
+    if n_lvs >= 2 and leaves[-1].get('surface') in {'I.', 'I?', 'I!'}:
+        prev_lf = leaves[-2]
+        if (prev_lf.get('type') in {'VB', 'VBD', 'VBP', 'VBZ', 'VBG', 'VBN', 'IN', 'TO'}
+                and lows[-2] not in _ROMAN_PREFIXES
+                and lows[-2] not in BE_SURFACES):
+            punct = leaves[-1]['surface'][1:]
+            out.append(_finding(
+                '5.1', 'error', 'C-PRONOUN-CASE', 'pronoun case', leaves[-1]['id'],
+                f"After '{prev_lf['surface']}', the object pronoun must be 'me', not 'I'.",
+                _wordlist_evidence('I', ['me'], 'object pronoun case'),
+                _rem("Object position requires 'me' rather than 'I'.",
+                     "Change 'I' to 'me'.",
+                     edits=[{'node': leaves[-1]['id'], 'replacement': f"me{punct}"}])))
+    _EXCEPTIVE_HOSTS = {
+        'nobody', 'nothing', 'none', 'everyone', 'everybody', 'everything',
+        'anyone', 'anybody', 'anything', 'all', 'who', 'what', 'one',
+    }
+    for i in range(1, n_lvs - 1):
+        if lows[i] in {'but', 'except'} and lows[i - 1] in _EXCEPTIVE_HOSTS:
+            nxt = leaves[i + 1]
+            if lows[i + 1] in _SUBJ_TO_OBJ_MAP and nxt.get('type') == 'PRP':
+                rep = _SUBJ_TO_OBJ_MAP[lows[i + 1]]
+                out.append(_finding(
+                    '5.1', 'error', 'C-PREP-PRON-CASE', 'pronoun case', nxt['id'],
+                    f"After exceptive '{leaves[i]['surface']}', the pronoun must be in object form ('{rep}'), not '{nxt['surface']}'.",
+                    _wordlist_evidence(f"{lows[i]} {lows[i + 1]}", [f"{lows[i]} {rep}"], 'exceptive preposition + object pronoun'),
+                    _rem(f"Use object form '{rep}' after '{leaves[i]['surface']}'.",
+                         f"Change '{nxt['surface']}' to '{rep}'.",
+                         edits=[{'node': nxt['id'], 'replacement': rep}])))
+
+    # 13. Reflexives — obligatory reflexive idioms & spatial PP non-reflexive (CGEL Ch. 17)
+    _OBJ_TO_REFL = {
+        'me': 'myself', 'you': 'yourself', 'him': 'himself',
+        'her': 'herself', 'it': 'itself', 'us': 'ourselves', 'them': 'themselves',
+    }
+    _REFL_TO_OBJ = {
+        'myself': 'me', 'yourself': 'you', 'yourselves': 'you', 'himself': 'him',
+        'herself': 'her', 'itself': 'it', 'ourselves': 'us', 'themselves': 'them',
+    }
+    for i in range(n_lvs - 1):
+        # 13a. 'beside + OBJ_PRON + with' ('She was beside her with excitement.')
+        if (lows[i] == 'beside' and i + 2 < n_lvs and lows[i + 1] in _OBJ_TO_REFL
+                and lows[i + 2] == 'with' and leaves[i + 1].get('type') == 'PRP'):
+            rep = _OBJ_TO_REFL[lows[i + 1]]
+            out.append(_finding(
+                '5.2', 'error', 'C-PRONOUN-CASE', 'reflexive pronoun', leaves[i + 1]['id'],
+                f"In the idiom 'beside oneself with ...', a reflexive pronoun ('{rep}') is required instead of '{leaves[i + 1]['surface']}'.",
+                _wordlist_evidence(f"beside {lows[i + 1]} with", [f"beside {rep} with"], 'obligatory reflexive idiom'),
+                _rem(f"'beside ... with' requires reflexive '{rep}'.",
+                     f"Change '{leaves[i + 1]['surface']}' to '{rep}'.",
+                     edits=[{'node': leaves[i + 1]['id'], 'replacement': rep}])))
+        # 13b. 'pride + OBJ_PRON + on' / 'avail + OBJ_PRON + of' / 'perjure + OBJ_PRON' / 'absent + OBJ_PRON + from'
+        if (lows[i] in {'pride', 'prides', 'prided', 'avail', 'avails', 'availed',
+                        'perjure', 'perjures', 'perjured', 'absent', 'absents', 'absented'}
+                and lows[i + 1] in _OBJ_TO_REFL and leaves[i + 1].get('type') == 'PRP'):
+            need_prep = {'pride': 'on', 'prides': 'on', 'prided': 'on',
+                         'avail': 'of', 'avails': 'of', 'availed': 'of',
+                         'absent': 'from', 'absents': 'from', 'absented': 'from'}.get(lows[i])
+            if need_prep is None or (i + 2 < n_lvs and lows[i + 2] == need_prep):
+                rep = _OBJ_TO_REFL[lows[i + 1]]
+                out.append(_finding(
+                    '5.2', 'error', 'C-PRONOUN-CASE', 'reflexive pronoun', leaves[i + 1]['id'],
+                    f"The verb '{leaves[i]['surface']}' requires a reflexive object ('{rep}'), not '{leaves[i + 1]['surface']}'.",
+                    _wordlist_evidence(f"{lows[i]} {lows[i + 1]}", [f"{lows[i]} {rep}"], 'obligatory reflexive verb'),
+                    _rem(f"'{leaves[i]['surface']}' requires reflexive '{rep}'.",
+                         f"Change '{leaves[i + 1]['surface']}' to '{rep}'.",
+                         edits=[{'node': leaves[i + 1]['id'], 'replacement': rep}])))
+        # 13c. Spatial/locative PP non-reflexive (CGEL Ch. 17 §4.2):
+        #      'have <cash/coins/money/keys/...> on myself' -> 'me'
+        #      'pull/close/shut/slam/lock/leave <NP> behind herself' -> 'her'
+        #      'bring/take/carry/keep <NP> with themselves' -> 'them'
+        #      'look/glance/gaze around/about/behind himself' -> 'him'
+        if lows[i] in {'on', 'behind', 'with', 'around', 'about'} and lows[i + 1] in _REFL_TO_OBJ:
+            refl_lf = leaves[i + 1]
+            rep = _REFL_TO_OBJ[lows[i + 1]]
+            matched_spatial = False
+            win = lows[max(0, i - 5):i]
+            if lows[i] == 'on':
+                _CARRIED = {'money', 'cash', 'coins', 'coin', 'change', 'keys', 'key',
+                            'wallet', 'phone', 'passport', 'id', 'watch', 'anything', 'nothing'}
+                if any(w in {'have', 'has', 'had', 'got'} for w in win) and any(w in _CARRIED for w in win):
+                    matched_spatial = True
+            elif lows[i] == 'behind':
+                _BEHIND_V = {'close', 'closed', 'closes', 'shut', 'shuts', 'pull', 'pulled', 'pulls',
+                             'slam', 'slammed', 'slams', 'lock', 'locked', 'locks', 'leave', 'left', 'leaves',
+                             'look', 'looked', 'looks', 'glance', 'glanced', 'glances'}
+                if any(w in _BEHIND_V for w in win):
+                    matched_spatial = True
+            elif lows[i] == 'with':
+                _WITH_V = {'bring', 'brought', 'brings', 'take', 'took', 'takes',
+                           'carry', 'carried', 'carries', 'keep', 'kept', 'keeps'}
+                if any(w in _WITH_V for w in win) and i > 1:
+                    matched_spatial = True
+            elif lows[i] in {'around', 'about'}:
+                _LOOK_V = {'look', 'looked', 'looks', 'glance', 'glanced', 'glances', 'gaze', 'gazed', 'gazes'}
+                if i > 0 and lows[i - 1] in _LOOK_V:
+                    matched_spatial = True
+            if matched_spatial:
+                out.append(_finding(
+                    '5.2', 'error', 'C-PRONOUN-CASE', 'reflexive pronoun', refl_lf['id'],
+                    f"After the spatial preposition '{leaves[i]['surface']}', use the plain pronoun '{rep}' rather than reflexive '{refl_lf['surface']}'.",
+                    _wordlist_evidence(f"{lows[i]} {lows[i + 1]}", [f"{lows[i]} {rep}"], 'locative PP non-reflexive'),
+                    _rem(f"Spatial '{leaves[i]['surface']}' takes plain object pronoun '{rep}', not reflexive '{refl_lf['surface']}'.",
+                         f"Change '{refl_lf['surface']}' to '{rep}'.",
+                         edits=[{'node': refl_lf['id'], 'replacement': rep}])))
+
+    # 14. Determiners, quantifiers, and lexical number constraints (CGEL Ch. 5)
+    for i in range(n_lvs - 1):
+        # 14a. 'almost/nearly/practically/virtually/not + each' -> 'every'
+        if (lows[i] in {'almost', 'nearly', 'practically', 'virtually', 'not'}
+                and lows[i + 1] == 'each'
+                and (i + 2 < n_lvs and lows[i + 2] not in {'of', 'other'}
+                     and leaves[i + 2].get('type') in ('NN', 'JJ', 'JJR', 'JJS', 'VBG', 'VBN', 'CD', 'NNP'))):
+            out.append(_finding(
+                '2.11', 'error', 'C-QUANTIFIER', 'quantifier modification', leaves[i + 1]['id'],
+                f"'{leaves[i]['surface']}' modifies 'every', not 'each'; write '{leaves[i]['surface']} every'.",
+                _wordlist_evidence(f"{lows[i]} each", [f"{lows[i]} every"], 'degree modifier + every'),
+                _rem(f"'each' cannot be modified by '{leaves[i]['surface']}'.",
+                     "Change 'each' to 'every'.",
+                     edits=[{'node': leaves[i + 1]['id'], 'replacement': 'every'}])))
+        # 14b. 'POSS + each + NN' ('Her each remark' -> 'Her every remark')
+        if (leaves[i].get('type') == 'PRP$' and lows[i + 1] == 'each'
+                and i + 2 < n_lvs and leaves[i + 2].get('type') in ('NN', 'JJ', 'JJR', 'JJS')):
+            out.append(_finding(
+                '2.11', 'error', 'C-QUANTIFIER', 'determiner combination', leaves[i + 1]['id'],
+                f"After a possessive determiner ('{leaves[i]['surface']}'), use 'every' rather than 'each': write '{leaves[i]['surface']} every {leaves[i + 2]['surface']}'.",
+                _wordlist_evidence(f"{lows[i]} each", [f"{lows[i]} every"], 'possessive + every'),
+                _rem(f"Possessive '{leaves[i]['surface']}' combines with 'every', not 'each'.",
+                     "Change 'each' to 'every'.",
+                     edits=[{'node': leaves[i + 1]['id'], 'replacement': 'every'}])))
+        # 14c. 'a/an + (further|good|great|other|extra|additional) + many + NNS' -> 'few'
+        if (lows[i] in {'a', 'an'} and i + 3 < n_lvs
+                and lows[i + 1] in {'further', 'good', 'great', 'other', 'extra', 'additional'}
+                and lows[i + 2] == 'many'
+                and leaves[i + 3].get('type') in ('NNS', 'NNPS', 'JJ')):
+            out.append(_finding(
+                '2.11', 'error', 'C-QUANTIFIER', 'quantifier combination', leaves[i + 2]['id'],
+                f"'{leaves[i]['surface']} {leaves[i + 1]['surface']}' combines with 'few', not 'many'; write '{leaves[i]['surface']} {leaves[i + 1]['surface']} few'.",
+                _wordlist_evidence(f"{lows[i]} {lows[i + 1]} many", [f"{lows[i]} {lows[i + 1]} few"], 'a further few'),
+                _rem(f"Use 'few' rather than 'many' after '{leaves[i]['surface']} {leaves[i + 1]['surface']}'.",
+                     "Change 'many' to 'few'.",
+                     edits=[{'node': leaves[i + 2]['id'], 'replacement': 'few'}])))
+        # 14d. 'high regards for' -> 'high regard for'
+        if (lows[i] == 'high' and lows[i + 1] == 'regards'
+                and i + 2 < n_lvs and lows[i + 2] == 'for'):
+            out.append(_finding(
+                '4.1', 'error', 'C-UNCOUNTABLE', 'noun number', leaves[i + 1]['id'],
+                "In 'high regard for', 'regard' is uncountable and singular; use 'regard' instead of 'regards'.",
+                _wordlist_evidence('high regards for', ['high regard for'], 'singular mass noun regard'),
+                _rem("'high regards for' uses plural 'regards' where singular 'regard' is required.",
+                     "Change 'regards' to 'regard'.",
+                     edits=[{'node': leaves[i + 1]['id'], 'replacement': 'regard'}])))
+        # 14e. '<N> years + POSS + seniors/juniors' -> singular 'senior'/'junior'
+        if (lows[i] in {'years', 'months', 'weeks', 'days'} and i + 2 < n_lvs
+                and leaves[i + 1].get('type') == 'PRP$'
+                and lows[i + 2] in {'seniors', 'juniors'}):
+            sg_sj = lows[i + 2][:-1]
+            out.append(_finding(
+                '4.2', 'error', 'C-NOUN-FORM', 'noun number', leaves[i + 2]['id'],
+                f"In the comparative phrase '{leaves[i]['surface']} {leaves[i + 1]['surface']} {sg_sj}', '{sg_sj}' stays invariant singular even with a plural subject.",
+                _wordlist_evidence(lows[i + 2], [sg_sj], 'invariant senior/junior'),
+                _rem(f"Use invariant singular '{sg_sj}' rather than '{leaves[i + 2]['surface']}'.",
+                     f"Change '{leaves[i + 2]['surface']}' to '{sg_sj}'.",
+                     edits=[{'node': leaves[i + 2]['id'], 'replacement': sg_sj}])))
+
+    # 15. Bare institutional / geopolitical proper names requiring 'the' (CGEL Ch. 5 §20.3)
+    _THE_PROPER_PHRASES = (
+        ('united', 'kingdom'), ('united', 'states'), ('united', 'nations'),
+        ('european', 'union'), ('white', 'house'), ('bank', 'of', 'england'),
+        ('house', 'of', 'commons'), ('house', 'of', 'lords'),
+        ('house', 'of', 'representatives'),
+    )
+    _THE_INST_PREFIXES = {'ministry', 'department'}
+    for i in range(n_lvs):
+        prev_has_det = (
+            i > 0 and (
+                leaves[i - 1].get('type') in ('DT', 'PRP$', 'POS', 'NNP', 'NNPS', 'JJ')
+                or lows[i - 1] in {'the', 'a', 'an', 'this', 'that', 'his', 'her', 'their', 'our', 'my', 'your', 'its'}
+            )
+        )
+        if prev_has_det:
+            continue
+        matched_span_len = 0
+        if (lows[i] in _THE_INST_PREFIXES and leaves[i]['surface'][:1].isupper()
+                and i + 2 < n_lvs and lows[i + 1] == 'of' and leaves[i + 2]['surface'][:1].isupper()):
+            matched_span_len = 3
+        else:
+            for seq in _THE_PROPER_PHRASES:
+                slen = len(seq)
+                if (i + slen <= n_lvs
+                        and tuple(lows[i:i + slen]) == seq
+                        and leaves[i]['surface'][:1].isupper()):
+                    # Skip attributive uses like 'United Kingdom citizens'
+                    if i + slen < n_lvs and leaves[i + slen].get('type') in ('NN', 'NNS'):
+                        continue
+                    matched_span_len = slen
+                    break
+        if matched_span_len:
+            phrase = ' '.join(lf['surface'] for lf in leaves[i:i + matched_span_len])
+            ins = 'The' if i == 0 else 'the'
+            out.append(_finding(
+                '3.1', 'error', 'C-ARTICLE', 'definite article', leaves[i]['id'],
+                f"The institutional/proper name '{phrase}' requires the definite article 'the': write '{ins} {phrase}'.",
+                _wordlist_evidence(phrase, [f"the {phrase}"], 'definite article with institutional proper name'),
+                _rem(f"'{phrase}' requires 'the' before it.",
+                     f"Insert '{ins}' before '{leaves[i]['surface']}'.",
+                     edits=[{'node': leaves[i]['id'], 'insert_before': ins}])))
+
+    # 16. Complementation & prohibited passives (CGEL Ch. 4 & Ch. 16)
+    # 16a. Indirect-object-only verbs ('spare', 'envy', 'begrudge') + NP + (for|to) + NP
+    _IO_ONLY_VERBS = {'spare', 'spares', 'spared', 'sparing', 'envy', 'envies', 'envied', 'begrudge', 'begrudges', 'begrudged'}
+    for nd in _iter_nodes(root):
+        if nd.get('type') != 'VP':
+            continue
+        vk = nd.get('children', [])
+        if len(vk) < 3 or vk[0].get('children'):
+            continue
+        vlow = _lower(vk[0])
+        if (vlow in _IO_ONLY_VERBS and vk[1].get('type') == 'NP' and vk[2].get('type') == 'PP'):
+            pp_kids = vk[2].get('children', [])
+            if (len(pp_kids) == 2 and not pp_kids[0].get('children')
+                    and _lower(pp_kids[0]) in {'for', 'to'} and pp_kids[1].get('type') == 'NP'):
+                rec_s = pp_kids[1].get('surface', '').strip()
+                thm_s = vk[1].get('surface', '').strip()
+                rep = f"{rec_s} {thm_s}"
+                out.append(_finding(
+                    '6.8', 'error', 'C-TRANSITIVITY', 'verb complementation', vk[2]['id'],
+                    f"The verb '{vk[0]['surface']}' takes an indirect object before the direct object rather than '{pp_kids[0]['surface']} {rec_s}'; write '{vk[0]['surface']} {rep}'.",
+                    _tree_evidence(nd['id'], 'IO-only verb + NP + for/to NP',
+                                   [{'node': vk[0]['id']}, {'node': vk[1]['id']}, {'node': vk[2]['id']}]),
+                    _rem(f"'{vk[0]['surface']}' requires the double-object order '{rep}'.",
+                         f"Write '{vk[0]['surface']} {rep}'.",
+                         edits=[{'nodes': [vk[1]['id'], vk[2]['id']], 'replacement': rep}])))
+
+    # 16b. Active ECM prohibited verbs ('say', 'allege', 'rumour', 'rumor', 'repute') + NP + to be
+    _NO_ACTIVE_ECM = {
+        'say', 'says', 'said', 'allege', 'alleges', 'alleged',
+        'rumour', 'rumours', 'rumoured', 'rumor', 'rumors', 'rumored',
+        'repute', 'reputes', 'reputed',
+    }
+    for i in range(n_lvs - 3):
+        if (lows[i] in _NO_ACTIVE_ECM
+                and leaves[i].get('type') in ('VB', 'VBP', 'VBZ', 'VBD')
+                and not (i > 0 and lows[i - 1] in BE_SURFACES)
+                and leaves[i + 1].get('type') == 'PRP'
+                and lows[i + 1] in _OBJ_TO_SUBJ_MAP
+                and leaves[i + 2].get('type') == 'TO'
+                and lows[i + 3] == 'be'):
+            subj_p = _OBJ_TO_SUBJ_MAP[lows[i + 1]]
+            is_past = leaves[i].get('type') == 'VBD' or lows[i] in {'said', 'alleged', 'rumoured', 'rumored', 'reputed'}
+            if is_past:
+                be_fin = 'were' if subj_p in {'we', 'they', 'you'} else 'was'
+            else:
+                be_fin = 'am' if subj_p == 'I' else ('are' if subj_p in {'we', 'they', 'you'} else 'is')
+            rep = f"that {subj_p} {be_fin}"
+            out.append(_finding(
+                '6.8', 'error', 'C-TRANSITIVITY', 'verb complementation', leaves[i + 1]['id'],
+                f"Active '{leaves[i]['surface']}' cannot take an object + infinitive ('{leaves[i + 1]['surface']} to be ...'); use a finite clause: '{leaves[i]['surface']} {rep} ...'.",
+                _tree_evidence(leaves[i]['id'], 'active ECM verb + NP + to be',
+                               [{'node': leaves[i]['id']}, {'node': leaves[i + 1]['id']}, {'node': leaves[i + 2]['id']}]),
+                _rem(f"Active '{leaves[i]['surface']}' requires a finite 'that'-clause rather than '{leaves[i + 1]['surface']} to be'.",
+                     f"Change '{leaves[i + 1]['surface']} to be' to '{rep}'.",
+                     edits=[{'nodes': [leaves[i + 1]['id'], leaves[i + 2]['id'], leaves[i + 3]['id']],
+                             'replacement': rep}])))
+
+    # 16c. Prohibited passives: 'be + wanted + to VB' & 'be + liked/wanted/preferred + bare depictive AP'
+    for i in range(n_lvs - 2):
+        if lows[i] in BE_SURFACES and lows[i + 1] == 'wanted' and leaves[i + 2].get('type') == 'TO':
+            out.append(_finding(
+                '6.4', 'error', 'C-PASSIVE', 'passive voice', leaves[i + 1]['id'],
+                "'want' cannot be passivized with a following to-infinitive ('was wanted to ...'); rephrase in the active voice.",
+                _tree_evidence(leaves[i + 1]['id'], 'passive be wanted to VB',
+                               [{'node': leaves[i]['id']}, {'node': leaves[i + 1]['id']}, {'node': leaves[i + 2]['id']}]),
+                _rem("'want' does not allow a passive with a catenative to-infinitive.",
+                     "Rephrase in the active voice (e.g. 'They wanted him to ...').")))
+        elif (lows[i] in BE_SURFACES and lows[i + 1] in {'liked', 'wanted', 'preferred'}
+              and (leaves[i + 2].get('type') in ('JJ', 'JJR', 'JJS')
+                   or (i + 3 < n_lvs and lows[i + 2] == 'piping' and leaves[i + 3].get('type') == 'JJ'))):
+            out.append(_finding(
+                '6.4', 'error', 'C-PASSIVE', 'passive voice', leaves[i + 1]['id'],
+                f"Passive '{leaves[i]['surface']} {leaves[i + 1]['surface']}' does not accept a bare predicative adjective complement; rephrase in the active voice.",
+                _tree_evidence(leaves[i + 1]['id'], 'passive liked/wanted/preferred + depictive AP',
+                               [{'node': leaves[i]['id']}, {'node': leaves[i + 1]['id']}]),
+                _rem(f"'{leaves[i]['surface']} {leaves[i + 1]['surface']}' cannot take a bare depictive adjective here.",
+                     "Rephrase in the active voice (e.g. 'People like it hot.').")))
+
+    # 17. Unlicensed aspectual 'yet' in positive declaratives (CGEL Ch. 9 §4)
+    if not is_question:
+        for i, lf in enumerate(leaves):
+            if lows[i] != 'yet' or i == 0:
+                continue
+            # Exclude 'yet to VB' ('has yet to announce'), comparative 'yet more/JJR/another',
+            # and clause-initial coordinator ', yet ...'
+            nxt_l = lows[i + 1] if i + 1 < n_lvs else ''
+            nxt_t = leaves[i + 1].get('type') if i + 1 < n_lvs else ''
+            if (nxt_l == 'to' or nxt_l in {'more', 'another', 'again'}
+                    or nxt_t in ('JJR', 'RBR')
+                    or lows[i - 1] in {',', ';', ':'}):
+                continue
+            # Require clause-final aspectual position (followed only by punctuation or end)
+            if i + 1 < n_lvs and nxt_l not in {'.', '!', ';', ','}:
+                continue
+            licensed = (
+                any(w in _AT_ALL_LICENSORS for w in lows[:i])
+                or any(lf0.get('type') in ('JJS', 'RBS') for lf0 in leaves[:i])
+            )
+            if not licensed:
+                # Build an alternative negative edit on the preceding finite auxiliary if present
+                alt_neg_edits = None
+                for k in range(i - 1, -1, -1):
+                    if lows[k] in {'have', 'has', 'had', 'is', 'are', 'was', 'were'}:
+                        alt_neg_edits = [{'node': leaves[k]['id'], 'replacement': f"{leaves[k]['surface']} not"}]
+                        break
+                out.append(_finding(
+                    '9.15', 'error', 'C-NPI-LICENSING', 'negative polarity', lf['id'],
+                    "Aspectual 'yet' is a negative polarity item and is not licensed in a positive declarative clause; use 'already' or negate the clause.",
+                    _tree_evidence(lf['id'], 'unlicensed aspectual yet', [{'node': lf['id']}]),
+                    _rem("Aspectual 'yet' requires a negative, interrogative, or conditional context.",
+                         "Replace 'yet' with 'already' (or negate the clause).",
+                         edits=[{'node': lf['id'], 'replacement': 'already'}],
+                         alternative_edits=alt_neg_edits)))
+
+    # 18. Punctuation — single S-VP comma & verb-to-complement-'that' comma (CGEL Ch. 20)
+    comma_count = sum(1 for lf in leaves if lf.get('surface') == ',')
+    if comma_count == 1:
+        # 18a. Single comma separating subject NP directly from finite predicate VP
+        for cl in clauses:
+            ck = cl.get('children', [])
+            for idx in range(len(ck) - 2):
+                if (ck[idx].get('type') == 'NP'
+                        and ck[idx + 1].get('surface') == ','
+                        and ck[idx + 2].get('type') == 'VP'):
+                    # Ensure no introductory adverbial precedes NP
+                    if idx == 0:
+                        comma_lf = ck[idx + 1]
+                        out.append(_finding(
+                            '10.4', 'error', 'C-PUNCT', 'comma placement', comma_lf['id'],
+                            "Do not place a single comma directly between the subject and its predicate verb.",
+                            _tree_evidence(comma_lf['id'], 'single subject-verb comma', [{'node': comma_lf['id']}]),
+                            _rem("A single comma cannot separate a subject from its verb.",
+                                 "Remove the comma.",
+                                 edits=[{'node': comma_lf['id'], 'delete': True}])))
+        # 18b. Single comma separating a clause-taking verb from complement 'that'-clause
+        _COMP_THAT_VERBS = {
+            'announced', 'revealed', 'confirmed', 'said', 'stated', 'claimed',
+            'noted', 'explained', 'reported', 'believed', 'thought', 'knew',
+            'found', 'showed', 'proved', 'decided', 'agreed', 'admitted',
+            'denied', 'suggested', 'insisted', 'heard', 'saw', 'felt',
+            'realized', 'realised', 'understood', 'assumed', 'expected',
+            'argued', 'concluded', 'discovered', 'learned', 'learnt',
+            'noticed', 'observed', 'remembered', 'forgot', 'warned',
+            'promised', 'told', 'assured', 'convinced', 'informed', 'reminded',
+            'announce', 'announces', 'reveal', 'reveals', 'confirm', 'confirms',
+            'say', 'says', 'state', 'states', 'claim', 'claims', 'believe', 'believes',
+            'think', 'thinks', 'know', 'knows', 'show', 'shows', 'prove', 'proves',
+        }
+        for i in range(1, n_lvs - 1):
+            if (leaves[i].get('surface') == ','
+                    and lows[i - 1] in _COMP_THAT_VERBS
+                    and leaves[i - 1].get('type', '').startswith('VB')
+                    and lows[i + 1] == 'that'):
+                out.append(_finding(
+                    '10.4', 'error', 'C-PUNCT', 'comma placement', leaves[i]['id'],
+                    f"Do not place a comma between '{leaves[i - 1]['surface']}' and its complement 'that'-clause.",
+                    _tree_evidence(leaves[i]['id'], 'comma before complement that-clause',
+                                   [{'node': leaves[i - 1]['id']}, {'node': leaves[i]['id']}, {'node': leaves[i + 1]['id']}]),
+                    _rem("A comma should not separate a verb from its complement 'that'-clause.",
+                         "Remove the comma before 'that'.",
+                         edits=[{'node': leaves[i]['id'], 'delete': True}])))
+
+    # 19. Possessive "it's" -> "its" before a noun phrase (CGEL Ch. 5 §16 / Ch. 20)
+    #     19a: Benepar parses possessive "it's" as (PRP it) (POS 's) before (JJ/RB)* NN/NNS
+    #     19b: Sentence-initial "It's <bare NN/NNS> <finite/intrans verb>" ('It's colour faded...')
+    _ITS_BARE_VERBS = {
+        'faded', 'broke', 'fell', 'grew', 'shrank', 'vanished', 'arrived', 'stopped',
+        'dropped', 'rose', 'changed', 'improved', 'worsened', 'collapsed', 'failed',
+        'died', 'worked', 'moved', 'stayed', 'remained', 'seemed', 'appeared',
+        'became', 'turned', 'looked', 'felt', 'sounded', 'smelled', 'tasted',
+        'hurt', 'cost', 'lasted', 'mattered', 'helped', 'succeeded', 'shone',
+        'glowed', 'melted', 'froze', 'burned', 'burnt', 'dried', 'leaked',
+        'cracked', 'snapped', 'tore', 'spilled', 'overflowed', 'echoed', 'rang',
+        'began', 'ended', 'started', 'finished', 'opened', 'closed', 'sank',
+        'fades', 'breaks', 'falls', 'grows', 'drops', 'rises', 'changes', 'works',
+    }
+    for i in range(n_lvs - 2):
+        if lows[i] == 'it' and lows[i + 1] in {"'s", "\u2019s"}:
+            rep_its = 'Its' if leaves[i]['surface'][:1].isupper() else 'its'
+            if leaves[i + 1].get('type') == 'POS':
+                out.append(_finding(
+                    '1.10', 'error', 'C-HOMOPHONE', 'possessive determiner', leaves[i]['id'],
+                    f"Use the possessive determiner '{rep_its}' (without an apostrophe), not \"it's\", before a noun.",
+                    _tree_evidence(leaves[i]['id'], "possessive it's + NP",
+                                   [{'node': leaves[i]['id']}, {'node': leaves[i + 1]['id']}]),
+                    _rem("Possessive 'its' never takes an apostrophe.",
+                         f"Change \"{leaves[i]['surface']}{leaves[i + 1]['surface']}\" to '{rep_its}'.",
+                         edits=[{'nodes': [leaves[i]['id'], leaves[i + 1]['id']], 'replacement': rep_its}])))
+            elif i == 0 and leaves[i + 1].get('type') == 'VBZ':
+                # Skip leading determiners/adverbs that indicate copular "It is a..." / "It is very..."
+                k = i + 2
+                while k < n_lvs and leaves[k].get('type') in ('JJ', 'JJR', 'JJS'):
+                    k += 1
+                if (k < n_lvs and leaves[k].get('type') in ('NN', 'NNS')
+                        and k + 1 < n_lvs
+                        and (leaves[k + 1].get('type') in ('VBD', 'VBZ', 'VBP', 'MD')
+                             or (leaves[k + 1].get('type') == 'VBN' and lows[k + 1] in _ITS_BARE_VERBS))):
+                    out.append(_finding(
+                        '1.10', 'error', 'C-HOMOPHONE', 'possessive determiner', leaves[i]['id'],
+                        f"Here \"{leaves[i]['surface']}{leaves[i + 1]['surface']}\" modifies the noun '{leaves[k]['surface']}' as a possessive determiner; write '{rep_its}' without an apostrophe.",
+                        _tree_evidence(leaves[i]['id'], "sentence-initial possessive it's + NN + V",
+                                       [{'node': leaves[i]['id']}, {'node': leaves[i + 1]['id']}]),
+                        _rem("Possessive 'its' never takes an apostrophe.",
+                             f"Change \"{leaves[i]['surface']}{leaves[i + 1]['surface']}\" to '{rep_its}'.",
+                             edits=[{'nodes': [leaves[i]['id'], leaves[i + 1]['id']], 'replacement': rep_its}])))
+
+    return out
+
+
 def collect(text, root):
     """Return all rule findings for a parsed sentence as a list of dicts."""
     leaves = _leaves(root)
@@ -7265,5 +8496,6 @@ def collect(text, root):
     findings.extend(_check_more(root, clauses, leaves))
     findings.extend(_check_context(root, clauses, leaves))
     findings.extend(_check_syntax_constraints(root, clauses, leaves))
+    findings.extend(_check_h02_cgel_constraints(root, clauses, leaves, text))
     findings.extend(_check_terminal(root, text))
     return findings

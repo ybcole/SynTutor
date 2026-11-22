@@ -42,6 +42,26 @@ def load_models():
         torch.cuda.is_available = lambda: False
         try:
             nlp = spacy.load(PARSER_BUNDLE)
+            from spacy.language import Language
+
+            if 'syntutor_sent_guard' not in nlp.pipe_names:
+                @Language.component('syntutor_sent_guard')
+                def _syntutor_sent_guard(doc):
+                    # Prevent spaCy's dependency parser from splitting a single
+                    # unpunctuated sentence before a lowercase word (e.g.,
+                    # "Nobody | but she knew the passcode."). Must run BEFORE
+                    # 'parser' because spaCy forbids modifying sent_start after parsing.
+                    _TERM = {'.', '?', '!', ';', ':', '...', '\u2026', '"', "'", '\u201d', '\u2019', ')'}
+                    for i in range(1, len(doc)):
+                        tok = doc[i]
+                        prev = doc[i - 1]
+                        if (tok.text and tok.text[0].islower()
+                                and prev.text not in _TERM
+                                and '\n' not in prev.text_with_ws):
+                            tok.is_sent_start = False
+                    return doc
+
+                nlp.add_pipe('syntutor_sent_guard', before='parser')
             nlp.add_pipe('benepar', config={'model': PARSER_MODEL})
         finally:
             torch.cuda.is_available = _orig_is_available

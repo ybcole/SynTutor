@@ -83,6 +83,14 @@ SINGULAR_S_NOUNS = {
     'mathematics', 'physics', 'economics', 'politics', 'ethics', 'linguistics',
     'statistics', 'athletics', 'gymnastics', 'news', 'measles', 'billiards',
     'series', 'species', 'means', 'headquarters',
+    'shingles', 'mumps', 'rickets', 'rabies', 'diabetes', 'aerobics',
+    'acoustics', 'calisthenics', 'classics', 'cybernetics', 'dynamics',
+    'electronics', 'genetics', 'hydraulics', 'kinetics', 'logistics',
+    'mechanics', 'metaphysics', 'obstetrics', 'optics', 'orthopedics',
+    'pediatrics', 'phonetics', 'phonology', 'pneumatics', 'poetics',
+    'pragmatics', 'semantics', 'semiotics', 'statics', 'tactics',
+    'thermodynamics', 'darts', 'dominoes', 'draughts', 'checkers',
+    'bowls', 'skittles', 'quoits',
 }
 
 PRP_KEY = {
@@ -305,6 +313,11 @@ NONCOUNT_NOUNS = {
     'flesh', 'bone', 'hair', 'fur', 'bamboo', 'garlic', 'ginger', 'cinnamon',
     'pepper', 'mustard', 'ketchup', 'mayonnaise', 'broccoli', 'spinach',
     'lettuce', 'cabbage', 'celery', 'parsley', 'basil', 'mint', 'salad',
+    'applause', 'gravel', 'rubbish', 'garbage', 'trash', 'junk', 'clutter',
+    'cutlery', 'crockery', 'jewellery', 'jewelry', 'machinery', 'scenery',
+    'footwear', 'regard', 'craftsmanship', 'workmanship', 'correspondence',
+    'slang', 'jargon', 'nonsense', 'gossip', 'poetry', 'prose', 'punctuation',
+    'spelling', 'vocabulary', 'terminology',
     'gravy', 'sauce', 'broth', 'stew', 'curry', 'porridge', 'oatmeal',
     'cereal', 'toast', 'pastry', 'dough', 'batter', 'bacon', 'ham', 'lamb',
     'veal', 'turkey', 'seafood', 'poultry', 'dairy', 'livestock', 'wildlife',
@@ -903,6 +916,8 @@ def _plural_noun(word):
 def _singular_noun(leaf):
     """Approximate the singular form from the observed noun surface."""
     word = leaf['surface'].lower()
+    if word in SINGULAR_S_NOUNS or word in ZERO_PLURALS:
+        return word
     if word in IRREGULAR_PLURAL.values():
         reverse = {value: key for key, value in IRREGULAR_PLURAL.items()}
         return reverse[word]
@@ -974,7 +989,8 @@ def _noun_form_issue(leaf):
             and not spellcheck.known_word(raw_surface.lower())):
         return None
     observed = _lower(leaf['surface'])
-    if observed in ACCEPTED_PLURALS or observed in POSS_PRON_SURFACES:
+    if (observed in ACCEPTED_PLURALS or observed in POSS_PRON_SURFACES
+            or observed in SINGULAR_S_NOUNS or observed in ZERO_PLURALS):
         return None
     if re.fullmatch(r'\d{2,4}s', observed):
         return None
@@ -1745,6 +1761,40 @@ def _needs_indefinite_article_error(np_node, parent_vp=None):
     idx = next((i for i, lf in enumerate(leaves) if lf['id'] == head['id']), None)
     if idx and _lower(leaves[idx - 1]['surface']) in {'next', 'last', 'this', 'that'}:
         return None
+    # Bare ordinal / rank competition NPs ('won first prize', 'took second place',
+    # 'finished third place', 'graduated first class').
+    _ORDINALS = {
+        'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh',
+        'eighth', 'ninth', 'tenth', 'last', 'top', 'bottom', '1st', '2nd', '3rd',
+    }
+    _RANK_NOUNS = {
+        'prize', 'place', 'award', 'medal', 'class', 'division', 'position',
+        'rank', 'grade', 'order', 'degree', 'priority', 'base', 'chair',
+        'seat', 'floor', 'gear', 'choice', 'draft', 'edition', 'rate',
+    }
+    if idx and _lower(leaves[idx - 1]['surface']) in _ORDINALS and surface in _RANK_NOUNS:
+        return None
+    # Idiomatic bare verb-object collocations ('take part', 'make sense', 'pay attention', ...).
+    _BARE_VO_COLLOCATIONS = {
+        'part', 'place', 'care', 'note', 'issue', 'charge', 'office', 'root',
+        'shape', 'shelter', 'refuge', 'aim', 'heart', 'pride', 'pity', 'offence',
+        'offense', 'effect', 'sense', 'room', 'way', 'peace', 'war', 'use',
+        'haste', 'camp', 'contact', 'tribute', 'homage', 'birth', 'rise',
+        'ground', 'notice', 'sight', 'track', 'face', 'touch', 'fire', 'breath',
+        'cold', 'pace', 'watch', 'company', 'house', 'sail', 'foot', 'witness',
+        'fruit', 'court', 'sway', 'guard', 'trial', 'mind', 'course', 'direction',
+        'suit', 'hell', 'host', 'truant', 'havoc', 'agreement', 'consensus',
+        'battle', 'duty', 'priority',
+    }
+    if len(leaves) == 1 and surface in _BARE_VO_COLLOCATIONS and parent_vp is not None:
+        v_head = phrase_head(parent_vp)
+        if v_head is not None and _base_form(v_head) in {
+            'take', 'make', 'pay', 'give', 'lose', 'catch', 'keep', 'set',
+            'bear', 'cast', 'hold', 'stand', 'change', 'leave', 'run', 'face',
+            'serve', 'file', 'press', 'raise', 'play', 'reach', 'declare',
+            'wage', 'break', 'do', 'have', 'find', 'gain', 'win',
+        }:
+            return None
     art = _indefinite_article(head['surface'])
     return (f"'{head['surface']}' is a singular noun that names one countable thing, so it "
             f"needs a little word like 'a' or 'the' before it. Add '{art}' (or 'the'/'this').")
@@ -1754,6 +1804,11 @@ def _object_pronoun_error(np_node, verb_leaf):
     """Error message if an NP in an argument position is headed by a nominative
     pronoun (it should be objective after an action verb), else None."""
     if verb_leaf is None or _lower(verb_leaf['surface']) in BE_FORM:
+        return None
+    # Do not mistake an ungrammatical lexical-verb inversion question
+    # ('Danced he at the party?') for a direct-object pronoun case error;
+    # lexical-verb inversion is handled separately as a do-support violation.
+    if verb_leaf.get('span', [1])[0] == 0:
         return None
     h = _np_head(np_node)
     if h is None or h['type'] != 'PRP':
@@ -1793,20 +1848,38 @@ def phrase_head(node):
 
 def subject_head(node):
     """Head noun of a subject NP, ignoring nouns buried inside a following PP
-    (so 'The boy with the bags' resolves to 'boy', enabling rule 2.2) or a
-    relative/complement clause (so 'The man who I saw' resolves to 'man', not
-    the pronoun inside the clause)."""
-    leaves = _leaves_list(node)
+    (so 'The boy with the bags' resolves to 'boy', enabling rule 2.2), a
+    relative/complement clause ('The man who I saw'), or a postmodifying
+    non-finite/participial clause ('Plans to recover the vehicles abandoned
+    during the night')."""
+    # Unwrap outer NP shells when a non-coordinated NP has postmodifying
+    # PP/SBAR/S/VP/ADJP sisters around an inner head NP.
+    cur = node
+    while (cur.get('type') == 'NP' and not is_coordinated(cur)
+           and cur.get('children') and cur['children'][0].get('type') == 'NP'
+           and any(c.get('type') in ('PP', 'SBAR', 'S', 'VP', 'ADJP')
+                   for c in cur['children'][1:])
+           and not any(lf.get('type') == 'POS' for lf in _leaves_list(cur['children'][0]))):
+        cur = cur['children'][0]
+    leaves = _leaves_list(cur)
     pp_ids = set()
-    for ch in node.get('children', []):
-        if ch.get('type') in ('PP', 'SBAR'):
+    skip_rest = False
+    for idx_ch, ch in enumerate(cur.get('children', [])):
+        if skip_rest or ch.get('type') in ('PP', 'SBAR', 'S', 'VP'):
+            for lf in _leaves_list(ch):
+                pp_ids.add(lf['id'])
+        elif (idx_ch > 0 and ch.get('type') in ('CC', 'IN')
+              and _lower(ch.get('surface', '')) in ('but', 'except')):
+            # Exceptive postmodifier ('Nobody but her', 'Everyone except him'):
+            # everything from 'but'/'except' onward is postmodifier, not head.
+            skip_rest = True
             for lf in _leaves_list(ch):
                 pp_ids.add(lf['id'])
     cands = [lf for lf in leaves
              if lf['id'] not in pp_ids and lf['type'] in NOUN_CLASS]
     if cands:
         return cands[-1]
-    return phrase_head(node)
+    return phrase_head(cur)
 
 
 def clause_subject_and_verb(s_node):
@@ -1837,10 +1910,22 @@ def is_coordinated(node):
     A subject NP containing a coordinating conjunction (CC/UCP/CONJP) is
     plural in English regardless of the number of any single conjunct head,
     e.g. 'Jaisen and Kielle' (plural) vs 'Jaisen' (singular).
+    Exceptive 'but' ('Nobody but her') is a postmodifier, not coordination.
     """
     if 'children' not in node:
         return False
-    return any(c['type'] in {'CC', 'CONJP', 'UCP'} for c in node['children'])
+    kids = node['children']
+    ccs = [c for c in kids if c['type'] in {'CC', 'CONJP', 'UCP'}]
+    if not ccs:
+        return False
+    if all(c['type'] == 'CC' and _lower(c.get('surface', '')) == 'but' for c in ccs):
+        first_lvs = _leaves_list(kids[0]) if kids else []
+        if first_lvs and _lower(first_lvs[-1].get('surface', '')) in {
+            'nobody', 'nothing', 'none', 'everyone', 'everybody', 'everything',
+            'anyone', 'anybody', 'anything', 'all', 'who', 'what', 'one',
+        }:
+            return False
+    return True
 
 
 def _agreement_ok(skey, vkey):
@@ -2340,6 +2425,20 @@ class MatrixEvaluator:
                 'it is accepted.')
 
     def _s_subject(self, parent, child):
+        subj, vp = clause_subject_and_verb(parent)
+        if child is subj and vp is not None:
+            vp_head = phrase_head(vp)
+            subj_head = subject_head(child)
+            if (vp_head is not None and subj_head is not None
+                    and subj_head['type'] == 'PRP'
+                    and _lower(subj_head['surface']) in PRON_OBJ_PLAIN
+                    and (vp_head['type'] in {'VBZ', 'VBP', 'VBD', 'MD'}
+                         or _lower(vp_head['surface']) in {'am', 'is', 'are', 'was', 'were'})):
+                target = ruleset.PRONOUN_OBJECT_TO_SUBJECT[_lower(subj_head['surface'])]
+                return ('error', 'C-PRONOUN-CASE',
+                        f"'{subj_head['surface']}' is used as the subject of "
+                        f"'{self._p(parent)}', but it is the object form. Change "
+                        f"'{subj_head['surface']}' to the subject form '{target}'.")
         return ('valid', 'C-SUBJECT-ROLE',
                 f"'{self._p(child)}' is the subject of "
                 f"'{self._p(parent)}' — the person or thing the sentence is "
@@ -2458,14 +2557,53 @@ class MatrixEvaluator:
                         f"'{self._p(subj)}' comes before the verb with a comma. "
                         'It is extra information at the front, not the subject '
                         'the verb must match.')
+        # Check explicit number-transparent quantificational constructions
+        # BEFORE the NUMBER_AMBIGUOUS_HEADS bypass:
+        #   - 'a number of + NNS' -> plural (CGEL Ch. 5 §18.2)
+        #   - 'the number of + NNS' -> singular
+        #   - 'heaps/loads/tons/lots/plenty/a lot + of + mass NN' -> singular
+        #   - 'heaps/loads/tons/lots/plenty/a lot + of + count NNS' -> plural
+        _pre_subleaves = _leaves_list(subj)
+        _s0 = _lower(_pre_subleaves[0]['surface']) if len(_pre_subleaves) > 0 else ''
+        _s1 = _lower(_pre_subleaves[1]['surface']) if len(_pre_subleaves) > 1 else ''
+        _s2 = _lower(_pre_subleaves[2]['surface']) if len(_pre_subleaves) > 2 else ''
+        _transparent_num = None
+        if _s0 == 'a' and _s1 == 'number' and _s2 == 'of':
+            _transparent_num = 'pl'
+        elif _s0 == 'the' and _s1 == 'number' and _s2 == 'of':
+            _transparent_num = 'sg'
+        elif ((_s0 in {'heaps', 'loads', 'tons', 'lots', 'plenty'} and _s1 == 'of')
+              or (_s0 == 'a' and _s1 == 'lot' and _s2 == 'of')):
+            _of_idx = 1 if _s1 == 'of' else 2
+            _comp_nouns = [
+                lf for lf in _pre_subleaves[_of_idx + 1:]
+                if lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS')
+            ]
+            if _comp_nouns:
+                _cn = _comp_nouns[-1]
+                _cn_low = _lower(_cn['surface'])
+                if _cn.get('type') == 'NN' or _cn_low in NONCOUNT_NOUNS:
+                    _transparent_num = 'sg'
+                elif _cn.get('type') in ('NNS', 'NNPS') and _cn_low not in SINGULAR_S_NOUNS:
+                    _transparent_num = 'pl'
+
         # Number-ambiguous subject heads ('none of the goals were') accept either
-        # a singular or a plural verb, so they are never a number error.
-        if _lower(subj_head.get('surface', '')) in NUMBER_AMBIGUOUS_HEADS:
+        # a singular or a plural verb, so they are never a number error — unless
+        # governed by an explicit number-transparent construction above.
+        if (_transparent_num is None
+                and _lower(subj_head.get('surface', '')) in NUMBER_AMBIGUOUS_HEADS):
             return ('valid', 'C-PREDICATE',
                     f"The subject '{self._p(subj)}' can be seen as one thing or "
                     f"many, so the verb '{vp_head['surface']}' is correct either "
                     'way.')
         if subj_head['type'] == 'PRP' and _lower(subj_head['surface']) in PRON_OBJ_PLAIN:
+            # If the subject NP itself was already flagged with C-PRONOUN-CASE,
+            # do not duplicate the error onto the VP span.
+            subj_detail = self.details.get(subj['id'])
+            if subj_detail and subj_detail.get('constraint') == 'C-PRONOUN-CASE':
+                return ('valid', 'C-PREDICATE',
+                        f"The words '{self._p(child)}' form the predicate of "
+                        f"'{self._p(parent)}'.")
             target = ruleset.PRONOUN_OBJECT_TO_SUBJECT[_lower(subj_head['surface'])]
             return ('error', 'C-PRONOUN-CASE',
                     f"'{subj_head['surface']}' is used as the subject of "
@@ -2510,18 +2648,18 @@ class MatrixEvaluator:
             surf0 = _lower(subleaves[0]['surface'])
             surf1 = _lower(subleaves[1]['surface']) if len(subleaves) > 1 else ''
             surf2 = _lower(subleaves[2]['surface']) if len(subleaves) > 2 else ''
-            # a number of / the number of (exact 'number', NOT plural 'numbers')
-            if surf0 == 'a' and surf1 == 'number' and surf2 == 'of':
+            if _transparent_num == 'pl':
                 force_pl = True
-            elif surf0 == 'the' and surf1 == 'number' and surf2 == 'of':
+            elif _transparent_num == 'sg':
                 force_sg = True
             # each/every/neither/either/one
             if not correlative and surf0 in ('each','every','neither','either','one'):
                 force_sg = True
-            # a lot/couple of etc
-            if (surf0 in ('a','an') and surf1 in ('lot','couple','few','little','majority')):
+            # a lot/couple of etc (only when not already forced singular by mass complement)
+            if (_transparent_num is None
+                    and surf0 in ('a','an') and surf1 in ('lot','couple','few','little','majority')):
                 force_pl = True
-            if surf0 in ('many','several','plenty','most'):
+            if _transparent_num is None and surf0 in ('many','several','plenty','most'):
                 force_pl = True
         if force_pl:
             skey = ('3', 'pl')
@@ -2555,7 +2693,13 @@ class MatrixEvaluator:
                     f"The subject '{self._p(subj)}' and the verb "
                     f"'{vp_head['surface']}' go together correctly.")
         subj_leaf = _np_head(subj) or phrase_head(subj)
-        if subj_leaf is not None and _lower(subj_leaf.get('surface', '')) in COLLECTIVE_NOUNS:
+        _has_sg_dem = bool(
+            subleaves and _lower(subleaves[0].get('surface', '')) in {
+                'this', 'that', 'each', 'every', 'one', 'another',
+            }
+        )
+        if (subj_leaf is not None and _lower(subj_leaf.get('surface', '')) in COLLECTIVE_NOUNS
+                and not _has_sg_dem):
             return ('valid', 'C-COLLECTIVE',
                     f"The subject '{self._p(subj)}' has the group word "
                     f"'{subj_leaf['surface']}', which can mean one group or its "
@@ -2667,6 +2811,16 @@ class MatrixEvaluator:
                             f"'{self._p(child)}' is inside the hyphenated group "
                             f"'{self._p(parent)}', so it is not a second word before "
                             'the noun.')
+                # Possessive + 'every' ('her every remark', 'his every move') is
+                # standard English; possessive + 'each' ('her each remark') is
+                # handled specifically by the CGEL determiner check (each -> every)
+                # rather than blindly dropping 'each'.
+                if (len(determinatives) == 2
+                        and determinatives[0].get('type') == 'PRP$'
+                        and _lower(determinatives[1].get('surface', '')) in {'every', 'each'}):
+                    return ('valid', 'C-DETERMINER',
+                            f"'{self._p(parent)}' combines a possessive with a "
+                            'distributive determiner.')
                 return ('error', 'C-DET-STACK',
                         f"'{self._p(parent)}' has more than one little word before "
                         f"the noun, and '{self._p(child)}' is one of them. A noun "
@@ -2881,7 +3035,21 @@ class MatrixEvaluator:
             idx = next((i for i, lf in enumerate(leaves) if lf['id'] == child['id']), None)
             after = _lower(leaves[idx + 1]['surface']) if \
                 (idx is not None and idx + 1 < len(leaves)) else ''
-            if det in ('a', 'an') and after in QUANT_AFTER_A:
+            after2 = _lower(leaves[idx + 2]['surface']) if \
+                (idx is not None and idx + 2 < len(leaves)) else ''
+            if det in ('a', 'an') and (
+                after in QUANT_AFTER_A
+                or (after in {'further', 'good', 'great', 'mere', 'paltry', 'extra',
+                              'additional', 'whole', 'scant', 'bare', 'very'}
+                    and after2 in {'few', 'dozen', 'couple', 'hundred', 'thousand', 'million'})
+            ):
+                numreq = None
+            elif det in ('a', 'an') and (
+                after == 'many'
+                or (after in {'further', 'good', 'great', 'other', 'extra', 'additional'}
+                    and after2 == 'many')
+            ):
+                # Handled cleanly by the CGEL 'a (further) many' -> 'a (further) few' rule.
                 numreq = None
             else:
                 return ('error', 'C-DETERMINER-AGREEMENT',
@@ -2922,13 +3090,16 @@ class MatrixEvaluator:
         if child['span'][0] > head['span'][0]:
             head_low = _lower(head.get('surface', ''))
             # Indefinite pronouns ('something new', 'anything bad', 'nothing
-            # special', 'someone famous') REQUIRE postpositive adjectives.
-            if head_low in {'something', 'anything', 'nothing', 'everything',
-                            'someone', 'anyone', 'everyone', 'somebody',
-                            'anybody', 'nobody', 'everybody'}:
+            # special', 'someone famous') REQUIRE postpositive adjectives, and
+            # age/rank phrases ('four years my senior/junior', 'two inches tall')
+            # license postpositive 'senior'/'junior' after a measure NP.
+            if (head_low in {'something', 'anything', 'nothing', 'everything',
+                             'someone', 'anyone', 'everyone', 'somebody',
+                             'anybody', 'nobody', 'everybody'}
+                    or _lower(child.get('surface', '')) in {'senior', 'junior'}):
                 return ('valid', 'C-MOD-POS',
-                        f"'{self._p(child)}' comes after the indefinite pronoun "
-                        f"'{self._p(head)}', which is the standard English order.")
+                        f"'{self._p(child)}' comes after '{self._p(head)}', "
+                        "which is standard English order.")
             # Heavy/complemented, coordinated, participial, or comma-set-off
             # postnominal APs ('a boy taller than Jon', 'skills, either
             # theoretical or practical', 'driver ... embarrassed') are standard.
@@ -3441,11 +3612,47 @@ class MatrixEvaluator:
                 subj_head = heads[-1]
         coordinated = is_coordinated(subj) and not correlative
         sk = ('3', 'pl') if coordinated else subject_key(subj_head)
-        # A singular determiner overrides the number of a plural-looking head:
-        # 'Every students are' has a singular subject, so the verb must be 'is'.
+        # Check number-transparent quantificational phrases and leading
+        # distributive determiners (including inside coordinated conjuncts like
+        # 'Every letter and every parcel were delivered').
+        s0 = _lower(sleaves[0].get('surface', '')) if len(sleaves) > 0 else ''
+        s1 = _lower(sleaves[1].get('surface', '')) if len(sleaves) > 1 else ''
+        s2 = _lower(sleaves[2].get('surface', '')) if len(sleaves) > 2 else ''
+        leading_poss = bool(
+            subj.get('children')
+            and subj['children'][0].get('type') in ('NP', 'NML', 'NX')
+            and any(lf.get('type') == 'POS' for lf in _leaves_list(subj['children'][0]))
+        )
+        if not leading_poss:
+            if s0 == 'a' and s1 == 'number' and s2 == 'of':
+                sk = ('3', 'pl')
+                coordinated = False
+            elif s0 == 'the' and s1 == 'number' and s2 == 'of':
+                sk = ('3', 'sg')
+                coordinated = False
+            elif ((s0 in {'heaps', 'loads', 'tons', 'lots', 'plenty'} and s1 == 'of')
+                  or (s0 == 'a' and s1 == 'lot' and s2 == 'of')):
+                of_idx = 1 if s1 == 'of' else 2
+                comp_nouns = [
+                    lf for lf in sleaves[of_idx + 1:]
+                    if lf.get('type') in ('NN', 'NNS', 'NNP', 'NNPS')
+                ]
+                if comp_nouns:
+                    cn = comp_nouns[-1]
+                    if cn.get('type') == 'NN' or _lower(cn['surface']) in NONCOUNT_NOUNS:
+                        sk = ('3', 'sg')
+                        coordinated = False
+                    elif cn.get('type') in ('NNS', 'NNPS') and _lower(cn['surface']) not in SINGULAR_S_NOUNS:
+                        sk = ('3', 'pl')
+                        coordinated = False
+        # A singular determiner overrides the number of a plural-looking head
+        # or distributive 'every X and every Y' coordination.
         det = next((c for c in subj.get('children', [])
                     if c.get('type') == 'DT'), None)
-        if not correlative and det is not None and _lower(det.get('surface', '')) in {
+        det_word = _lower(det.get('surface', '')) if det is not None else (
+            s0 if (sleaves and not leading_poss and sleaves[0].get('type') == 'DT') else ''
+        )
+        if not correlative and det_word in {
                 'every', 'each', 'neither', 'either', 'one', 'this', 'that',
                 'another'}:
             sk = ('3', 'sg')
@@ -3638,11 +3845,25 @@ class MatrixEvaluator:
         }
 
     def _rem_uncountable(self, node, parent):
-        """An uncountable noun cannot take the indefinite article."""
+        """An uncountable noun cannot take the indefinite article or plural -s."""
         determiner = next((child for child in (parent or {}).get('children', [])
                            if child.get('type') in {'DT', 'PDT'}
                            and _lower(child.get('surface', '')) in {'a', 'an'}), None)
         if determiner is None:
+            surf = (node or {}).get('surface', '')
+            low = _lower(surf)
+            if low in ruleset.UNCOUNTABLE_PLURAL:
+                sg = (low[:-3] + 'y' if low.endswith('ies') else low.rstrip('s'))
+                sg = _preserve_case(surf, sg)
+                span = node.get('span')
+                return {
+                    'violation': f"'{surf}' is an uncountable noun and has no plural form.",
+                    'suggested_fix': f"Change '{surf}' to the singular '{sg}'.",
+                    'alternative_fix': None,
+                    'targeted_outcome': f"'{sg}' instead of '{surf}'",
+                    'edits': [{'node': node['id'], 'replacement': sg}],
+                    'edit': _edit(span[0], span[1], sg) if span else None,
+                }
             return None
         span = determiner.get('span')
         replacement = 'some'
@@ -3824,6 +4045,19 @@ class MatrixEvaluator:
         can_insert = (node is not None
                       and (node['type'] in DET_CLASS or node['type'] == 'PRP'))
         det_s = node['surface'] if node is not None else 'a determiner'
+        # Postposed/floating 'every' ('cost two dollars every') cannot fuse with
+        # its head; standard English requires 'each' in postposed/fused position.
+        if node is not None and _lower(det_s) == 'every':
+            rep_each = _preserve_case(det_s, 'each')
+            return {
+                'violation': (f"'{det_s}' cannot stand without a following noun "
+                              "(unlike 'each')."),
+                'suggested_fix': f"Change '{det_s}' to '{rep_each}'.",
+                'alternative_fix': None,
+                'targeted_outcome': f"'{rep_each}' instead of '{det_s}'",
+                'edits': [{'node': node['id'], 'replacement': rep_each}],
+                'edit': _edit(node['span'][0], node['span'][1], rep_each),
+            }
         adj_leaves = [lf for lf in _leaves_list(parent)
                       if lf['type'] in ADJ_CLASS]
         if adj_leaves:

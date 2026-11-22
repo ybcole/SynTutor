@@ -229,8 +229,31 @@ def _classify_leaf(low, tag, upos):
                                     'paradigm': _paradigm_text(lem, u),
                                     'other_pos': True}
 
-    # 3. Not in the lexicon at all.  Does it look like a *mis-built* inflection of
-    #    a word the lexicon does know?  (stupid+s, run+ned, child+s, go+ed ...)
+    # 3. Not in the lexicon at all.  Before flagging as a mis-built inflection
+    #    of another lemma (e.g., mistaking BrE/loanword 'artistes' for 'artist+es'
+    #    or BrE 'colour'/'programmes'/'travelling' as malformed), check exact
+    #    dictionary / high-frequency SymSpell membership while never exempting
+    #    known ungrammatical forms (pluralized mass nouns, regularized irregulars).
+    _KNOWN_BAD_LEX = (
+        ruleset.UNCOUNTABLE_PLURAL
+        | set(ruleset.ORAL_PAST_REGULARIZED)
+        | set(ruleset.IRREGULAR_PART_REGULARIZED)
+        | set(ruleset.IRREGULAR_COMPARATIVE)
+        | set(ruleset.VERB_ENDING_FIX)
+    )
+    if low not in _KNOWN_BAD_LEX:
+        dict_words = spellcheck._load_words()
+        sym_engine = spellcheck._get_symspell()
+        sym_count = sym_engine.words.get(low, 0) if sym_engine is not None else 0
+        exact_dict = low in dict_words
+        regular_s_of_dict_noun = (
+            low.endswith('s') and len(low) > 4 and low[:-1] in dict_words
+            and tag in ('NNS', 'VBZ', 'NN')
+            and not _lemmas(low[:-1], 'ADJ')
+        )
+        if exact_dict or sym_count >= 200_000 or regular_s_of_dict_noun:
+            return 'licensed', {'lemma': low, 'dictionary': True}
+
     malformed = []
     for stem, family in _candidate_stems(low, tag):
         order = [upos] + [u for u in ('VERB', 'NOUN', 'ADJ') if u != upos]
@@ -909,6 +932,7 @@ def collect_all(text, root):
     run('ruleset.more', lambda: ruleset._check_more(root, clauses, leaves))
     run('ruleset.context', lambda: ruleset._check_context(root, clauses, leaves))
     run('ruleset.syntax_constraints', lambda: ruleset._check_syntax_constraints(root, clauses, leaves))
+    run('ruleset.h02_cgel_constraints', lambda: ruleset._check_h02_cgel_constraints(root, clauses, leaves, text))
     run('ruleset.terminal', lambda: ruleset._check_terminal(root, text))
     run('licensing.relatives', lambda: check_relatives(root))
 

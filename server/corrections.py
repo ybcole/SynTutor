@@ -57,8 +57,12 @@ def _span_for(details, node_id, token_map):
     return int(start_tok['start']), int(end_tok['end'])
 
 
-def _match_case(original, replacement):
+def _match_case(original, replacement, at_start=False):
     if not original or not replacement:
+        return replacement
+    # Mid-sentence 'I' (or 'I.') is capitalized only because 'I' is always
+    # uppercase; replacing it with 'me' mid-sentence must stay lowercase.
+    if original.rstrip('.,!?;:') == 'I' and not at_start and replacement[:1].islower():
         return replacement
     if original.isupper() and len(original) > 1:
         return replacement.upper()
@@ -226,12 +230,12 @@ def _from_text(detail, sentence, token_map, details):
         good, bad = contextual(m.group(1)), m.group(2)
         bad_span = _find_span(sentence, bad, hint)
         if bad_span is not None:
-            return [_edit(bad_span, _match_case(sentence[bad_span[0]:bad_span[1]], good),
+            return [_edit(bad_span, _match_case(sentence[bad_span[0]:bad_span[1]], good, at_start=bad_span[0] == 0),
                           detail, 0.76, 'prose')]
     m = _USE_INSTEAD_SIMPLE.search(text)
     if m and surface and found is not None:
         good = contextual(m.group(1))
-        return [_edit(found, _match_case(surface, good), detail, 0.74, 'prose')]
+        return [_edit(found, _match_case(surface, good, at_start=found[0] == 0), detail, 0.74, 'prose')]
     for pat in (_CHANGE, _SHOULD_BE, _WRITE_NOT):
         for m in pat.finditer(text):
             a, b = m.group(1), m.group(2)
@@ -243,7 +247,7 @@ def _from_text(detail, sentence, token_map, details):
             if bad_span is None:
                 continue
             edits.append(_edit(bad_span,
-                               _match_case(sentence[bad_span[0]:bad_span[1]], good),
+                               _match_case(sentence[bad_span[0]:bad_span[1]], good, at_start=bad_span[0] == 0),
                                detail, 0.72, 'prose'))
             break
         if edits:
@@ -255,7 +259,7 @@ def _from_text(detail, sentence, token_map, details):
             bad_span = _find_span(sentence, bad, hint)
             if bad_span is not None:
                 edits.append(_edit(bad_span, _match_case(
-                    sentence[bad_span[0]:bad_span[1]], good), detail, 0.74, 'prose'))
+                    sentence[bad_span[0]:bad_span[1]], good, at_start=bad_span[0] == 0), detail, 0.74, 'prose'))
     if not edits:
         m = _CHANGE_IT.search(text)
         if m and surface:
@@ -276,7 +280,7 @@ def _from_text(detail, sentence, token_map, details):
             bad_span = _find_span(sentence, bad, hint)
             if bad_span is not None:
                 edits.append(_edit(bad_span, _match_case(
-                    sentence[bad_span[0]:bad_span[1]], good), detail, 0.7, 'prose'))
+                    sentence[bad_span[0]:bad_span[1]], good, at_start=bad_span[0] == 0), detail, 0.7, 'prose'))
                 break
     if not edits:
         m = _ADD_BEFORE.search(text)
@@ -292,7 +296,7 @@ def _from_text(detail, sentence, token_map, details):
         if m:
             good = re.sub(r'^(?:a|an|the)\s+', '', m.group(1), flags=re.I)
             if found is not None and good:
-                edits.append(_edit(found, _match_case(surface, good),
+                edits.append(_edit(found, _match_case(surface, good, at_start=found[0] == 0),
                                    detail, 0.78, 'prose'))
     if not edits:
         m = _REMOVE.search(text)
@@ -311,7 +315,7 @@ def _from_text(detail, sentence, token_map, details):
                 if prev and _lower_tok(prev) in {'much', 'many', 'few', 'little',
                                                  'less', 'fewer'}:
                     found = (int(prev['start']), int(prev['end']))
-            edits.append(_edit(found, _match_case(surface, good),
+            edits.append(_edit(found, _match_case(surface, good, at_start=found[0] == 0),
                                detail, 0.68, 'prose'))
     return edits
 
@@ -426,7 +430,7 @@ _NEGATION_RE = re.compile(
     r"hadnt|shouldnt|wouldnt|couldnt|mustnt|aint|nt)(?!\w)|n't(?!\w))",
     re.I,
 )
-_NEGATION_AUTH_CONSTRAINTS = {'C-DOUBLE-NEG'}
+_NEGATION_AUTH_CONSTRAINTS = {'C-DOUBLE-NEG', 'C-NPI-LICENSING'}
 
 
 def _negation_count(text):

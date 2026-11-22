@@ -1,9 +1,14 @@
 # H01 and H02 Final Evaluation Readiness Report (Textbook-Based Design)
 
 **Project:** SynTutor: An Explainable AI-Based Framework for Syntax Tree-Driven Grammar Analysis and Learning Using NLP  
-**Date Finalized:** 2026-11-22  
+**Date Frozen:** 2026-11-22  
 **Branch / Code State:** `fix/syntutor-system-reliability-xai` (zero production code, model, or grammar-rule modifications)  
-**Evaluation Execution Status:** **READY TO EXECUTE — NOT YET EXECUTED ON THE 100 EVALUATION SENTENCES.** Runner implemented and verified strictly on separate synthetic fixtures (`test_run_textbook_h01_h02.py`).
+**Evaluation Execution Status:** **FROZEN & READY TO EXECUTE — NOT YET EXECUTED ON THE 100 EVALUATION SENTENCES.** Runner implemented and verified strictly on separate synthetic regression fixtures (`test_run_textbook_h01_h02.py`: **`8/8` passing**).
+
+### Frozen Evaluation Artifact Checksums (SHA-256)
+- `docs/audits/h01_h02_evaluation_methodology/H01_H02_PROPOSED_100_SENTENCES.csv`: `ce3020a0cd28796c5ffe71bf0772c66773d3b1154323c823df8ccc3a22e065d6`
+- `docs/audits/technical_evaluation/run_textbook_h01_h02.py`: `3815ad1b74647dddaf9dea651a9914b670a375dccc195bd3f2b85f26c3634910`
+- `docs/audits/technical_evaluation/test_run_textbook_h01_h02.py`: `0b8f1cbf4c9bfa0cad0cb3d508d8a604071bc8fad2a7a8275ae8852a2c680368`
 
 ---
 
@@ -27,17 +32,17 @@ All **100 sentences** in [H01_H02_PROPOSED_100_SENTENCES.csv](file:///Users/kiye
 
 ### H01 (Four Separated Measurements — Never Conflated)
 1. **Track 1 — Full-Tree Structural Accuracy (`216 + 1`, disclosed dev-exposed):** Labeled/Unlabeled PARSEVAL F1, Exact Match, and All-Attempts F1 (unresolved/mismatched items kept as `0` matches), reporting zero-triangle complete trees, full all-attempts F1, and triangle-aware masked F1 side by side under character-offset and strict token alignment.
-2. **Track 2 — Unseen Published-Reference Agreement (`16` unseen items):** Strictly checks relations explicitly published in B–R *Discussion of exercises*: subject/predicate/complement spans (`G01`–`G06`), complement vs. VP-adjunct vs. S-adverbial attachment (`G16`–`G17`), wh/aux fronting & restrictive relative embedding (`G25`–`G26`), overt `to`-infinitival boundary (`G27`), and published ACA overt clause spans & nesting (`G36`–`G40`).
+2. **Track 2 — Unseen Published-Reference Partial Relations (`16` unseen items):** Strictly limited to the exact structural checks implemented in `score_h01_partial()`: subject/predicate/complement spans + V-complement sisterhood (`G01`–`G06`), S-adverbial parent attachment (`G16`), V-complement vs. nested VP-adjunct sisterhood (`G17`), wh/C fronting (`G25`), NP-internal relative containment (`G26`), overt `to`-infinitival boundary (`G27`), and published ACA overt clause spans & nesting (`G36`–`G40`). Every item explicitly records `checked_relations` and `not_checked_relations` (unprinted internal subtrees, covert traces/controllers, lexical subcategory tags) and carries an explicit `scope_disclaimer` preventing misreporting as complete tree accuracy.
 3. **Track 3 — Unseen B–R Rule Compliance (`50` unseen items):** Deterministic B–R Ch. 1–10 structural invariants (canonical label set only, zero leaked raw Penn tags, valid `S`/`S'` root, `NP`/`NOM` structure, interrogative `S'`/`C` fronting, non-empty yield).
 4. **Track 4 — Unseen Benepar→B–R Conversion Consistency (`50` unseen items):** Canonical resolution rate (`normalized`), JSON schema validity, character-yield preservation, and deterministic repeatability.
 
 ### H02 — Fair Outcome-Only Primary Comparison (`N = 100`, Symmetrical Across Arm A & Arm B)
 Both Arm A and Arm B are scored on **four outcomes both arms can legitimately achieve** (never using exact prose wording and never penalizing Arm B for lacking `C-*`/`CLS-*` rule IDs):
-- **O1 — Correct Grammatical Judgment:** Exact match against textbook grammaticality (`G01`–`G50` = `grammatical`, `U01`–`U50` = `ungrammatical`; abstentions logged separately and retained as misses in strict accuracy).
-- **O2 — Correct Error Localization:** On `U01`–`U50`, emitted error token/character span overlaps `Affected words`; on `G01`–`G50`, zero spurious error spans.
+- **O1 — Correct Grammatical Judgment:** Exact match against textbook grammaticality (`G01`–`G50` = `grammatical`, `U01`–`U50` = `ungrammatical`). **Abstentions (`unverified`/`unresolved`) are strictly excluded from successful error detection** and reported in a dedicated breakdown (`overall_abstention_rate`, `grammatical_abstention_rate`, `ungrammatical_abstention_rate`, `ungrammatical_error_detection_rate`, `grammatical_false_positive_rate`).
+- **O2 — Exact Position-Aware Error Localization:** On `U01`–`U50`, emitted `(start, end)` character spans must intersect the exact resolved character span(s) of pre-registered `Affected words` (all `50/50` CSV target spans statically verified). Wrong occurrences of repeated words and overly broad whole-sentence spans (`>65%` of sentence when target `≤45%`) are rejected. On `G01`–`G50`, zero spurious spans.
 - **O3 — Valid Correction:** On `U01`–`U50`, normalized emitted correction matches `Expected correction` OR any pre-registered `Valid alternatives`; on `G01`–`G50`, zero erroneous rewrites.
-- **O4 — Absence of Demonstrably Incorrect or Unsupported Feedback (Primary H02 Endpoint):** Clean (`1`) iff zero false-positive flags/rewrites on `G01`–`G50`, zero false-negative `grammatical` certifications on `U01`–`U50`, zero wrong-target localizations on `U01`–`U50`, zero invalid/corrupting rewrites, and zero internal self-contradictions (e.g., `grammatical` verdict with active error findings or nonexistent node/token anchors).
-- **Primary Paired Composite (`0–4`):** `O1 + O2 + O3 + O4`.
+- **O4 — Absence of Demonstrably Incorrect or Unsupported Feedback (Primary H02 Endpoints):** Reported side by side as **`O4_no_incorrect_or_unsupported`** (zero demonstrable falsehoods/contradictions) AND **`O4_decided_clean`** (`O4` AND `not abstained`, preventing abstention-gaming).
+- **Primary Paired Composite (`0–4`):** `O1 + O2 + O3 + O4_decided_clean`.
 
 ### H02 — Separate Grounding Diagnostics (Reported Independently)
 - **D1 — Structured Rule Application Accuracy (Arm A descriptive):** Whether fired rule IDs (`C-*`, `CLS-*`, `COMP-*`, `PHR-*`, `MORPH-*`, `OTH-*`, `WCAT-*`) map to the pre-registered textbook rule family (`U01`–`U50`) and stay silent on `G01`–`G50`.

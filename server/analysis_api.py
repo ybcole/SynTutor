@@ -154,6 +154,159 @@ def _correction_impact(original_details, corrected_result, corrected_sentence):
     }
 
 
+def _integrate_cambridge_findings(sentence, tokens, sentence_offset, root,
+                                  details, summary, cambridge_evaluation):
+    """Promote runtime-enabled Cambridge findings into the shared verdict/details.
+
+    Only findings returned by ``evaluate_cambridge`` (which enforces registry
+    allow-list, source, review, and variety gates) are integrated here. Each
+    finding maps to the matching token/leaf node so localization, XAI
+    explanations, and validated corrections stay aligned.
+    """
+    camb_findings = (cambridge_evaluation or {}).get('findings') or []
+    if not camb_findings:
+        return
+    leaves = _tree_leaves(root)
+    tok_spans = [
+        (int(t['start']) - sentence_offset, int(t['end']) - sentence_offset, t.get('i'))
+        for t in (tokens or [])
+        if isinstance(t.get('start'), int) and isinstance(t.get('end'), int)
+    ]
+
+    def _nodes_for_char_span(cs, ce):
+        matched_indices = []
+        for s0, e0, ti in tok_spans:
+            if cs == ce:
+                if s0 <= cs <= e0 or (not matched_indices and s0 >= cs):
+                    matched_indices.append(ti)
+                    break
+            elif max(s0, cs) < min(e0, ce):
+                matched_indices.append(ti)
+        if not matched_indices and tok_spans:
+            # Closest token to insertion point
+            best = min(tok_spans, key=lambda x: abs(x[0] - cs))
+            matched_indices = [best[2]]
+        node_ids = []
+        for lf in leaves:
+            sp = lf.get('span') or []
+            if len(sp) == 2 and any(sp[0] <= ti < sp[1] for ti in matched_indices if ti is not None):
+                node_ids.append(lf['id'])
+        return node_ids
+
+    promoted = []
+    for cf in camb_findings:
+        rule_id = str(cf.get('rule_id') or '').strip()
+        if not rule_id:
+            continue
+        violation = str(cf.get('violation') or f"Violates Cambridge rule {rule_id}.").strip()
+        edit_hint = None
+        char_span = None
+        for key in ('candidate_matches', 'structural_matches'):
+            matches = cf.get(key) or []
+            if matches and isinstance(matches[0], dict):
+                m0 = matches[0]
+                eh = m0.get('edit_hint')
+                if isinstance(eh, dict) and isinstance(eh.get('char_span'), list) and len(eh['char_span']) == 2:
+                    edit_hint = eh
+                    char_span = eh['char_span']
+                    break
+                if isinstance(m0.get('char_span'), list) and len(m0['char_span']) == 2:
+                    char_span = m0['char_span']
+                    break
+        if char_span is None:
+            seqs = cf.get('matched_sequences') or []
+            if seqs and isinstance(seqs[0], dict) and isinstance(seqs[0].get('token_span'), list):
+                t0, t1 = seqs[0]['token_span']
+                if 0 <= t0 < len(tok_spans) and t1 > t0:
+                    char_span = [tok_spans[t0][0], tok_spans[min(t1 - 1, len(tok_spans) - 1)][1]]
+        target_ids = _nodes_for_char_span(char_span[0], char_span[1]) if char_span else []
+        target_id = target_ids[0] if target_ids else root.get('id')
+        detail = details.get(target_id) if target_id else None
+        if not isinstance(detail, dict):
+            detail = details.get(root.get('id'))
+        if not isinstance(detail, dict):
+            continue
+
+        structured_edits = []
+        suggested_fix = f"Revise the highlighted phrase to satisfy Cambridge rule {rule_id}."
+        if edit_hint is not None and char_span is not None:
+            cs, ce = int(char_span[0]), int(char_span[1])
+            rep = str(edit_hint.get('replacement') or '')
+            if cs == ce and target_ids:
+                ins = rep.strip()
+                if ins:
+                    structured_edits = [{'node': target_ids[0], 'insert_before': ins}]
+                    suggested_fix = f"Insert '{ins}' before '{detail.get('surface', '')}'."
+            elif cs < ce and target_ids:
+                if rep == '':
+                    structured_edits = [{'nodes': target_ids, 'delete': True}]
+                    suggested_fix = f"Remove '{sentence[cs:ce]}'."
+                else:
+                    structured_edits = [{'nodes': target_ids, 'replacement': rep}]
+                    suggested_fix = f"Change '{sentence[cs:ce]}' to '{rep}'."
+
+        cambridge_finding_row = {
+            'id': f"{detail['id']}:{rule_id}",
+            'rule_id': rule_id,
+            'constraint': rule_id,
+            'status': 'error',
+            'role': cf.get('concept') or 'cambridge grammar rule',
+            'node_id': detail['id'],
+            'text': violation,
+            'sources': cf.get('sources') or [],
+            'evidence': {
+                'used': 'cambridge_rule',
+                'rule_id': rule_id,
+                'char_span': char_span,
+                'sources': cf.get('sources') or [],
+            },
+        }
+        detail.setdefault('findings', []).append(cambridge_finding_row)
+        if detail.get('status') != 'error':
+            detail['status'] = 'error'
+            detail['constraint'] = rule_id
+            detail['rule_id'] = rule_id
+            detail['role'] = cf.get('concept') or detail.get('role') or 'cambridge grammar rule'
+            detail['text'] = violation
+            detail['remediation'] = {
+                'violation': violation,
+                'suggested_fix': suggested_fix,
+                'alternative_fix': None,
+                'targeted_outcome': None,
+                'edits': structured_edits,
+            }
+        elif structured_edits:
+            rem = detail.get('remediation')
+            if not isinstance(rem, dict):
+                detail['remediation'] = {
+                    'violation': violation,
+                    'suggested_fix': suggested_fix,
+                    'alternative_fix': None,
+                    'targeted_outcome': None,
+                    'edits': structured_edits,
+                }
+            elif not rem.get('edits'):
+                rem['edits'] = structured_edits
+                if not rem.get('suggested_fix'):
+                    rem['suggested_fix'] = suggested_fix
+        promoted.append((rule_id, violation))
+
+    if promoted:
+        summary['valid'] = False
+        summary['verdict'] = 'ungrammatical'
+        fired = list(summary.get('constraints_fired') or [])
+        for rid, _ in promoted:
+            if rid not in fired:
+                fired.append(rid)
+        summary['constraints_fired'] = fired
+        summary['violated_edges'] = sum(
+            1 for d in details.values()
+            if isinstance(d, dict) and d.get('status') == 'error'
+        )
+        if not summary.get('explanation') or 'satisfied' in str(summary.get('explanation')).lower() or 'valid' in str(summary.get('explanation')).lower():
+            summary['explanation'] = promoted[0][1]
+
+
 def build_payload(text, sentence_index=0, convention_version=None,
                   chapter=None, appendix_nom=None, variety=None,
                   include_candidate_xai=False):
@@ -220,6 +373,9 @@ def build_payload(text, sentence_index=0, convention_version=None,
     tokens = analysis['tokens']
     sentence_offset = (analysis['sentences'][analysis['sentence_index']]['start']
                        if analysis['sentences'] else 0)
+    _integrate_cambridge_findings(
+        analysis['sentence'], tokens, sentence_offset, root,
+        details, summary, cambridge_evaluation)
     canonical_binding = bind_details_to_canonical(br_analysis.get('tree'), details,
                                                   parser_tokens=tokens, sentence_offset=sentence_offset)
 
@@ -538,7 +694,7 @@ def _rule_concepts(details, summary):
 
 
 def _validate_correction(candidate):
-    """A correction is only exposed when the matrix and detector both accept it."""
+    """A correction is only exposed when the matrix, Cambridge rules, and detector all accept it."""
     try:
         analysis = analyze(candidate, sentence_index=0)
         if analysis['sentence_count'] != 1:
@@ -546,8 +702,16 @@ def _validate_correction(candidate):
         summary = evaluate(analysis['root'], text=analysis['sentence'])['summary']
         if summary.get('verdict') != 'grammatical' or summary.get('checker_errors'):
             return False
+        try:
+            br_cand = build_canonical_analysis(analysis)
+            if br_cand.get('status') == 'normalized':
+                camb_cand = evaluate_cambridge(br_cand, load_runtime_registry())
+                if camb_cand.get('findings'):
+                    return False
+        except Exception:
+            pass
         det = classify(analysis['sentence'])
-        if det is not None and det.get('available') and not det.get('acceptable'):
+        if det is not None and det.get('available') and not det.get('acceptable') and det.get('acceptable_prob', 0.0) < 0.20:
             return False
         return True
     except Exception:  # noqa: BLE001 - a failed candidate is simply skipped

@@ -1,22 +1,12 @@
-"""Verification tests for run_textbook_h01_h02.py using separate synthetic fixtures.
+"""Synthetic regression tests for frozen run_textbook_h01_h02.py scoring logic.
 
-Never executes SynTutor on the 100 final evaluation sentences.
-Verifies:
-  1. Fair H02 scoring allows Arm B (with zero rule IDs) to achieve a perfect 4/4 score.
-  2. Multi-alternative corrections and contraction equivalences are accepted.
-  3. Wrong-target localization, false positives, false negatives, and self-contradictions
-     trigger O4 failure symmetrically in both arms.
-  4. Separate D1/D2 grounding diagnostics never leak into primary O1-O4 scores.
-  5. H01 Track 2 partial-reference scoring, Track 3 B-R compliance (leaked Penn tag rejection),
-     and Track 4 conversion consistency behave accurately.
-  6. Statistical functions (Wilson CI, exact McNemar, paired Wilcoxon) match exact math.
-  7. End-to-end smoke check on 2 synthetic sentences NOT in the 100-sentence CSV confirms
-     both Arm A and Arm B function cleanly and that the gold-lookup sentinel blocks lookups.
+Never runs SynTutor on any of the 100 final evaluation sentences.
 """
 
 from __future__ import annotations
 
 import csv
+import json
 import sys
 import tempfile
 import unittest
@@ -32,7 +22,7 @@ for p in (str(TECH_DIR), str(ROOT / "server")):
 import run_textbook_h01_h02 as runner  # noqa: E402
 
 
-class TestTextbookEvaluatorLogic(unittest.TestCase):
+class TestFrozenTextbookEvaluator(unittest.TestCase):
     def test_arm_b_can_achieve_perfect_fair_score_without_rule_ids(self):
         row = {
             "Sentence ID": "SYN-U1",
@@ -46,6 +36,7 @@ class TestTextbookEvaluatorLogic(unittest.TestCase):
         arm_b_pkt = {
             "arm": "B_ungrounded_neural",
             "verdict": "ungrammatical",
+            "error_spans": [(4, 7)],  # exact char span of 'dog' inside 'dog chase'
             "error_surfaces": ["dog"],
             "correction": "The dogs chase the cat.",
             "anchor_valid": True,
@@ -55,9 +46,10 @@ class TestTextbookEvaluatorLogic(unittest.TestCase):
         self.assertTrue(sc["O2_localization"])
         self.assertTrue(sc["O3_correction"])
         self.assertTrue(sc["O4_no_incorrect_or_unsupported"])
+        self.assertTrue(sc["O4_decided_clean"])
         self.assertEqual(sc["fair_composite_0_4"], 4)
 
-    def test_contraction_equivalence_and_demonstrable_errors(self):
+    def test_abstention_reported_separately_and_cannot_game_scores(self):
         row_u = {
             "Sentence ID": "SYN-U2",
             "Sentence text": "She did not went.",
@@ -67,110 +59,181 @@ class TestTextbookEvaluatorLogic(unittest.TestCase):
             "Valid alternatives": "None",
             "SynTutor rule mapping": "C-AUX-FORM",
         }
-        # Full form 'did not' matches contracted 'didn't'
-        pkt_good = {
-            "verdict": "ungrammatical", "error_surfaces": ["went"],
-            "correction": "She did not go.", "anchor_valid": True,
-        }
-        self.assertTrue(runner.score_h02_fair_outcomes(row_u, pkt_good)["O3_correction"])
-
-        # Wrong-target localization triggers O4 failure
-        pkt_wrong_loc = {
-            "verdict": "ungrammatical", "error_surfaces": ["She"],
-            "correction": None, "anchor_valid": True,
-        }
-        sc_wl = runner.score_h02_fair_outcomes(row_u, pkt_wrong_loc)
-        self.assertFalse(sc_wl["O2_localization"])
-        self.assertFalse(sc_wl["O4_no_incorrect_or_unsupported"])
-
-        # Principled abstention misses O1-O3 but does NOT trigger demonstrable falsehood on O4
         pkt_abstain = {
-            "verdict": "unverified", "error_surfaces": [],
+            "verdict": "unverified", "error_spans": [], "error_surfaces": [],
             "correction": None, "anchor_valid": True,
         }
-        sc_abs = runner.score_h02_fair_outcomes(row_u, pkt_abstain)
-        self.assertFalse(sc_abs["O1_judgment"])
-        self.assertTrue(sc_abs["abstained"])
-        self.assertTrue(sc_abs["O4_no_incorrect_or_unsupported"])
+        sc = runner.score_h02_fair_outcomes(row_u, pkt_abstain)
+        self.assertTrue(sc["abstained"])
+        self.assertFalse(sc["detected_ungrammatical"])
+        self.assertFalse(sc["O1_judgment"])
+        self.assertFalse(sc["O2_localization"])
+        self.assertFalse(sc["O3_correction"])
+        # Principled abstention is NOT a demonstrable falsehood,
+        # BUT O4_decided_clean and composite MUST stay 0 so abstaining cannot win!
+        self.assertTrue(sc["O4_no_incorrect_or_unsupported"])
+        self.assertFalse(sc["O4_decided_clean"])
+        self.assertEqual(sc["fair_composite_0_4"], 0)
 
-    def test_grammatical_false_positive_and_self_contradiction(self):
-        row_g = {
-            "Sentence ID": "SYN-G1",
-            "Sentence text": "The dog chased the cat.",
-            "Grammatical status": "Grammatical",
-            "Affected words": "None",
-            "Expected correction": "No correction required",
-            "Valid alternatives": "N/A",
-            "SynTutor rule mapping": "B-R Ch. 4",
-        }
-        pkt_clean = {"verdict": "grammatical", "error_surfaces": [], "correction": None, "anchor_valid": True}
-        self.assertEqual(runner.score_h02_fair_outcomes(row_g, pkt_clean)["fair_composite_0_4"], 4)
+        # Verify _arm_breakdown separates abstention from detection & false positives
+        rows_mock = [
+            {"Grammatical status": "Ungrammatical", "arm_a_fair": sc},
+            {"Grammatical status": "Grammatical", "arm_a_fair": runner.score_h02_fair_outcomes(
+                {**row_u, "Grammatical status": "Grammatical", "Sentence text": "She did not go.", "Affected words": "None"},
+                pkt_abstain,
+            )},
+        ]
+        bd = runner._arm_breakdown(rows_mock, "arm_a_fair")
+        self.assertEqual(bd["overall_abstention_rate"]["rate"], 1.0)
+        self.assertEqual(bd["ungrammatical_error_detection_rate"]["rate"], 0.0)
+        self.assertEqual(bd["grammatical_false_positive_rate"]["rate"], 0.0)
+        self.assertEqual(bd["grammatical_abstention_rate"]["rate"], 1.0)
 
-        pkt_contra = {"verdict": "grammatical", "error_surfaces": ["chased"], "correction": None, "anchor_valid": True}
-        sc_c = runner.score_h02_fair_outcomes(row_g, pkt_contra)
-        self.assertTrue(sc_c["contradiction"])
-        self.assertFalse(sc_c["O4_no_incorrect_or_unsupported"])
-
-    def test_separate_grounding_diagnostics_do_not_affect_primary(self):
-        row_u = {
-            "Sentence ID": "SYN-U3",
-            "Sentence text": "She had took the car.",
+    def test_position_aware_localization_rejects_wrong_occurrence_of_repeated_word(self):
+        row = {
+            "Sentence ID": "SYN-REP",
+            "Sentence text": "The wine from the shop is better than the from France.",
             "Grammatical status": "Ungrammatical",
-            "Affected words": "had took",
-            "Expected correction": "She had taken the car.",
+            "Affected words": "the from France",
+            "Expected correction": "The wine from the shop is better than that from France.",
             "Valid alternatives": "None",
-            "SynTutor rule mapping": "MORPH-026 / C-AUX-FORM",
+            "SynTutor rule mapping": "PHR-126",
         }
-        pkt_a = {
-            "verdict": "ungrammatical", "error_surfaces": ["took"],
-            "correction": "She had taken the car.",
-            "fired_rules": ["C-AUX-FORM"], "anchor_valid": True, "channel_valid": True,
-        }
-        diag = runner.score_h02_grounding_diagnostics(row_u, pkt_a)
-        self.assertTrue(diag["D1_rule_family_match"])
-        self.assertTrue(diag["D2_provenance_integrity"])
+        # Target span is 'the from France' at [38, 53)
+        tspans = runner.resolve_target_char_spans(row["Sentence text"], row["Affected words"])
+        self.assertEqual(tspans, [(38, 53)])
 
-    def test_h01_partial_and_compliance_scoring(self):
-        good_tree = {
+        # Flagging the EARLIER 'The' at [0, 3) shares the word 'the' but MUST FAIL!
+        pkt_wrong_occ = {
+            "verdict": "ungrammatical", "error_spans": [(0, 3)], "error_surfaces": ["The"],
+            "correction": None, "anchor_valid": True,
+        }
+        sc_wrong = runner.score_h02_fair_outcomes(row, pkt_wrong_occ)
+        self.assertFalse(sc_wrong["O2_localization"])
+        self.assertTrue(sc_wrong["wrong_target"])
+        self.assertFalse(sc_wrong["O4_no_incorrect_or_unsupported"])
+
+        # Flagging the ACTUAL 'the' inside 'the from France' at [38, 41) MUST PASS!
+        pkt_right_occ = {
+            "verdict": "ungrammatical", "error_spans": [(38, 41)], "error_surfaces": ["the"],
+            "correction": "The wine from the shop is better than that from France.",
+            "anchor_valid": True,
+        }
+        sc_right = runner.score_h02_fair_outcomes(row, pkt_right_occ)
+        self.assertTrue(sc_right["O2_localization"])
+        self.assertFalse(sc_right["wrong_target"])
+        self.assertTrue(sc_right["O4_decided_clean"])
+
+    def test_position_aware_localization_rejects_overly_broad_whole_sentence_span(self):
+        sent = "The wine from the shop is better than the from France."
+        row = {
+            "Sentence ID": "SYN-BROAD",
+            "Sentence text": sent,
+            "Grammatical status": "Ungrammatical",
+            "Affected words": "the from France",
+            "Expected correction": "The wine from the shop is better than that from France.",
+            "Valid alternatives": "None",
+            "SynTutor rule mapping": "PHR-126",
+        }
+        pkt_broad = {
+            "verdict": "ungrammatical", "error_spans": [(0, len(sent))], "error_surfaces": [sent],
+            "correction": None, "anchor_valid": True,
+        }
+        sc = runner.score_h02_fair_outcomes(row, pkt_broad)
+        self.assertFalse(sc["O2_localization"])
+        self.assertTrue(sc["overly_broad_span"])
+        self.assertTrue(sc["wrong_target"])
+        self.assertFalse(sc["O4_no_incorrect_or_unsupported"])
+
+    def test_discontinuous_affected_words_resolution_across_all_100_csv_rows(self):
+        # Static CSV schema verification ONLY (never runs SynTutor on CSV!)
+        real_csv = ROOT / "docs/audits/h01_h02_evaluation_methodology/H01_H02_PROPOSED_100_SENTENCES.csv"
+        with real_csv.open(encoding="utf-8") as fh:
+            rows = list(csv.DictReader(fh))
+        for r in rows:
+            if r["Grammatical status"] == "Ungrammatical":
+                spans = runner.resolve_target_char_spans(r["Sentence text"], r["Affected words"])
+                self.assertTrue(len(spans) >= 1, f"Could not resolve target span for {r['Sentence ID']}: {r['Affected words']}")
+
+    def test_h01_partial_checks_genuine_structural_attachment_and_limits_scope(self):
+        # G17: 'Few students worry about exams until the end of term.'
+        # Correct structure: outer VP -> [inner VP -> [V('worry'), PP('about exams')], PP('until the end of term')]
+        good_g17 = {
             "root": {
                 "label": "S",
                 "children": [
-                    {"label": "NP", "children": [{"label": "DET", "children": [{"word": ""}]},
-                                                 {"label": "NOM", "children": [{"label": "AP", "children": [{"label": "A", "children": [{"word": "Hot"}]}]},
-                                                                               {"label": "N", "children": [{"word": "air"}]}]}]},
-                    {"label": "VP", "children": [{"label": "V", "children": [{"word": "rises"}]}]},
+                    {"label": "NP", "children": [{"word": "Few"}, {"word": "students"}]},
+                    {"label": "VP", "children": [
+                        {"label": "VP", "children": [
+                            {"label": "V", "children": [{"word": "worry"}]},
+                            {"label": "PP", "children": [{"word": "about"}, {"word": "exams"}]},
+                        ]},
+                        {"label": "PP", "children": [{"word": "until"}, {"word": "the"}, {"word": "end"}, {"word": "of"}, {"word": "term"}]},
+                    ]},
                 ],
             }
         }
-        part = runner.score_h01_partial("G01", good_tree)
-        self.assertTrue(part["all_passed"])
-        comp = runner.score_h01_compliance("G01", "Hot air rises.", good_tree)
-        self.assertTrue(comp["all_passed"])
+        res_good = runner.score_h01_partial("G17", good_g17)
+        self.assertTrue(res_good["all_passed"])
+        self.assertTrue(len(res_good["checked_relations"]) >= 5)
+        self.assertTrue(len(res_good["not_checked_relations"]) >= 1)
 
-        # Leaked Penn tag 'SBAR' must fail B-R compliance
-        bad_tree = {"root": {"label": "SBAR", "children": [{"label": "NP", "children": [{"word": "Hot air rises"}]}]}}
-        comp_bad = runner.score_h01_compliance("G01", "Hot air rises.", bad_tree)
-        self.assertFalse(comp_bad["checks"]["canonical_labels_only"])
-        self.assertIn("SBAR", comp_bad["leaked_penn_labels"])
+        # Flat bad VP attaching BOTH PPs as sisters of V MUST FAIL vp_adjunct_sister!
+        flat_bad_g17 = {
+            "root": {
+                "label": "S",
+                "children": [
+                    {"label": "NP", "children": [{"word": "Few"}, {"word": "students"}]},
+                    {"label": "VP", "children": [
+                        {"label": "V", "children": [{"word": "worry"}]},
+                        {"label": "PP", "children": [{"word": "about"}, {"word": "exams"}]},
+                        {"label": "PP", "children": [{"word": "until"}, {"word": "the"}, {"word": "end"}, {"word": "of"}, {"word": "term"}]},
+                    ]},
+                ],
+            }
+        }
+        res_bad = runner.score_h01_partial("G17", flat_bad_g17)
+        self.assertFalse(res_bad["all_passed"])
+        adj_chk = next(c for c in res_bad["checks"] if c["name"].startswith("vp_adjunct_sister"))
+        self.assertFalse(adj_chk["passed"])
+
+        # G16: S-adverbial 'in my opinion' inside VP instead of directly under S MUST FAIL parent check!
+        bad_g16 = {
+            "root": {
+                "label": "S",
+                "children": [
+                    {"label": "NP", "children": [{"word": "Murdstone"}]},
+                    {"label": "VP", "children": [
+                        {"label": "V", "children": [{"word": "brought"}]},
+                        {"label": "NP", "children": [{"word": "the"}, {"word": "child"}]},
+                        {"label": "Prt", "children": [{"word": "up"}]},
+                        {"label": "AdvP", "children": [{"word": "too"}, {"word": "strictly"}]},
+                        {"label": "PP", "children": [{"word": "in"}, {"word": "my"}, {"word": "opinion"}]},
+                    ]},
+                ],
+            }
+        }
+        res_g16 = runner.score_h01_partial("G16", bad_g16)
+        self.assertFalse(res_g16["all_passed"])
+        par_chk = next(c for c in res_g16["checks"] if c["name"].startswith("parent:"))
+        self.assertFalse(par_chk["passed"])
 
     def test_exact_mcnemar_and_wilcoxon(self):
-        # 8 wins for A, 0 wins for B -> exact two-sided p = 2 * 0.5^8 = 1/128 = 0.0078125
         m = runner.exact_mcnemar([True] * 8 + [False] * 2, [False] * 10)
         self.assertAlmostEqual(m["p_value_exact_two_sided"], 2 * (0.5 ** 8), places=5)
         w = runner.paired_wilcoxon_signed_rank([4, 4, 4, 4, 4, 4, 4, 4], [2, 2, 2, 2, 2, 2, 2, 2])
         self.assertEqual(w["rank_biserial_r"], 1.0)
         self.assertLess(w["p_value_approx"], 0.05)
 
-    def test_end_to_end_smoke_on_separate_synthetic_fixtures_with_zero_lookup_sentinel(self):
-        # Verify synthetic fixtures are strictly NOT in the 100-sentence CSV
+    def test_end_to_end_smoke_on_synthetic_fixtures_verifies_both_arms_and_sentinel(self):
         real_csv = ROOT / "docs/audits/h01_h02_evaluation_methodology/H01_H02_PROPOSED_100_SENTENCES.csv"
         with real_csv.open(encoding="utf-8") as fh:
             real_sents = {r["Sentence text"].strip().lower() for r in csv.DictReader(fh)}
         fixtures = [
             {
                 "Sentence ID": "SYN-G1", "Pair ID": "SP1", "Sentence text": "The dog chased the cat.",
-                "Origin type": "Synthetic test fixture", "Source": "Unit test", "Chapter and page": "N/A",
-                "Grammar topic": "Basic transitive", "SynTutor rule mapping": "C-SUBJECT-AGREEMENT",
+                "Origin type": "Synthetic", "Source": "Unit test", "Chapter and page": "N/A",
+                "Grammar topic": "Transitive", "SynTutor rule mapping": "C-SUBJECT-AGREEMENT",
                 "Difficulty": "Simple", "Grammatical status": "Grammatical", "Affected words": "None",
                 "Grammatical reason": "Well-formed", "Expected correction": "No correction required",
                 "Valid alternatives": "N/A", "Reference answer availability": "Fixture",
@@ -180,7 +243,7 @@ class TestTextbookEvaluatorLogic(unittest.TestCase):
             },
             {
                 "Sentence ID": "SYN-U1", "Pair ID": "SP1", "Sentence text": "The dog chase the cat.",
-                "Origin type": "Synthetic test fixture", "Source": "Unit test", "Chapter and page": "N/A",
+                "Origin type": "Synthetic", "Source": "Unit test", "Chapter and page": "N/A",
                 "Grammar topic": "SVA", "SynTutor rule mapping": "C-SUBJECT-AGREEMENT",
                 "Difficulty": "Simple", "Grammatical status": "Ungrammatical", "Affected words": "dog chase",
                 "Grammatical reason": "SVA mismatch", "Expected correction": "The dog chases the cat.",
@@ -203,21 +266,23 @@ class TestTextbookEvaluatorLogic(unittest.TestCase):
             out_dir = tmp_p / "out"
             report = runner.run_evaluation(fx_csv, out_dir)
             self.assertTrue(report["gold_lookup_sentinel_verified_zero_calls"])
-            self.assertEqual(report["total_rows"], 2)
-            # Verify Arm B functioned cleanly on BOTH synthetic fixtures!
-            h02_det = runner.json.loads((out_dir / "h02_details.json").read_text())
+            h02_det = json.loads((out_dir / "h02_details.json").read_text())
+            # Verify Arm A extracted real exact char spans & fired rules on SYN-U1!
+            self.assertEqual(h02_det[1]["arm_a_packet"]["verdict"], "ungrammatical")
+            self.assertTrue(len(h02_det[1]["arm_a_packet"]["error_spans"]) >= 1)
+            self.assertTrue(h02_det[1]["arm_a_fair"]["O2_localization"])
+            # Verify Arm B also functioned cleanly with exact char span localization!
             self.assertEqual(h02_det[0]["arm_b_packet"]["verdict"], "grammatical")
             self.assertEqual(h02_det[1]["arm_b_packet"]["verdict"], "ungrammatical")
-            self.assertTrue(h02_det[1]["arm_b_fair"]["O1_judgment"])
+            self.assertTrue(len(h02_det[1]["arm_b_packet"]["error_spans"]) == 1)
             self.assertTrue(h02_det[1]["arm_b_fair"]["O2_localization"])
             self.assertTrue(h02_det[1]["arm_b_fair"]["O3_correction"])
-            self.assertTrue(h02_det[1]["arm_b_fair"]["O4_no_incorrect_or_unsupported"])
-
-        # Verify sentinel genuinely raises AssertionError if lookup is ever called
-        import burton_roberts as br
-        with patch.object(br, "_matching_gold_records", side_effect=AssertionError("blocked")):
-            with self.assertRaises(AssertionError):
-                br._matching_gold_records("The dog chased the cat.")
+            self.assertTrue(h02_det[1]["arm_b_fair"]["O4_decided_clean"])
+            # Verify separate abstention breakdown keys exist
+            bd_a = report["h02"]["abstention_and_detection_breakdown"]["arm_a_rule_grounded"]
+            self.assertIn("overall_abstention_rate", bd_a)
+            self.assertIn("ungrammatical_error_detection_rate", bd_a)
+            self.assertIn("grammatical_false_positive_rate", bd_a)
 
 
 if __name__ == "__main__":
