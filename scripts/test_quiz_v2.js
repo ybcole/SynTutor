@@ -164,6 +164,31 @@ await assert.rejects(()=>reload.answer(started.attempt_id,started.presented[0].i
 assert.equal(Object.keys(createQuizStore(bank,{storage,userId:'user_b'}).attempts).length,0);
 const otherDevice=createQuizStore(bank,{userId:'user_a',client});await otherDevice.load();
 assert.equal(otherDevice.attempts[started.attempt_id].submitted_at,reload.attempts[started.attempt_id].submitted_at);
+// A rejected practice draft or unreadable practice history must not stop a ranked submission.
+let practiceAttemptId;
+const partialClient={
+  ...client,
+  from:table=>table==='quiz_practice_v2'?{
+    select:async()=>({error:{code:'42501'}}),
+    upsert:async row=>{
+      practiceAttemptId=row.attempt_id;
+      return {error:{code:'23514'}};
+    },
+  }:client.from(table),
+};
+const partialStore=createQuizStore(bank,{userId:'partial-user',client:partialClient});
+const practice=await partialStore.startV2(curriculum,{track:'syntax',mode:'master',count:15,content_tier:'lesson-practice'},79);
+assert.equal(practiceAttemptId,practice.attempt_id);
+assert.notEqual(partialStore.attempts[practice.attempt_id].synced,true);
+await partialStore.load();
+const ranked=await partialStore.startV2(curriculum,{track:'syntax',mode:'master',count:15,content_tier:'lesson-assessment',format:'formal'},80);
+for(const ref of ranked.presented){
+  const q=bank.items.find(q=>q.item_id===ref.item_id);
+  await partialStore.answer(ranked.attempt_id,q.item_id,q.answer);
+}
+assert.equal((await partialStore.submit(ranked.attempt_id)).earned,30);
+assert.equal(partialStore.attempts[ranked.attempt_id].synced,true);
+assert.notEqual(partialStore.attempts[practice.attempt_id].synced,true);
 // Existing published history remains visible to personalization.
 const legacy=makeAttempt(bank,bank.assessments[0],22);legacy.submitted_at=new Date().toISOString();
 assert.equal(topicPerformance(bank,curriculum,{legacy},'syntax').missed.size,5);

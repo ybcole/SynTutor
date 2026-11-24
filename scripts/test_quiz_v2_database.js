@@ -14,7 +14,9 @@ const db=new PGlite();
 await db.exec(`create role anon;create role authenticated;create schema auth;
 create function auth.jwt() returns jsonb language sql stable as $$select coalesce(nullif(current_setting('request.jwt.claims',true),'')::jsonb,'{}'::jsonb)$$;
 grant usage on schema auth to anon,authenticated;grant execute on function auth.jwt() to anon,authenticated;`);
-for(const name of ['20261013000000_player_stats.sql','20261013000001_quiz_progress.sql','20261108000000_versioned_lessons.sql','20261108000001_lesson_catalog.sql','20261108000002_independent_quizzes.sql','20261108000003_quiz_catalog.sql','20261108000004_verified_progression.sql','20261113000000_foundations_assessments.sql','20261116000000_quiz_practice_v2.sql','20261116000001_quiz_v2_verified.sql','20261116000002_quiz_v2_catalog.sql'])await db.exec(file('supabase/migrations/'+name));
+for (const name of fs.readdirSync(new URL('../supabase/migrations/', import.meta.url)).filter(name=>name.endsWith('.sql')).sort()) {
+  await db.exec(file('supabase/migrations/'+name));
+}
 async function identity(id,role='authenticated'){
   await db.exec('reset role');await db.query("select set_config('request.jwt.claims',$1,false)",[JSON.stringify(id?{sub:id}:{})]);await db.exec(`set role ${role}`);
 }
@@ -61,6 +63,7 @@ await identity(null);
 await assert.rejects(()=>saveV2(formal),/Sign in/);
 
 await identity('user_clerk_v2');
+await db.query("select public.ensure_leaderboard_participation('RankedLearner')");
 const draftV2=await saveV2(formal,false);
 assert.equal(draftV2.correct,null);assert.equal(draftV2.submitted_at,null);assert.equal(draftV2.earned,0);
 const sub3=await saveV2(formal,true);
@@ -87,6 +90,10 @@ assert.equal(masterV2.correct,15);assert.equal(masterV2.earned,30);
 
 const prog=(await db.query('select public.get_my_progression() as data')).rows[0].data;
 assert.equal(prog.quiz_xp,50);assert.equal(prog.xp,50);
+const board=(await db.query("select public.get_leaderboard('weekly') as data")).rows[0].data;
+assert.deepEqual(board.entries.find(row=>row.alias==='RankedLearner'), {
+  alias:'RankedLearner',rank:1,xp:50,lessons_completed:0,quizzes_completed:3,
+});
 
 for(const bad of [
   t=>{t.xp=999999;},
