@@ -793,8 +793,9 @@ def check_relatives(root):
                           f"'{wh_leaf['surface']}'.")
             elif wh_low == 'which' and animacy == 'human':
                 fix = 'who' if subject_gap else 'whom'
-                reason = (f"The antecedent '{antecedent['surface']}' is a person; "
-                          f"use '{fix}' here instead of 'which'.")
+                reason = (f"In standard written English the human antecedent "
+                          f"'{antecedent['surface']}' takes 'who' rather than 'which'"
+                          + ("; formal object case also allows 'whom'." if not subject_gap else "."))
             elif wh_low == 'whom' and subject_gap:
                 fix = 'who'
                 reason = ("The relative pronoun is the subject of the clause; "
@@ -806,7 +807,7 @@ def check_relatives(root):
                 '5.4', 'error', 'C-RELATIVE-PRONOUN', 'relative pronoun',
                 wh_leaf['id'], reason,
                 _tree_evidence(sbar['id'], 'antecedent NP + SBAR(WHNP ...)',
-                               [{'node': antecedent['id']},
+                               [{'node': (ruleset._np_head_leaf(antecedent) or antecedent)['id']},
                                 {'node': wh_leaf['id']}]),
                 remediation={
                     'suggested_fix': f"write '{fix}'",
@@ -830,7 +831,7 @@ def check_relatives(root):
                       f"(or 'that').")
         elif low == 'which' and prev_low in HUMAN_ANTECEDENTS:
             fix = 'who'
-            reason = (f"'which' does not refer to people; use 'who' (or 'that') "
+            reason = (f"In standard written English use 'who' (or 'that' in a restrictive relative) "
                       f"after '{prev['surface']}'.")
         if not fix:
             continue

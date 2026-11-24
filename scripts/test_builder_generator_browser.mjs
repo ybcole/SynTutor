@@ -1,5 +1,5 @@
 // Browser interaction tests for Lessons node palette, Syntax Builder Nodes palette,
-// connector dot drag-to-connect, Fit behavior, and Syntax Generator Enter-to-analyze.
+// branch editing, Fit behavior, and Syntax Generator Enter-to-analyze.
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import { createServer } from 'node:http';
@@ -172,6 +172,8 @@ try {
 
   await page.locator('#combinedBuilderClear').click();
   await page.mouse.move(700, 400);
+  // Let the hover/focus border transition (0.2s) finish before sampling styles.
+  await page.waitForTimeout(260);
   const buttonAudit = await page.evaluate(() => {
     const clear = document.getElementById('combinedBuilderClear');
     const fit = document.querySelector('[data-builder-zoom="fit"]');
@@ -252,6 +254,41 @@ try {
     return { connected: nodes.filter(n => n.parent).length, x: p?.x, y: p?.y };
   });
   assert.equal(connectedPos.connected, 1, 'dragging connector dot onto child node establishes branch parent');
+
+  // Click the visible branch, not its connector or either node, before deleting.
+  const selectedBranch = () => page.evaluate(async () => {
+    const mod = await import('/js/syntax-builder-ui.js?v=2026.11.18f');
+    const sb = await import('/js/syntax-builder.js');
+    const model = mod.builderModel();
+    const child = Object.values(model.nodes).find(n => n.parent);
+    const parent = model.nodes[child.parent];
+    const box = mod.canvasGuideBox({ kind: 'phrase', type: parent.type });
+    const scale = box.width / (parent.w + 24);
+    const a = sb.parentAnchorOf(parent);
+    const b = sb.childAnchorOf(model, child);
+    return {
+      childId: child.id, parentId: parent.id,
+      x: box.left + ((a.x + b.x) / 2 - parent.x + 12) * scale,
+      y: box.top + ((a.y + b.y) / 2 - parent.y + 12) * scale,
+    };
+  });
+  const branchModel = childId => page.evaluate(async id => {
+    const { builderModel } = await import('/js/syntax-builder-ui.js?v=2026.11.18f');
+    const nodes = builderModel().nodes;
+    return { ids: Object.keys(nodes), parent: nodes[id]?.parent };
+  }, childId);
+  for (const key of ['Backspace', 'Delete']) {
+    const branch = await selectedBranch();
+    const before = await branchModel(branch.childId);
+    await page.mouse.click(branch.x, branch.y);
+    assert.equal(await page.locator('#builderCanvas').evaluate(el => el === document.activeElement), true);
+    assert.deepEqual(await branchModel(branch.childId), before, 'clicking a branch only selects it');
+    await page.keyboard.press(key);
+    assert.deepEqual(await branchModel(branch.childId), { ids: before.ids, parent: null },
+      `${key} removes the connection without deleting either node`);
+    await page.keyboard.press('Control+z');
+    assert.deepEqual(await branchModel(branch.childId), before, 'undo restores the connection');
+  }
 
   // Clear canvas and Fit on a wide long-word sentence scales down cleanly within the canvas boundaries.
   await page.locator('#combinedBuilderClear').click();

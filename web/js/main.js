@@ -3240,6 +3240,9 @@ let onboardingEls = null;
 function maybeStartOnboarding({ hasRestoredSession = false } = {}) {
   if (onboardingShownThisVisit) return;
   if (workspaceView !== 'tutor' || /^#(?:lesson|quiz)\//.test(location.hash)) return;
+  try {
+    if (localStorage.getItem('syntutor_onboarding_seen') === '1') return;
+  } catch { /* storage unavailable */ }
   onboardingShownThisVisit = true;
   if (!hasRestoredSession) {
     const ta = document.querySelector('#inputText');
@@ -3370,6 +3373,7 @@ function showOnboarding() {
 }
 
 function finishOnboarding() {
+  try { localStorage.setItem('syntutor_onboarding_seen', '1'); } catch { /* storage unavailable */ }
   if (onboardingEls) onboardingEls.root.hidden = true;
   document.removeEventListener('keydown', onOnboardingKeydown);
   window.removeEventListener('resize', positionOnboarding);

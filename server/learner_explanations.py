@@ -290,6 +290,10 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
                        else "the understood subject")
             predicate = (_node_phrase(children[1]) if str(children[1].get("surface") or "").strip()
                          else "the predicate")
+            if (str(children[0].get('surface') or '').lower() == 'there'
+                    and _first_word(str(children[1].get('surface') or '')).lower() in BE):
+                return ("This is an existential clause. “There” fills subject position without "
+                        f"naming an entity, and {predicate} presents what exists.")
             return (f"In {surface}, {subject} identifies who or what "
                     f"the sentence is about, and {predicate} tells us "
                     "what happens or what is being described.")
@@ -340,6 +344,9 @@ def _phrase(node: dict, graph: dict, by_id: dict[str, dict]) -> str:
     if label == "NP":
         noun = next((c for c in children if c.get("label") in {"N", "NOM", "NAME"}), None)
         if other and parent and parent.get("label") in {"S", "S'", "S''"} and other.get("label") == "VP":
+            if (str(node.get('surface') or '').lower() == 'there'
+                    and _first_word(str(other.get('surface') or '')).lower() in BE):
+                return "Dummy “there” fills subject position; the following phrase names what exists."
             return (f"{surface} is a noun phrase identifying who or what this clause is about. "
                     f"The accompanying verb phrase {_node_phrase(other)} tells us more about it.")
         if noun:
@@ -902,6 +909,9 @@ def _runtime_description(node, graph, by_id, ids, leaves, finding_token_ids=None
         # Standard declarative or embedded subject + predicate clause (S -> NP VP ...)
         if len(children) >= 2 and child_labels[0] == 'NP' and child_labels[1] == 'VP':
             subject, predicate = children[0], children[1]
+            if leaf.get('fdep') == 'expl' and leaf.get('surface', '').lower() == 'there':
+                return ('This is an existential clause. Dummy “there” fills subject position, '
+                        f'and {_node_phrase(predicate)} presents what exists.')
             embedded = bool(parent and parent.get('label') in {'S-bar', "S'", 'S″', 'S-dbar', 'PP'})
             if not subject.get('surface'):
                 subj_desc = 'an understood (unspoken) subject'
@@ -1195,6 +1205,12 @@ def build_learner_analysis(analysis, br_analysis, explanation, findings, relatio
               'findings': findings, 'nodes': {}, 'relationships': relationships,
               'sentence_text': (explanation.get('learner_explanation') or {}).get('text'),
               'verdict': summary.get('verdict')}
+    contextual_notes = summary.get('contextual_notes') or []
+    verdict_note = summary.get('explanation') if summary.get('verdict') == 'unverified' else None
+    if not resolved and findings:
+        result['sentence_text'] = ('The syntax tree is provisional; these findings come from local checks.'
+                                   if br_analysis.get('working_tree') else
+                                   'No canonical tree is available; these findings come from local checks.')
     correction = summary.get('correction')
     if correction and correction.get('validated'):
         offset = analysis['sentences'][analysis['sentence_index']]['start']
@@ -1205,10 +1221,14 @@ def build_learner_analysis(analysis, br_analysis, explanation, findings, relatio
                 token['i'] in witnessed and token['start'] - offset <= edit['start']
                 < token['end'] - offset for token in tokens) for edit in correction['edits']):
             result['revision'] = {'text': correction['corrected_sentence'],
-                                  'impact': correction.get('impact', {}),
-                                  'conditional_simple_past': all(
-                                      edit.get('constraint') == 'C-BE-PAST' for edit in correction['edits'])}
+                                   'impact': correction.get('impact', {}),
+                                   'conditional_simple_past': all(
+                                       edit.get('constraint') == 'C-BE-PAST' and not edit['replacement']
+                                       for edit in correction['edits'])}
+    notes = list(dict.fromkeys(n for n in [verdict_note, *contextual_notes] if n))
     if not graph or not graph.get('nodes'):
+        if notes:
+            result['sentence_text'] = ' '.join(filter(None, [result['sentence_text'], *notes]))
         return result
     by_id = {node['node_id']: node for node in graph['nodes']}
     source_tokens = _source_tokens_by_node(graph, analysis)
@@ -1248,7 +1268,11 @@ def build_learner_analysis(analysis, br_analysis, explanation, findings, relatio
                 node['parent_id'] is None and not row['target_token_ids'] and not row['related_token_ids'])]
         # A branch with an overt descendant may discuss that descendant's
         # finding, but only an exact word (or its one-word category) is marked.
-        exact = len(ids) == 1 and len(node['token_ids']) == 1 and node['kind'] in {'word', 'branch'}
+        # A one-token working-tree triangle still points to an exact source
+        # word. Marking the word does not endorse the triangle's category.
+        exact = (len(ids) == 1 and len(node['token_ids']) == 1
+                 and (node['kind'] in {'word', 'branch'}
+                      or (not resolved and node['kind'] == 'triangle')))
         if exact and node['kind'] == 'branch':
             exact = len(node['child_ids']) == 1 and by_id[node['child_ids'][0]]['kind'] == 'word'
         observed = []
@@ -1340,4 +1364,6 @@ def build_learner_analysis(analysis, br_analysis, explanation, findings, relatio
         'unlicensed_empty_nodes': unlicensed_empty,
         'local_only_verdict_qualified': sentence_not_clean,
     }
+    if notes:
+        result['sentence_text'] = ' '.join(filter(None, [result['sentence_text'], *notes]))
     return result

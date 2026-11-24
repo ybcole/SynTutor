@@ -238,7 +238,6 @@
             <button id="builderNext" class="builder-btn builder-btn-primary" type="button" data-action="next" hidden>Next &rarr;</button>
             <button id="builderDone" class="builder-btn" type="button" data-action="done">Done</button>
           </div>
-          <span id="builderHint" class="builder-hint" hidden></span>
           <span id="builderTarget" class="builder-target" hidden></span>
           <div id="canvasOverlay" class="canvas-overlay" aria-live="polite"></div>
           <div id="emptyTreeState" class="empty-state-canvas">
@@ -252,7 +251,10 @@
             <h3 class="empty-tree-title">No syntax tree yet</h3>
             <p class="empty-tree-sub">Type a sentence to analyze it, or choose Syntax builder to build one.</p>
           </div>
-          <button id="exploreBuilderBtn" class="builder-btn explore-builder-btn" type="button" hidden>Syntax builder →</button>
+          <div class="canvas-mode-footer">
+            <span id="builderHint" class="builder-hint" hidden></span>
+            <button id="exploreBuilderBtn" class="builder-btn explore-builder-btn" type="button" hidden>Syntax builder →</button>
+          </div>
           <div id="loadingIndicator" class="loading-pill" role="status" aria-hidden="true">
             <span class="loading-spinner" aria-hidden="true"></span>
             <span>Generating syntax tree&hellip;</span>

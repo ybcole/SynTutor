@@ -16,7 +16,8 @@ import { requestEvidence, renderEvidence } from './explanation-evidence.js?v=202
 //     another phrase to attach it as a child
 //   drag a box body           -> move it
 //   double-click a box        -> edit its word text / relabel the phrase
-//   Delete/Backspace          -> remove the selected box
+//   click a branch            -> select its connection without selecting either node
+//   Delete/Backspace          -> remove the selected branch or box
 //   drag empty space          -> pan the canvas   wheel -> zoom
 //   right-click (click)       -> add a node menu
 //   right-click (hold) + drag -> marquee-select multiple nodes
@@ -153,6 +154,7 @@ const state = {
   hoverTarget: null,
   hoverEndpoint: null,
   selection: new Set(),
+  selectedBranch: null,
   reject: null,
   challenge: null,
   editMode: false,
@@ -771,7 +773,7 @@ function syncInputToCanvas() {
     // structure. Start from the words in the input panel so typing/deleting
     // always works instead of silently snapping back.
     state.model = createModel();
-    state.selection.clear();
+    clearSelection();
     state.snapped = false;
     state.snappedLayout = null;
     state.nodeErrors = new Map();
@@ -1253,7 +1255,7 @@ export function setChallenge(challenge, onComplete) {
 // rejected-connection flash, an open menu/editor) so a new model or a supplied
 // repair model starts clean.
 function resetTransientState() {
-  state.selection.clear();
+  clearSelection();
   state.drag = null;
   state.pan = null;
   state.link = null;
@@ -1369,6 +1371,36 @@ function eventPos(e) {
   const rect = state.canvas.getBoundingClientRect();
   return { sx: e.clientX - rect.left, sy: e.clientY - rect.top };
 }
+
+function branchParent(child) {
+  const parent = state.model.nodes[child?.parent];
+  // A collapsed triangle is drawn separately, not as individual branches.
+  return parent && !parent.canonicalTriangle ? parent : null;
+}
+
+function branchHit(x, y) {
+  const nodes = paintOrder();
+  let nearest = null;
+  let best = (6 / state.view.scale) ** 2;
+  for (let i = nodes.length - 1; i >= 0; i--) {
+    const child = nodes[i];
+    const parent = branchParent(child);
+    if (!parent) continue;
+    const a = parentAnchorOf(parent);
+    const b = childAnchorOf(state.model, child);
+    const dx = b.x - a.x;
+    const dy = b.y - a.y;
+    const lengthSquared = dx * dx + dy * dy;
+    if (!lengthSquared) continue;
+    const t = Math.max(0, Math.min(1, ((x - a.x) * dx + (y - a.y) * dy) / lengthSquared));
+    const distance = (x - a.x - t * dx) ** 2 + (y - a.y - t * dy) ** 2;
+    if (distance < best) {
+      best = distance;
+      nearest = child;
+    }
+  }
+  return nearest;
+}
 // ---------------------------------------------------------------------------
 // Input wiring
 // ---------------------------------------------------------------------------
@@ -1478,6 +1510,10 @@ function onMouseDown(e) {
 
   // Right-click: short click opens the add-node menu; hold starts multi-selection.
   if (e.button === 2) {    if (state.rightHoldTimer) clearTimeout(state.rightHoldTimer);
+    if (state.selectedBranch) {
+      state.selectedBranch = null;
+      draw();
+    }
     state.rightDownStart = { sx, sy, clientX: e.clientX, clientY: e.clientY };
     state.holdingRight = false;
     state.rightHoldTimer = setTimeout(() => {
@@ -1494,17 +1530,23 @@ function onMouseDown(e) {
     const dotPad = Math.max(8, 12 / (state.view.scale || 1));
     const dot = dotHit(state.model, w.x, w.y, dotPad);
     if (dot) {
+      if (state.selectedBranch) {
+        state.selectedBranch = null;
+        draw();
+      }
       state.link = { parentId: dot.id, childId: null, free: 'child', x: w.x, y: w.y, startX: w.x, startY: w.y, moved: false };
       closeMenu();
       return;
     }
+    const node = nodeHit(state.model, w.x, w.y);
     const epPad = Math.max(6, 8 / (state.view.scale || 1));
     const endpoint = endpointHit(state.model, w.x, w.y, epPad);
     if (endpoint) {
       const oldParent = endpoint.parent;
       state.link = {
         parentId: null, childId: endpoint.id, free: 'parent',
-        originalParent: oldParent, x: w.x, y: w.y, startX: w.x, startY: w.y, moved: false,
+        originalParent: oldParent, selectOnClick: !node,
+        x: w.x, y: w.y, startX: w.x, startY: w.y, moved: false,
       };
       selectOnly(endpoint.id);
       closeMenu();
@@ -1512,7 +1554,6 @@ function onMouseDown(e) {
       explainSelected();
       return;
     }
-    const node = nodeHit(state.model, w.x, w.y);
     if (node) {
       const additive = e.shiftKey || e.metaKey || e.ctrlKey;
       if (additive) {
@@ -1535,6 +1576,11 @@ function onMouseDown(e) {
       explainSelected();
       return;
     }
+    const branch = branchHit(w.x, w.y);
+    if (branch) {
+      selectBranch(branch);
+      return;
+    }
     // Empty space: hold left-click and drag to move within the canvas (pan).
     closeMenu();
     clearSelection();
@@ -1549,15 +1595,29 @@ function isSelected(id) {
   return state.selection.has(id);
 }
 function selectOnly(id) {
-  state.selection.clear();
+  clearSelection();
   if (id != null) state.selection.add(id);
 }
 function toggleSelect(id) {
+  state.selectedBranch = null;
   if (state.selection.has(id)) state.selection.delete(id);
   else state.selection.add(id);
 }
 function clearSelection() {
   state.selection.clear();
+  state.selectedBranch = null;
+}
+function selectBranch(child) {
+  const parent = branchParent(child);
+  if (!parent) return;
+  clearSelection();
+  state.selectedBranch = { childId: child.id, parentId: parent.id };
+  state.hover = null;
+  state.hoverEndpoint = null;
+  closeMenu();
+  canvas_focus();
+  draw();
+  explainSelected();
 }
 function selectedNodes() {
   return [...state.selection]
@@ -1637,13 +1697,14 @@ function onMouseMove(e) {
   const epPad = Math.max(6, 8 / (state.view.scale || 1));
   const epNode = endpointHit(state.model, w.x, w.y, epPad);
   const epId = epNode ? epNode.id : (node && node.parent ? node.id : null);
+  state.canvas.style.cursor = epNode ? 'grab'
+    : node ? (node.kind === NODE.PHRASE ? 'grab' : 'pointer')
+    : branchHit(w.x, w.y) ? 'pointer' : 'default';
   if (id !== state.hover || epId !== state.hoverEndpoint) {
     state.hover = id;
     state.hoverEndpoint = epId;
     state.hoverX = sx;
     state.hoverY = sy;
-    state.canvas.style.cursor = epNode ? 'grab'
-      : node ? (node.kind === NODE.PHRASE ? 'grab' : 'pointer') : 'default';
     draw();
   }
 }
@@ -1706,11 +1767,12 @@ function onMouseUp(e) {
   const { sx, sy } = eventPos(e);
   const w = toWorld(sx, sy);
   if (state.link && !state.link.moved) {
-    // A plain click on a connector (or on the line above a word) never edits
-    // the tree: drop the preview and leave every connection intact.
+    // A click on an existing branch end selects it; dragging still reroutes it.
+    const child = state.link.selectOnClick ? state.model.nodes[state.link.childId] : null;
     state.link = null;
     state.hoverTarget = null;
-    draw();
+    if (branchParent(child)) selectBranch(child);
+    else draw();
   } else if (state.link) {
     if (state.link.free === 'parent') {
       const hit = nearestConnectable(w.x, w.y, { childId: state.link.childId });
@@ -1817,7 +1879,7 @@ function onDoubleClick(e) {
   const node = nodeHit(state.model, w.x, w.y);
   if (node) {
     editNode(node, e.clientX, e.clientY);
-  } else {
+  } else if (!branchHit(w.x, w.y)) {
     openInlineEditor(w, e.clientX, e.clientY, '', (text) => {
       if (!text.trim()) return;
       const made = addWordsFromText(state.model, text, w.x, w.y);
@@ -1913,11 +1975,25 @@ function onKeyDown(e) {
     state.holdingRight = false;
     state.rightDownStart = null;
     state.hoverTarget = null;
+    state.selectedBranch = null;
     state.canvas.style.cursor = '';
     draw();
     return;
   }
-  if ((e.key === 'Delete' || e.key === 'Backspace') && state.selection.size > 0) {
+  if (e.key !== 'Delete' && e.key !== 'Backspace') return;
+  if (state.selectedBranch) {
+    e.preventDefault();
+    const { childId, parentId } = state.selectedBranch;
+    clearSelection();
+    if (branchParent(state.model.nodes[childId])?.id === parentId && disconnect(state.model, childId)) {
+      state.onStatus('Connection removed.');
+      changed();
+    } else {
+      draw();
+    }
+    return;
+  }
+  if (state.selection.size > 0) {
     e.preventDefault();
     for (const id of [...state.selection]) removeNode(state.model, id);
     state.selection.clear();
@@ -3077,6 +3153,7 @@ function deactivateBuilderCanvas() {
   if (!state.combined) return;
   if (!state.canvasActive) return;
   state.canvasActive = false;
+  state.selectedBranch = null;
   if (!state.editor && !state.menu && !state.link && !state.drag && !state.marquee) {
     normalizeBuilderLayout();
   }
@@ -3324,15 +3401,16 @@ function render() {
   // edges first (straight, thin). Anchors hug the rendered labels so the line
   // reads as directly connected to each node.
   for (const n of nodes) {
-    if (!n.parent) continue;
-    const parent = state.model.nodes[n.parent];
-    if (!parent || parent.canonicalTriangle) continue;
+    const parent = branchParent(n);
+    if (!parent) continue;
+    const selected = state.selectedBranch?.childId === n.id && state.selectedBranch.parentId === parent.id;
     // An edge into a node that failed validation is drawn red, like the tutor.
     const bad = state.nodeErrors.has(n.id);
     drawEdge(ctx,
       parentAnchorOf(parent),
       childAnchorOf(state.model, n),
-      bad ? c.error : undefined);
+      selected ? c.accent : bad ? c.error : undefined,
+      selected ? 3 / scale : 1.5);
   }
 
   for (const parent of nodes.filter(n => n.canonicalTriangle)) {
@@ -3416,10 +3494,10 @@ function drawHoverTooltip() {
   ctx.restore();
 }
 
-function drawEdge(ctx, a, b, color) {
+function drawEdge(ctx, a, b, color, width = 1.5) {
   ctx.save();
   ctx.strokeStyle = color || themeColors().edge;
-  ctx.lineWidth = 1.5;
+  ctx.lineWidth = width;
   ctx.beginPath();
   ctx.moveTo(a.x, a.y);
   ctx.lineTo(b.x, b.y);

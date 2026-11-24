@@ -15,13 +15,18 @@ SCHEMA_VERSION = "unified-findings-1.0.0"
 def build_unified_findings(details: dict[str, Any] | None,
                            candidate_xai: dict[str, Any] | None = None) -> dict[str, Any]:
     items = []
+    seen = set()
     for node_id, detail in (details or {}).items():
         if not isinstance(detail, dict) or detail.get("status") != "error":
             continue
         remediation = detail.get("remediation") or {}
         finding_span = next((finding['evidence']['token_span'] for finding in detail.get('findings', [])
                              if finding.get('constraint') == detail.get('constraint')
-                             and finding.get('evidence', {}).get('token_span')), detail.get('span'))
+                              and finding.get('evidence', {}).get('token_span')), detail.get('span'))
+        key = (detail.get("constraint"), tuple(finding_span or ()))
+        if finding_span and key in seen:
+            continue
+        seen.add(key)
         items.append({
             "finding_id": f"legacy:{node_id}",
             "authority": "legacy_matrix",
@@ -376,10 +381,16 @@ def local_relationships(leaves):
                 for i, other in head_deps):
             if (word in BE_SURFACES_LEAF | HAVE_FORM and head_word in PAST_ONLY
                     and head.get('type') in {'VBD', 'VBN'}):
+                agents = [i for i, other in head_deps
+                          if other.get('fdep') == 'agent' and other['surface'].lower() == 'by']
+                passive = word in BE_SURFACES_LEAF and dep == 'auxpass' and bool(agents)
                 expected = ('an -ing form in the progressive or a past participle in the passive'
                             if word in BE_SURFACES_LEAF else 'a past participle in the perfect')
-                yield {'kind': 'auxiliary_complement', 'participants': [index, head_id],
-                       'target': index if word in BE_SURFACES_LEAF else head_id, 'matches': False,
+                if passive:
+                    expected = 'a past participle in this passive construction (the by-phrase names the agent)'
+                yield {'kind': 'auxiliary_complement', 'participants': [index, head_id, *agents],
+                       'target': index if word in BE_SURFACES_LEAF and not passive else head_id,
+                       'matches': False,
                        'text': f'“{governor}” is a simple past form. Auxiliary “{surface}” takes {expected}.',
                        'lesson': 'auxiliary'}
             elif (word in BE_SURFACES_LEAF and index < head_id
@@ -420,7 +431,11 @@ def local_relationships(leaves):
         if dep in {'dobj', 'pobj', 'nsubj', 'nsubjpass'} and tag == 'PRP':
             subject = dep.startswith('nsubj')
             forms = PRONOUN_OBJECT_TO_SUBJECT if subject else PRONOUN_SUBJECT_TO_OBJECT
-            if word in forms:
+            nonfinite = (head.get('type') in {'VB', 'VBG', 'VBN'} and (
+                any(n['surface'].lower() == 'to' and n.get('fdep') in {'aux', 'mark'} for _, n in head_deps)
+                or (head.get('type') in {'VB', 'VBG'}
+                    and head.get('fdep') in {'xcomp', 'ccomp'})))
+            if word in forms and not (subject and nonfinite):
                 role = 'subject' if subject else 'object'
                 yield {'kind': 'pronoun_case', 'participants': [index, head_id],
                        'target': index, 'matches': False,
@@ -431,7 +446,8 @@ def local_relationships(leaves):
         if dep in {'nsubj', 'nsubjpass'} and word in _REFLEXIVES:
             yield {'kind': 'reflexive_binding', 'participants': [index, head_id],
                    'target': index, 'matches': False,
-                   'text': f'The reflexive pronoun “{surface}” needs an earlier antecedent and cannot stand alone as the subject of “{governor}”.',
+                   'text': (f'The reflexive “{surface}” has no local antecedent in this clause '
+                            f'and cannot stand alone as the subject of “{governor}”.'),
                    'lesson': 'pronoun'}
 
 
@@ -482,6 +498,15 @@ _STRUCTURAL_LESSON_MAP = {
     'C-FILLED-GAP': 'island',
     'C-QUESTION-INVERSION': 'question',
     'C-INDIRECT-Q-ORDER': 'question',
+    'C-DO-MODAL': 'auxiliary',
+    'C-DET-ORDER': 'determiner',
+    'C-ARTICLE-ORDER': 'determiner',
+    'C-DEGREE-ORDER': 'modifier',
+    'C-PLACEMENT-COMPLEMENT': 'transitivity',
+    'C-TRANSITIVITY': 'transitivity',
+    'C-VERB-CLAUSE-PATTERN': 'infinitive',
+    'C-RELATIVE-PRONOUN': 'relative',
+    'C-MODAL-VERB-FORM': 'auxiliary',
     'C-COMMA-SPLICE': 'punctuation',
     'C-TIME-PLACE-PREP': 'preposition',
     'C-PREP-CHOICE': 'preposition',
@@ -582,7 +607,14 @@ def supported_findings(analysis, details):
                         and any(span[0] <= p < span[1] for p in r['participants']))
                 )
             ]
-            if len(matches) == 1:
+            target_node = nodes.get(evidence.get('target_node'))
+            if code in AGREEMENT and target_node:
+                target_idx = target_node['span'][0]
+                witnesses = _evidence_token_ids(evidence, nodes, tokens, span)
+                if target_idx not in leaves or not witnesses:
+                    continue
+                targets, participants, lesson = [target_idx], witnesses, 'agreement'
+            elif len(matches) == 1:
                 relation = matches[0]
                 targets, participants = [relation['target']], relation['participants']
                 text, lesson = relation['text'], relation['lesson']
@@ -730,7 +762,10 @@ def supported_findings(analysis, details):
                 'C-SUPERLATIVE-QUANT', 'C-EXISTENTIAL-DEFINITENESS',
                 'C-EXISTENTIAL', 'C-EXISTENTIAL-VERB',
                 'C-RAISING-CONTROL', 'C-TOUGH-COMPLEMENT', 'C-ELLIPSIS-HEAD',
-                'C-INTRANSITIVE-OBJECT', 'C-INTRANSITIVE-PASSIVE',
+                 'C-INTRANSITIVE-OBJECT', 'C-INTRANSITIVE-PASSIVE',
+                 'C-PLACEMENT-COMPLEMENT', 'C-TRANSITIVITY', 'C-DO-MODAL',
+                 'C-DET-ORDER', 'C-ARTICLE-ORDER', 'C-DEGREE-ORDER',
+                 'C-VERB-CLAUSE-PATTERN', 'C-RELATIVE-PRONOUN', 'C-MODAL-VERB-FORM',
                 'C-STRANDED-PREP',
                 'C-WH-ISLAND', 'C-ADJUNCT-ISLAND', 'C-COMPLEX-NP-ISLAND',
                 'C-LEFT-BRANCH-ISLAND', 'C-COORD-ISLAND', 'C-FILLED-GAP',

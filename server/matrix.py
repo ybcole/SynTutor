@@ -411,6 +411,7 @@ CHECK_LABELS = {
     'C-TENSE-FINITE': 'needs a complete verb',
     'C-MOD-POS': 'Modifier Before Head Noun',
     'C-DET-STACK': 'Single Determiner per NP',
+    'C-DET-ORDER': 'Pre-determiner order',
     'C-HEAD-NOUN': 'Head Noun Identification',
     'C-HEAD-VERB': 'Head Verb Identification',
     'C-INFINITIVAL-COMPLEMENT': 'Non-finite to-infinitive Complement',
@@ -552,6 +553,7 @@ CONSTRAINT_RULE = {
     'C-DETERMINER-AGREEMENT': ('2.10', 'T'),
     'C-DETERMINER': ('3.6', 'T'),
     'C-DET-STACK': ('3.5', 'T'),
+    'C-DET-ORDER': ('3.5', 'T'),
     'C-HEAD-NOUN': ('3.6', 'T'),
     'C-NOUN-FORM': ('1.2', 'L'),
     'C-NOUN-ADJUNCT': ('4.2', 'T'),
@@ -1325,12 +1327,8 @@ def _rem_from_text(text, surface=''):
         target = refl.get(m.group(2).lower())
         if target:
             return card(f"Change '{m.group(1)}' to '{target}'.")
-        subject_of = {'myself': 'I', 'ourselves': 'we', 'himself': 'he',
-                      'herself': 'she', 'itself': 'it', 'themselves': 'they',
-                      'yourself': 'you'}
-        t2 = subject_of.get(m.group(1).lower())
-        if t2:
-            return card(f"Change '{m.group(1)}' to the subject form '{t2}'.")
+        return card("If the object refers back to the subject, use the reflexive "
+                    "that matches that person's pronouns. Otherwise use an object pronoun.")
     if re.search(r'do not agree', text) and surface:
         return card(f"Change '{surface}' to the form that agrees with the subject.")
 
@@ -1403,6 +1401,9 @@ def person_of(leaf):
 
 
 def subject_key(leaf):
+    if leaf.get('type') in {'DT', 'CD'} and _lower(leaf['surface']) in {
+            'each', 'either', 'neither', 'one'}:
+        return ('3', 'sg')
     if person_of(leaf) is None:
         return None
     return (person_of(leaf), num_of(leaf))
@@ -1619,8 +1620,16 @@ def _np_determinatives(node):
     embedded PP/SBAR/S/VP modifiers so 'a great chance to prepare for their
     future life' is never misread as stacked determiners."""
     return [lf for lf in _np_own_leaves(node)
-            if lf['type'] in DET_CLASS or lf['type'] == 'PRP$'
+            if lf['type'] in DET_CLASS | {'PDT', 'PRP$'}
             or _lower(lf.get('surface', '')) in POSS_DET_PLAIN]
+
+
+def _licensed_predeterminer(first, second):
+    a, b = (_lower(x.get('surface', '')) for x in (first, second))
+    return (a in {'all', 'both', 'half'}
+            and (b in {'the', 'this', 'that', 'these', 'those'} or b in POSS_DET_PLAIN
+                 or second.get('type') == 'PRP$'
+                 or (a == 'half' and b in {'a', 'an'})))
 
 
 def _needs_indefinite_article_error(np_node, parent_vp=None):
@@ -1862,6 +1871,9 @@ def subject_head(node):
            and not any(lf.get('type') == 'POS' for lf in _leaves_list(cur['children'][0]))):
         cur = cur['children'][0]
     leaves = _leaves_list(cur)
+    if len(leaves) == 1 and leaves[0].get('type') in {'DT', 'CD'} \
+            and _lower(leaves[0]['surface']) in {'each', 'either', 'neither', 'one'}:
+        return leaves[0]
     pp_ids = set()
     skip_rest = False
     for idx_ch, ch in enumerate(cur.get('children', [])):
@@ -2059,9 +2071,13 @@ class MatrixEvaluator:
             errs = [f for f in detail.get('findings', [])
                     if f['status'] == 'error']
             own_error = detail.pop('_own_error', False)
-            err = next((f for f in errs
-                        if f.get('rule_id') and f.get('rule_id') == detail.get('rule_id')),
-                       None)
+            # A voice-specific form error is more informative than a generic
+            # lexical form error on the same token.
+            err = next((f for f in errs if f.get('constraint') == 'C-BE-PAST'), None)
+            if err is None:
+                err = next((f for f in errs
+                            if f.get('rule_id') and f.get('rule_id') == detail.get('rule_id')),
+                           None)
             if err is None:
                 err = next((f for f in errs
                             if f.get('constraint') == detail.get('constraint')),
@@ -2107,6 +2123,9 @@ class MatrixEvaluator:
                     if not merged.get(key) and matrix_rem.get(key):
                         merged[key] = matrix_rem[key]
             detail['remediation'] = merged
+            if err.get('constraint') == 'C-BE-PAST':
+                detail['findings'] = [f for f in detail['findings']
+                                      if f.get('constraint') not in {'C-VERB-FORM', 'C-LEXICON-MALFORMED'}]
         self._suppress_be_past_duplicates()
 
     def _suppress_be_past_duplicates(self):
@@ -2140,6 +2159,16 @@ class MatrixEvaluator:
                     'options': [], 'confidence': 0.5}
         parent = self._find_node(root, detail['parent']) if detail.get('parent') else None
         conflict = [{'node': detail['id']}]
+        if detail['constraint'] == 'C-DET-ORDER' and parent is not None:
+            return ruleset._tree_evidence(parent['id'], 'pre-determiner and central determiner order',
+                                          [{'node': n['id']} for n in _np_determinatives(parent)])
+        if detail['constraint'] in {'C-SUBJECT-AGREEMENT', 'C-SUBJ-AGREE-XP'} and parent is not None:
+            subj, vp = clause_subject_and_verb(parent)
+            controller, verb = (subject_head(subj) if subj else None, phrase_head(vp) if vp else None)
+            if controller and verb and controller.get('type') in {'DT', 'CD'}:
+                return {**ruleset._tree_evidence(parent['id'], 'fused singular agreement controller',
+                                                 [{'node': controller['id']}]),
+                        'target_node': verb['id']}
         if parent is not None:
             conflict.append({'node': parent['id']})
         return {'used': 'tree', 'subtree': detail['id'],
@@ -2721,6 +2750,12 @@ class MatrixEvaluator:
                         f"amount or measure here, so the singular verb "
                         f"'{vp_head['surface']}' follows notional agreement.")
         has_pp = any(c.get('type') == 'PP' for c in subj.get('children', []))
+        if (subj_head.get('type') in {'DT', 'CD'} and skey == ('3', 'sg')
+                and _lower(subj_head['surface']) in {'each', 'either', 'neither', 'one'}):
+            target = _preserve_case(vp_head['surface'], _agree_form(vp_head, skey))
+            return ('error', 'C-SUBJ-AGREE-XP' if has_pp else 'C-SUBJECT-AGREEMENT',
+                    f"'{subj_head['surface']}' controls singular agreement. "
+                    f"Change '{vp_head['surface']}' to '{target}' without changing the subject.")
         if has_pp:
             target = (_preserve_case(vp_head['surface'], _third_present(_base_form(vp_head)))
                       if skey == ('3', 'sg') else
@@ -2790,9 +2825,18 @@ class MatrixEvaluator:
     def _np_rule(self, parent, child, grandparent=None):
         ct = child['type']
         head = _np_head(parent)
-        if ct in DET_CLASS or ct == 'PRP$' or _lower(child.get('surface', '')) in POSS_DET_PLAIN:
+        if ct in DET_CLASS | {'PDT', 'PRP$'} or _lower(child.get('surface', '')) in POSS_DET_PLAIN:
             determinatives = _np_determinatives(parent)
             if len(determinatives) > 1:
+                if len(determinatives) == 2 and _licensed_predeterminer(*determinatives):
+                    return ('valid', 'C-DETERMINER', 'The pre-determiner comes before the central determiner.')
+                if (len(determinatives) == 2 and _licensed_predeterminer(*reversed(determinatives))
+                        and determinatives[0]['span'][1] == determinatives[1]['span'][0]):
+                    if child is not determinatives[1]:
+                        return ('valid', 'C-DETERMINER', 'This determiner belongs after the pre-determiner.')
+                    return ('error', 'C-DET-ORDER',
+                            f"The pre-determiner '{child['surface']}' belongs before "
+                            f"'{determinatives[0]['surface']}', not after it.")
                 parent_leaves = _leaves_list(parent)
                 if any(lf.get('type') == 'CC' for lf in parent_leaves) or any(
                         (lf.get('surface') or '').strip() in
@@ -3516,6 +3560,13 @@ class MatrixEvaluator:
             return self._rem_uncountable(node, parent)
         if cid == 'C-AUX-FORM':
             return self._rem_aux(node, parent)
+        if cid == 'C-DET-ORDER':
+            first, second = _np_determinatives(parent)
+            text = f"{second['surface'].lower()} {first['surface'].lower()}"
+            if first['surface'][0].isupper():
+                text = text[0].upper() + text[1:]
+            return {'violation': detail['text'], 'suggested_fix': f"Write '{text}'.",
+                    'edits': [{'nodes': [first['id'], second['id']], 'replacement': text}]}
         if cid == 'C-DET-STACK':
             return self._rem_det_stack(node, parent)
         if cid == 'C-MOD-POS':
@@ -3673,15 +3724,22 @@ class MatrixEvaluator:
             form_desc = 'the form used with I/you/we/they'
         violation = (f"The subject '{subj['surface']}' and the verb "
                      f"'{verb_surface}' do not match. Use {form_desc}.")
+        fused = subj_head.get('type') in {'DT', 'CD'} and _lower(subj_head['surface']) in {
+            'each', 'either', 'neither', 'one'}
+        if fused:
+            controller = subj_head['surface']
+            contrast = ", not the noun inside the following 'of' phrase" if s1 == 'of' else ''
+            violation = (f"'{controller}' controls singular agreement{contrast}. "
+                         f"Use '{target}', not '{verb_surface}'.")
         suggested = f"Change '{verb_surface}' to '{target}'."
         return {
             'violation': violation,
             'suggested_fix': suggested,
-            'alternative_fix': self._subject_fix_alternative(subj, subj_head, vp_head),
+            'alternative_fix': None if fused else self._subject_fix_alternative(subj, subj_head, vp_head),
             'targeted_outcome': f"'{target}' instead of '{verb_surface}'",
             'edits': [{'node': vp_head['id'], 'replacement': target}],
             'edit': _edit(vp_head['span'][0], vp_head['span'][1], target),
-            'alternative_edit': self._subject_alt_edit(subj, subj_head, vp_head),
+            'alternative_edit': None if fused else self._subject_alt_edit(subj, subj_head, vp_head),
         }
 
     def _subject_alt_edit(self, subj, subj_head, vp_head):
@@ -4615,12 +4673,15 @@ class MatrixEvaluator:
         error_findings = []
         suggestions = []
         unverified = []
+        contextual_notes = []
         for detail in self.details.values():
             for finding in detail.get('findings', []):
                 if finding['status'] == 'error':
                     error_findings.append(finding)
                 elif finding['status'] == 'suggestion':
                     suggestions.append(finding)
+                    if finding.get('constraint') == 'C-REFLEXIVE-ANTECEDENT':
+                        contextual_notes.append(finding['text'])
                 elif finding['status'] == 'unverified':
                     unverified.append(finding)
         violations = list(errors) + error_findings
@@ -4633,13 +4694,12 @@ class MatrixEvaluator:
         elif error_findings:
             message = error_findings[0]['text']
         elif unverified or self.checker_errors:
-            message = (f"The rules found no definite mistake in "
-                       f"'{root['surface']}', but {len(unverified)} word(s) could not be "
-                       'confirmed and the check ran into an issue, so this sentence cannot '
-                       'yet be marked fully grammatical.')
+            focus = next((r['text'] for r in unverified
+                          if r.get('constraint') == 'C-EMBEDDED-EXTRACTION'), '')
+            message = focus or 'No definite violation was found, but the available checks did not verify the sentence.'
         else:
-            message = (f"'{root['surface']}' is grammatical: every word is used in an "
-                       'allowed way.')
+            message = (contextual_notes[0] if contextual_notes
+                       else 'No violation was found by the checks that applied.')
         if violations:
             verdict = 'ungrammatical'
         elif unverified or self.checker_errors:
@@ -4662,6 +4722,7 @@ class MatrixEvaluator:
             'unrated_edges': len(unlisted),
             'suggested': len(suggestions),
             'suggestions': [f.get('id') for f in suggestions],
+            'contextual_notes': list(dict.fromkeys(contextual_notes)),
             'constraints_fired': sorted({d['constraint'] for d in violations}),
             'root_error': root_error,
             'explanation': message,

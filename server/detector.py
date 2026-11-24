@@ -132,6 +132,10 @@ def combine(summary, det):
         # confidence - rules can't explain it.
         merged['flagged'] = True
         merged['verdict'] = 'unverified'
+        if summary.get('verdict') == 'grammatical':
+            merged['explanation'] = (
+                'The rules found no definite violation, but the acceptability signal disagrees. '
+                'This sentence is unverified.')
         merged['detector_note'] = (
             f"{det['explanation']} The rule matrix found no violation, so the "
             'deterministic rules cannot explain this rejection; the sentence is '

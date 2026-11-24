@@ -20,19 +20,28 @@ export function enableCanvasView(host, lessonWrap) {
   const w = Number(vb?.width) || Number(svg.getAttribute('width')) || 400;
   const h = Number(vb?.height) || Number(svg.getAttribute('height')) || 200;
   let scale = 1, tx = 0, ty = 0, dragging = null, destroyed = false, justDragged = false;
+  let lastFitGeometry = '';
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const paint = () => {
     if (!destroyed) layer.style.transform = 'translate(' + tx + 'px, ' + ty + 'px) scale(' + scale + ')';
   };
-  const fit = () => {
+  const fit = (force = true) => {
     if (destroyed) return;
     const rect = viewport.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
+    const style = getComputedStyle(viewport);
+    const topInset = Number.parseFloat(style.getPropertyValue('--tree-fit-top'));
     const padX = 24;
-    const padTop = 44;
-    const padBottom = 18;
-    const availW = Math.max(80, rect.width - padX * 2);
-    const availH = Math.max(80, rect.height - padTop - padBottom);
+    const padTop = Number.isFinite(topInset) ? topInset : 44;
+    const padBottom = Number.parseFloat(style.getPropertyValue('--tree-fit-bottom')) || 18;
+    const geometry = `${rect.width}:${rect.height}:${padTop}:${padBottom}`;
+    // A queued observer notification for the same viewport must not undo a
+    // zoom or pan made since the last fit.
+    if (!force && geometry === lastFitGeometry) return;
+    lastFitGeometry = geometry;
+    const minAvailable = Number.isFinite(topInset) ? 1 : 80;
+    const availW = Math.max(minAvailable, rect.width - padX * 2);
+    const availH = Math.max(minAvailable, rect.height - padTop - padBottom);
     scale = clamp(Math.min(availW / w, availH / h), 0.12, 1.7);
     tx = padX + (availW - w * scale) / 2;
     ty = padTop + (availH - h * scale) / 2;
@@ -58,7 +67,7 @@ export function enableCanvasView(host, lessonWrap) {
   };
   makeButton('+', 'Zoom in on syntax tree', () => zoom(1.25));
   makeButton('−', 'Zoom out of syntax tree', () => zoom(.8));
-  makeButton('Fit', 'Fit syntax tree', fit);
+  makeButton('Fit', 'Fit syntax tree', () => fit());
   const onWheel = event => {
     event.preventDefault();
     zoom(event.deltaY < 0 ? 1.12 : 1 / 1.12, event.clientX, event.clientY);
@@ -101,7 +110,7 @@ export function enableCanvasView(host, lessonWrap) {
       event.preventDefault(); fit();
     }
   };
-  const resize = () => { if (!dragging) fit(); };
+  const resize = () => { if (!dragging) fit(false); };
   viewport.addEventListener('wheel', onWheel, {passive:false});
   viewport.addEventListener('pointerdown', down);
   viewport.addEventListener('pointermove', move);
@@ -111,7 +120,7 @@ export function enableCanvasView(host, lessonWrap) {
   window.addEventListener('resize', resize);
   const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(resize);
   observer?.observe(viewport);
-  requestAnimationFrame(fit);
+  requestAnimationFrame(resize);
   return {
     fit, zoom,
     wasDragged() {

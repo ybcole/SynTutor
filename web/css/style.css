@@ -1841,17 +1841,42 @@ body.builder-standalone .builder-hint.with-actions {
   pointer-events: none;
 }
 .tree-authority-notice[hidden] { display: none; }
-.canvas-stage:has(.canonical-tree-view:not([hidden]), .tree-authority-notice:not([hidden]) #toggleParserDiagnostic) {
+.canvas-stage:has(.tree-authority-notice:not([hidden]) #toggleParserDiagnostic) {
   display: flex;
   flex-direction: column;
 }
-.canvas-stage:has(.canonical-tree-view:not([hidden]), .tree-authority-notice:not([hidden]) #toggleParserDiagnostic) .tree-authority-notice {
+.canvas-stage:has(.tree-authority-notice:not([hidden]) #toggleParserDiagnostic) .tree-authority-notice {
   position: relative;
   inset: auto;
   margin: 12px 14px 0;
 }
+.canvas-stage:has(.canonical-tree-view:not([hidden])) {
+  /* Keep the tree and its controls independent of the overlay text. The fit
+     action reserves the same room whether or not a status notice is shown. */
+  --tree-fit-top: 68px;
+  --tree-fit-bottom: 76px;
+  --tree-zoom-clearance: 130px;
+}
+.canvas-stage:has(.canonical-tree-view:not([hidden])) > .tree-authority-notice {
+  max-inline-size: min(680px, calc(100% - 14px - var(--tree-zoom-clearance)));
+  max-block-size: calc(var(--tree-fit-top) - 18px);
+  overflow: auto;
+  overflow-wrap: anywhere;
+  pointer-events: auto;
+}
+@media (pointer: coarse), (max-width: 760px) {
+  .canvas-stage:has(.canonical-tree-view:not([hidden])) {
+    --tree-fit-top: 84px;
+    --tree-fit-bottom: 86px;
+    --tree-zoom-clearance: 156px;
+  }
+}
+@media (max-width: 760px) {
+  .canvas-stage:has(.canonical-tree-view:not([hidden])) { min-height: 320px; }
+}
 .canonical-tree-view {
-  flex: 1 1 auto;
+  position: absolute;
+  inset: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -1871,6 +1896,10 @@ body.builder-standalone .builder-hint.with-actions {
   cursor: grab;
   touch-action: none;
   user-select: none;
+}
+.canonical-tree-view > .canonical-viewport {
+  flex: 1 1 0;
+  min-height: 0;
 }
 .canonical-viewport.is-panning { cursor: grabbing; }
 .canonical-viewport:focus-visible { outline: none; }
@@ -4288,6 +4317,37 @@ body.combined-modes .builder-hint {
   }
 }
 
+/* The mode hint and action share one fixed row; wrapping the hint never
+   changes the button position or the canvas bounds. */
+.canvas-mode-footer { display: contents; }
+body.combined-modes .canvas-mode-footer:has(> .explore-builder-btn:not([hidden])) {
+  position: absolute;
+  inset: auto 12px 12px;
+  z-index: 11;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  block-size: var(--btn-height-touch);
+  pointer-events: none;
+}
+body.combined-modes .canvas-mode-footer:has(> .explore-builder-btn:not([hidden])) > .builder-hint:not([hidden]) {
+  position: static;
+  flex: 1 1 auto;
+  max-width: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+body.combined-modes .canvas-mode-footer > .explore-builder-btn:not([hidden]) {
+  position: static;
+  flex: 0 0 auto;
+  max-width: 100%;
+  margin-inline-start: auto;
+  pointer-events: auto;
+}
+
 /* Tree text below the canvas */
 .canvas-tree-text {
   flex: 0 0 auto;
@@ -4313,6 +4373,13 @@ body.combined-modes .builder-hint {
   overflow: auto;
   font-size: 12px;
   line-height: 1.5;
+}
+/* Open and closed are intentional layout states; the amount of text inside
+   the open reader must not resize the stage or trigger an automatic re-fit. */
+.canvas-wrap:has(.canonical-tree-view:not([hidden])) .canvas-tree-text-body {
+  block-size: min(128px, 20vh);
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
 }
 .canvas-tree-text-body ul {
   margin: 0;

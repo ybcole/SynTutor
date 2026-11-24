@@ -3,9 +3,11 @@ from dataclasses import dataclass
 from copy import deepcopy
 
 if __package__:
-    from .ruleset import PAST_ONLY, contracted_verb_class, passive_adjunct_parts
+    from .ruleset import (PAST_ONLY, contracted_verb_class, embedded_extraction_uncertainty,
+                          local_modifier_order, passive_adjunct_parts, relative_object_repeat)
 else:
-    from ruleset import PAST_ONLY, contracted_verb_class, passive_adjunct_parts
+    from ruleset import (PAST_ONLY, contracted_verb_class, embedded_extraction_uncertainty,
+                         local_modifier_order, passive_adjunct_parts, relative_object_repeat)
 
 CLAUSE = ("Ch2 pp. 29–30",)
 NOUN = ("Ch7 pp. 141–144",)
@@ -474,9 +476,16 @@ class Projection:
             for part in parts:
                 if leaf(part):
                     child = self.working_leaf(part)
+                    if tag(node) == "PP" and part is parts[0] and word(part) == "to":
+                        child = branch("P", (), word_node(part))
+                        child["notes"] = ["Candidate preposition in a provisional PP."]
+                    if tag(node) == "VP" and tag(part) in NOUN_TAGS and part is parts[0]:
+                        child = {"triangle": True, "words": [part["surface"]],
+                                 "notes": ["This token has a noun tag in a verb position; "
+                                           "its category is unresolved."]}
                 else:
                     child = self.working_tree(part, subject)
-                if tag(node) == "S" and tag(part) == "NP" and not children:
+                if tag(node) in {"S", "SQ"} and tag(part) == "NP" and subject is None:
                     subject = child
                 children.append(child)
             result = branch(label, (), *children)
@@ -856,6 +865,13 @@ class Projection:
         return branch("PP", ("Ch3 pp. 56–59",), head, *tail)
 
     def np(self, nodes, nonrestrictive=()):
+        for first, second in zip(nodes, nodes[1:]):
+            if tag(first) in {"DT", "PRP$"} and word(second) in {"all", "both", "half"} \
+                    and word(first) in (set(DETERMINERS) | POSSESSIVE_DETERMINERS):
+                raise ProjectionUnavailable("Pre-determiner follows a central determiner")
+        order_issue = local_modifier_order(raw("NP", nodes))
+        if order_issue:
+            raise ProjectionUnavailable(order_issue["text"])
         if not nodes:
             raise ProjectionUnavailable("Empty overt noun phrase")
         focus = next((i for i in range(len(nodes) - 1)
@@ -1505,6 +1521,9 @@ class Projection:
     def vp(self, nodes, mode, subject, incoming=None, passive=None, fronted=None):
         if not nodes:
             raise ProjectionUnavailable("Missing verb phrase")
+        order_issue = local_modifier_order(raw("VP", nodes))
+        if order_issue:
+            raise ProjectionUnavailable(order_issue["text"])
         if len(nodes) > 3 and tag(nodes[1]) == "CC" and all(leaf(nodes[i]) and tag(nodes[i]) in VERB_TAGS for i in (0, 2)):
             if incoming or passive or fronted or tag(nodes[0]) != tag(nodes[2]):
                 raise ProjectionUnavailable("Unresolved dependency on coordinated verb heads")
@@ -1991,8 +2010,12 @@ class Projection:
             tail = tail[2:]
         elif (tail and tag(tail[0]) == "NP" and not self.is_time_np(tail[0])
               and not self.is_temporal_coordination(tail[0])):
-            if base in KNOWN_INTRANS:
+            if base in KNOWN_INTRANS or (base == "sleep" and
+                    not any(lemma(n) == "sleep" for n in leaves(tail[0]))):
                 raise ProjectionUnavailable(f"{base} has an overt object without a licensed object frame")
+            if (base == "suggest" and len(tail) > 1 and tag(tail[1]) == "S"
+                    and self.is_nonfinite(tail[1])):
+                raise ProjectionUnavailable("Suggest does not license an object followed by a to-infinitive")
             # Benepar's low-NP attachment bias occasionally buries a benefactive
             # 'for + animate' indirect object inside the direct-object NP
             # ('Laura saved (NP (NP a place) (PP for Martha))'). Detach it ONLY
@@ -2849,6 +2872,11 @@ class Projection:
         return branch("S′", AUXILIARY, carrier, branch("S", CLAUSE, self.phrase(raw_subject), vp))
 
     def question(self, parts, incoming=None):
+        if parts and lemma(parts[0]) == "do" and len(parts) >= 3:
+            verbal = next((p for p in parts[2:] if tag(p) in {"VP", "MD"}), None)
+            v_leaves = leaves(verbal) if verbal is not None else []
+            if v_leaves and tag(v_leaves[0]) == "MD" and word(v_leaves[0]) in CENTRAL_MODALS:
+                raise ProjectionUnavailable("Supportive do and a central modal cannot carry the same question")
         before = []
         while len(parts) > 2 and tag(parts[0]) in {"ADVP", "PP", "SBAR"} and not (
                 tag(parts[0]) == "SBAR" and not self.is_adverbial(parts[0])):
@@ -2979,6 +3007,10 @@ class Projection:
         if len(parts) != 2 or tag(parts[1]) not in {"S", "SQ"}:
             raise ProjectionUnavailable("Unsupported wh clause")
         wh, body = parts
+        if not relative:
+            uncertainty = embedded_extraction_uncertainty(wh, body)
+            if uncertainty:
+                raise ProjectionUnavailable(uncertainty[2])
         link = self.gap(self.wh_gap(wh, body))
         words = [n["surface"] for n in leaves(wh)]
         if len(words) == 1:
@@ -3054,6 +3086,8 @@ class Projection:
         return branch("S″", WH, fronted, lower)
 
     def relative(self, node):
+        if relative_object_repeat(node):
+            raise ProjectionUnavailable("The overt pronoun occupies the relative object's possible gap")
         parts = kids(node)
         if (len(parts) == 2 and tag(parts[0]) == "WHNP" and leaves(parts[0])
                 and word(leaves(parts[0])[0]) == "that" and tag(parts[1]) == "S"):

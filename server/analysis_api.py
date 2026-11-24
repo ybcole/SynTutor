@@ -106,12 +106,14 @@ def word_info(words):
 
 
 def _error_rows(details):
-    rows = []
+    rows = {}
     for detail_id, detail in (details or {}).items():
         if not isinstance(detail, dict) or detail.get('status') != 'error':
             continue
         remediation = detail.get('remediation') or {}
-        rows.append({
+        key = (detail.get('constraint'), tuple(detail.get('span') or ()))
+        priority = 1 if detail.get('type') in {'NP', 'VP', 'PP', 'S', 'ADJP', 'ADVP'} else 0
+        row = {
             'detail_id': detail_id,
             'constraint': detail.get('constraint'),
             'rule_id': detail.get('rule_id'),
@@ -119,8 +121,10 @@ def _error_rows(details):
             'surface': detail.get('surface'),
             'violation': remediation.get('violation') or detail.get('text'),
             'suggested_fix': remediation.get('suggested_fix'),
-        })
-    return rows
+        }
+        if key not in rows or priority < rows[key][0]:
+            rows[key] = (priority, row)
+    return [row for _, row in rows.values()]
 
 
 def _correction_impact(original_details, corrected_result, corrected_sentence):
@@ -149,8 +153,9 @@ def _correction_impact(original_details, corrected_result, corrected_sentence):
         'remaining': remaining,
         'introduced': introduced,
         'whole_sentence_clean': verdict == 'grammatical' and not remaining and not introduced,
-        'note': ('This edit changes the sentence as a whole; the counts come from '
-                 're-parsing the corrected text, not from the single edit.'),
+        'note': ('Counts come from re-parsing and checking the corrected text. '
+                 'Passing the available checks is not independent verification of '
+                 'grammaticality or meaning preservation.'),
     }
 
 
@@ -413,7 +418,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
         ]
         correction = corrections.assemble(
             analysis['sentence'], details, correction_tokens,
-            validate=_validate_correction)
+            validate=lambda candidate: _validate_correction(
+                candidate, variety=variety, runtime_registry=cambridge_runtime))
         if correction is not None:
             correction['alignment'] = build_correction_alignment(
                 analysis['sentence'], correction['corrected_sentence'],
@@ -431,6 +437,12 @@ def build_payload(text, sentence_index=0, convention_version=None,
                     corrected_analysis, chapter=chapter, appendix_nom=appendix_nom)
                 corrected_result = evaluate(
                     corrected_analysis['root'], text=correction['corrected_sentence'])
+                corrected_cambridge = evaluate_cambridge(
+                    correction['corrected_br_analysis'], cambridge_runtime, variety=variety)
+                _integrate_cambridge_findings(
+                    corrected_analysis['sentence'], corrected_analysis['tokens'], 0,
+                    corrected_analysis['root'], corrected_result['details'],
+                    corrected_result['summary'], corrected_cambridge)
                 correction['impact'] = _correction_impact(
                     details, corrected_result, correction['corrected_sentence'])
                 from spellcheck import unresolved_spelling_tokens
@@ -441,6 +453,13 @@ def build_payload(text, sentence_index=0, convention_version=None,
                 correction['impact']['completeness'] = (
                     'complete' if correction['impact'].get('whole_sentence_clean') else 'partial'
                 )
+                correction['validation_scope'] = {
+                    'reparsed': True,
+                    'corrected_tree_status': correction['corrected_br_analysis']['status'],
+                    'remaining_diagnostics': correction['impact']['remaining_count'],
+                    'introduced_diagnostics': correction['impact']['introduced_count'],
+                    'independent_meaning_verification': False,
+                }
             except Exception as exc:  # correction annotations survive a parser fallback
                 correction['corrected_candidate_parse'] = None
                 correction['corrected_br_analysis'] = {
@@ -454,6 +473,8 @@ def build_payload(text, sentence_index=0, convention_version=None,
             summary['correction'] = correction
             summary['corrected_sentence'] = correction['corrected_sentence']
 
+    if summary.get('verdict') == 'unverified' and not summary.get('explanation'):
+        summary['explanation'] = 'The available checks did not verify this sentence.'
     summary["verdict_authority"] = "legacy_diagnostic"
     summary["book_verified"] = False
     try:
@@ -693,8 +714,8 @@ def _rule_concepts(details, summary):
     return list(seen.values())
 
 
-def _validate_correction(candidate):
-    """A correction is only exposed when the matrix, Cambridge rules, and detector all accept it."""
+def _validate_correction(candidate, *, variety=None, runtime_registry=None):
+    """Require a clean reparse under applicable checks, not semantic certification."""
     try:
         analysis = analyze(candidate, sentence_index=0)
         if analysis['sentence_count'] != 1:
@@ -705,7 +726,8 @@ def _validate_correction(candidate):
         try:
             br_cand = build_canonical_analysis(analysis)
             if br_cand.get('status') == 'normalized':
-                camb_cand = evaluate_cambridge(br_cand, load_runtime_registry())
+                camb_cand = evaluate_cambridge(br_cand, runtime_registry or load_runtime_registry(),
+                                               variety=variety)
                 if camb_cand.get('findings'):
                     return False
         except Exception:
@@ -764,7 +786,7 @@ def _apply_correction(located, root, details, summary, sentence, det):
 
 def _contrastive(summary, details):
     if summary['valid'] and not summary.get('root_error'):
-        return ('No grammatical alternative is observed: every edge is licensed, so no repair is '
+        return ('No violation was found by the applicable rules, so no repair is '
                 'needed. The sentence is fully determined by the matrix.')
     errors = [d for d in details.values() if d['status'] == 'error']
     if not errors:
