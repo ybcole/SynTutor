@@ -41,7 +41,6 @@ export function createFoundationStore(course, { storage, userId, client, localOn
   const account = !localOnly && userId !== 'guest';
   let records = {};
   let queue = Promise.resolve();
-  let blocked = false;
   let status = account ? 'Saved on this device; account sync pending' : 'Saved on this device';
 
   function read() {
@@ -87,7 +86,7 @@ export function createFoundationStore(course, { storage, userId, client, localOn
     return state;
   }
   async function sync(lesson) {
-    if (!account || !client || blocked) return 0;
+    if (!account || !client) return 0;
     const item = entry(lesson);
     let earned = 0;
     while (item.pending.length) {
@@ -103,7 +102,7 @@ export function createFoundationStore(course, { storage, userId, client, localOn
   }
   async function load() {
     if (!account || !client || !lessons.length) return;
-    blocked = false;
+    let failed = false;
     try {
       const rows = await request(client.from('foundation_progress').select('*'));
       for (const row of rows) {
@@ -111,12 +110,17 @@ export function createFoundationStore(course, { storage, userId, client, localOn
         if (lesson) entry(lesson).confirmed = publicState(row);
       }
       write();
-      for (const lesson of lessons) await sync(lesson);
-      status = 'Synced to your account';
     } catch {
-      blocked = true;
-      status = 'Account sync unavailable; progress is saved on this device.';
+      failed = true;
     }
+    for (const lesson of lessons) {
+      try { await sync(lesson); }
+      catch (error) {
+        failed = true;
+        if (!['22023', '23514', 'P0001'].includes(error?.code)) break;
+      }
+    }
+    status = failed ? 'Account sync unavailable; progress is saved on this device.' : 'Synced to your account';
   }
   read();
   return {
@@ -140,9 +144,8 @@ export function createFoundationStore(course, { storage, userId, client, localOn
         if (account) {
           try {
             earned += await sync(lesson);
-            if (!blocked && !entry(lesson).pending.length) status = 'Synced to your account';
+            if (lessons.every(candidate => !entry(candidate).pending.length)) status = 'Synced to your account';
           } catch {
-            blocked = true;
             status = 'Account sync unavailable; progress is saved on this device.';
           }
         }

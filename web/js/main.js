@@ -2585,7 +2585,7 @@ async function executePipeline(opts, request) {
         sentence: text,
         is_valid: payload.summary.verdict === 'grammatical',
         constraints_fired: payload.summary.constraints_fired,
-      });
+      }).abortSignal(AbortSignal.timeout(5000));
 
       if (historyClient !== supabase) return;
       if (insertError) {

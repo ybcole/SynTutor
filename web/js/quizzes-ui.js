@@ -53,6 +53,7 @@ async function action(fn){
    lastEarned={attempt_id:result.attempt_id,earned:result.earned};
    window.dispatchEvent(new Event('syntutor:quiz-progress'));
   }
+  if (result?.syncedProgress) window.dispatchEvent(new Event('syntutor:quiz-progress'));
   message='';
  }catch(e){if(token===generation)message=e.message;}
  finally{if(token===generation){busy=false;host.setAttribute('aria-busy','false');render();if(focusName)host.querySelector(`input[name="${CSS.escape(focusName)}"][value="${focusValue}"]`)?.focus();}}
@@ -74,11 +75,17 @@ function attemptHistorySummary(assessment){
  const last=previous.at(-1),best=Math.max(...previous.map(t=>gradeAttempt(bank,t).correct/t.presented.length));
  return `Best ${Math.round(best*100)}% · Last ${gradeAttempt(bank,last).correct}/${last.presented.length} · ${plural(previous.length,'attempt')}`;
 }
+let rankedQuizzes = true;
+function quizFormat() {
+ return rankedQuizzes
+  ? {content_tier:'lesson-assessment',format:'formal'}
+  : {content_tier:'lesson-practice',format:'mixed'};
+}
 function v2Card(parent,title,spec,opts={}){
  const isPersonalized=spec.mode==='personalized';
  const isGeneral=spec.mode==='general';
  const isSubtopic=spec.mode==='topic';
- const activeSpec={...spec,content_tier:'lesson-practice',format:'mixed'};
+ const activeSpec={...spec,...quizFormat()};
  const card=el('article',undefined,`curriculum-card quiz-topic-card${opts.featured?' quiz-featured-card':''}${isPersonalized?' is-review':''}${isGeneral?' is-general':''}${isSubtopic?' is-subtopic':''}`);
  let reason='';
  try{selectQuestions(bank,curriculum,activeSpec,store.attempts,0);}catch(e){reason=e.message;}
@@ -130,10 +137,10 @@ function v2Card(parent,title,spec,opts={}){
 }
 function masterQuizCard(parent,track){
  const master=el('section',undefined,'curriculum-card quiz-practice quiz-featured-card is-master');
- const min=track.chapters.length,masterTier='lesson-practice';
+ const min=track.chapters.length;
  const available=new Set([
   ...eligibleQuestions(bank,curriculum,trackId,'lesson-assessment'),
-  ...(bank.mixed_items||[]).filter(q=>questionMetadata(q,curriculum)?.track_id===trackId),
+  ...(rankedQuizzes ? [] : (bank.mixed_items||[]).filter(q=>questionMetadata(q,curriculum)?.track_id===trackId)),
  ].map(q=>q.item_id)).size,max=Math.min(MAX_MASTER_QUIZ_ITEMS,available);
  const defaultCount=max>=min?Math.min(Math.max(DEFAULT_MASTER_QUIZ_ITEMS,min),max):min;
  const initialCount=masterCounts[trackId]>=min&&masterCounts[trackId]<=max?masterCounts[trackId]:defaultCount;
@@ -179,8 +186,12 @@ function masterQuizCard(parent,track){
    target.append(el('p',`Enter a whole number between ${min} and ${max}.`,'quiz-card-error'));
    return;
   }
-  const spec={track:trackId,mode:'master',count:Number(input.value),difficulty:masterDifficulties[trackId],content_tier:masterTier,format:'mixed'};
+  const spec={track:trackId,mode:'master',count:Number(input.value),difficulty:masterDifficulties[trackId],...quizFormat()};
   const assessment={assessment_id:specKey(spec),content_version:'2.0.0'},draft=store.draft(assessment);
+  if (!draft) {
+   try { selectQuestions(bank,curriculum,spec,store.attempts,0); }
+   catch (error) { target.append(el('p',error.message,'quiz-card-error')); return; }
+  }
   const statusLine=draft?null:attemptHistorySummary(assessment);
   if(statusLine)target.append(el('p',statusLine,'quiz-card-status'));
   const foot=el('div',undefined,'quiz-card-footer');
@@ -198,6 +209,18 @@ function curriculumCatalog(){
 
  const body=el('div',undefined,'quiz-catalog-body');
  inlineNotice(body);
+
+ const format=el('div',undefined,'lesson-track-tabs');
+ format.setAttribute('role','group');
+ format.setAttribute('aria-label','Quiz format');
+ for(const [ranked,label] of [[true,'Ranked · earns XP'],[false,'Mixed practice']]){
+  const choice=button(label,()=>{rankedQuizzes=ranked;render();});
+  choice.setAttribute('aria-pressed',String(rankedQuizzes===ranked));
+  format.append(choice);
+ }
+ body.append(format,el('p',rankedQuizzes
+  ? (config.userId?.() ? 'Multiple-choice scores are verified when synced to your account.' : 'Sign in before taking a ranked quiz to earn leaderboard XP.')
+  : 'Practice with interactive questions. Mixed practice does not award leaderboard XP.','quiz-card-desc'));
 
  const track=curriculum.find(t=>t.id===trackId);
  const reviewSec=el('section',undefined,'quiz-special-section is-review');
@@ -222,7 +245,7 @@ function curriculumCatalog(){
   const head=el('div',undefined,'quiz-chapter-header');
   head.append(el('p',`Chapter ${chapter.chapter}`,'lesson-eyebrow'),el('h2',chapter.title,'quiz-chapter-title'));
   head.append(el('p',chapterDescriptions[chapter.id],'quiz-card-desc'));
-  const spec={track:trackId,mode:'general',chapter:chapter.id,content_tier:'lesson-practice',format:'mixed'};
+  const spec={track:trackId,mode:'general',chapter:chapter.id,...quizFormat()};
   const assessment={assessment_id:specKey(spec),content_version:'2.0.0'},draft=store.draft(assessment);
   let reason='';
   try{selectQuestions(bank,curriculum,spec,store.attempts,0);}catch(e){reason=e.message;}
