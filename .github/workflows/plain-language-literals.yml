@@ -1,0 +1,23 @@
+name: Plain-language XAI literal-preservation regression
+
+on:
+  pull_request:
+    paths:
+      - server/plain.py
+      - server/test_plain_literal_preservation.py
+      - .github/workflows/plain-language-literals.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  literal-preservation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify learner source text is not rewritten by XAI simplification
+        run: python -m unittest -v server.test_plain_literal_preservation
